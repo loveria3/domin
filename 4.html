@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>4차시 — AI로 쓰는 홍보물</title>
+<title>4차시 — 리플렛 한 장으로 배우는 홍보물</title>
 <style>
   :root{--ink:#1f2328;--sub:#6b7480;--line:#e3e6ea;--bg:#f7f8fa;--navy:#1f3864;--soft:#eef1f7;--ok:#2f6b4f;--warn:#8a5a00;}
   *{box-sizing:border-box}
@@ -13,20 +13,17 @@
 
   header{border-bottom:3px solid var(--navy);padding-bottom:14px;margin-bottom:8px}
   h1{font-size:26px;margin:0;letter-spacing:-.02em}
+  .ver{font-size:12px;font-weight:700;color:#fff;background:var(--navy);
+    border-radius:3px;padding:2px 7px;vertical-align:3px;margin-left:8px}
   .sub{font-size:13px;color:var(--sub);margin:8px 0 0}
 
   section{background:#fff;border:1px solid var(--line);border-radius:6px;padding:20px 22px;margin:14px 0}
-  section.challenge{border:1px dashed var(--navy);background:#fcfcfe}
   .head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
   .num{background:var(--navy);color:#fff;font-size:13px;font-weight:700;
     width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center}
-  .num.ch{background:#fff;color:var(--navy);border:1px dashed var(--navy)}
   h2{font-size:19px;margin:0;letter-spacing:-.01em}
-  .badge{font-size:11px;font-weight:700;color:var(--navy);border:1px solid var(--navy);
-    border-radius:3px;padding:1px 6px}
   .time{margin-left:auto;font-size:12px;color:var(--sub)}
   .one{font-size:14px;color:var(--sub);margin:8px 0 0}
-  .only{font-size:13px;color:var(--warn);margin:8px 0 0}
 
   .box{background:#fbfcfd;border:1px solid var(--line);border-radius:5px;margin:14px 0 0}
   .bar{display:flex;align-items:center;justify-content:space-between;padding:7px 12px;
@@ -47,11 +44,8 @@
   section{scroll-margin-top:64px}
 
   .ph{color:#1668dc;font-weight:700}
-  .shot{width:100%;border:1px solid var(--line);border-radius:5px;margin-top:12px;display:block}
-  .dl{display:inline-block;margin-top:10px;background:var(--navy);color:#fff;text-decoration:none;
-    border-radius:4px;padding:9px 18px;font-size:14px;font-weight:700}
-  .dl:hover{background:#16294a}
   .note{font-size:13px;color:var(--sub);margin:12px 0 0}
+  .warnnote{font-size:13px;color:var(--warn);margin:12px 0 0}
   ul{list-style:none;padding:0;margin:12px 0 0}
   li{font-size:14px;color:var(--sub);padding:3px 0 3px 22px;position:relative}
   li::before{content:"☐";position:absolute;left:0;color:var(--navy)}
@@ -66,17 +60,59 @@
   .end p{margin:6px 0;font-size:14px;color:var(--sub)}
   footer{margin-top:26px;font-size:12px;color:var(--sub);text-align:center}
 
+  section.feat{border-left-width:5px;border-left-style:solid}
+  .ftag{display:inline-block;font-size:11px;font-weight:700;color:#fff;border-radius:3px;
+    padding:2px 8px;letter-spacing:-.01em;white-space:nowrap;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  section.feat.c-art{border-left-color:#0d7a86}  .ftag.c-art{background:#0d7a86}
+  section.feat.c-file{border-left-color:#a4551a} .ftag.c-file{background:#a4551a}
+  .free{display:inline-block;font-size:11px;font-weight:700;color:#2f6b4f;
+    border:1px solid #2f6b4f;border-radius:3px;padding:1px 6px;white-space:nowrap;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+
+  .ready{margin:14px 0 0;padding:14px 16px;background:#fff;
+    border:1px solid var(--line);border-left:5px solid var(--warn);border-radius:6px}
+  .ready b{font-size:13px;color:var(--ink)}
+  .ready ol{margin:8px 0 0;padding-left:20px}
+  .ready li{font-size:13.5px;color:var(--sub);padding:2px 0;list-style:decimal}
+  .ready li::before{content:none}
+
+  .dlrow{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}
+  .dl{display:inline-block;background:#fff;border:1px solid var(--navy);color:var(--navy);
+    text-decoration:none;border-radius:4px;padding:8px 14px;font-size:13px;font-weight:700}
+  .dl:hover{background:var(--soft)}
+
+  .flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:14px 0 0;
+    padding:14px 16px;background:var(--soft);border-radius:6px;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .flow .n{background:#fff;border:1px solid var(--navy);color:var(--navy);
+    border-radius:5px;padding:7px 12px;font-size:13.5px;font-weight:700}
+  .flow .ar{color:var(--navy);font-weight:700}
+
+  .plan{margin:14px 0 0;padding:14px 16px;background:#fbfcfd;
+    border:1px dashed var(--sub);border-radius:6px}
+  .plan b{font-size:13px;color:var(--warn)}
+  .plan p{margin:6px 0 0;font-size:13px;color:var(--sub)}
+
   @media(max-width:600px){h1{font-size:21px}h2{font-size:17px}.txt{font-size:14px}.time{margin-left:0}}
-  @media print{body{background:#fff}button,.jump,.dl{display:none}section{page-break-inside:avoid}}
+  @media print{body{background:#fff}button,.jump,.dlrow{display:none}section{page-break-inside:avoid}}
 </style>
 </head>
 <body>
 <div class="wrap">
 
 <header>
-  <h1>4차시 · 안내문과 팸플릿</h1>
-  <p class="sub">파란 대괄호 <span class="ph">[이렇게]</span> 표시된 곳만 내 상황으로 바꾸세요.</p>
+  <h1>4차시 · 리플렛 한 장으로 배우는 홍보물</h1>
+  <p class="sub">파란 대괄호 <span class="ph">[이렇게]</span> 표시된 곳만 내 상황으로 바꾸세요. 오늘 나오는 것은 <b>전부 무료로 됩니다.</b></p>
 </header>
+
+<div class="ready">
+  <b>시작하기 전에 — 두 가지만 확인하세요</b>
+  <ol>
+    <li>설정 → <b>기능(Capabilities)</b> 에서 <b>코드 실행·파일 만들기</b>가 <b>켜져</b> 있어야 합니다. 꺼져 있으면 6번이 안 됩니다.</li>
+    <li>입력창 <b>＋</b> → <b>웹 검색과 안 쓰는 커넥터는 꺼</b> 두세요. 무료는 하루 사용량이 정해져 있는데, 이것들이 많이 씁니다.</li>
+  </ol>
+</div>
 
 <nav class="jump">
   <a href="#s1">1</a>
@@ -86,118 +122,240 @@
   <a href="#s5">5</a>
   <a href="#s6">6</a>
   <a href="#s7">7</a>
-  <a href="#s8">8</a>
 </nav>
+
+<div class="ready" style="border-left-color:var(--navy)">
+  <b>오늘의 순서 — 문구를 먼저 끝내고, 사진 자리만 비워 둡니다</b>
+  <ol>
+    <li><b>문구를 전부 확정</b>합니다 (1~4번)</li>
+    <li>3단 모양으로 만들고 <b>사진 자리는 점선 네모</b>로 비웁니다 (5번)</li>
+    <li>문구를 마지막으로 점검하고 <b>인쇄용 PDF로 받습니다</b> (6~7번)</li>
+    <li>Canva에서 <b>프레임을 얹고 사진만 끼워 넣습니다</b> (7번)</li>
+  </ol>
+</div>
 
 <!-- 1 -->
 <section id="s1">
   <div class="head"><span class="num">1</span><h2>무엇을 알릴지</h2><span class="time">5분</span></div>
+  <p class="one">리플렛 여섯 칸에 들어갈 내용을 먼저 손으로 채워 둡니다.</p>
   <table>
-    <tr><th>알릴 것</th><td><span class="ph">[동호회 모집 / 마을 행사 / 가게 이벤트]</span></td></tr>
-    <tr><th>언제 · 어디서</th><td><span class="ph">[날짜 · 시간 · 장소]</span></td></tr>
-    <tr><th>읽는 사람</th><td><span class="ph">[아파트 주민 / 동네 이웃]</span></td></tr>
-    <tr><th>연락처</th><td><span class="ph">[전화 또는 단톡방]</span></td></tr>
+    <tr><th>표지 — 무엇을</th><td><span class="ph">[동호회 모집 / 마을 행사 / 가게 소개]</span></td></tr>
+    <tr><th>소개 — 어떤 것인지</th><td><span class="ph">[두세 줄로]</span></td></tr>
+    <tr><th>누가 오면 좋은지</th><td><span class="ph">[처음인 분 / 이웃 누구나]</span></td></tr>
+    <tr><th>무엇을 하는지</th><td><span class="ph">[프로그램 4~6가지]</span></td></tr>
+    <tr><th>언제 · 하루 흐름</th><td><span class="ph">[날짜 · 시간 · 순서]</span></td></tr>
+    <tr><th>어디서 · 연락처</th><td><span class="ph">[장소 · 전화 · 신청 방법]</span></td></tr>
   </table>
+  <p class="note">다 못 채워도 됩니다. 빈칸은 나중에 <b>[확인 필요]</b> 로 남겨 둡니다.</p>
 </section>
 
 <!-- 2 -->
-<section id="s2">
-  <div class="head"><span class="num">2</span><h2>예전 안내문 사진으로 고치기</h2><span class="time">20분</span></div>
-  <p class="one">백지에서 시작하지 않습니다. 예전 안내문부터 꺼내세요.</p>
-  <div class="box">
-    <div class="bar"><span>프롬프트 1 — 오늘의 핵심</span><button>복사</button></div>
-    <div class="txt">올린 안내문을 더 잘 읽히게 고쳐줘.
-제목 · 소개 · 일정 · 준비물 · 연락처 5가지가 다 들어가게 해줘.
-빠진 정보는 [확인 필요] 라고 표시해줘.</div>
+<section id="s2" class="feat c-file">
+  <div class="head"><span class="num">2</span><h2>리플렛 올려서 뜯어보기</h2><span class="ftag c-file">사진 올리기</span><span class="free">무료 가능</span><span class="time">15분</span></div>
+  <p class="one">오늘은 백지에서 시작하지 않습니다. <b>잘 만든 리플렛 한 장</b>을 먼저 올립니다.</p>
+  <div class="dlrow">
+    <a class="dl" href="img/1.png" download>⬇ 리플렛 사진 1</a>
+    <a class="dl" href="img/2.png" download>⬇ 리플렛 사진 2</a>
   </div>
-  <p class="note">사진이 없으면 글로 붙여넣어도 똑같이 됩니다.</p>
+  <ul>
+    <li>두 장을 <b>내려받기</b> → 클로드 입력창에 <b>끌어다 놓기</b></li>
+  </ul>
+  <div class="box">
+    <div class="bar"><span>프롬프트 1 — 구조 뜯어보기</span><button>복사</button></div>
+    <div class="txt">올린 리플렛 두 장을 보고 어떻게 짜여 있는지 알려줘.
+칸이 몇 개로 나뉘어 있고 각 칸에 무엇이 들어갔는지 표로 정리해줘.
+그리고 이 리플렛이 잘 읽히는 이유를 세 가지만 짚어줘.</div>
+  </div>
+  <p class="note">📌 여기가 오늘의 핵심입니다 — <b>좋은 예시 하나를 보여주면 그 틀을 그대로 쓸 수 있습니다.</b></p>
 </section>
 
 <!-- 3 -->
 <section id="s3">
-  <div class="head"><span class="num">3</span><h2>그 말투 그대로 새 글</h2><span class="time">15분</span></div>
-  <p class="one">오늘의 심화 — 말로 설명하기 어려운 말투는 <b>예시 하나</b>를 주면 됩니다.</p>
+  <div class="head"><span class="num">3</span><h2>내 주제로 갈아 끼우기</h2><span class="time">15분</span></div>
+  <p class="one">틀은 그대로 두고 <b>내용만</b> 바꿉니다. 1번에서 채운 것을 씁니다.</p>
   <div class="box">
-    <div class="bar"><span>프롬프트 2</span><button>복사</button></div>
-    <div class="txt">위 안내문의 말투와 형식을 그대로 살려서 <span class="ph">[새 행사]</span> 안내문을 써줘.
-문장 길이와 인사말 방식도 비슷하게 맞춰줘.</div>
+    <div class="bar"><span>프롬프트 2 — 내 것으로 바꾸기</span><button>복사</button></div>
+    <div class="txt">위 리플렛과 똑같은 칸 구성으로 <span class="ph">[내가 알릴 것]</span> 리플렛 글을 써줘.
+
+- 알릴 것: <span class="ph">[한라올레 걷기 동호회 회원 모집]</span>
+- 언제 어디서: <span class="ph">[매주 토요일 오전 8시 30분, 사려니숲길]</span>
+- 누가 오면 좋은지: <span class="ph">[걷기를 좋아하는 이웃 누구나]</span>
+- 연락처: <span class="ph">[010-0000-0000]</span>
+
+칸마다 어떤 글이 들어가는지 나눠서 보여주고,
+내가 안 알려준 것은 [확인 필요] 라고 표시해줘.</div>
   </div>
-  <p class="note">예시가 여러 개면 2~3개를 붙여넣으면 더 정확합니다.</p>
+  <div class="box">
+    <div class="bar"><span>프롬프트 3 — 마음에 안 드는 칸만 고치기</span><button>복사</button></div>
+    <div class="txt"><span class="ph">[소개 칸]</span> 만 다시 써줘. 나머지는 그대로 둬.
+<span class="ph">[좀 더 짧고 따뜻하게]</span> 부탁해.</div>
+  </div>
+  <p class="note">3차시에 배운 <b>&quot;~만 바꿔줘&quot;</b> 입니다. 통째로 다시 만들지 마세요 — 시간도 사용량도 아낍니다.</p>
 </section>
 
 <!-- 4 -->
 <section id="s4">
-  <div class="head"><span class="num">4</span><h2>처음부터 새로 쓰기</h2><span class="time">20분</span></div>
+  <div class="head"><span class="num">4</span><h2>전문가를 부르고 말투 정하기</h2><span class="time">8분</span></div>
   <table>
-    <tr><th>행사 안내문</th><td>마을 행사 홍보 전문가</td></tr>
+    <tr><th>행사 안내</th><td>마을 행사 홍보 전문가</td></tr>
     <tr><th>회원 모집</th><td>동호회 운영 전문가</td></tr>
     <tr><th>가게 소개</th><td>여행 작가 / 카피라이터</td></tr>
   </table>
   <div class="box">
-    <div class="bar"><span>프롬프트 3</span><button>복사</button></div>
-    <div class="txt">너는 <span class="ph">[마을 행사 홍보]</span> 전문가야.
-<span class="ph">[8월 30일 토요일 오전 10시]</span> <span class="ph">[마을회관]</span> 에서 열리는 <span class="ph">[주민 화합 잔치]</span> 안내문을 써줘.
-제목 · 소개 · 일정 · 준비물 · 연락처를 모두 넣고 <span class="ph">[따뜻한]</span> 말투로 부탁해.</div>
+    <div class="bar"><span>프롬프트 4 — 전문가 지정</span><button>복사</button></div>
+    <div class="txt">너는 <span class="ph">[동호회 운영]</span> 전문가야.
+위 리플렛 글을 <span class="ph">[처음 오는 사람도 부담 없게]</span> 다시 다듬어줘.</div>
+  </div>
+  <div class="box">
+    <div class="bar"><span>프롬프트 5 — 말투 바꾸기</span><button>복사</button></div>
+    <div class="txt">같은 내용을 <span class="ph">[더 격식 있게 / 더 친근하게 / 젊은 사람들에게 맞게]</span> 다시 써줘.</div>
   </div>
 </section>
 
 <!-- 5 -->
-<section id="s5">
-  <div class="head"><span class="num">5</span><h2>소개 책자</h2><span class="time">15분</span></div>
+<section id="s5" class="feat c-art">
+  <div class="head"><span class="num">5</span><h2>3단 리플렛으로 만들기</h2><span class="ftag c-art">아티팩트</span><span class="free">무료 가능</span><span class="time">20분</span></div>
+  <p class="one">글이 정해졌으면 <b>접는 리플렛 모양</b>으로 뽑습니다. <b>앞면과 속지를 한 번에</b> 만듭니다.</p>
+
   <div class="box">
-    <div class="bar"><span>프롬프트 4</span><button>복사</button></div>
-    <div class="txt">너는 여행 작가야. <span class="ph">[제주 동쪽]</span> 여행지 3곳을 소개하는 팸플릿 초안을 써줘.
-장소마다 소개 3줄, 가는 방법, 추천 시간대를 넣어줘.
-사진 자리는 [사진: 장소 이름] 처럼 표시하고 아티팩트로 보여줘.</div>
+    <div class="bar"><span>프롬프트 6 — 3단 리플렛 만들기</span><button>복사</button></div>
+    <div class="txt">위에서 정한 내용으로 3단 접는 리플렛을 만들어줘.
+앞면과 속지를 한 파일에 두 장으로 넣어줘.
+
+[크기 — 꼭 지켜줘]
+- 종이는 A4 가로, 297mm x 210mm
+- 세 칸으로 나누고 한 칸은 99mm
+- @page 로 크기를 정하고 여백은 0으로
+- 1장 = 앞면, 2장 = 속지. 딱 두 장으로 끝나게 해줘
+
+[앞면 세 칸]
+- 왼쪽: 찾아오시는 길, 주소, 연락처
+- 가운데: 소개, 누가 오면 좋은지, 시간
+- 오른쪽: 표지 (제목을 크게)
+
+[속지 세 칸]
+- 왼쪽: <span class="ph">[무엇을 하는지 · 프로그램]</span>
+- 가운데: <span class="ph">[하루 흐름 · 시간표]</span>
+- 오른쪽: <span class="ph">[신청 방법 · 연락처]</span>
+
+[사진 자리]
+- 사진이 들어가면 좋을 자리는 점선 네모로 비워줘
+- 네모 안에는 [사진 삽입: 무엇을 넣을지] 형태로 글자만 적어줘
+  (예: [사진 삽입: 회원들이 숲길 걷는 모습])
+- 네모 안에 그림이나 아이콘, 이모지는 절대 넣지 마
+  (편집 프로그램에서 그림으로 인식돼서 안 지워져)
+
+아티팩트로 보여줘.</div>
+  </div>
+
+  <ul>
+    <li>오른쪽 화면에 리플렛이 <b>가로로</b> 뜨는지 확인</li>
+    <li><b>두 장</b>이 다 나왔는지 확인 (앞면 · 속지)</li>
+    <li>글자가 넘치거나 잘리면 <b>&quot;글씨를 조금 줄여줘&quot;</b> 한마디</li>
+    <li>세로로 나오면 <b>&quot;A4 가로로 만들어줘&quot;</b></li>
+  </ul>
+
+  <div class="plan">
+    <b>※ 안 될 때 — 이렇게 넘어갑니다</b>
+    <p>· 오른쪽에 화면이 안 뜨면 → <b>맨 위 &#x27;시작하기 전에&#x27; 1번</b>을 다시 확인하세요.</p>
+    <p>· 모양이 자꾸 어긋나면 → <b>2번에서 올린 리플렛 사진을 다시 보여주며</b> &quot;이 사진처럼 만들어줘&quot; 라고 하세요.</p>
+    <p>· <b>사용량이 다 됐다</b>고 나오면 → 오늘은 여기까지 하고, <b>3번에서 만든 글</b>을 복사해 두세요. 집에서 이어서 하면 됩니다.</p>
   </div>
 </section>
 
 <!-- 6 -->
 <section id="s6">
-  <div class="head"><span class="num">6</span><h2>검토와 어투</h2><span class="time">15분</span></div>
+  <div class="head"><span class="num">6</span><h2>문구 마지막 점검 — 여기서 확정</h2><span class="time">7분</span></div>
+  <p class="warnnote" style="margin-top:8px">⚠ <b>다음 단계에서 글자를 그림으로 굳힙니다.</b> 그 뒤에는 문구를 고칠 수 없습니다. 지금 꼼꼼히 보세요.</p>
   <div class="box">
-    <div class="bar"><span>프롬프트 5 — 검토</span><button>복사</button></div>
-    <div class="txt">위 글의 오탈자와 어색한 문장을 찾아 고쳐줘. 고친 부분은 목록으로 알려줘.</div>
+    <div class="bar"><span>프롬프트 7 — 검토 부탁</span><button>복사</button></div>
+    <div class="txt">앞면과 속지의 오탈자와 어색한 문장을 찾아 고쳐줘. 고친 부분은 목록으로 알려줘.</div>
   </div>
-  <div class="box">
-    <div class="bar"><span>프롬프트 6 — 어투</span><button>복사</button></div>
-    <div class="txt">같은 내용을 <span class="ph">[더 격식 있게 / 더 친근하게 / 젊은 사람들에게 맞게]</span> 다시 써줘.</div>
-  </div>
+  <ul>
+    <li><b>날짜와 요일</b>이 맞는지 — 달력으로 대조</li>
+    <li><b>전화번호</b> 한 자 한 자</li>
+    <li><b>장소 이름</b>이 실제와 같은지</li>
+    <li><b>[확인 필요]</b> 라고 남은 곳이 없는지</li>
+  </ul>
+  <p class="warnnote">⚠ 클로드는 날짜·번호를 <b>그럴듯하게 지어냅니다.</b> 이 세 가지만은 사람이 봐야 합니다.</p>
 </section>
 
 <!-- 7 -->
-<section id="s7" class="challenge">
-  <div class="head"><span class="num ch">7</span><h2>한 벌로 세 가지</h2><span class="badge">도전</span><span class="time">10분</span></div>
-  <p class="only">※ 먼저 끝낸 분만 — 안 해도 다음 시간에 지장 없습니다.</p>
-  <p class="one">프롬프트를 드리지 않습니다. 직접 부탁해 보세요.</p>
-  <ul>
-    <li>현수막 <b>한 줄 문구</b></li>
-    <li>단톡방 <b>5줄 공지</b></li>
-    <li>전단지용 <b>절반 분량</b></li>
-  </ul>
-</section>
+<section id="s7" class="feat c-file">
+  <div class="head"><span class="num">7</span><h2>PDF로 받아 Canva에서 사진 넣기</h2><span class="ftag c-file">파일 만들기</span><span class="time">15분</span></div>
+  <p class="one"><b>글자는 이미지로 굳혀 못 고치게</b> 하고, <b>사진 자리만 비워서</b> PDF로 받습니다.</p>
 
-<!-- 8 -->
-<section id="s8">
-  <div class="head"><span class="num">8</span><h2>확인하고 집에서</h2><span class="time">10분</span></div>
-  <div class="box">
-    <div class="bar"><span>숙제</span><button>복사</button></div>
-    <div class="txt">실제로 쓸 일이 있는 <span class="ph">[모임 · 행사]</span> 안내문 1개를 완성해줘.</div>
+  <div class="flow">
+    <span class="n">PDF로 받기</span><span class="ar">→</span>
+    <span class="n">Canva에 올리기</span><span class="ar">→</span>
+    <span class="n">프레임 얹기</span><span class="ar">→</span>
+    <span class="n">사진 넣기</span><span class="ar">→</span>
+    <span class="n">PNG로 저장</span>
   </div>
+
+  <div class="box">
+    <div class="bar"><span>프롬프트 8 — 인쇄용 PDF 파일로 받기</span><button>복사</button></div>
+    <div class="txt">이 리플렛을 인쇄용 PDF 파일 한 개로 만들어줘.
+
+[크기 — 인쇄해서 접을 거니까 꼭 맞춰줘]
+- A4 가로, 297mm x 210mm
+- 세 칸으로 정확히 3등분 (한 칸 99mm)
+- 1페이지는 앞면, 2페이지는 속지. 딱 두 장으로
+- 여백은 0, 글자나 그림이 잘리면 안 돼
+
+[글자 — 캔바에서 안 깨지게]
+- 글자를 전부 이미지로 바꿔서 넣어줘 (300dpi로 또렷하게)
+- PDF 안에 편집 가능한 글자가 하나도 없어야 해
+- 마우스로 글자를 긁었을 때 선택되면 안 돼
+
+[사진 자리 — 캔바에서 사진 넣을 칸]
+- 사진 들어갈 자리는 연한 회색으로 꽉 채운 네모로 만들어줘
+- 그 네모 안에는 글자를 넣지 마 (나중에 사진으로 덮을 거야)
+- 어느 자리에 어떤 사진을 넣으면 좋은지는
+  채팅창에 따로 목록으로 적어줘
+
+다 되면 내려받을 수 있게 해줘.</div>
+  </div>
+  <p class="note">📌 <b>왜 글자를 이미지로 바꾸나</b> — PDF에 글자가 글자로 남아 있으면 Canva가 <b>자기 글꼴로 다시 그리면서 한글이 깨집니다.</b> 이미지면 바뀔 글자가 없습니다.</p>
+
+  <p class="one" style="margin-top:14px"><b>받은 PDF를 열어서 확인하세요</b></p>
   <ul>
-    <li>날짜 · 요일이 실제와 맞는지</li>
-    <li>장소 이름과 주소</li>
-    <li>전화번호를 직접 눌러 확인</li>
-    <li>글 복사 → Canva 전단지 템플릿</li>
+    <li><b>두 장</b>인가 (앞면 · 속지)</li>
+    <li><b>가로로 긴</b> 모양인가</li>
+    <li>세 칸이 <b>고르게 3등분</b> 되어 있는가 — 접었을 때 딱 맞아야 합니다</li>
+    <li>글자가 <b>가장자리에서 잘리지</b> 않았는가</li>
+    <li><b>글자를 마우스로 긁어 보세요</b> — 선택이 <b>안 되어야</b> 합니다</li>
+    <li>사진 자리가 <b>빈 회색 네모</b>인가 (글자 없이)</li>
   </ul>
-  <p class="note">다음 시간 준비물 — 최근 영수증 3~4장.</p>
+  <div class="plan">
+    <b>※ 어긋났을 때 되받는 말</b>
+    <p>· 글자가 <b>긁어서 선택되면</b> → &quot;글자가 아직 글자로 남아 있어. <b>전부 이미지로 바꿔서</b> 다시 만들어줘&quot;</p>
+    <p>· 칸이 안 맞으면 → &quot;세 칸을 <b>똑같은 너비로</b> 다시&quot;</p>
+    <p>· 글자가 잘리면 → &quot;가장자리 글자가 잘려, <b>안쪽으로 넣어줘</b>&quot;</p>
+  </div>
+
+  <p class="one" style="margin-top:14px"><b>Canva에서 사진 넣기 — 글자는 못 건드리고, 사진 칸에만 넣습니다</b></p>
+  <table>
+    <tr><th>① 올리기</th><td>왼쪽 메뉴 <b>업로드</b> → 받은 <b>PDF</b>를 올리면 두 장이 깔립니다<br>글자는 이미지라 <b>고쳐지지 않습니다</b> — 실수로 지울 걱정이 없습니다</td></tr>
+    <tr><th>② 사진 칸 만들기</th><td>왼쪽 메뉴 <b>요소</b> → 검색창에 <b>&#x27;프레임&#x27;</b> → <b>네모 프레임</b>을 고릅니다<br>회색 네모 <b>위에 얹고</b> 모서리를 끌어 <b>회색이 안 보이게</b> 크기를 맞춥니다</td></tr>
+    <tr><th>③ 사진 넣기</th><td>내 사진을 <b>프레임 안으로 끌어다 놓으면</b> 저절로 칸에 맞게 들어갑니다<br>사진을 <b>두 번 누르면</b> 안에서 위치를 옮길 수 있습니다</td></tr>
+    <tr><th>④ 나머지 칸</th><td>②~③을 <b>사진 칸 수만큼</b> 반복 (앞면 2곳 · 속지 3곳)</td></tr>
+    <tr><th>⑤ 저장</th><td>오른쪽 위 <b>공유 → 다운로드</b> → <b>PNG</b> 로 받으면 앞면·속지가 <b>한 장씩 따로</b> 저장됩니다</td></tr>
+  </table>
+  <p class="note">📌 <b>프레임을 쓰는 이유</b> — 그냥 사진을 올리면 크기를 일일이 맞춰야 하지만, <b>프레임에 넣으면 저절로 칸에 딱 맞게</b> 잘려 들어갑니다.</p>
+  <p class="note">사진이 없으면 Canva 안의 <b>무료 사진</b>을 검색해서 프레임에 넣어도 됩니다.</p>
+  <p class="note">🖨 <b>인쇄할 때</b> — 앞면·속지를 <b>양면(뒤집기)</b> 으로 인쇄한 뒤 세 칸으로 접습니다. 인쇄 설정에서 <b>&#x27;실제 크기&#x27;(100%)</b> 로 해야 칸이 안 틀어집니다.</p>
 </section>
 
 <div class="end">
-  <p><b>1.</b> 목적에 맞는 <b>전문가</b>를 부른다</p>
-  <p><b>2.</b> <b>예시를 주면 말투까지 따라 한다</b></p>
-  <p><b>3.</b> 홍보 5요소 — 제목 · 소개 · 일정 · 주의 · 연락처</p>
-  <p><b>4.</b> 날짜 · 전화번호 <b>확인은 사람이</b></p>
+  <p><b>1.</b> <b>좋은 예시 하나를 보여주면</b> 그 틀을 그대로 쓴다</p>
+  <p><b>2.</b> 통째로 다시 말고 <b>&quot;~만 바꿔줘&quot;</b></p>
+  <p><b>3.</b> 목적에 맞는 <b>전문가</b>를 부른다</p>
+  <p><b>4.</b> <b>글자는 그림으로 굳히고</b>, 사진 자리는 <b>빈 네모</b>로 남긴다</p>
+  <p><b>5.</b> <b>문구를 먼저 끝내고</b> 그림으로 굳힌다 — 굳힌 뒤에는 못 고친다</p>
+  <p><b>6.</b> 인쇄물은 <b>크기를 말로 정해 준다</b> — A4 가로, 세 칸 3등분</p>
+  <p><b>7.</b> 날짜 · 전화번호 <b>확인은 사람이</b></p>
+  <p style="margin-top:12px"><b>다음 시간 준비물</b> — 최근 <b>영수증 3~4장</b></p>
 </div>
 
 <footer>클로드로 바꾸는 내 일상 · 4차시  |  제주도민대학 · 강사 강지애</footer>
@@ -205,7 +363,6 @@
 </div>
 
 <script>
-// 위쪽 번호 버튼 — 현재 보고 있는 섹션 표시
 (function(){
   var links = [].slice.call(document.querySelectorAll('.jump a'));
   var secs  = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
@@ -220,7 +377,7 @@
   mark();
 })();
 
-document.querySelectorAll('button').forEach(function(b){
+document.querySelectorAll('.bar button').forEach(function(b){
   b.addEventListener('click',function(){
     var t=b.closest('.box').querySelector('.txt').innerText;
     var ok=function(){b.textContent='복사됨!';b.classList.add('copied');
