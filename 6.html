@@ -15,6 +15,12 @@
   header{border-bottom:3px solid var(--navy);padding-bottom:14px;margin-bottom:8px}
   h1{font-size:26px;margin:0;letter-spacing:-.02em}
   .sub{font-size:13px;color:var(--sub);margin:8px 0 0}
+  .htop{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .open{margin-left:auto;flex:none;background:var(--navy);color:#fff;text-decoration:none;
+        border-radius:6px;padding:12px 20px;font-size:15px;font-weight:700;white-space:nowrap}
+  .open span{font-size:13px;opacity:.75;margin-left:4px}
+  .open:hover{background:#16294a}
+  @media(max-width:620px){.open{margin-left:0;width:100%;text-align:center}}
 
   section{background:#fff;border:1px solid var(--line);border-radius:6px;padding:20px 22px;margin:14px 0}
   section.challenge{border:1px dashed var(--navy);background:#fcfcfe}
@@ -82,8 +88,13 @@
 <div class="wrap">
 
 <header>
-  <h1>6차시 — 내 손으로 만드는 PDF 편집기</h1>
-  <p class="sub">클로드로 바꾸는 내 일상 · 제주도민대학 · 강사 강지애 &nbsp;|&nbsp; 2026. 8. 20.(목)</p>
+  <div class="htop">
+    <div>
+      <h1>6차시 — 내 손으로 만드는 PDF 편집기</h1>
+      <p class="sub">클로드로 바꾸는 내 일상 · 제주도민대학 · 강사 강지애 &nbsp;|&nbsp; 2026. 8. 20.(목)</p>
+    </div>
+    <a class="open" href="pdf.html" target="_blank" rel="noopener">완성된 PDF 편집기 열기 <span>↗</span></a>
+  </div>
 </header>
 
 <nav class="jump">
@@ -114,12 +125,12 @@
      받아 둔 <b>.html 파일을 새 대화에 올려서</b> "이 파일에 ○○ 기능을 추가해줘" 하면 그대로 이어집니다.
      집에서 복습할 때도 이 방법을 씁니다.</p>
   <p>
-    <a class="dl ghost" href="실습_샘플_PDF/01_임대차계약서_앞장.pdf" download>① 계약서 앞장</a>
-    <a class="dl ghost" href="실습_샘플_PDF/02_임대차계약서_뒷장.pdf" download>② 계약서 뒷장</a>
-    <a class="dl ghost" href="실습_샘플_PDF/03_걷기모임_안내문_광고포함.pdf" download>③ 광고 낀 안내문 3쪽</a>
-    <a class="dl ghost" href="실습_샘플_PDF/04_동창회자료_순서뒤바뀜.pdf" download>④ 순서 뒤바뀐 자료 3쪽</a>
-    <a class="dl ghost" href="실습_샘플_PDF/05_진료비영수증_거꾸로.pdf" download>⑤ 거꾸로 된 영수증 2쪽</a>
-    <a class="dl ghost" href="실습_샘플_PDF/06_주민센터_안내책자_8쪽.pdf" download>⑥ 안내책자 8쪽</a>
+    <a class="dl ghost" href="../실습_샘플_PDF_2안/01_임대차계약서_앞장.pdf" download>① 계약서 앞장</a>
+    <a class="dl ghost" href="../실습_샘플_PDF_2안/02_임대차계약서_뒷장.pdf" download>② 계약서 뒷장</a>
+    <a class="dl ghost" href="../실습_샘플_PDF_2안/03_걷기모임_안내문_광고포함.pdf" download>③ 광고 낀 안내문 3쪽</a>
+    <a class="dl ghost" href="../실습_샘플_PDF_2안/04_동창회자료_순서뒤바뀜.pdf" download>④ 순서 뒤바뀐 자료 3쪽</a>
+    <a class="dl ghost" href="../실습_샘플_PDF_2안/05_진료비영수증_거꾸로.pdf" download>⑤ 거꾸로 된 영수증 2쪽</a>
+    <a class="dl ghost" href="../실습_샘플_PDF_2안/06_주민센터_안내책자_8쪽.pdf" download>⑥ 안내책자 8쪽</a>
   </p>
   <p class="one">여섯 개 모두 미리 내려받아 두세요. 단계마다 하나씩 씁니다.</p>
 </section>
@@ -282,7 +293,10 @@ PNG로 저장되고, 저장할 파일 이름을 직접 적을 수 있게 해줘.
     ② <b>파일을 옮기거나 지우면 북마크가 깨집니다</b> — 다운로드 폴더에 두면 나중에 정리하다 날립니다. 그래서 먼저 옮기고 북마크합니다<br>
     ③ <b>PC 크롬 기준</b>입니다 — 스마트폰에서는 이 방법이 안 됩니다</p>
   <p class="note">아티팩트(claude.ai 화면)를 북마크하는 건 권하지 않습니다. 로그인이 필요하고 대화가 밀리면 찾기 어렵습니다.</p>
-  <p><a class="dl ghost" href="PDF편집기_다운로드용_v2.html" download>강사 완성본 내려받기</a></p>
+  <p>
+    <a class="dl" href="pdf.html" target="_blank" rel="noopener">완성본 새 창으로 열기</a>
+    <a class="dl ghost" href="pdf.html" download="pdf.html">완성본 내려받기</a>
+  </p>
   <p class="one">오늘 만든 것이 잘 안 되면 이 완성본을 받아 그대로 쓰세요. 하는 일은 똑같습니다.
     제목을 누르면 <b>내 이름</b>으로 바꿀 수 있습니다.</p>
 </section>
