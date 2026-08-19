@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>보너스 — 예약증으로 만드는 일정표 · 구글 캘린더</title>
+<style>
+  :root{--ink:#1f2328;--sub:#6b7480;--line:#e3e6ea;--bg:#f7f8fa;--navy:#1f3864;--soft:#eef1f7;--ok:#2f6b4f;--warn:#8a5a00;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.6;
+    font-family:"Malgun Gothic","맑은 고딕",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;}
+  .wrap{max-width:820px;margin:0 auto;padding:32px 20px 70px}
+
+  header{border-bottom:3px solid var(--navy);padding-bottom:14px;margin-bottom:8px}
+  h1{font-size:26px;margin:0;letter-spacing:-.02em}
+  .sub{font-size:13px;color:var(--sub);margin:8px 0 0}
+
+  section{background:#fff;border:1px solid var(--line);border-radius:6px;padding:20px 22px;margin:14px 0}
+  section.challenge{border:1px dashed var(--navy);background:#fcfcfe}
+  .head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .num{background:var(--navy);color:#fff;font-size:13px;font-weight:700;
+    width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .num.ch{background:#fff;color:var(--navy);border:1px dashed var(--navy)}
+  h2{font-size:19px;margin:0;letter-spacing:-.01em}
+  .badge{font-size:11px;font-weight:700;color:var(--navy);border:1px solid var(--navy);
+    border-radius:3px;padding:1px 6px}
+  .time{margin-left:auto;font-size:12px;color:var(--sub)}
+  .one{font-size:14px;color:var(--sub);margin:8px 0 0}
+  .only{font-size:13px;color:var(--warn);margin:8px 0 0}
+
+  .box{background:#fbfcfd;border:1px solid var(--line);border-radius:5px;margin:14px 0 0}
+  .bar{display:flex;align-items:center;justify-content:space-between;padding:7px 12px;
+    background:#f2f4f7;border-bottom:1px solid var(--line);border-radius:5px 5px 0 0}
+  .bar span{font-size:12px;font-weight:700;color:var(--navy)}
+  .txt{padding:14px 16px;font-size:15px;white-space:pre-wrap;word-break:keep-all}
+  button{background:var(--navy);color:#fff;border:0;border-radius:4px;padding:6px 14px;
+    font-size:12px;font-weight:700;cursor:pointer;font-family:inherit}
+  button:hover{background:#16294a}
+  button.copied{background:var(--ok)}
+
+  .jump{position:sticky;top:0;z-index:10;display:flex;gap:6px;flex-wrap:wrap;
+    padding:10px 0 9px;background:rgba(247,248,250,.96);border-bottom:1px solid var(--line)}
+  .jump a{width:40px;height:40px;border:1px solid var(--line);border-radius:6px;background:#fff;
+    color:var(--sub);text-decoration:none;font-weight:700;font-size:16px;
+    display:flex;align-items:center;justify-content:center}
+  .jump a.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+  section{scroll-margin-top:64px}
+
+  .ph{color:#1668dc;font-weight:700}
+  .shot{width:100%;border:1px solid var(--line);border-radius:5px;margin-top:12px;display:block}
+  .dl{display:inline-block;margin-top:10px;background:var(--navy);color:#fff;text-decoration:none;
+    border-radius:4px;padding:9px 18px;font-size:14px;font-weight:700}
+  .dl:hover{background:#16294a}
+  .note{font-size:13px;color:var(--sub);margin:12px 0 0}
+  ul{list-style:none;padding:0;margin:12px 0 0}
+  li{font-size:14px;color:var(--sub);padding:3px 0 3px 22px;position:relative}
+  li::before{content:"☐";position:absolute;left:0;color:var(--navy)}
+
+  table{width:100%;border-collapse:collapse;margin-top:12px;font-size:14px}
+  th,td{border:1px solid var(--line);padding:8px 12px;text-align:left}
+  th{background:var(--soft);color:var(--navy);width:30%}
+  td{color:var(--sub)}
+
+  .end{background:#fff;border:1px solid var(--line);border-radius:6px;padding:18px 22px;margin:22px 0 0}
+  .end b{color:var(--navy)}
+  .end p{margin:6px 0;font-size:14px;color:var(--sub)}
+  footer{margin-top:26px;font-size:12px;color:var(--sub);text-align:center}
+
+  /* ── Claude에서만 배우는 기능 ── */
+  section.feat{border-left-width:5px;border-left-style:solid}
+  .ftag{display:inline-block;font-size:11px;font-weight:700;color:#fff;border-radius:3px;
+    padding:2px 8px;letter-spacing:-.01em;white-space:nowrap;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  section.feat.c-art{border-left-color:#0d7a86} .ftag.c-art{background:#0d7a86}
+  section.feat.c-conn{border-left-color:#6b3fa0} .ftag.c-conn{background:#6b3fa0}
+  .flegend{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:14px 0 0;
+    padding:10px 14px;background:#fff;border:1px solid var(--line);border-radius:6px;
+    font-size:12px;color:var(--sub)}
+  .flegend b{color:var(--ink);font-size:12px}
+
+  .hb{display:inline-block;vertical-align:middle;font-size:12px;font-weight:700;color:#fff;
+    background:var(--warn);border-radius:3px;padding:3px 8px;margin-left:8px;letter-spacing:-.01em;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .back{color:var(--navy);font-weight:700;text-decoration:none}
+  .back:hover{text-decoration:underline}
+  #pdfSaveBtn{position:fixed;top:14px;right:16px;z-index:9999;
+    background:#1f3864;color:#fff !important;text-decoration:none !important;
+    border-radius:6px;padding:9px 16px;font-size:13px;font-weight:700;cursor:pointer;
+    font-family:inherit;line-height:1;display:inline-block;
+    box-shadow:0 2px 6px rgba(0,0,0,.18);border:0}
+  #pdfSaveBtn:hover{background:#16294a}
+  @media print{#pdfSaveBtn{display:none !important}}
+  @media(max-width:600px){#pdfSaveBtn{top:8px;right:8px;padding:7px 12px;font-size:12px}}
+  @media(max-width:600px){h1{font-size:21px}h2{font-size:17px}.txt{font-size:14px}.time{margin-left:0}}
+  @media print{body{background:#fff}button,.jump,.dl{display:none}section{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<a href="#" id="pdfSaveBtn" title="인쇄 창에서 '대상'을 [PDF로 저장]으로 고르세요"
+   onclick="window.print();return false;">⬇ PDF 저장</a>
+
+<div class="wrap">
+
+<header>
+  <h1>보너스 · 예약증으로 만드는 일정표 <span class="hb">집에서</span></h1>
+  <p class="sub">수업에서 다루지 않은 <b>보너스 편</b>입니다. 집에서 천천히 혼자 해 보세요. 파란 대괄호 <span class="ph">[이렇게]</span> 표시된 곳만 내 상황으로 바꾸면 됩니다.</p>
+  <p class="sub"><a class="back" href="6.html">← 6차시 교안으로 돌아가기</a></p>
+</header>
+
+<div class="flegend"><b>색 테두리 = Claude에서만 배우는 기능</b><span class="ftag c-art">아티팩트</span> <span class="ftag c-conn">커넥터</span></div>
+
+
+<nav class="jump">
+  <a href="#s1">1</a>
+  <a href="#s2">2</a>
+  <a href="#s3">3</a>
+  <a href="#s4">4</a>
+  <a href="#s5">5</a>
+  <a href="#s6">6</a>
+  <a href="#s7">7</a>
+  <a href="#s8">8</a>
+  <a href="#s9">9</a>
+</nav>
+
+<!-- 1 -->
+<section id="s1">
+  <div class="head"><span class="num">1</span><h2>지킬 선 세 가지</h2><span class="time">5분</span></div>
+  <ul>
+    <li>주민번호 · 계좌번호는 입력하지 않기</li>
+    <li>병명은 <span class="ph">[정기 검진]</span> 처럼 두루뭉술하게</li>
+    <li>사진은 민감한 부분을 가리고 찍기</li>
+  </ul>
+  <p class="note">불안하면 가상 정보로 연습해도 충분합니다.</p>
+</section>
+
+<!-- 2 -->
+<section id="s2">
+  <div class="head"><span class="num">2</span><h2>칸 정하기</h2><span class="time">5분</span></div>
+  <table>
+    <tr><th>칸 5개</th><td>장소 / 용건 / 날짜 / 시간 / 메모</td></tr>
+    <tr><th>담을 것</th><td><span class="ph">[병원 / 모임 / 약 타는 날 / 정기 결제일]</span></td></tr>
+  </table>
+  <div class="box">
+    <div class="bar"><span>프롬프트 0 — 먼저 알려주기</span><button>복사</button></div>
+    <div class="txt">앞으로 내 일정을 정리할 때는 이 5칸으로만 나눠줘.
+장소 / 용건 / 날짜 / 시간 / 메모
+종류는 <span class="ph">[병원 / 모임 / 약 타는 날 / 정기 결제]</span> 중에 골라서 메모 칸에 적어줘.</div>
+  </div>
+  <p class="note">지난 시간 가계부에서 카테고리를 먼저 정한 것과 같습니다.</p>
+</section>
+
+<!-- 3 -->
+<section id="s3">
+  <div class="head"><span class="num">3</span><h2>예약증 사진으로</h2><span class="time">15분</span></div>
+  <p class="one">오늘의 하이라이트. 타이핑 없이 일정표가 만들어집니다.</p>
+  <div class="box">
+    <div class="bar"><span>프롬프트 1 — 오늘의 핵심</span><button>복사</button></div>
+    <div class="txt">올린 예약증 · 안내문 사진을 표로 정리해줘.
+장소 / 용건 / 날짜 / 시간 / 메모 5칸으로.
+흐려서 안 보이는 곳은 [확인 필요] 라고 적어줘.</div>
+  </div>
+  <ul>
+    <li>입력칸 왼쪽 아래 <b>클립(+)</b> 단추</li>
+    <li>여러 장 한꺼번에 선택</li>
+    <li>병명 · 주민번호는 가리고 찍기</li>
+  </ul>
+  <p class="note"><b>가져온 사진이 없으면</b> 아래 연습용 샘플을 내려받아 올려 보세요.</p>
+  <p style="margin:8px 0 0;line-height:2.4">
+    <a class="dl" href="img/실습_샘플_6차시/01_예약확인서_하나내과.png" download>① 하나내과 예약확인서</a>
+    <a class="dl" href="img/실습_샘플_6차시/02_예약문자_튼튼정형외과.png" download>② 정형외과 예약문자</a>
+    <a class="dl" href="img/실습_샘플_6차시/03_건강검진안내문.png" download>③ 건강검진 안내문</a>
+    <a class="dl" href="img/실습_샘플_6차시/04_치과_정기검진안내.png" download>④ 치과 정기검진</a>
+    <a class="dl" href="img/실습_샘플_6차시/05_모임공지_한라올레걷기.png" download>⑤ 걷기모임 공지</a>
+    <a class="dl" href="img/실습_샘플_6차시/06_예약안내문_흐릿함_바다안과.png" download>⑥ 흐릿한 안내문</a>
+  </p>
+  <p class="note">⑥번은 <b>일부러 흐리게</b> 만든 것입니다. AI가 <b>[확인 필요]</b> 라고 적는지 보세요.</p>
+</section>
+
+<!-- 4 -->
+<section id="s4">
+  <div class="head"><span class="num">4</span><h2>사진이 없을 때</h2><span class="time">10분</span></div>
+  <div class="box">
+    <div class="bar"><span>프롬프트 2</span><button>복사</button></div>
+    <div class="txt">아래를 표로 정리해줘. 장소 / 용건 / 날짜 / 시간 / 메모 5칸으로.
+<span class="ph">[하나내과 정기검진 10월 6일 오전 10시, 튼튼정형외과 8월 26일 오후 3시 예약, 걷기 모임 매주 수요일 저녁 7시]</span></div>
+  </div>
+  <p class="note">위 내용은 가상 정보입니다. 내 일정 3~4건으로 바꿔 넣어 보세요.</p>
+</section>
+
+<!-- 5 -->
+<section id="s5">
+  <div class="head"><span class="num">5</span><h2>정렬하고 추리기</h2><span class="time">10분</span></div>
+  <div class="box">
+    <div class="bar"><span>프롬프트 3</span><button>복사</button></div>
+    <div class="txt">날짜가 가까운 순서로 정렬해줘. 이번 달에 가야 할 곳만 따로 뽑아서 알려줘.</div>
+  </div>
+  <div class="box">
+    <div class="bar"><span>프롬프트 4 — 이런 것도</span><button>복사</button></div>
+    <div class="txt"><span class="ph">[석 달]</span> 마다 가는 곳은 다음이 언제야?
+겹치는 날이 있는지 봐줘. 일주일 전에 보낼 알림 문구도 만들어줘.</div>
+  </div>
+  <p class="note"><b>날짜는 꼭 예약증 원본과 대조하세요.</b> AI는 달력이 아니라서 요일 · 며칠 뒤 계산을 틀릴 수 있습니다.</p>
+</section>
+
+<!-- 6 -->
+<section id="s6">
+  <div class="head"><span class="num">6</span><h2>엑셀로 받아 두기</h2><span class="time">5분</span></div>
+  <p class="one">다음 단계에서 이 엑셀을 앱에 올립니다. 꼭 만들어 두세요.</p>
+  <div class="box">
+    <div class="bar"><span>프롬프트 5 — 엑셀로 정리하기</span><button>복사</button></div>
+    <div class="txt">위의 정리된 일정을 엑셀 파일로 만들어줘.
+칸 순서는 장소 · 용건 · 날짜 · 시간 · 메모 로 해줘.
+날짜가 가까운 순서로 정렬해주고, 시트 이름은 <span class="ph">[내 일정]</span> 으로 해줘.</div>
+  </div>
+  <ul>
+    <li><b>[다운로드]</b> 눌러 엑셀 파일 저장</li>
+    <li>날짜 · 시간이 예약증과 같은지 눈으로 확인</li>
+    <li>이 엑셀이 <b>내 일정 원본</b> — 잘 보관 (다음 ⑦에서 앱에 올립니다)</li>
+  </ul>
+</section>
+
+<!-- 7 -->
+<section id="s7" class="feat c-art">
+  <div class="head"><span class="num">7</span><h2>일정 미니앱 만들기</h2><span class="ftag c-art">아티팩트</span><span class="time">25분</span></div>
+  <p class="one">지난 시간 가계부 앱과 <b>똑같은 순서</b>입니다. 아래 박스를 순서대로 복사해 붙여넣기만 하세요.</p>
+  <div class="box">
+    <div class="bar"><span>프롬프트 6 — 기본 앱 만들기</span><button>복사</button></div>
+    <div class="txt">간단한 생활 일정 관리 웹앱을 아티팩트로 만들어줘.
+장소 · 용건 · 날짜 · 시간 · 메모를 입력하면 목록에 쌓이고, 날짜가 가까운 순서로 저절로 정렬되게 해줘.
+글씨는 크게, 사용법은 쉽게 부탁해.
+그리고 기존 일정을 담은 엑셀(.xlsx) 파일을 올려서 목록을 채울 수 있게 해줘.
+(엑셀 칸 순서는 장소 · 용건 · 날짜 · 시간 · 메모)</div>
+  </div>
+  <div class="box">
+    <div class="bar"><span>프롬프트 7 — 기능 보강하기</span><button>복사</button></div>
+    <div class="txt">방금 만든 일정 앱에 아래 기능을 추가해줘.
+1. 기록을 엑셀(.xlsx) 파일로 내려받아 보관 — 올리기 · 내려받기 모두 엑셀로
+2. 병원 · 모임 · 약 타는 날 · 정기 결제 종류를 구분해 입력하고 목록에도 표시
+3. 다시 열어도 기록이 남아있게 (저장됐는지 화면에서 확인)
+4. 예약증 사진을 올리면 장소·용건·날짜·시간을 자동으로 읽어 채워주는 기능</div>
+  </div>
+  <div class="box">
+    <div class="bar"><span>프롬프트 8 — ‘이번 주’ 버튼 붙이기</span><button>복사</button></div>
+    <div class="txt">'이번 주' 버튼을 하나 추가해줘. 누르면 지금까지 입력된 일정을 정리해서 보여주게 해줘.
+① 오늘부터 7일 안에 가야 할 곳, ② 다음 예약이 안 잡힌 곳,
+③ 같은 날 겹치는 일정, ④ 가족에게 보낼 알림 문구를 쉬운 말로 보여줘.</div>
+  </div>
+  <ul>
+    <li>앞서 만든 <b>일정 엑셀</b>을 올려서 목록 채우기</li>
+    <li>오늘 일정 1~2건 직접 입력 · <a href="img/실습_샘플_6차시/앱등록용샘플/07_앱등록용_예약증_새봄한의원.png" download><b>새 예약증 샘플</b></a>도 올려 보기</li>
+    <li><b>[이번 주]</b> 눌러 확인</li>
+    <li>한꺼번에 다 안 되면 &quot;1번만 먼저 해줘&quot;</li>
+  </ul>
+  <div class="box" style="border:2px solid var(--navy);background:#f4f7fc;">
+    <div class="bar" style="background:var(--navy);"><span style="color:#fff;">✅ 완성 → 다운로드 → 크롬 북마크 (이렇게 마무리)</span></div>
+    <div class="txt" style="white-space:normal;line-height:1.7;">
+      <b>1.</b> 앱이 완성되면 <b>[다운로드]</b> 눌러 <b>.html 파일</b>로 저장<br>
+      <b>2.</b> 받은 파일을 <b>더블클릭 → 크롬</b>으로 열기<br>
+      <b>3.</b> 주소창 옆 <b>★</b> 눌러 <b>북마크</b> — 이후엔 북마크만 누르면 언제든 실행<br>
+      <span class="ph" style="color:var(--warn);">※ 클로드 미리보기 화면 안에서는 저장이 안 됩니다. 꼭 다운로드해서 파일로 열어야 기록이 남아요. 원본은 [엑셀로 내려받기]로 따로 보관.</span>
+    </div>
+  </div>
+  <p class="note">지난 시간 <b>가계부 앱</b>과 오늘 <b>일정 앱</b> — 이제 내 손에 앱이 두 개입니다.</p>
+</section>
+
+<!-- 8 -->
+<section id="s8" class="feat c-conn">
+  <div class="head"><span class="num">8</span><h2>구글 캘린더에 바로 넣기</h2><span class="ftag c-conn">커넥터</span><span class="time">10분</span></div>
+  <p class="one">여기서는 클로드가 <b>내 구글 캘린더에 일정을 직접 넣어 줍니다.</b> 옮겨 적을 필요가 없습니다.</p>
+
+  <table>
+    <tr><th>연결하기 (딱 한 번)</th><td>클로드 화면 <b>왼쪽 아래 내 이름</b> → <b>설정</b> → <b>커넥터</b> → 검색창에 <b>Google Calendar</b> → <b>[연결]</b> → 구글 계정 로그인 → <b>[허용]</b></td></tr>
+    <tr><th>연결됐는지 확인</th><td>대화 입력칸 아래 <b>도구(∨)</b> 를 눌러 <b>Google Calendar</b> 가 <b>켜짐</b> 인지 보기</td></tr>
+  </table>
+  <p class="note">한 번만 연결해 두면 다음부터는 그냥 말만 하면 됩니다.</p>
+
+  <div class="box">
+    <div class="bar"><span>프롬프트 9 — 하나만 넣어 보기 (가장 쉬운 예제)</span><button>복사</button></div>
+    <div class="txt">내 구글 캘린더에 일정 하나만 넣어줘.
+제목은 <span class="ph">[하나내과 정기검진]</span>, 날짜는 <span class="ph">[10월 6일]</span>, 시간은 <span class="ph">[오전 10시부터 11시까지]</span>.
+알림은 하루 전으로 해줘. 다 넣고 나면 잘 들어갔는지 알려줘.</div>
+  </div>
+  <p class="note">클로드가 <b>&quot;구글 캘린더를 사용할까요?&quot;</b> 하고 물어보면 <b>[허용]</b> 을 누르세요. 그때 실제로 들어갑니다.</p>
+
+  <div class="box">
+    <div class="bar"><span>프롬프트 10 — 표에 있는 일정 전부 넣기</span><button>복사</button></div>
+    <div class="txt">위에 정리한 일정을 전부 내 구글 캘린더에 넣어줘.
+바로 넣지 말고, 무엇을 넣을지 날짜 순서로 먼저 보여줘.
+내가 &quot;넣어줘&quot; 라고 하면 그때 넣어줘. 알림은 하루 전으로.</div>
+  </div>
+  <p class="note"><b>먼저 보여 달라</b>고 하는 것이 중요합니다. 날짜가 틀린 채로 한꺼번에 들어가는 것을 막아 줍니다.</p>
+
+  <div class="box">
+    <div class="bar"><span>프롬프트 11 — 확인하고, 잘못 넣었으면 지우기</span><button>복사</button></div>
+    <div class="txt">이번 달 내 구글 캘린더 일정을 날짜 순서로 보여줘.
+그중에 <span class="ph">[하나내과 정기검진]</span> 일정은 지워줘.</div>
+  </div>
+
+  <ul>
+    <li>내 휴대폰 구글 캘린더 앱을 열어 <b>정말 들어갔는지</b> 눈으로 확인</li>
+    <li>날짜 · 시간이 예약증과 같은지 대조</li>
+    <li>가족과 함께 보려면 &quot;<span class="ph">[가족]</span> 이라는 캘린더를 새로 만들어서 거기에 넣어줘&quot;</li>
+  </ul>
+
+  <p class="only">※ 무료 요금제는 <b>커넥터를 한 개</b>만 켤 수 있습니다. 다른 커넥터가 켜져 있으면 그것을 끄고 구글 캘린더를 켜세요. 연결이 어려우면 <b>강사 화면 시연만 보셔도</b> 됩니다.</p>
+</section>
+
+<!-- 9 -->
+<section id="s9" class="challenge">
+  <div class="head"><span class="num ch">9</span><h2>먼저 끝냈다면</h2><span class="badge">도전</span><span class="time">10분</span></div>
+  <p class="only">※ 안 해도 괜찮습니다. 앱에 대고 말하듯 &quot;○○도 되게 해줘&quot; 하면 됩니다.</p>
+  <ul>
+    <li>매주 수요일처럼 <b>반복되는 일정</b> 넣기</li>
+    <li>가족 이름별로 구분해서 보기</li>
+    <li>색 · 글씨 크기 내 취향으로</li>
+    <li>왼쪽 메뉴 <b>&#x27;프로젝트&#x27;</b> → 새 프로젝트 <span class="ph">[내 생활 AI]</span> — 6주 자료 모아 두기</li>
+  </ul>
+  <p class="note">프로젝트 방은 무료도 5개까지 만들 수 있습니다.</p>
+</section>
+
+<div class="end">
+  <p style="color:var(--warn);font-weight:700;margin-bottom:10px">이 장은 수업 시간에 하지 않은 보너스입니다. 막히면 언제든 6차시 교안으로 돌아가세요.</p>
+  <p><b>1.</b> 예약증은 <b>찍어 올리면</b> 일정표가 된다</p>
+  <p><b>2.</b> 정렬 · 추리기는 한마디로 끝</p>
+  <p><b>3.</b> <b>날짜는 원본으로 대조</b> — AI는 달력이 아니다</p>
+  <p><b>4.</b> 엑셀 원본 → 앱에 올려 <b>추가 · 확인</b> → 다시 엑셀로 보관</p>
+  <p><b>5.</b> 완성 앱은 <b>다운로드 → 크롬 북마크</b>로 언제든 실행</p>
+  <p><b>6.</b> <b>구글 캘린더 커넥터</b>를 켜면 옮겨 적지 않아도 달력에 바로 들어간다</p>
+  <p style="margin-top:10px;">막히면 &quot;쉽게 알려줘&quot; 한마디면 됩니다. <b>6주간 고생 많으셨습니다.</b></p>
+</div>
+
+<footer>클로드로 바꾸는 내 일상 · 보너스(집에서 하기)  |  제주도민대학 · 강사 강지애</footer>
+
+</div>
+
+<script>
+// 위쪽 번호 버튼 — 현재 보고 있는 섹션 표시
+(function(){
+  var links = [].slice.call(document.querySelectorAll('.jump a'));
+  var secs  = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function mark(){
+    var i = 0;
+    for (var k = 0; k < secs.length; k++){
+      if (secs[k] && secs[k].getBoundingClientRect().top <= 80) i = k;
+    }
+    links.forEach(function(a, k){ a.classList.toggle('on', k === i); });
+  }
+  window.addEventListener('scroll', mark, {passive:true});
+  mark();
+})();
+
+document.querySelectorAll('button').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.closest('.box').querySelector('.txt').innerText;
+    var ok=function(){b.textContent='복사됨!';b.classList.add('copied');
+      setTimeout(function(){b.textContent='복사';b.classList.remove('copied');},1500);};
+    if(navigator.clipboard&&window.isSecureContext){
+      navigator.clipboard.writeText(t).then(ok,function(){fb(t,ok);});
+    }else{fb(t,ok);}
+  });
+});
+function fb(t,ok){
+  var a=document.createElement('textarea');
+  a.value=t;a.style.position='fixed';a.style.opacity='0';
+  document.body.appendChild(a);a.select();
+  try{document.execCommand('copy');ok();}catch(e){alert('직접 드래그해서 복사해 주세요.');}
+  document.body.removeChild(a);
+}
+</script>
+</body>
+</html>

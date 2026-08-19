@@ -23,6 +23,9 @@
   .opens{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
   .open.ghost{background:#fff;color:var(--navy);border:1px solid var(--navy)}
   .open.ghost:hover{background:var(--soft)}
+  .open.cal{background:#fff;color:var(--warn);border:1px solid var(--warn)}
+  .open.cal:hover{background:#fffaf0}
+  .open.cal span{opacity:.9}
   @media(max-width:620px){.opens{margin-left:0;width:100%}
     .open{margin-left:0;flex:1 1 100%;text-align:center}}
 
@@ -126,6 +129,7 @@
     <div class="opens">
       <a class="open" href="pdf.html" target="_blank" rel="noopener">완성된 PDF 편집기 열기 <span>↗</span></a>
       <a class="open ghost" href="pdf.html" download="PDF편집기.html">편집기 내려받기 <span>↓</span></a>
+      <a class="open cal" href="schedule.html" target="_blank" rel="noopener">일정앱(구글캘린더) <span>집에서 ↗</span></a>
     </div>
   </div>
 </header>
