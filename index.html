@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>수업 자료실 — 전체 7차시 · 강사 강지애</title>
-<meta name="description" content="1차시부터 7차시까지 수업 자료 바로가기 — 강사 강지애">
+<title>클로드 기초 수업 자료실 — 전체 7차시 · 강사 강지애</title>
+<meta name="description" content="클로드(Claude) 기초 수업 자료실 — 1차시부터 7차시까지 바로가기 · 강사 강지애">
 <meta name="author" content="강지애">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="수업 자료실 — 전체 7차시 · 강사 강지애">
-<meta property="og:description" content="1차시부터 7차시까지 수업 자료 바로가기 — 강사 강지애">
+<meta property="og:title" content="클로드 기초 수업 자료실 — 전체 7차시 · 강사 강지애">
+<meta property="og:description" content="클로드(Claude) 기초 수업 자료실 — 1차시부터 7차시까지 바로가기 · 강사 강지애">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -191,11 +191,67 @@ body{
   vertical-align:2px;
 }
 
+/* ── 참고 자료 ─────────────────────────── */
+.extra{margin-top:46px}
+.extra-head{
+  display:flex;align-items:baseline;gap:10px;
+  margin:0 0 14px;
+}
+.extra-head h2{
+  font-size:15px;font-weight:700;
+  letter-spacing:-.015em;
+  margin:0;
+}
+.extra-head .k{
+  font-family:var(--num);
+  font-size:11px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--moss);
+}
+.ref{
+  display:grid;
+  grid-template-columns:1fr 28px;
+  align-items:center;
+  gap:8px;
+  padding:20px 12px 20px 16px;
+  border:1px solid var(--line);
+  border-radius:4px;
+  background:var(--surface);
+  text-decoration:none;
+  color:inherit;
+  transition:border-color .28s ease,transform .28s ease;
+}
+.ref:hover,.ref:focus-visible{
+  border-color:var(--ink);
+  transform:translateY(-2px);
+}
+.ref:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.ref .label{margin:0 0 4px}
+.ref .title em{
+  font-style:normal;
+  background:linear-gradient(to top,var(--canola) 30%,transparent 30%);
+  padding:0 .1em;
+}
+.ref .desc{margin:5px 0 0}
+.ref .url{
+  font-family:var(--num);
+  font-size:12px;
+  color:var(--moss);
+  margin:9px 0 0;
+  word-break:break-all;
+}
+.ref .arrow{align-self:center}
+.ref:hover .arrow,.ref:focus-visible .arrow{
+  transform:translateX(4px);
+  color:var(--ink);
+}
+
 @media (max-width:520px){
   .wrap{padding:44px 18px 72px}
   .card{grid-template-columns:58px 1fr 20px;padding:18px 8px}
   .no{font-size:32px}
   .title{font-size:17px}
+  .ref{grid-template-columns:1fr 20px;padding:18px 8px 18px 12px}
 }
 </style>
 </head>
@@ -203,10 +259,9 @@ body{
 <main class="wrap">
 
   <header class="masthead">
-    <p class="eyebrow">Total 7 sessions</p>
-    <h1>수업 자료실<br><em>전체 7차시</em></h1>
-    <p class="lead">차시를 선택하면 해당 수업 페이지로 이동합니다.
-      수업은 6차시까지이고, 7차시는 집에서 해 보시라고 따로 만든 자료입니다.</p>
+    <p class="eyebrow">Claude 기초 &nbsp;·&nbsp; Total 7 sessions</p>
+    <h1>클로드 기초 수업<br><em>전체 7차시</em></h1>
+    <p class="lead">차시를 선택하면 해당 수업 페이지로 이동합니다.</p>
     <p class="by">만든 사람 —
       <a href="https://loveria3.github.io/profile/" target="_blank" rel="noopener">강사 강지애</a><span class="go"> ↗</span>
     </p>
@@ -296,7 +351,7 @@ body{
       <a class="card" href="schedule.html">
         <span class="no">07</span>
         <span>
-          <span class="label">7차시<span class="tag">집에서</span></span>
+          <span class="label">7차시 · 보너스 수업<span class="tag">집에서</span></span>
           <p class="title">일정표 만들기 · 구글 캘린더</p>
           <p class="desc">예약증 사진을 일정표로, 캘린더에 바로 넣기</p>
         </span>
@@ -307,8 +362,26 @@ body{
   </ul>
   <!-- ▲ 여기까지 -->
 
+  <!-- ── 참고 자료 ───────────────────────── -->
+  <section class="extra">
+    <div class="extra-head">
+      <span class="k">Reference</span>
+      <h2>수업이 끝난 뒤에도 보면 좋은 자료</h2>
+    </div>
+
+    <a class="ref" href="https://loveria3.github.io/lecture/claude20.html" target="_blank" rel="noopener">
+      <span>
+        <span class="label">참고 자료</span>
+        <p class="title"><em>클로드 활용법 24가지</em></p>
+        <p class="desc">질문하기부터 자동화까지, 무료·유료 사용 가능 여부까지 함께 표시</p>
+        <p class="url">loveria3.github.io/lecture/claude20.html ↗</p>
+      </span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+  </section>
+
   <footer class="foot">
-    <span>수업 자료실 · 만든 사람
+    <span>클로드 기초 수업 자료실 · 만든 사람
       <a href="https://loveria3.github.io/profile/" target="_blank" rel="noopener"><b>강사 강지애</b></a></span>
     <a href="https://loveria3.github.io/domin/">loveria3.github.io/domin</a>
   </footer>
