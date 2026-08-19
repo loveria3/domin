@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>수업 자료실 — 전체 6차시</title>
-<meta name="description" content="1차시부터 6차시까지 수업 자료 바로가기">
+<title>수업 자료실 — 전체 7차시 · 강사 강지애</title>
+<meta name="description" content="1차시부터 7차시까지 수업 자료 바로가기 — 강사 강지애">
+<meta name="author" content="강지애">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="수업 자료실 — 전체 6차시">
-<meta property="og:description" content="1차시부터 6차시까지 수업 자료 바로가기">
+<meta property="og:title" content="수업 자료실 — 전체 7차시 · 강사 강지애">
+<meta property="og:description" content="1차시부터 7차시까지 수업 자료 바로가기 — 강사 강지애">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,6 +63,21 @@ body{
   padding:0 .06em;
 }
 .lead{margin:0;color:var(--moss);font-size:16px;max-width:36em}
+
+/* ── 강사 표기 ─────────────────────────── */
+.by{margin:16px 0 0;font-size:15px;color:var(--moss)}
+.by a{
+  color:var(--ink);
+  font-weight:700;
+  text-decoration:none;
+  background:linear-gradient(to top,var(--canola) 30%,transparent 30%);
+  padding:0 .12em;
+  transition:background-size .25s ease;
+}
+.by a:hover,.by a:focus-visible{
+  background:linear-gradient(to top,var(--canola) 100%,transparent 100%);
+}
+.by .go{font-family:var(--num);font-size:13px;margin-left:2px}
 
 /* ── 차시 목록 ─────────────────────────── */
 .rail{
@@ -154,7 +170,25 @@ body{
   .rail li:nth-child(4){animation-delay:.23s}
   .rail li:nth-child(5){animation-delay:.29s}
   .rail li:nth-child(6){animation-delay:.35s}
+  .rail li:nth-child(7){animation-delay:.41s}
   @keyframes rise{to{opacity:1;transform:none}}
+}
+
+/* ── 7차시(집에서) ─────────────────────── */
+.rail li.home .no{-webkit-text-stroke-color:var(--moss)}
+.rail li.home .card:hover .no,.rail li.home .card:focus-visible .no{
+  -webkit-text-stroke-color:var(--ink);
+}
+.tag{
+  display:inline-block;
+  font-size:11px;font-weight:700;
+  letter-spacing:.04em;
+  color:var(--moss);
+  border:1px solid var(--line);
+  border-radius:3px;
+  padding:1px 6px;
+  margin-left:6px;
+  vertical-align:2px;
 }
 
 @media (max-width:520px){
@@ -169,9 +203,13 @@ body{
 <main class="wrap">
 
   <header class="masthead">
-    <p class="eyebrow">Total 6 sessions</p>
-    <h1>수업 자료실<br><em>전체 6차시</em></h1>
-    <p class="lead">차시를 선택하면 해당 수업 페이지로 이동합니다.</p>
+    <p class="eyebrow">Total 7 sessions</p>
+    <h1>수업 자료실<br><em>전체 7차시</em></h1>
+    <p class="lead">차시를 선택하면 해당 수업 페이지로 이동합니다.
+      수업은 6차시까지이고, 7차시는 집에서 해 보시라고 따로 만든 자료입니다.</p>
+    <p class="by">만든 사람 —
+      <a href="https://loveria3.github.io/profile/" target="_blank" rel="noopener">강사 강지애</a><span class="go"> ↗</span>
+    </p>
   </header>
 
   <!-- ============================================================
@@ -254,11 +292,24 @@ body{
       </a>
     </li>
 
+    <li class="home">
+      <a class="card" href="schedule.html">
+        <span class="no">07</span>
+        <span>
+          <span class="label">7차시<span class="tag">집에서</span></span>
+          <p class="title">일정표 만들기 · 구글 캘린더</p>
+          <p class="desc">예약증 사진을 일정표로, 캘린더에 바로 넣기</p>
+        </span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+    </li>
+
   </ul>
   <!-- ▲ 여기까지 -->
 
   <footer class="foot">
-    <span>수업 자료실</span>
+    <span>수업 자료실 · 만든 사람
+      <a href="https://loveria3.github.io/profile/" target="_blank" rel="noopener"><b>강사 강지애</b></a></span>
     <a href="https://loveria3.github.io/domin/">loveria3.github.io/domin</a>
   </footer>
 
