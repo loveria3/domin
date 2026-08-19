@@ -62,7 +62,7 @@
   button:disabled{opacity:.3;cursor:default}
   button.link{border:0;padding:7px 4px;text-decoration:underline;text-underline-offset:3px}
 
-  /* ── 쪽 그리드 ── */
+  /* ── 페이지 그리드 ── */
   #grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(136px,1fr));gap:20px;padding-top:8px}
   .pg{cursor:grab;transition:.15s}
   .pg.drag{opacity:.3}
@@ -137,7 +137,7 @@
 <div id="drop">
   <span class="plus">＋</span>
   <p class="big">여기로 파일을 끌어다 놓으세요</p>
-  <p class="small">PDF 여러 개를 한꺼번에 · 사진(JPG · PNG)은 PDF 한 쪽이 됩니다</p>
+  <p class="small">PDF 여러 개를 한꺼번에 · 사진(JPG · PNG)은 PDF 한 페이지가 됩니다</p>
   <span class="count" id="cnt"></span>
   <input type="file" id="file" multiple accept=".pdf,image/*">
 </div>
@@ -146,7 +146,7 @@
 
 <section id="deck" class="hide">
   <div class="shead">
-    <h2>쪽 정리</h2>
+    <h2>페이지 정리</h2>
     <span class="tip">끌어다 놓아 순서 바꾸기 · 오른쪽 위 <b style="color:#b3462f">✕</b> 누르면 바로 빼기 · 왼쪽 아래 <b style="color:var(--deep)">✓</b> 로 체크</span>
     <span class="acts">
       <button id="undo" disabled>되돌리기</button>
@@ -171,7 +171,7 @@
     <div class="f only-split"><label>나누는 방법</label>
       <select id="mode">
         <option value="count">개수로 나누기</option>
-        <option value="size">쪽수로 나누기</option>
+        <option value="size">페이지 수로 나누기</option>
       </select></div>
     <div class="f only-split"><label id="numLab">몇 개로</label>
       <input type="number" id="num" value="2" min="1"></div>
@@ -196,12 +196,12 @@
 var $ = function(id){ return document.getElementById(id); };
 
 var srcs = {}, pages = [], hist = [], sid = 0, docCache = {}, mode = 'merge';
-var names = { merge:'합친문서', split:'나눈문서', pick:'골라낸쪽', img:'사진' };
+var names = { merge:'합친문서', split:'나눈문서', pick:'골라낸페이지', img:'사진' };
 var descs = {
-  merge:'화면에 보이는 쪽 전부를 PDF 한 개로 만듭니다.',
+  merge:'화면에 보이는 페이지 전부를 PDF 한 개로 만듭니다.',
   split:'여러 개로 쪼갠 뒤 ZIP 한 개로 묶어서 받습니다.',
-  pick :'체크(●)한 쪽만 모아 PDF 한 개로 만듭니다.',
-  img  :'체크한 쪽을 PNG로 저장합니다. 여러 장이면 ZIP으로 묶습니다.'
+  pick :'체크(●)한 페이지만 모아 PDF 한 개로 만듭니다.',
+  img  :'체크한 페이지를 PNG로 저장합니다. 여러 장이면 ZIP으로 묶습니다.'
 };
 
 var canThumb = false;
@@ -272,7 +272,7 @@ function addFiles(list){
             var n = doc.getPageCount();
             for (var k = 0; k < n; k++)
               pages.push({src:id, idx:k, rot:0, thumb:null, sel:false,
-                          label:f.name.replace(/\.pdf$/i,'') + ' · ' + (k+1) + '쪽'});
+                          label:f.name.replace(/\.pdf$/i,'') + ' · ' + (k+1) + '페이지'});
             if (canThumb) thumbs(id, n);
           });
         }
@@ -320,11 +320,11 @@ function draw(){
   $('deck').classList.toggle('hide', !n);
   $('out').classList.toggle('hide', !n);
   $('drop').classList.toggle('slim', !!n);
-  $('cnt').textContent = n ? n + '쪽' : '';
+  $('cnt').textContent = n ? n + '페이지' : '';
   document.querySelector('#drop .big').textContent   = n ? '파일 더 넣기' : '여기로 파일을 끌어다 놓으세요';
   document.querySelector('#drop .small').textContent = n
     ? '끌어다 놓거나 눌러서 고르기'
-    : 'PDF 여러 개를 한꺼번에 · 사진(JPG · PNG)은 PDF 한 쪽이 됩니다';
+    : 'PDF 여러 개를 한꺼번에 · 사진(JPG · PNG)은 PDF 한 페이지가 됩니다';
   g.innerHTML = '';
   pages.forEach(function(p, i){
     var d = document.createElement('div');
@@ -337,7 +337,7 @@ function draw(){
                    : '<span class="wait">준비 중…</span>') +
         '</div>' +
         '<span class="no">' + (i+1) + '</span>' +
-        '<button class="del"  data-a="del" title="이 쪽 빼기" aria-label="이 쪽 빼기">✕</button>' +
+        '<button class="del"  data-a="del" title="이 페이지 빼기" aria-label="이 페이지 빼기">✕</button>' +
         '<button class="tick" data-a="sel" title="체크"      aria-label="체크">✓</button>' +
       '</div>' +
       '<div class="tools">' +
@@ -352,7 +352,7 @@ function draw(){
   preview();
 }
 
-/* ── 쪽 조작 ── */
+/* ── 페이지 조작 ── */
 $('grid').addEventListener('click', function(e){
   var t = e.target.closest('[data-a]'); if (!t) return;
   var i = +t.closest('.pg').dataset.i, a = t.dataset.a;
@@ -489,14 +489,14 @@ function chunks(){
 /* ── 미리 알려주기 ── */
 function preview(){
   var n = pages.length, s = sel().length, nm = clean($('fname').value, names[mode]), t = '';
-  if (mode === 'merge') t = n ? n + '쪽 → ' + nm + '.pdf 한 개' : '';
-  if (mode === 'pick')  t = s ? s + '쪽 → ' + nm + '.pdf' : '체크한 쪽이 없습니다.';
-  if (mode === 'img')   t = s ? (s > 1 ? s + '장 → ' + nm + '.zip' : nm + '_1.png') : '체크한 쪽이 없습니다.';
+  if (mode === 'merge') t = n ? n + '페이지 → ' + nm + '.pdf 한 개' : '';
+  if (mode === 'pick')  t = s ? s + '페이지 → ' + nm + '.pdf' : '체크한 페이지가 없습니다.';
+  if (mode === 'img')   t = s ? (s > 1 ? s + '장 → ' + nm + '.zip' : nm + '_1.png') : '체크한 페이지가 없습니다.';
   if (mode === 'split'){
     var c = chunks();
-    $('numLab').textContent = ($('mode').value === 'size') ? '몇 쪽씩' : '몇 개로';
-    t = n ? n + '쪽 → ' + c.length + '개 파일 · ' +
-        c.slice(0,3).map(function(r,i){ return nm+'_'+(i+1)+'.pdf('+(r[0]+1)+'~'+r[1]+'쪽)'; }).join(', ') +
+    $('numLab').textContent = ($('mode').value === 'size') ? '몇 페이지씩' : '몇 개로';
+    t = n ? n + '페이지 → ' + c.length + '개 파일 · ' +
+        c.slice(0,3).map(function(r,i){ return nm+'_'+(i+1)+'.pdf('+(r[0]+1)+'~'+r[1]+'페이지)'; }).join(', ') +
         (c.length > 3 ? ' …' : '') + ' → ' + nm + '.zip' : '';
   }
   $('prev').textContent = t;
@@ -549,7 +549,7 @@ $('go').addEventListener('click', function(){
     var list = (mode === 'merge') ? pages : sel();
     return buildPdf(list).then(function(b){
       dl(new Blob([b], {type:'application/pdf'}), nm + '.pdf');
-      busy(false); say(list.length + '쪽을 ' + nm + '.pdf 로 저장했습니다. 열어서 확인해 보세요.');
+      busy(false); say(list.length + '페이지를 ' + nm + '.pdf 로 저장했습니다. 열어서 확인해 보세요.');
     }).catch(function(e){ busy(false); say('저장하지 못했습니다: ' + e.message, 'err'); });
   }
 
