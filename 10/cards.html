@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>생활 프롬프트 카드 30장</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root{--ink:#1f2328;--sub:#5f6873;--line:#e3e6ea;--bg:#f6f5f1;--navy:#1f3864;--yellow:#F2C230;--ok:#2f6b4f;--blue:#1668dc;}
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.6;letter-spacing:-.01em;
+    font-family:"Pretendard Variable",Pretendard,"Malgun Gothic","맑은 고딕",-apple-system,sans-serif}
+  .wrap{max-width:980px;margin:0 auto;padding:30px 16px 70px}
+  .home{display:inline-block;font-size:13px;font-weight:700;text-decoration:none;margin-bottom:10px;color:var(--sub)}
+  h1{font-size:28px;margin:0;letter-spacing:-.03em}
+  h1 em{font-style:normal;background:linear-gradient(to top,var(--yellow) 35%,transparent 35%)}
+  .sub{font-size:14px;color:var(--sub);margin:6px 0 0}
+  .ph{color:var(--blue);font-weight:700}
+
+  .draw{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:18px 0 0;background:#fff8e1;border:1px solid #efd98a;border-radius:12px;padding:14px 18px}
+  .draw b{font-size:17px}
+  .draw button{background:var(--yellow);color:var(--ink);border:0;border-radius:999px;padding:10px 20px;font-size:15px;font-weight:800;cursor:pointer;font-family:inherit}
+  .draw button:hover{filter:brightness(.95)}
+
+  .filters{display:flex;gap:6px;flex-wrap:wrap;margin:16px 0 4px;position:sticky;top:0;background:rgba(246,245,241,.96);padding:10px 0;z-index:5}
+  .filters button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 14px;font-size:14px;font-weight:700;color:var(--sub);cursor:pointer;font-family:inherit}
+  .filters button.on{background:var(--navy);border-color:var(--navy);color:#fff}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px;margin-top:8px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px 12px;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+  .card.pick{outline:3px solid var(--yellow);transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.08)}
+  .top{display:flex;align-items:center;gap:8px}
+  .no{font-size:12px;font-weight:800;color:#fff;background:var(--navy);border-radius:20px;padding:1px 8px}
+  .cat{font-size:12px;color:var(--sub);margin-left:auto}
+  .card h2{font-size:17px;margin:8px 0 6px;letter-spacing:-.02em}
+  .card h2 .e{font-size:22px;margin-right:4px}
+  .txt{font-size:14.5px;white-space:pre-wrap;word-break:keep-all;background:#fbfcfd;border:1px solid var(--line);border-radius:8px;padding:10px 12px;flex:1}
+  .foot{display:flex;align-items:center;gap:8px;margin-top:8px}
+  .tip{font-size:12.5px;color:var(--sub);flex:1}
+  .tip.warn{color:#8a5a00}
+  .cp{background:var(--navy);color:#fff;border:0;border-radius:6px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap}
+  .cp.copied{background:var(--ok)}
+  .tip a{color:var(--navy);font-weight:700}
+  footer{margin-top:26px;font-size:12px;color:var(--sub);text-align:center}
+  @media print{.draw,.filters,.cp,.home{display:none!important}.card{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="home" href="index.html">← 자료실 처음으로</a>
+  <h1>생활 프롬프트 <em>카드 30장</em></h1>
+  <p class="sub">복사해서 클로드에 붙여넣고, 파란 글씨 <span class="ph">[이렇게]</span> 만 내 상황으로 바꾸세요.</p>
+
+  <div class="draw">
+    <b>🎲 뭘 해 볼지 모르겠다면?</b>
+    <button type="button" id="drawBtn">오늘의 카드 뽑기</button>
+    <span id="drawMsg" class="sub" style="margin:0"></span>
+  </div>
+
+  <div class="filters" id="filters"></div>
+  <div class="grid" id="grid"></div>
+
+  <footer>클로드로 만드는 내 일상 · 생활 프롬프트 카드 &nbsp;|&nbsp; 제주도민대학 · 강사 강지애</footer>
+</div>
+
+<script>
+// [번호, 분류, 이모지, 제목, 프롬프트({ } 안은 바꿔 넣을 자리), 도움말]
+var CARDS=[
+[1,'부엌·살림','🍳','냉장고 파먹기','냉장고에 {달걀, 두부, 애호박, 김치} 가 있어.\n장 보러 안 가고 30분 안에 만들 수 있는 저녁 메뉴 3가지를 알려줘. 만드는 순서는 짧게.','냉장고 안을 사진으로 찍어 올려도 됩니다'],
+[2,'부엌·살림','🧺','얼룩 지우기','{흰 셔츠에 김치 국물} 이 묻었어.\n집에 있는 것으로 지우는 방법을 순서대로 알려줘. 하면 안 되는 것도 같이.',''],
+[3,'부엌·살림','🥬','일주일 반찬 계획','{10월} 제철 재료로 {두 식구} 일주일 반찬 계획을 표로 짜줘.\n주말에 한 번에 만들어 두고 먹을 수 있게.',''],
+[4,'부엌·살림','🛒','장보기 목록','{된장찌개, 잡채, 미역국} 을 만들 거야.\n장보기 목록을 마트 코너별로 묶어서 체크리스트로 만들어줘.',''],
+[5,'부엌·살림','📦','30분 정리 정돈','{신발장} 이 너무 복잡해.\n30분 안에 끝나는 정리 순서를 5단계로 알려줘.',''],
+[6,'건강','💊','약봉투 읽기','이 약봉투 사진을 보고 약 이름, 먹는 시간, 주의할 점을 표로 정리해줘.\n사진에서 안 보이는 건 [확인 필요] 라고 적어줘.','최종 판단은 꼭 약사·의사에게'],
+[7,'건강','🚶','4주 걷기 계획','무릎이 약한 {60대} 야.\n하루 30분 걷기 4주 계획을 표로 짜줘. 무리하지 않게, 주마다 조금씩 늘려서.',''],
+[8,'건강','🩺','진료 전 질문 메모','내일 {정형외과} 에 가. {어깨가 한 달째 결려}.\n의사에게 물어볼 질문 5개를 짧게 써줘. 내 증상 설명도 세 줄로.',''],
+[9,'건강','😴','잠 잘 자기','요즘 {새벽 3시에 자꾸 깨}.\n약 없이 생활 습관으로 해 볼 수 있는 것 5가지를 알려줘.',''],
+[10,'건강','📋','검진 결과 쉬운 말로','건강검진 결과지 사진이야. 어려운 말을 쉬운 말로 풀어줘.\n기준보다 높거나 낮은 것만 따로 표시해줘.','이름·주민번호는 가리고 찍으세요'],
+[11,'서류·돈','🧾','고지서를 표로','관리비 고지서 사진이야. 항목과 금액을 표로 정리해줘.\n지난달보다 많이 나온 항목이 있으면 표시해줘.',''],
+[12,'서류·돈','📑','약관 쉬운 말로','아래 보험 약관을 중학생도 알게 쉬운 말로 5줄로 요약해줘.\n내가 조심해야 할 것 3가지도.\n{약관 내용 붙여넣기}',''],
+[13,'서류·돈','🏛','안내문 핵심만','주민센터에서 온 안내문 사진이야.\n내가 해야 할 일, 기한, 준비물만 뽑아줘.',''],
+[14,'서류·돈','💸','이번 달 돈 돌아보기','이번 달 쓴 돈이야. {식비 45만, 교통 12만, 통신 9만, 경조사 20만, 병원 8만}.\n줄일 수 있는 곳 3가지를 현실적으로 알려줘.',''],
+[15,'서류·돈','📞','고객센터 전화 대본','{인터넷 요금 해지} 하려고 고객센터에 전화할 거야.\n내가 할 말을 대본으로 써줘. 상담원이 붙잡을 때 할 대답도.',''],
+[16,'기기·디지털','📡','공유기 불빛 보기','집에 인터넷이 안 돼서 공유기와 모뎀 불빛을 찍었어.\n불빛 색깔을 보고 무엇이 문제인지, 내가 고칠 수 있는지 통신사에 전화해야 하는지 알려줘.','연습 사진: <a href="img/router-leds.jpg" download>내려받기</a>'],
+[17,'기기·디지털','🎛','버튼 뜻 알기','이 사진은 {우리 집 보일러 조절기} 야.\n버튼이 각각 무슨 뜻인지 표로 쉽게 정리해줘.','연습 사진: <a href="img/boiler-panel.png" download>보일러</a> · <a href="img/washer-panel.png" download>세탁기</a>'],
+[18,'기기·디지털','📱','폰 글씨 크게','{갤럭시} 폰 글씨를 크게 하는 방법을 1, 2, 3 순서로 알려줘.\n메뉴 이름은 화면에 보이는 그대로 적어줘.',''],
+[19,'기기·디지털','🚨','사기 문자 판별','이런 문자가 왔어.\n{엄마 나 폰 액정 깨져서 임시폰이야. 급하게 상품권 좀 사줄 수 있어?}\n사기일 가능성이 있는지, 왜 그런지, 지금 할 일을 순서대로 알려줘.','의심되면 링크는 절대 누르지 마세요'],
+[20,'기기·디지털','⚠️','오류 메시지 해석','컴퓨터에 이런 메시지가 떴어. {메시지 내용 또는 사진}\n무슨 뜻이고 뭘 누르면 되는지 쉽게 알려줘.','연습 사진: <a href="img/error-e4.png" download>세탁기 E4</a>'],
+[21,'글쓰기·마음','🎂','생일 카드 문구','{손녀 10살} 생일 카드에 쓸 문구를 3가지로 써줘.\n하나는 감동, 하나는 웃기게, 하나는 아주 짧게.',''],
+[22,'글쓰기·마음','🙅','기분 안 상하게 거절','{모임 총무를 또 맡아 달래}.\n관계가 상하지 않게 거절하는 문자를 써줘. 너무 길지 않게.',''],
+[23,'글쓰기·마음','📣','단톡방 공지','{동창회 11월 모임} 공지를 단톡방에 올릴 글로 써줘.\n날짜 {11월 15일 토요일 저녁 6시}, 장소 {제주시 ○○식당}, 회비 {3만 원}.\n한눈에 보이게 줄을 나누고, 이모지는 조금만.',''],
+[24,'글쓰기·마음','✉️','감사 편지','{퇴직하는 선배} 에게 드릴 감사 편지를 10줄로 써줘.\n함께한 기억: {신입 때 밥을 자주 사 주셨음}.',''],
+[25,'글쓰기·마음','🥂','건배사','{동창 송년회} 에서 쓸 30초짜리 건배사 3가지를 써줘.\n하나는 제주 사투리로, 하나는 아주 웃기게.',''],
+[26,'나들이·취미','🗺','반나절 코스','{제주시} 에서 {비 오는 토요일 오후} 에 갈 만한 실내 반나절 코스를 짜줘.\n{60대 부부} 가 걷기 부담 없게, 점심 한 곳 포함해서.','가게는 지도앱으로 영업 여부 확인'],
+[27,'나들이·취미','📚','책 추천','나는 {추리소설} 을 좋아해. 특히 {반전이 있는 것}.\n비슷한 책 5권을 한 줄 소개와 함께 추천해줘.',''],
+[28,'나들이·취미','🌱','베란다 텃밭','{베란다} 에서 {상추} 를 키우고 싶어. {10월} 에 시작해도 돼?\n준비물과 순서를 쉽게 알려줘.',''],
+[29,'나들이·취미','🧠','가족 퀴즈 대회','명절에 가족이 함께 풀 {제주 상식} 퀴즈 10문제를 만들어줘.\n쉬운 것부터 어려운 것 순서로, 정답은 맨 아래에 따로.',''],
+[30,'나들이·취미','🔤','사진 속 글자 옮기기','이 사진 속 글자를 그대로 옮겨 적어줘.\n줄바꿈도 사진과 똑같이 하고, 안 보이는 글자는 [?] 로 표시해줘.','메뉴판·안내판·손글씨 메모에 좋아요']
+];
+var CATS=['전체','부엌·살림','건강','서류·돈','기기·디지털','글쓰기·마음','나들이·취미'];
+
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function fill(p){return esc(p).replace(/\{([^}]*)\}/g,'<span class="ph">[$1]</span>');}
+
+var grid=document.getElementById('grid');
+grid.innerHTML=CARDS.map(function(c){
+  return '<div class="card" id="c'+c[0]+'" data-cat="'+c[1]+'">'+
+    '<div class="top"><span class="no">'+c[0]+'</span><span class="cat">'+c[1]+'</span></div>'+
+    '<h2><span class="e">'+c[2]+'</span>'+c[3]+'</h2>'+
+    '<div class="txt">'+fill(c[4])+'</div>'+
+    '<div class="foot"><span class="tip'+(c[5]&&/꼭|가리고|절대/.test(c[5])?' warn':'')+'">'+(c[5]||'')+'</span><button class="cp" type="button">복사</button></div></div>';
+}).join('');
+
+var fl=document.getElementById('filters');
+fl.innerHTML=CATS.map(function(c,i){return '<button type="button" class="'+(i?'':'on')+'">'+c+'</button>';}).join('');
+fl.addEventListener('click',function(e){
+  var b=e.target.closest('button');if(!b)return;
+  [].forEach.call(fl.children,function(x){x.classList.toggle('on',x===b);});
+  [].forEach.call(grid.children,function(card){card.style.display=(b.textContent==='전체'||card.dataset.cat===b.textContent)?'':'none';});
+});
+
+document.getElementById('drawBtn').addEventListener('click',function(){
+  [].forEach.call(fl.children,function(x,i){x.classList.toggle('on',i===0);});
+  [].forEach.call(grid.children,function(card){card.style.display='';card.classList.remove('pick');});
+  var n=Math.floor(Math.random()*CARDS.length)+1, el=document.getElementById('c'+n);
+  el.classList.add('pick');el.scrollIntoView({behavior:'smooth',block:'center'});
+  document.getElementById('drawMsg').textContent=n+'번 카드가 나왔어요! 바로 해 보세요 🎉';
+});
+
+grid.addEventListener('click',function(e){
+  var b=e.target.closest('.cp');if(!b)return;
+  var t=b.closest('.card').querySelector('.txt').innerText;
+  var ok=function(){b.textContent='복사됨!';b.classList.add('copied');setTimeout(function(){b.textContent='복사';b.classList.remove('copied');},1500);};
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(ok,function(){fb(t,ok);});}else fb(t,ok);
+});
+function fb(t,ok){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';
+  document.body.appendChild(a);a.select();try{document.execCommand('copy');ok();}catch(e){alert('직접 드래그해서 복사해 주세요.');}
+  document.body.removeChild(a);}
+</script>
+</body>
+</html>

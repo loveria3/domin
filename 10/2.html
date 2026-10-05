@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2차시 — 웹 발표자료 만들고 인터넷에 올리기</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root{--ink:#1f2328;--sub:#5f6873;--line:#e3e6ea;--bg:#f6f5f1;--navy:#1f3864;--soft:#eef1f7;
+    --ok:#2f6b4f;--warn:#8a5a00;--yellow:#F2C230;--cream:#fff8e1;--blue:#1668dc;}
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.65;letter-spacing:-.01em;
+    font-family:"Pretendard Variable",Pretendard,"Malgun Gothic","맑은 고딕",-apple-system,"Segoe UI",sans-serif;}
+  .wrap{max-width:820px;margin:0 auto;padding:30px 18px 70px}
+  a{color:var(--navy)}
+
+  header{border-bottom:3px solid var(--navy);padding-bottom:14px;margin-bottom:8px}
+  .kicker{font-size:13px;font-weight:700;color:var(--navy);margin:0 0 4px}
+  h1{font-size:27px;margin:0;letter-spacing:-.03em;line-height:1.3}
+  h1 em{font-style:normal;background:linear-gradient(to top,var(--yellow) 35%,transparent 35%)}
+  .sub{font-size:13px;color:var(--sub);margin:8px 0 0}
+  .home{display:inline-block;font-size:13px;font-weight:700;text-decoration:none;margin-bottom:10px;color:var(--sub)}
+  .home:hover{color:var(--navy)}
+  .toprow{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}
+
+  /* 오늘의 한 장면 */
+  .hook{background:var(--cream);border:1px solid #efd98a;border-radius:10px;padding:16px 20px;margin:16px 0 0}
+  .hook .q{font-size:18px;font-weight:800;margin:0;letter-spacing:-.02em}
+  .hook p{margin:6px 0 0;font-size:14px;color:#5a4a12}
+  .take{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 0}
+  .take span{background:#fff;border:1px solid #e8d48a;border-radius:20px;padding:3px 12px;font-size:13px;font-weight:700}
+
+  section{background:#fff;border:1px solid var(--line);border-radius:8px;padding:20px 22px;margin:14px 0;scroll-margin-top:66px}
+  section.challenge{border:1px dashed var(--navy);background:#fcfcfe}
+  section.key{border:2px solid var(--navy)}
+  .head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .num{background:var(--navy);color:#fff;font-size:14px;font-weight:700;min-width:28px;height:28px;padding:0 6px;
+    border-radius:14px;display:flex;align-items:center;justify-content:center}
+  .num.ch{background:#fff;color:var(--navy);border:1px dashed var(--navy)}
+  .num.y{background:var(--yellow);color:var(--ink)}
+  h2{font-size:20px;margin:0;letter-spacing:-.02em}
+  .badge{font-size:11px;font-weight:700;color:var(--navy);border:1px solid var(--navy);border-radius:3px;padding:1px 6px}
+  .badge.hot{background:var(--navy);color:#fff}
+  .time{margin-left:auto;font-size:12px;color:var(--sub);white-space:nowrap}
+  .one{font-size:15px;color:var(--sub);margin:10px 0 0}
+  .only{font-size:13px;color:var(--warn);margin:8px 0 0}
+  h3{font-size:15px;margin:18px 0 0;color:var(--navy)}
+
+  .box{background:#fbfcfd;border:1px solid var(--line);border-radius:6px;margin:14px 0 0}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:7px 12px;
+    background:#f0f3f8;border-bottom:1px solid var(--line);border-radius:6px 6px 0 0}
+  .bar span{font-size:12.5px;font-weight:700;color:var(--navy)}
+  .txt{padding:14px 16px;font-size:15px;white-space:pre-wrap;word-break:keep-all}
+  button.cp{background:var(--navy);color:#fff;border:0;border-radius:4px;padding:6px 14px;
+    font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap}
+  button.cp:hover{background:#16294a}
+  button.cp.copied{background:var(--ok)}
+  .ph{color:var(--blue);font-weight:700}
+
+  /* 이렇게 나와요 (예시 결과) */
+  .ex{margin:10px 0 0;border-left:4px solid var(--yellow);background:#fffdf5;border-radius:0 6px 6px 0;padding:10px 14px;font-size:14px;color:#3d3a30;white-space:pre-wrap;word-break:keep-all}
+  .ex::before{content:"이렇게 나와요 (예시)";display:block;font-size:11px;font-weight:800;color:#9a7a00;margin-bottom:4px;letter-spacing:.02em;white-space:normal}
+
+  /* 비교 */
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 0}
+  .vs div{border:1px solid var(--line);border-radius:6px;padding:12px 14px;font-size:14px;white-space:pre-wrap;word-break:keep-all}
+  .vs .bad{background:#fbf3f3;border-color:#efd0d0}
+  .vs .good{background:#f1f8f4;border-color:#cfe6d8}
+  .vs b{display:block;font-size:12px;margin-bottom:4px;white-space:normal}
+  .vs .bad b{color:#a33}
+  .vs .good b{color:var(--ok)}
+
+  .jump{position:sticky;top:0;z-index:10;display:flex;gap:6px;flex-wrap:wrap;
+    padding:10px 0 9px;background:rgba(246,245,241,.96);border-bottom:1px solid var(--line)}
+  .jump a{min-width:42px;height:42px;padding:0 8px;border:1px solid var(--line);border-radius:8px;background:#fff;
+    color:var(--sub);text-decoration:none;font-weight:700;font-size:15px;
+    display:flex;align-items:center;justify-content:center}
+  .jump a.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+  .shot{width:100%;border:1px solid var(--line);border-radius:6px;margin-top:12px;display:block}
+  .btn,.dl{display:inline-block;margin-top:10px;background:var(--navy);color:#fff;text-decoration:none;
+    border-radius:6px;padding:10px 18px;font-size:14px;font-weight:700}
+  .btn:hover,.dl:hover{background:#16294a}
+  .btn.line{background:#fff;color:var(--navy);border:1px solid var(--navy)}
+  .btn.y{background:var(--yellow);color:var(--ink)}
+  .toprow .btn{margin-top:0}
+  .note{font-size:13.5px;color:var(--sub);margin:12px 0 0}
+  .warnnote{font-size:13.5px;color:var(--warn);margin:12px 0 0}
+  .tip{font-size:14px;background:var(--soft);border-radius:6px;padding:10px 14px;margin:12px 0 0}
+  ul.chk{list-style:none;padding:0;margin:12px 0 0}
+  ul.chk li{font-size:15px;padding:3px 0 3px 26px;position:relative}
+  ul.chk li::before{content:"☐";position:absolute;left:0;color:var(--navy)}
+  ol.step{margin:12px 0 0;padding-left:22px}
+  ol.step li{font-size:15px;padding:3px 0}
+
+  table{width:100%;border-collapse:collapse;margin-top:12px;font-size:14.5px}
+  th,td{border:1px solid var(--line);padding:8px 12px;text-align:left;vertical-align:top}
+  th{background:var(--soft);color:var(--navy);width:30%}
+  td{color:#3a4048}
+  table.plain th{width:auto}
+
+  /* OX 퀴즈 */
+  .quiz{margin:12px 0 0}
+  .quiz details{border:1px solid var(--line);border-radius:6px;padding:10px 14px;margin:8px 0 0;background:#fff}
+  .quiz summary{cursor:pointer;font-weight:700;font-size:15px;list-style:none}
+  .quiz summary::-webkit-details-marker{display:none}
+  .quiz summary::before{content:"Q ";color:var(--navy)}
+  .quiz summary::after{content:"  ▸ 정답 보기";font-size:12px;color:var(--sub);font-weight:400}
+  .quiz details[open] summary::after{content:""}
+  .quiz details p{margin:8px 0 0;font-size:14.5px;color:#3a4048}
+  .quiz .o{color:var(--ok);font-weight:800}
+  .quiz .x{color:#b33;font-weight:800}
+
+  .end{background:#fff;border:2px solid var(--navy);border-radius:8px;padding:18px 22px;margin:22px 0 0}
+  .end h2{font-size:17px;margin:0 0 6px}
+  .end p{margin:6px 0;font-size:15px}
+  .end b{color:var(--navy)}
+  .next{font-size:14px;color:var(--sub);margin:14px 0 0}
+  footer{margin-top:26px;font-size:12px;color:var(--sub);text-align:center}
+
+  @media(max-width:600px){h1{font-size:22px}h2{font-size:18px}.txt{font-size:14px}
+    .time{margin-left:0}.vs{grid-template-columns:1fr}section{padding:16px 15px}}
+  @media print{body{background:#fff}button,.jump,.dl,.btn,.home{display:none!important}section{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="home" href="index.html">← 자료실 처음으로</a>
+<header>
+  <p class="kicker">2차시 · 2026. 10. 14.(수) 18:00~20:00</p>
+  <h1>웹 발표자료 만들고 <em>내 주소</em> 받기</h1>
+  <p class="sub">파란 대괄호 <span class="ph">[이렇게]</span> 표시된 곳만 내 상황으로 바꾸세요. 오늘 나오는 것은 전부 무료로 됩니다.</p>
+  <div class="toprow">
+    <a class="btn y" href="slides-sample.html" target="_blank" rel="noopener">완성 예시 먼저 구경하기 ↗</a>
+    <a class="btn line" href="slides-sample.html" download="index.html">예시 파일 내려받기 ↓</a>
+  </div>
+</header>
+
+<div class="hook">
+  <p class="q">발표자료를 카톡으로 보냈는데 "파일이 안 열려요"라는 답을 받아 본 적 있나요?</p>
+  <p>오늘은 <b>주소 하나만 보내면</b> 누구나 폰에서 바로 열어 보는 발표자료를 만듭니다. 파워포인트는 필요 없습니다.</p>
+  <div class="take"><span>오늘 가져갈 것</span><span>🖥 8장짜리 웹 발표자료</span><span>🔗 나만의 인터넷 주소</span></div>
+</div>
+
+<nav class="jump">
+  <a href="#s0">0</a>
+  <a href="#s1">1</a>
+  <a href="#s2">2</a>
+  <a href="#s3">3</a>
+  <a href="#s4">4</a>
+  <a href="#s5">5</a>
+  <a href="#s6">6</a>
+  <a href="#s7">7</a>
+  <a href="#s8">도전</a>
+  <a href="#s9">퀴즈</a>
+</nav>
+
+
+<section id="s0" data-n="0">
+  <div class="head"><span class="num y">0</span><h2>오늘의 생활 프롬프트</h2><span class="time">5분</span></div>
+  <div class="box"><div class="bar"><span>카드 23 — 단톡방 공지</span></div>
+<div class="txt"><span class="ph">[동창회 11월 모임]</span> 공지를 단톡방에 올릴 글로 써줘.
+날짜 <span class="ph">[11월 15일 토요일 저녁 6시]</span>, 장소 <span class="ph">[제주시 ○○식당]</span>, 회비 <span class="ph">[3만 원]</span>.
+한눈에 보이게 줄을 나누고, 이모지는 조금만.</div></div>
+  <p class="note">나머지 카드는 <a href="cards.html" target="_blank" rel="noopener">생활 프롬프트 카드 30장</a>에서.</p>
+</section>
+
+<section id="s1" data-n="1">
+  <div class="head"><span class="num">1</span><h2>아티팩트 — 화면에 바로 나오는 결과물</h2><span class="time">8분</span></div>
+  <p class="one">클로드에게 "만들어줘" 하면 대화창 <b>오른쪽</b>에 결과물이 바로 뜹니다. 이것을 <b>아티팩트</b>라고 부릅니다.</p>
+  <div class="box"><div class="bar"><span>프롬프트 1 — 맛보기: 내 기분 날씨 카드</span></div>
+<div class="txt">오늘 내 기분을 날씨 예보처럼 보여 주는 카드를 아티팩트로 만들어줘.
+내 기분은 <span class="ph">[퇴근해서 조금 피곤하지만 설렘]</span> 이야.
+날씨 그림, 기온 대신 '기분 온도', 한 줄 예보를 넣어줘. 귀엽게.</div></div>
+  <div class="ex">☁️ → 🌤  오늘의 기분 날씨: 구름 조금, 저녁부터 맑음
+기분 온도 23℃ · 설렘 지수 80%
+"피곤 구름은 곧 걷히고 새로운 배움의 햇살이 들겠습니다"</div>
+  <ul class="chk">
+    <li>오른쪽에 카드가 떴는지 확인</li>
+    <li>"더 귀엽게" · "색을 분홍으로" 한마디 해 보기</li>
+  </ul>
+  <p class="warnnote">⚠ 오른쪽에 아무것도 안 뜨면 — 왼쪽 아래 내 이름 → <b>설정 → 기능</b>에서 <b>아티팩트</b>가 켜져 있는지 확인하세요.</p>
+</section>
+
+<section id="s2" data-n="2">
+  <div class="head"><span class="num">2</span><h2>발표 주제 정하기</h2><span class="time">8분</span></div>
+  <p class="one">주제가 이미 있으면 건너뛰세요. 없으면 클로드에게 <b>고를 거리</b>를 받습니다.</p>
+  <div class="box"><div class="bar"><span>프롬프트 2 — 주제 여섯 개 받기</span></div>
+<div class="txt">나는 <span class="ph">[오름 걷기와 사진 찍기]</span> 를 좋아해.
+가족이나 모임에서 5분 동안 발표할 만한 재미있는 주제 6가지를 추천해줘.
+한 줄씩, 제목만 봐도 궁금해지게.</div></div>
+  <table>
+    <tr><th>이런 주제도 좋아요</th><td>우리 동호회 소개 · 마을 행사 결과 보고 · 내 인생 맛집 3곳 · 우리 집 반려견 소개 · 손주에게 알려 주는 제주 이야기 · 올해 나의 10대 뉴스</td></tr>
+  </table>
+</section>
+
+<section id="s3" data-n="3" class="key">
+  <div class="head"><span class="num">3</span><h2>웹 발표자료 만들기</h2><span class="badge hot">오늘의 핵심</span><span class="time">25분</span></div>
+  <p class="one">파란 글씨 네 군데만 고쳐서 보내세요. 나머지 조건은 그대로 두세요 — 그래야 뒤에서 인터넷에 올리기 쉽습니다.</p>
+  <div class="box"><div class="bar"><span>프롬프트 3 — 웹 발표자료 (통째로 복사)</span></div>
+<div class="txt">너는 발표자료를 잘 만드는 디자이너야.
+<span class="ph">[한라산 아래 걷기 동호회 '느영나영' 소개]</span> 발표자료를 웹페이지로 만들어줘.
+듣는 사람은 <span class="ph">[새로 들어올 회원들]</span> 이야.
+
+[내용]
+- 모두 8장. 1장은 표지, 8장은 마무리 인사
+- 꼭 넣을 내용: <span class="ph">[매주 토요일 아침 모임, 회비 월 1만 원, 올해 다녀온 오름 5곳]</span>
+- 한 장에 글은 세 줄 이내, 큰 글씨로
+
+[모양]
+- 한 화면에 한 장씩 보이고, 화면 양쪽에 큰 화살표 단추로 넘기게 해줘
+- 키보드 왼쪽·오른쪽 방향키로도 넘어가게
+- 오른쪽 아래에 '3 / 8' 처럼 쪽 번호
+- 분위기는 <span class="ph">[밝고 따뜻하게, 초록색 계열]</span>
+- 폰에서 열어도 잘 보이게
+
+[꼭 지킬 것]
+- html 파일 하나로 만들어줘
+- 인터넷에서 따로 불러오는 것 없이 만들어줘</div></div>
+  <ul class="chk">
+    <li>오른쪽에 표지가 떴는지</li>
+    <li>화살표 단추를 눌러 8장까지 넘어가는지</li>
+    <li>내가 부탁한 내용이 다 들어갔는지</li>
+  </ul>
+  <p class="warnnote">⚠ 클로드는 날짜·장소·숫자를 <b>그럴듯하게 지어낼 수 있습니다</b>. 내가 알려 주지 않은 숫자는 꼭 확인하세요.</p>
+</section>
+
+<section id="s4" data-n="4">
+  <div class="head"><span class="num">4</span><h2>원하는 곳만 고치기</h2><span class="time">15분</span></div>
+  <p class="one">다시 만들어 달라고 하지 않습니다. <b>고칠 곳만</b> 말합니다. 아래에서 필요한 것만 골라 쓰세요.</p>
+  <div class="box"><div class="bar"><span>고치기 ① 글씨</span></div>
+<div class="txt">모든 장의 글씨를 지금보다 한 단계 크게 해줘. 나머지는 그대로 둬.</div></div>
+  <div class="box"><div class="bar"><span>고치기 ② 색</span></div>
+<div class="txt">색만 <span class="ph">[바다 느낌의 파란색]</span> 계열로 바꿔줘. 내용은 그대로 둬.</div></div>
+  <div class="box"><div class="bar"><span>고치기 ③ 한 장 더</span></div>
+<div class="txt"><span class="ph">[5장]</span> 뒤에 <span class="ph">[회원들이 한 말 한마디]</span> 장을 하나 더 넣어줘. 쪽 번호도 맞춰줘.</div></div>
+  <div class="box"><div class="bar"><span>고치기 ④ 한 장만 바꾸기</span></div>
+<div class="txt"><span class="ph">[3장]</span> 의 내용을 <span class="ph">[모임 규칙 세 가지]</span> 로 바꿔줘. 다른 장은 건드리지 마.</div></div>
+  <div class="box"><div class="bar"><span>고치기 ⑤ 재미 한 스푼</span></div>
+<div class="txt">장이 넘어갈 때 부드럽게 넘어가는 효과를 넣고, 표지에 어울리는 이모지를 크게 하나 넣어줘.</div></div>
+  <div class="tip">🔑 주문 공식 — <b>"[어디]를 [어떻게] 바꿔줘. 나머지는 그대로 둬."</b></div>
+</section>
+
+<section id="s5" data-n="5">
+  <div class="head"><span class="num">5</span><h2>내 컴퓨터로 내려받아 열어 보기</h2><span class="time">7분</span></div>
+  <ol class="step">
+    <li>아티팩트 오른쪽 위 <b>다운로드</b>(↓) 단추 → 파일 받기</li>
+    <li>다운로드 폴더에서 받은 파일을 <b>더블클릭</b> → 크롬에서 열리면 성공</li>
+    <li>파일 이름을 <b>index.html</b> 로 바꾸기 (오른쪽 단추 → 이름 바꾸기)</li>
+  </ol>
+  <div class="tip">왜 <b>index</b>인가요? — 인터넷에서 "이 주소의 <b>첫 화면</b>"이라는 약속된 이름입니다. 이렇게 해 두면 주소 뒤에 아무것도 안 붙여도 바로 열립니다.</div>
+  <p class="note">"html이 안 보여요" → 확장자가 숨겨진 것입니다. <b>index</b> 까지만 바꾸면 됩니다.</p>
+  <p class="note">다운로드가 안 되면 → 위의 <b>예시 파일 내려받기</b>로 받아서 오늘 연습을 이어 가세요.</p>
+</section>
+
+<section id="s6" data-n="6" class="key">
+  <div class="head"><span class="num">6</span><h2>인터넷에 올리기 — 내 주소 받기</h2><span class="badge hot">오늘의 핵심</span><span class="time">22분</span></div>
+  <p class="one">무료 사이트 <b>넷리파이(Netlify)</b>를 씁니다. 카드 등록도, 어려운 설정도 없습니다.</p>
+  <h3>① 가입 (처음 한 번만)</h3>
+  <table>
+    <tr><th>들어가기</th><td>주소창에 <b>app.netlify.com/signup</b></td></tr>
+    <tr><th>가입</th><td><b>Sign up with Email</b> → 이메일·비밀번호 입력 (Google 단추가 보이면 그걸 눌러도 됩니다)</td></tr>
+    <tr><th>메일 확인</th><td>내 메일함에 온 Netlify 메일 → <b>Verify email</b> 누르기</td></tr>
+    <tr><th>질문 화면</th><td>무엇을 만드는지 묻는 영어 질문이 나오면 아무거나 고르고 <b>Continue / Skip</b></td></tr>
+  </table>
+  <h3>② 올리기 — 끌어다 놓기 한 번</h3>
+  <table>
+    <tr><th>들어가기</th><td>주소창에 <b>app.netlify.com/drop</b></td></tr>
+    <tr><th>놓기</th><td>5번에서 만든 <b>index.html</b> 파일을 가운데 <b>Drop here</b> 칸으로 끌어다 놓기</td></tr>
+    <tr><th>기다리기</th><td>몇 초 뒤 <b>○○○.netlify.app</b> 주소가 생깁니다 — 눌러서 열어 보기!</td></tr>
+  </table>
+  <h3>③ 주소를 내 이름으로 바꾸기</h3>
+  <table>
+    <tr><th>들어가기</th><td>화면의 <b>Project configuration</b>(또는 Site configuration) 누르기</td></tr>
+    <tr><th>바꾸기</th><td><b>Change project name</b> → 영어 소문자·숫자·붙임표(-)로 입력 → <b>Save</b></td></tr>
+    <tr><th>이름 예시</th><td><b>jeju-hanla-walk</b> → <b>jeju-hanla-walk.netlify.app</b></td></tr>
+  </table>
+  <p class="note">"이미 있는 이름"이라고 나오면 뒤에 숫자를 붙이세요 — <b>jeju-hanla-walk-1014</b></p>
+  <p class="warnnote">⚠ 올린 발표자료는 <b>주소를 아는 누구나</b> 볼 수 있습니다. 전화번호·집 주소 같은 개인정보는 넣지 마세요.</p>
+</section>
+
+<section id="s7" data-n="7">
+  <div class="head"><span class="num">7</span><h2>주소 보내 보기 — 파일과 비교</h2><span class="time">10분</span></div>
+  <div class="vs">
+    <div class="bad"><b>파일로 보내면</b>카톡에서 받은 사람이 파일을 내려받고, 무엇으로 열지 고르고… 폰에서는 안 열리는 일이 많습니다.</div>
+    <div class="good"><b>주소로 보내면</b>받은 사람은 파란 글씨를 <b>한 번 누르면 끝</b>. 폰이든 컴퓨터든 바로 열립니다.</div>
+  </div>
+  <ol class="step">
+    <li>내 주소를 <b>카톡 나와의 채팅</b>으로 보내고 <b>내 폰</b>에서 눌러 보기</li>
+    <li>패들렛에 "2차시 — <span class="ph">[내 이름]</span>" + 내 주소 올리기</li>
+    <li>다른 분 주소도 눌러서 구경하기 👀</li>
+  </ol>
+  <a class="btn" href="https://padlet.com/PADLET-ADDRESS" target="_blank" rel="noopener">우리 반 패들렛 열기 ↗</a>
+</section>
+
+<section id="s8" data-n="도전" class="challenge">
+  <div class="head"><span class="num ch">+</span><h2>내 주소를 QR 코드로</h2><span class="badge">도전</span><span class="time">5분</span></div>
+  <p class="only">※ 먼저 끝낸 분만 — 안 해도 다음 시간에 지장 없습니다.</p>
+  <ol class="step">
+    <li>크롬에서 내 발표자료 주소를 연 상태로</li>
+    <li>주소창 오른쪽 끝 <b>공유</b> 아이콘(또는 페이지 빈 곳 오른쪽 단추) → <b>QR 코드 만들기</b></li>
+    <li><b>다운로드</b> → 모임 안내문에 붙이면 폰 카메라로 찍어서 바로 봅니다</li>
+  </ol>
+  <div class="box"><div class="bar"><span>도전 2 — 발표 대본까지</span></div>
+<div class="txt">내 발표자료 8장에 맞춰, 장마다 내가 말할 대본을 3문장씩 써줘. 말하듯 편안하게.</div></div>
+</section>
+
+<section id="s9" data-n="퀴즈">
+  <div class="head"><span class="num y">?</span><h2>오늘의 OX 퀴즈</h2><span class="time">마무리</span></div>
+  <div class="quiz">
+    <details><summary>글씨만 키우고 싶으면 "처음부터 다시 만들어줘"라고 해야 한다.</summary>
+      <p><span class="x">X</span> — "글씨만 크게 해줘. 나머지는 그대로 둬." 한마디면 됩니다.</p></details>
+    <details><summary>인터넷에 올린 발표자료는 주소만 알면 누구나 볼 수 있다.</summary>
+      <p><span class="o">O</span> — 그래서 편리하지만, 개인정보는 넣지 않습니다.</p></details>
+    <details><summary>파일 이름을 index.html 로 하면 주소 뒤에 아무것도 안 붙여도 첫 화면으로 열린다.</summary>
+      <p><span class="o">O</span> — index는 "첫 화면"이라는 약속된 이름입니다.</p></details>
+  </div>
+</section>
+
+<div class="end">
+  <h2>오늘 기억할 것 세 줄</h2>
+  <p><b>1.</b> "만들어줘" 하면 오른쪽에 <b>아티팩트</b>로 바로 나온다</p>
+  <p><b>2.</b> 고칠 땐 <b>"[어디]를 [어떻게]. 나머지는 그대로"</b></p>
+  <p><b>3.</b> 파일 대신 <b>주소</b>를 보내면 누구나 바로 연다</p>
+  <p class="next">📣 다음 시간(10.21) — 제주에서 떠나는 <b>2박 3일 여행 일정</b>을 짜고, <b>나만의 패들렛</b>을 만듭니다. 가 보고 싶은 지역이 있으면 생각해 오세요.</p>
+</div>
+
+<footer>클로드로 만드는 내 일상 — 발표자료부터 나만의 앱까지 · 2차시 &nbsp;|&nbsp; 제주도민대학 · 강사 강지애</footer>
+</div>
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.jump a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  function mark(){var i=0;for(var k=0;k<secs.length;k++){if(secs[k]&&secs[k].getBoundingClientRect().top<=90)i=k;}
+    links.forEach(function(a,k){a.classList.toggle('on',k===i);});}
+  window.addEventListener('scroll',mark,{passive:true});mark();
+})();
+document.querySelectorAll('.box').forEach(function(box){
+  var bar=box.querySelector('.bar');if(!bar||bar.querySelector('button'))return;
+  var b=document.createElement('button');b.className='cp';b.type='button';b.textContent='복사';bar.appendChild(b);
+});
+document.querySelectorAll('button.cp').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.closest('.box').querySelector('.txt').innerText;
+    var ok=function(){b.textContent='복사됨!';b.classList.add('copied');
+      setTimeout(function(){b.textContent='복사';b.classList.remove('copied');},1500);};
+    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(ok,function(){fb(t,ok);});}
+    else{fb(t,ok);}
+  });
+});
+function fb(t,ok){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';
+  document.body.appendChild(a);a.select();
+  try{document.execCommand('copy');ok();}catch(e){alert('직접 드래그해서 복사해 주세요.');}
+  document.body.removeChild(a);}
+</script>
+</body>
+</html>

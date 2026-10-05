@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5차시 — 나만의 앱 ① 경조사비 장부</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root{--ink:#1f2328;--sub:#5f6873;--line:#e3e6ea;--bg:#f6f5f1;--navy:#1f3864;--soft:#eef1f7;
+    --ok:#2f6b4f;--warn:#8a5a00;--yellow:#F2C230;--cream:#fff8e1;--blue:#1668dc;}
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.65;letter-spacing:-.01em;
+    font-family:"Pretendard Variable",Pretendard,"Malgun Gothic","맑은 고딕",-apple-system,"Segoe UI",sans-serif;}
+  .wrap{max-width:820px;margin:0 auto;padding:30px 18px 70px}
+  a{color:var(--navy)}
+
+  header{border-bottom:3px solid var(--navy);padding-bottom:14px;margin-bottom:8px}
+  .kicker{font-size:13px;font-weight:700;color:var(--navy);margin:0 0 4px}
+  h1{font-size:27px;margin:0;letter-spacing:-.03em;line-height:1.3}
+  h1 em{font-style:normal;background:linear-gradient(to top,var(--yellow) 35%,transparent 35%)}
+  .sub{font-size:13px;color:var(--sub);margin:8px 0 0}
+  .home{display:inline-block;font-size:13px;font-weight:700;text-decoration:none;margin-bottom:10px;color:var(--sub)}
+  .home:hover{color:var(--navy)}
+  .toprow{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}
+
+  /* 오늘의 한 장면 */
+  .hook{background:var(--cream);border:1px solid #efd98a;border-radius:10px;padding:16px 20px;margin:16px 0 0}
+  .hook .q{font-size:18px;font-weight:800;margin:0;letter-spacing:-.02em}
+  .hook p{margin:6px 0 0;font-size:14px;color:#5a4a12}
+  .take{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 0}
+  .take span{background:#fff;border:1px solid #e8d48a;border-radius:20px;padding:3px 12px;font-size:13px;font-weight:700}
+
+  section{background:#fff;border:1px solid var(--line);border-radius:8px;padding:20px 22px;margin:14px 0;scroll-margin-top:66px}
+  section.challenge{border:1px dashed var(--navy);background:#fcfcfe}
+  section.key{border:2px solid var(--navy)}
+  .head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .num{background:var(--navy);color:#fff;font-size:14px;font-weight:700;min-width:28px;height:28px;padding:0 6px;
+    border-radius:14px;display:flex;align-items:center;justify-content:center}
+  .num.ch{background:#fff;color:var(--navy);border:1px dashed var(--navy)}
+  .num.y{background:var(--yellow);color:var(--ink)}
+  h2{font-size:20px;margin:0;letter-spacing:-.02em}
+  .badge{font-size:11px;font-weight:700;color:var(--navy);border:1px solid var(--navy);border-radius:3px;padding:1px 6px}
+  .badge.hot{background:var(--navy);color:#fff}
+  .time{margin-left:auto;font-size:12px;color:var(--sub);white-space:nowrap}
+  .one{font-size:15px;color:var(--sub);margin:10px 0 0}
+  .only{font-size:13px;color:var(--warn);margin:8px 0 0}
+  h3{font-size:15px;margin:18px 0 0;color:var(--navy)}
+
+  .box{background:#fbfcfd;border:1px solid var(--line);border-radius:6px;margin:14px 0 0}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:7px 12px;
+    background:#f0f3f8;border-bottom:1px solid var(--line);border-radius:6px 6px 0 0}
+  .bar span{font-size:12.5px;font-weight:700;color:var(--navy)}
+  .txt{padding:14px 16px;font-size:15px;white-space:pre-wrap;word-break:keep-all}
+  button.cp{background:var(--navy);color:#fff;border:0;border-radius:4px;padding:6px 14px;
+    font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap}
+  button.cp:hover{background:#16294a}
+  button.cp.copied{background:var(--ok)}
+  .ph{color:var(--blue);font-weight:700}
+
+  /* 이렇게 나와요 (예시 결과) */
+  .ex{margin:10px 0 0;border-left:4px solid var(--yellow);background:#fffdf5;border-radius:0 6px 6px 0;padding:10px 14px;font-size:14px;color:#3d3a30;white-space:pre-wrap;word-break:keep-all}
+  .ex::before{content:"이렇게 나와요 (예시)";display:block;font-size:11px;font-weight:800;color:#9a7a00;margin-bottom:4px;letter-spacing:.02em;white-space:normal}
+
+  /* 비교 */
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 0}
+  .vs div{border:1px solid var(--line);border-radius:6px;padding:12px 14px;font-size:14px;white-space:pre-wrap;word-break:keep-all}
+  .vs .bad{background:#fbf3f3;border-color:#efd0d0}
+  .vs .good{background:#f1f8f4;border-color:#cfe6d8}
+  .vs b{display:block;font-size:12px;margin-bottom:4px;white-space:normal}
+  .vs .bad b{color:#a33}
+  .vs .good b{color:var(--ok)}
+
+  .jump{position:sticky;top:0;z-index:10;display:flex;gap:6px;flex-wrap:wrap;
+    padding:10px 0 9px;background:rgba(246,245,241,.96);border-bottom:1px solid var(--line)}
+  .jump a{min-width:42px;height:42px;padding:0 8px;border:1px solid var(--line);border-radius:8px;background:#fff;
+    color:var(--sub);text-decoration:none;font-weight:700;font-size:15px;
+    display:flex;align-items:center;justify-content:center}
+  .jump a.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+  .shot{width:100%;border:1px solid var(--line);border-radius:6px;margin-top:12px;display:block}
+  .btn,.dl{display:inline-block;margin-top:10px;background:var(--navy);color:#fff;text-decoration:none;
+    border-radius:6px;padding:10px 18px;font-size:14px;font-weight:700}
+  .btn:hover,.dl:hover{background:#16294a}
+  .btn.line{background:#fff;color:var(--navy);border:1px solid var(--navy)}
+  .btn.y{background:var(--yellow);color:var(--ink)}
+  .toprow .btn{margin-top:0}
+  .note{font-size:13.5px;color:var(--sub);margin:12px 0 0}
+  .warnnote{font-size:13.5px;color:var(--warn);margin:12px 0 0}
+  .tip{font-size:14px;background:var(--soft);border-radius:6px;padding:10px 14px;margin:12px 0 0}
+  ul.chk{list-style:none;padding:0;margin:12px 0 0}
+  ul.chk li{font-size:15px;padding:3px 0 3px 26px;position:relative}
+  ul.chk li::before{content:"☐";position:absolute;left:0;color:var(--navy)}
+  ol.step{margin:12px 0 0;padding-left:22px}
+  ol.step li{font-size:15px;padding:3px 0}
+
+  table{width:100%;border-collapse:collapse;margin-top:12px;font-size:14.5px}
+  th,td{border:1px solid var(--line);padding:8px 12px;text-align:left;vertical-align:top}
+  th{background:var(--soft);color:var(--navy);width:30%}
+  td{color:#3a4048}
+  table.plain th{width:auto}
+
+  /* OX 퀴즈 */
+  .quiz{margin:12px 0 0}
+  .quiz details{border:1px solid var(--line);border-radius:6px;padding:10px 14px;margin:8px 0 0;background:#fff}
+  .quiz summary{cursor:pointer;font-weight:700;font-size:15px;list-style:none}
+  .quiz summary::-webkit-details-marker{display:none}
+  .quiz summary::before{content:"Q ";color:var(--navy)}
+  .quiz summary::after{content:"  ▸ 정답 보기";font-size:12px;color:var(--sub);font-weight:400}
+  .quiz details[open] summary::after{content:""}
+  .quiz details p{margin:8px 0 0;font-size:14.5px;color:#3a4048}
+  .quiz .o{color:var(--ok);font-weight:800}
+  .quiz .x{color:#b33;font-weight:800}
+
+  .end{background:#fff;border:2px solid var(--navy);border-radius:8px;padding:18px 22px;margin:22px 0 0}
+  .end h2{font-size:17px;margin:0 0 6px}
+  .end p{margin:6px 0;font-size:15px}
+  .end b{color:var(--navy)}
+  .next{font-size:14px;color:var(--sub);margin:14px 0 0}
+  footer{margin-top:26px;font-size:12px;color:var(--sub);text-align:center}
+
+  @media(max-width:600px){h1{font-size:22px}h2{font-size:18px}.txt{font-size:14px}
+    .time{margin-left:0}.vs{grid-template-columns:1fr}section{padding:16px 15px}}
+  @media print{body{background:#fff}button,.jump,.dl,.btn,.home{display:none!important}section{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="home" href="index.html">← 자료실 처음으로</a>
+<header>
+  <p class="kicker">5차시 · 2026. 10. 28.(수) 18:00~20:00</p>
+  <h1>나만의 앱 ① <em>경조사비 장부</em></h1>
+  <p class="sub">파란 대괄호 <span class="ph">[이렇게]</span> 표시된 곳만 내 상황으로 바꾸세요. 오늘 나오는 것은 전부 무료로 됩니다.</p>
+  <div class="toprow">
+    <a class="btn y" href="jangbu.html" target="_blank" rel="noopener">완성된 장부 구경하기 ↗</a>
+    <a class="btn line" href="jangbu.html" download="경조사비장부.html">완성본 내려받기 ↓</a>
+  </div>
+</header>
+
+<div class="hook">
+  <p class="q">"그 집 아들 결혼식 때… 내가 얼마 했더라?"</p>
+  <p>수첩은 어디 갔는지 모르겠고, 카톡을 뒤져도 안 나옵니다. 오늘은 이 고민을 끝내는 <b>나만의 앱</b>을 직접 만듭니다. 코딩은 한 줄도 안 합니다 — 말로 부탁만 합니다.</p>
+  <div class="take"><span>오늘 가져갈 것</span><span>📒 경조사비장부.html</span><span>💾 백업 파일</span></div>
+</div>
+
+<section id="rule" data-n="규칙" class="key">
+  <div class="head"><span class="num">!</span><h2>오늘의 규칙 — 한 번에 하나씩</h2><span class="time">읽고 시작</span></div>
+  <ol class="step">
+    <li><b>새 대화를 열지 마세요.</b> 오늘은 대화창 하나로 끝까지 갑니다.</li>
+    <li>안 될 때 <b>"다시 만들어줘" 금지</b> → <b>"○○ 부분만 고쳐줘"</b></li>
+    <li>단계가 끝날 때마다 아티팩트 오른쪽 위 <b>다운로드</b> — 되돌아갈 자리입니다.</li>
+    <li>막히면 위의 <b>완성본 내려받기</b>로 받아서 다음 단계부터 같이 갑니다.</li>
+  </ol>
+  <p class="warnnote">⚠ 수업 중에는 <b>가상 이름 · 가상 금액</b>으로만 연습합니다. 진짜 지인 이름은 집에서 넣으세요.</p>
+</section>
+
+<nav class="jump">
+  <a href="#rule">규칙</a>
+  <a href="#s0">0</a>
+  <a href="#s1">1</a>
+  <a href="#s2">2</a>
+  <a href="#s3">3</a>
+  <a href="#s4">4</a>
+  <a href="#s5">5</a>
+  <a href="#s6">6</a>
+  <a href="#s7">7</a>
+  <a href="#s8">도전</a>
+  <a href="#s9">퀴즈</a>
+</nav>
+
+
+<section id="s0" data-n="0">
+  <div class="head"><span class="num y">0</span><h2>오늘의 생활 프롬프트 — 몸풀기</h2><span class="time">5분</span></div>
+  <div class="box"><div class="bar"><span>몸풀기 — 요즘 경조사비, 얼마가 보통이야?</span></div>
+<div class="txt">요즘 경조사비를 보통 얼마 하는지 관계별로 표로 정리해줘.
+관계는 가족 · 친척 · 친구 · 직장 동료 · 이웃, 행사는 결혼 · 장례 · 돌잔치.
+지역마다 사람마다 다르다는 것도 한 줄 덧붙여줘.</div></div>
+  <p class="note">정답이 있는 질문이 아닙니다. 옆 사람과 "우리 동네는 이 정도야" 이야기 나눠 보세요 😄</p>
+</section>
+
+<section id="s1" data-n="1">
+  <div class="head"><span class="num">1</span><h2>무엇을 적을까 — 여섯 칸</h2><span class="time">10분</span></div>
+  <table>
+    <tr><th>① 이름</th><td>홍길동</td></tr>
+    <tr><th>② 관계</th><td>가족 · 친척 · 친구 · 직장 · 이웃 · 기타 <b>중에서 고르기</b></td></tr>
+    <tr><th>③ 행사</th><td>결혼 · 장례 · 돌잔치 · 칠순팔순 · 개업 · 기타 <b>중에서 고르기</b></td></tr>
+    <tr><th>④ 날짜</th><td>2026-10-28</td></tr>
+    <tr><th>⑤ 금액</th><td>50,000원</td></tr>
+    <tr><th>⑥ 주고받음</th><td><b>냈음</b> 또는 <b>받았음</b></td></tr>
+  </table>
+  <div class="tip">💡 "고르기"로 해 두면 타이핑이 줄고, 나중에 <b>행사별 합계</b>를 낼 수 있습니다. 더 적고 싶은 칸이 있으면(메모 등) 프롬프트에 한 줄 보태세요.</div>
+</section>
+
+<section id="s2" data-n="2" class="key">
+  <div class="head"><span class="num">2</span><h2>1단계 — 적고 목록 보기</h2><span class="badge hot">오늘의 핵심</span><span class="time">22분</span></div>
+  <p class="one">복사한 뒤 <b>이름부터 내 이름으로</b> 고치세요.</p>
+  <div class="box"><div class="bar"><span>프롬프트 1 — 장부 앱 만들기</span></div>
+<div class="txt">경조사비 장부 웹앱을 아티팩트로 만들어줘. 제목은 <span class="ph">[강지애]</span>의 경조사비 장부 라고 해줘.
+
+[적는 칸]
+- 이름
+- 관계: 가족, 친척, 친구, 직장, 이웃, 기타 중에서 고르기
+- 행사: 결혼, 장례, 돌잔치, 칠순팔순, 개업, 기타 중에서 고르기
+- 날짜
+- 금액 (원)
+- 주고받음: 냈음, 받았음 중에서 고르기
+
+[적기]
+- 적기 단추를 누르면 아래 목록에 한 줄씩 쌓이게 해줘. 최근 날짜가 맨 위.
+- 금액은 50,000원 처럼 쉼표를 찍어줘.
+- 냈음은 파란 글씨, 받았음은 초록 글씨로.
+- 줄마다 지우기 단추. 지우기 전에 정말 지울지 한 번 물어봐줘.
+
+[연습용]
+- 연습 기록 넣기 단추를 누르면 가상의 기록 10개가 들어가게 해줘. 이름은 제주 느낌의 가상 이름으로.
+
+[저장]
+- 적은 내용은 이 브라우저에 저장해서, 창을 닫았다 열어도 남아 있게 해줘.
+- 미리보기에서 저장이 안 되면 오류 없이 그냥 넘어가게 해줘.
+
+[꼭 지킬 것]
+- html 파일 하나로, 인터넷에서 따로 불러오는 것 없이.
+- 글씨는 크게, 단추에는 무슨 일이 일어나는지 한글로 적어줘.</div></div>
+  <ul class="chk">
+    <li>제목에 <b>내 이름</b>이 떴는지 — 내가 만든 앱입니다!</li>
+    <li><b>연습 기록 넣기</b> → 10줄이 쌓이는지</li>
+    <li>가상 기록 하나 직접 적어 보기 → 맨 위에 올라오는지</li>
+    <li>한 줄 지우기 → "정말 지울까요?"가 나오는지</li>
+  </ul>
+  <p class="note">💾 저장 ① — 잘 되면 아티팩트 오른쪽 위 <b>다운로드</b>.</p>
+  <div class="box"><div class="bar"><span>안 될 때만 — 화면이 하얗게 나오면</span></div>
+<div class="txt">화면이 하얗게 나와. 무슨 문제인지 찾아서 고쳐줘. 지금 있는 기능은 그대로 둬.</div></div>
+</section>
+
+<section id="s3" data-n="3">
+  <div class="head"><span class="num">3</span><h2>2단계 — 이름으로 찾기</h2><span class="time">15분</span></div>
+  <div class="box"><div class="bar"><span>프롬프트 2 — 찾기</span></div>
+<div class="txt">이름으로 찾는 기능을 더해줘. 앞에서 만든 것은 그대로 두고 이것만 더해줘.
+- 목록 위에 찾기 칸을 크게 넣어줘.
+- 이름을 한 글자만 쳐도 바로 걸러지게 해줘.
+- 찾은 사람과 주고받은 합계를 위에 크게 보여줘. 내가 낸 돈 합계, 받은 돈 합계를 따로.</div></div>
+  <ul class="chk">
+    <li>연습 기록의 이름 중 <b>성 한 글자</b>만 쳐 보기 → 걸러지는지</li>
+    <li>"낸 돈 ○원 · 받은 돈 ○원"이 나오는지</li>
+  </ul>
+  <div class="ex">🔍 "고" 검색 → 고한라 님
+내가 낸 돈 150,000원 · 받은 돈 100,000원</div>
+  <p class="note">💾 저장 ② — 다시 <b>다운로드</b>.</p>
+</section>
+
+<section id="s4" data-n="4">
+  <div class="head"><span class="num">4</span><h2>3단계 — 연도별 · 행사별 합계</h2><span class="time">15분</span></div>
+  <div class="box"><div class="bar"><span>프롬프트 3 — 합계</span></div>
+<div class="txt">합계를 보는 기능을 더해줘. 앞에서 만든 것은 그대로 두고 이것만 더해줘.
+- 연도를 고르면 그 해에 낸 돈 합계와 받은 돈 합계를 크게 보여줘.
+- 그 아래에 행사별(결혼, 장례, 돌잔치…) 합계를 표로 보여줘.
+- 맨 위에는 '올해 낸 돈 ○○원' 을 한 줄로 크게.</div></div>
+  <ul class="chk">
+    <li>연도를 바꿔 보면 숫자가 바뀌는지</li>
+    <li>행사별 합계를 더하면 전체 합계와 같은지 — <b>손으로 한 번 검산</b></li>
+  </ul>
+  <p class="tip">💡 여기 합계는 <b>앱이 계산기처럼</b> 계산하므로 정확합니다. 반대로 채팅창에서 클로드에게 "더해줘" 하면 가끔 틀립니다 — 계산은 앱에 맡기세요.</p>
+  <p class="note">💾 저장 ③ — <b>다운로드</b>.</p>
+</section>
+
+<section id="s5" data-n="5">
+  <div class="head"><span class="num">5</span><h2>4단계 — 큰 글씨 · 큰 단추로 다듬기</h2><span class="time">12분</span></div>
+  <div class="box"><div class="bar"><span>프롬프트 4 — 보기 좋게</span></div>
+<div class="txt">기능은 그대로 두고 보기만 바꿔줘.
+- 글씨를 지금보다 크게, 단추도 크고 둥글게.
+- 폰에서 열어도 한 손으로 쓰기 좋게.
+- 색은 <span class="ph">[따뜻한 베이지 바탕에 진한 초록 단추]</span> 로.</div></div>
+  <p class="note">색은 말로 편하게 — "바탕을 연한 하늘색으로" · "좀 더 차분하게". 사람마다 다르게 나오는 게 정상입니다.</p>
+  <p class="note">💾 저장 ④ — <b>다운로드</b>. 이 파일이 오늘의 완성본입니다.</p>
+</section>
+
+<section id="s6" data-n="6" class="key">
+  <div class="head"><span class="num">6</span><h2>백업 받기 · 불러오기 — 꼭 해야 하는 이유</h2><span class="badge hot">중요</span><span class="time">11분</span></div>
+  <div class="vs">
+    <div class="bad"><b>⚠ 알아 둘 것</b>장부 내용은 <b>이 컴퓨터의 이 크롬</b>에만 저장됩니다. 폰에서 열면 빈 장부입니다.</div>
+    <div class="good"><b>😊 좋은 점</b>내 경조사 기록이 <b>남의 서버에 올라가지 않습니다</b>. 나만 봅니다.</div>
+  </div>
+  <p class="one">그래서 <b>백업 파일</b>로 옮깁니다. 컴퓨터에서 백업을 받아 폰에서 불러오면 이어서 씁니다.</p>
+  <div class="box"><div class="bar"><span>프롬프트 5 — 백업</span></div>
+<div class="txt">백업 기능을 더해줘. 앞에서 만든 것은 그대로 두고 이것만 더해줘.
+- '백업 받기' 단추: 장부 내용 전체를 파일 하나로 내려받게. 파일 이름에 오늘 날짜를 넣어줘.
+- '백업 불러오기' 단추: 받아 둔 파일을 고르면 장부에 다시 들어오게.
+- 불러올 때 지금 목록을 바꿀지, 합칠지 물어봐줘.</div></div>
+  <h3>확인은 내 컴퓨터에서</h3>
+  <ol class="step">
+    <li>아티팩트 <b>다운로드</b> → 받은 파일 더블클릭 → 크롬에서 열기</li>
+    <li><b>연습 기록 넣기</b> → <b>백업 받기</b> → 다운로드 폴더에 파일이 생기는지</li>
+    <li>기록을 몇 줄 지운 뒤 <b>백업 불러오기</b> → 되살아나면 성공 🎉</li>
+  </ol>
+  <p class="note">아티팩트 미리보기 안에서는 저장·내려받기가 막힐 수 있습니다. <b>내려받은 파일로</b> 확인하세요.</p>
+</section>
+
+<section id="s7" data-n="7">
+  <div class="head"><span class="num">7</span><h2>패들렛에 내 장부 자랑하기</h2><span class="time">10분</span></div>
+  <ul class="chk">
+    <li>내 장부 화면을 <b>윈도우 + Shift + S</b> 로 찍기</li>
+    <li>우리 반 패들렛 → "5차시 — <span class="ph">[내 이름]</span>의 장부" + 사진 붙여넣기</li>
+    <li>최종 .html 파일은 <b>「문서」 폴더</b>로 옮겨 두기 — 다음 시간에 인터넷에 올립니다!</li>
+  </ul>
+  <a class="btn" href="https://padlet.com/PADLET-ADDRESS" target="_blank" rel="noopener">우리 반 패들렛 열기 ↗</a>
+</section>
+
+<section id="s8" data-n="도전" class="challenge">
+  <div class="head"><span class="num ch">+</span><h2>기능 하나 더 붙이기</h2><span class="badge">도전</span><span class="time">여유</span></div>
+  <p class="only">※ 먼저 끝낸 분만 — 하나만 골라 보내세요.</p>
+  <div class="box"><div class="bar"><span>도전 ① 받은 만큼 갚았나?</span></div>
+<div class="txt">사람마다 받은 돈과 낸 돈을 비교해서, 받은 돈이 더 많은 사람만 모아 보는 단추를 더해줘. 앞에서 만든 것은 그대로 둬.</div></div>
+  <div class="box"><div class="bar"><span>도전 ② 메모 칸</span></div>
+<div class="txt">줄마다 짧은 메모를 적을 수 있게 해줘. 예: 화환도 보냄, 직접 못 감. 앞에서 만든 것은 그대로 둬.</div></div>
+  <div class="box"><div class="bar"><span>도전 ③ 엑셀로 보기</span></div>
+<div class="txt">장부 전체를 엑셀에서 열 수 있는 파일(CSV)로 내려받는 단추를 더해줘. 한글이 깨지지 않게. 앞에서 만든 것은 그대로 둬.</div></div>
+</section>
+
+<section id="s9" data-n="퀴즈">
+  <div class="head"><span class="num y">?</span><h2>오늘의 OX 퀴즈</h2><span class="time">마무리</span></div>
+  <div class="quiz">
+    <details><summary>앱에 기능을 더할 때는 "처음부터 다시 만들어줘"라고 해야 깔끔하다.</summary>
+      <p><span class="x">X</span> — <b>"앞에서 만든 것은 그대로 두고 이것만 더해줘"</b>가 정답입니다.</p></details>
+    <details><summary>컴퓨터 장부에 적은 내용은 폰에서 열어도 자동으로 보인다.</summary>
+      <p><span class="x">X</span> — 이 브라우저에만 저장됩니다. <b>백업 받기 → 폰에서 불러오기</b>로 옮깁니다.</p></details>
+    <details><summary>단계가 끝날 때마다 다운로드해 두면, 망가져도 되돌아갈 수 있다.</summary>
+      <p><span class="o">O</span> — 게임의 '저장 지점'과 같습니다.</p></details>
+  </div>
+</section>
+
+<div class="end">
+  <h2>오늘 기억할 것 세 줄</h2>
+  <p><b>1.</b> 앱은 한 번에 안 만든다 — <b>기능 하나씩</b> 붙인다</p>
+  <p><b>2.</b> 부탁은 <b>"앞에서 만든 것은 그대로 두고 이것만 더해줘"</b></p>
+  <p><b>3.</b> 내 기록은 내 브라우저에 — <b>백업 파일</b>로 옮긴다</p>
+  <p class="next">📣 다음 시간(10.30 금, 마지막!) — <b>PDF 편집기</b>를 만들고, 오늘 장부와 함께 <b>인터넷에 올려 폰에서</b> 씁니다. 오늘 만든 장부 .html 파일을 꼭 챙겨 오세요(노트북 「문서」 폴더). 2차시에 만든 <b>넷리파이 비밀번호</b>도요!</p>
+</div>
+
+<footer>클로드로 만드는 내 일상 — 발표자료부터 나만의 앱까지 · 5차시 &nbsp;|&nbsp; 제주도민대학 · 강사 강지애</footer>
+</div>
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.jump a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  function mark(){var i=0;for(var k=0;k<secs.length;k++){if(secs[k]&&secs[k].getBoundingClientRect().top<=90)i=k;}
+    links.forEach(function(a,k){a.classList.toggle('on',k===i);});}
+  window.addEventListener('scroll',mark,{passive:true});mark();
+})();
+document.querySelectorAll('.box').forEach(function(box){
+  var bar=box.querySelector('.bar');if(!bar||bar.querySelector('button'))return;
+  var b=document.createElement('button');b.className='cp';b.type='button';b.textContent='복사';bar.appendChild(b);
+});
+document.querySelectorAll('button.cp').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.closest('.box').querySelector('.txt').innerText;
+    var ok=function(){b.textContent='복사됨!';b.classList.add('copied');
+      setTimeout(function(){b.textContent='복사';b.classList.remove('copied');},1500);};
+    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(ok,function(){fb(t,ok);});}
+    else{fb(t,ok);}
+  });
+});
+function fb(t,ok){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';
+  document.body.appendChild(a);a.select();
+  try{document.execCommand('copy');ok();}catch(e){alert('직접 드래그해서 복사해 주세요.');}
+  document.body.removeChild(a);}
+</script>
+</body>
+</html>
