@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>나의 프롬프트 보관함</title>
+<!--
+  [클로드에게] 이 파일은 프롬프트 보관함 템플릿입니다.
+  아래 PROMPTS 목록만 '프롬프트' 폴더의 TXT 내용으로 바꿔 채우고, 나머지 모양은 그대로 두세요.
+  TXT 형식: 제목 / 분류 / 만든 날 / --- / 본문 / --- / 메모
+  OWNER에는 사용자 이름(또는 별명)을 넣으세요.
+-->
+<style>
+  :root{
+    --bg:#F7F8F6; --card:#FFFFFF; --ink:#1F2A24; --muted:#5E6A63; --line:#DDE3DE;
+    --main:#1F5E45; --main-soft:#E5F0EA; --accent:#E8792B;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif;font-size:18px;line-height:1.6}
+  header{background:var(--main);color:#fff;padding:28px 20px 22px}
+  .wrap{max-width:860px;margin:0 auto;padding:0 16px}
+  header .wrap{padding:0}
+  h1{margin:0;font-size:30px}
+  header p{margin:6px 0 0;opacity:.9;font-size:16px}
+  .tools{position:sticky;top:0;background:var(--bg);padding:16px 0 10px;z-index:2}
+  #q{width:100%;font-size:19px;padding:14px 16px;border:2px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+  #q:focus{outline:none;border-color:var(--main)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .chip{border:2px solid var(--main);background:#fff;color:var(--main);border-radius:999px;padding:6px 16px;font-size:16px;cursor:pointer;font-family:inherit}
+  .chip.on{background:var(--main);color:#fff}
+  #count{color:var(--muted);font-size:15px;margin:6px 2px 0}
+  .list{display:grid;gap:14px;padding:6px 0 40px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px}
+  .top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .tag{background:var(--main-soft);color:var(--main);font-size:14px;font-weight:bold;border-radius:8px;padding:2px 10px}
+  .card h2{margin:0;font-size:21px;flex:1 1 auto}
+  .memo{color:var(--muted);font-size:16px;margin:6px 0 10px}
+  details summary{cursor:pointer;color:var(--main);font-size:16px}
+  pre{white-space:pre-wrap;word-break:keep-all;background:#FAFBFA;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-family:inherit;font-size:17px;margin:10px 0 0}
+  .copy{margin-top:12px;background:var(--accent);color:#fff;border:0;border-radius:10px;padding:12px 22px;font-size:18px;font-weight:bold;cursor:pointer;font-family:inherit}
+  .copy.done{background:var(--main)}
+  .empty{text-align:center;color:var(--muted);padding:40px 0}
+  footer{color:var(--muted);font-size:14px;text-align:center;padding:10px 0 30px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1 id="title">나의 프롬프트 보관함</h1>
+  <p>찾고 → 복사해서 → 클로드에 붙여 넣으세요</p>
+</div></header>
+
+<div class="wrap">
+  <div class="tools">
+    <input id="q" type="search" placeholder="찾을 말 (예: 문자, 요약)" aria-label="프롬프트 검색">
+    <div class="chips" id="chips"></div>
+    <div id="count"></div>
+  </div>
+  <div class="list" id="list"></div>
+  <footer>제주도민대학 · 클로드가 내 컴퓨터로 들어옵니다</footer>
+</div>
+
+<script>
+const OWNER = "강사";
+const PROMPTS = [
+  /* ▼ 여기부터 채우기 */
+  {"제목": "감사 인사 문자", "분류": "글쓰기", "본문": "[역할] 정 많은 이웃\n[할 일] 도움을 준 ○○님께 고마운 마음을 전하는 문자를 써 줘.\n[조건] 무엇이 고마웠는지 구체적으로 / 부담 주지 않게 / 2~3문장\n[결과 모양] 문자 1개", "메모": "작은 도움을 받았을 때"},
+  {"제목": "경조사 문자", "분류": "글쓰기", "본문": "[역할] 예의 바르고 따뜻한 말투의 비서\n[할 일] 지인 ○○님께 보낼 경조사 문자를 써 줘. (결혼 / 부고 / 돌잔치 중 하나)\n[조건] 3문장 이내 / 종교 표현 빼기 / 너무 딱딱하지 않게\n[결과 모양] 바로 복사해 보낼 수 있는 문자 2가지", "메모": "경조사 소식을 들었을 때"},
+  {"제목": "모임 안내문", "분류": "글쓰기", "본문": "[역할] 동네 모임 총무\n[할 일] 우리 모임 안내문을 써 줘. 날짜 ○○, 장소 ○○, 준비물 ○○.\n[조건] 카톡으로 보내기 좋게 짧게 / 날짜와 장소는 맨 위에 / 이모티콘 2개 이하\n[결과 모양] 단톡방용 안내문 1개와 전날 보낼 알림 문자 1개", "메모": "동창회·동호회·반상회 안내할 때"},
+  {"제목": "어려운 말 쉽게", "분류": "배움", "본문": "[역할] 초등학생에게도 설명하는 친절한 선생님\n[할 일] ○○라는 말이 무슨 뜻인지 쉽게 설명해 줘.\n[조건] 비유 하나 넣기 / 3줄 이내 / 예시 하나\n[결과 모양] 쉬운 설명과 생활 속 예시", "메모": "뉴스나 안내문에서 모르는 말이 나왔을 때"},
+  {"제목": "휴대폰 기능 따라 하기", "분류": "배움", "본문": "[역할] 천천히 알려 주는 디지털 도우미\n[할 일] 휴대폰에서 ○○하는 방법을 알려 줘. (갤럭시 / 아이폰)\n[조건] 한 단계에 한 동작 / 버튼 이름은 화면에 보이는 그대로 / 7단계 이내\n[결과 모양] 번호 붙은 단계 목록", "메모": "휴대폰 사용법이 궁금할 때"},
+  {"제목": "가족 여행 일정", "분류": "생활", "본문": "[역할] 느긋한 여행 안내자\n[할 일] ○○로 가는 ○박 ○일 가족 여행 일정을 짜 줘.\n[조건] 하루 이동은 2시간 이내 / 어르신 걷기 편한 곳 / 쉬는 시간 넣기\n[결과 모양] 날짜별 일정 표와 준비물 목록", "메모": "여행 계획을 세울 때"},
+  {"제목": "두 제품 비교", "분류": "생활", "본문": "[역할] 솔직한 소비 상담사\n[할 일] ○○와 ○○ 두 제품을 비교해서 우리 집에 맞는 걸 골라 줘.\n[조건] 가격·크기·전기료·AS를 비교 / 광고 문구는 믿지 말기 / 모르면 모른다고 하기\n[결과 모양] 비교 표와 추천 한 줄 (이유 포함)", "메모": "가전·가구를 살까 말까 고민될 때"},
+  {"제목": "장보기 목록과 식단", "분류": "생활", "본문": "[역할] 알뜰한 살림 도우미\n[할 일] 우리 집 ○명이 먹을 일주일 저녁 식단과 장보기 목록을 만들어 줘.\n[조건] 제철 재료 위주 / 겹치는 재료 활용 / 조리 30분 이내\n[결과 모양] 요일별 식단 표와 마트 코너별 장보기 목록", "메모": "주말에 장 보기 전"},
+  {"제목": "계약서 확인할 점", "분류": "서류", "본문": "[역할] 조심스럽고 꼼꼼한 생활 법률 안내자\n[할 일] 이 계약서에서 내가 꼭 확인해야 할 부분을 찾아 줘.\n[조건] 위약금·자동 연장·해지 조건 먼저 / 법률 판단은 하지 말고 '확인 필요'로 표시\n[결과 모양] 확인할 점 5개 목록과 '전문가에게 물어볼 질문' 2개", "메모": "휴대폰·렌털·보험 계약 전에"},
+  {"제목": "긴 공문 한 장 요약", "분류": "서류", "본문": "[역할] 동네 주민센터 직원처럼 쉽게 설명해 주는 도우미\n[할 일] 내가 올린 공문(또는 안내문)을 한 장으로 요약해 줘.\n[조건] 중요한 날짜와 금액은 굵게 / 어려운 말은 쉬운 말로 바꾸기 / 5줄 이내\n[결과 모양] '내가 해야 할 일' 목록과 '마감일' 한 줄", "메모": "주민센터·학교·보험사에서 온 긴 안내문을 받았을 때"},
+  {"제목": "서류 사진 이름 정리", "분류": "서류", "본문": "[역할] 꼼꼼한 사무 보조\n[할 일] 폴더에 있는 서류 사진들의 이름을 알아보기 쉽게 바꿔 줘.\n[조건] 이름은 '연도-월 서류종류' 모양으로 / 흐린 사진은 따로 모으기 / 지우지 않기\n[결과 모양] 바뀐 이름 목록 표", "메모": "휴대폰으로 찍은 영수증·고지서 사진이 쌓였을 때"},
+  {"제목": "모임 메모에서 일정 뽑기", "분류": "일정", "본문": "[역할] 빠짐없이 챙기는 일정 비서\n[할 일] 내가 붙여 넣은 모임 메모에서 날짜가 있는 일정만 뽑아 줘.\n[조건] 날짜·시간·장소를 꼭 적기 / 날짜가 애매하면 '확인 필요' 표시\n[결과 모양] 일정 표 (날짜 / 시간 / 할 일 / 장소)", "메모": "단톡방 공지나 회의록을 받았을 때"},
+  {"제목": "이번 주 일정 한 장", "분류": "일정", "본문": "[역할] 아침마다 브리핑해 주는 비서\n[할 일] 내 구글 달력에서 이번 주 일정을 한 장으로 정리해 줘.\n[조건] 요일별로 / 준비물이 필요한 일정은 표시 / 글씨 크게\n[결과 모양] 요일별 목록과 '이번 주 꼭 챙길 것' 3개", "메모": "월요일 아침마다"}
+  /* ▲ 여기까지 */
+];
+
+const ORDER = ["전체","서류","일정","글쓰기","생활","배움","기타"];
+let cat = "전체";
+if (OWNER) document.getElementById("title").textContent = OWNER + "의 프롬프트 보관함";
+const $q = document.getElementById("q"), $list = document.getElementById("list"),
+      $chips = document.getElementById("chips"), $count = document.getElementById("count");
+
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+
+function drawChips(){
+  const used = new Set(PROMPTS.map(p=>p.분류));
+  const extra = [...used].filter(c=>!ORDER.includes(c));   // 새로 만든 분류도 단추로
+  $chips.innerHTML = ORDER.filter(c=>c==="전체"||used.has(c)).concat(extra)
+    .map(c=>`<button class="chip${c===cat?" on":""}" data-c="${c}">${c}</button>`).join("");
+}
+function draw(){
+  const q = $q.value.trim();
+  const rows = PROMPTS.filter(p => (cat==="전체"||p.분류===cat) &&
+    (!q || (p.제목+" "+p.본문+" "+(p.메모||"")).includes(q)));
+  $count.textContent = `${rows.length}개`;
+  $list.innerHTML = rows.length ? rows.map((p,i)=>`
+    <article class="card">
+      <div class="top"><span class="tag">${esc(p.분류)}</span><h2>${esc(p.제목)}</h2></div>
+      ${p.메모?`<div class="memo">${esc(p.메모)}</div>`:""}
+      <details><summary>내용 보기</summary><pre>${esc(p.본문)}</pre></details>
+      <button class="copy" data-i="${PROMPTS.indexOf(p)}">복사하기</button>
+    </article>`).join("") : `<div class="empty">찾는 프롬프트가 없어요</div>`;
+}
+function copyText(t){
+  const old=()=>{const a=document.createElement("textarea"); a.value=t; document.body.appendChild(a); a.select();
+    document.execCommand("copy"); a.remove();};
+  if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(t).catch(old);
+  old(); return Promise.resolve();
+}
+$chips.addEventListener("click",e=>{const b=e.target.closest(".chip"); if(!b)return; cat=b.dataset.c; drawChips(); draw();});
+$q.addEventListener("input",draw);
+$list.addEventListener("click",e=>{
+  const b=e.target.closest(".copy"); if(!b)return;
+  copyText(PROMPTS[b.dataset.i].본문).then(()=>{b.textContent="복사했어요!"; b.classList.add("done");
+    setTimeout(()=>{b.textContent="복사하기"; b.classList.remove("done");},1500);});
+});
+drawChips(); draw();
+</script>
+</body>
+</html>

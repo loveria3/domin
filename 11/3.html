@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3차시 — QR로 여는 웹페이지 만들기</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="lesson.css">
+</head>
+<body>
+<div class="wrap">
+<a class="home" href="index.html">← 자료실 처음으로</a>
+<header>
+  <p class="kicker">3차시 · 2026. 11. 21.(토) 10:00~12:00</p>
+  <h1>찍으면 열리는 <em>QR 안내 페이지</em> 만들기</h1>
+  <p class="sub">종이 홍보물은 자리가 좁습니다. 자세한 안내는 <b>웹페이지</b>에 담고, 홍보물에는 <b>QR 하나</b>만 넣습니다.</p>
+  <div class="toprow">
+    <a class="btn y" href="files/olle-qr-example.pdf" target="_blank" rel="noopener">완성 예시 먼저 보기 ↗</a>
+    <a class="btn line" href="files/olle-practice.pptx" download>실습용 홍보물(pptx) ↓</a>
+  </div>
+</header>
+
+<div class="hook">
+  <p class="q">홍보물 한 장에 코스·준비물·주의사항·문의처까지 다 넣으려다 글씨가 깨알만 해진 적 있나요?</p>
+  <p>오늘은 클로드가 <b>홍보물 파일을 직접 읽고</b> → 자세한 <b>안내 웹페이지</b>를 만들고 → 그 주소의 <b>QR을 홍보물에 넣어</b> 새 파일로 저장합니다. 내용이 바뀌어도 <b>QR은 그대로</b> 씁니다.</p>
+  <div class="take"><span>오늘 가져갈 것</span><span>🌐 안내 웹페이지 주소</span><span>🔳 QR 들어간 홍보물</span><span>🔁 고쳐 다시 올리는 법</span></div>
+</div>
+
+<nav class="jump">
+  <a href="#s0">0</a><a href="#s1">1</a><a href="#s2">2</a><a href="#s3">3</a><a href="#s4">4</a>
+  <a href="#s5">5</a><a href="#s6">6</a><a href="#s7">도전</a><a href="#s8">퀴즈</a>
+</nav>
+
+<section id="s0" data-n="0">
+  <div class="head"><span class="num y">0</span><h2>보관함에서 꺼내 쓰기 — 오늘의 첫 부탁</h2><span class="time">3분</span></div>
+  <p class="one">프롬프트 폴더의 「글쓰기_모임 안내문.txt」로 시작합니다. 오늘 만들 <b>안내 페이지</b>와 같은 내용을 <b>카톡용 글</b>로 먼저 받아 봐요.</p>
+  <div class="box"><div class="bar"><span>글쓰기_모임 안내문</span></div>
+<div class="txt">너는 동네 모임 총무야.
+우리 모임 안내문을 써 줘. 모임 <span class="ph">[한라마을 돌담 올레 함께 걷기]</span>, 날짜 <span class="ph">[12월 12일 토요일 오전 9시]</span>, 장소 <span class="ph">[마을회관 앞]</span>, 준비물 <span class="ph">[운동화, 물, 바람막이]</span>.
+카톡으로 보내기 좋게 짧게, 날짜와 장소는 맨 위에, 이모티콘 2개 이하.</div></div>
+</section>
+
+<section id="s1" data-n="1">
+  <div class="head"><span class="num">1</span><h2>준비 — 홍보물을 작업실에 넣기</h2><span class="time">5분</span></div>
+  <ol class="step">
+    <li>위의 <b>실습용 홍보물(pptx)</b> 내려받기</li>
+    <li><b>내작업실</b> 안에 <b>홍보물</b> 폴더를 만들고 그 안에 넣기</li>
+    <li>코워크에서 폴더가 <b>내작업실</b>로 연결되어 있는지 확인</li>
+  </ol>
+  <p class="note">가상 예시 「한라마을 돌담 올레」 홍보물입니다. 내 모임·가게 홍보물이 있다면 그걸 써도 됩니다 (개인정보는 빼고).</p>
+</section>
+
+<section id="s2" data-n="2" class="key">
+  <div class="head"><span class="num">2</span><h2>홍보물을 읽혀서 안내 웹페이지 만들기</h2><span class="badge hot">핵심</span><span class="time">20분</span></div>
+  <p class="one">10월엔 내용을 <b>직접 써서</b> 부탁했지요. 오늘은 클로드가 <b>파일을 열어 읽고</b> 거기에 없는 자세한 안내까지 채웁니다.</p>
+  <div class="box"><div class="bar"><span>프롬프트 1 — 안내 웹페이지 (통째로 복사)</span></div>
+<div class="txt">너는 마을 행사 안내 페이지를 잘 만드는 웹 디자이너야.
+'홍보물' 폴더의 pptx 파일을 열어 내용을 읽고, 이 홍보물의 QR로 연결될 '세부 안내' 웹페이지를 만들어줘.
+
+[내용]
+- 맨 위: 행사 이름, 한 줄 소개, 다음 행사 날짜
+- 걷는 순서: 지점마다 거리와 한 줄 설명을 카드로
+- 준비물, 걷기 약속, 비 오는 날 안내, 문의
+- 홍보물에 없는 것: <span class="ph">[11월 제주 날씨 옷차림 팁, 처음 오는 분께 한마디]</span>
+
+[모양]
+- 휴대폰으로 QR을 찍어 보는 사람을 위해 큰 글씨, 세로 한 줄
+- 분위기는 <span class="ph">[돌담의 검정과 귤빛 주황]</span>
+
+[꼭 지킬 것]
+- '올레안내' 폴더를 만들고 그 안에 index.html 하나로 저장
+- 홍보물에 없는 날짜·전화번호는 지어내지 말 것</div></div>
+  <div class="ex">'올레안내/index.html'을 저장했어요.
+- 맨 위: 🍊 한라마을 돌담 올레 — "돌담 따라, 귤밭 따라 우리 동네 한 바퀴"
+         다음 함께 걷기: 매월 둘째 토요일 오전 9시 · 마을회관 앞
+- 걷는 순서 카드 6장: ① 마을회관(출발) → ② 팽나무 쉼터 0.8km → … → ⑥ 마을회관(도착)
+- 준비물 · 걷기 약속 · 비 오는 날(다음 주로 연기)
+- 추가: "11월 제주는 바람이 세요. 얇은 옷을 여러 겹 입으세요"
+※ 홍보물에 문의 전화번호가 없어서 '한라마을 걷기모임'으로만 적었어요.</div>
+  <ul class="chk">
+    <li>내작업실 → 올레안내 → <b>index.html</b> 더블클릭해서 크롬에서 열기</li>
+    <li>크롬에서 <b>F12 → 휴대폰 모양 아이콘</b>을 누르면 폰 화면으로 볼 수 있어요 (선택)</li>
+    <li>고칠 곳은 1차시 공식대로 — <b>"[어디]를 [어떻게]. 나머지는 그대로"</b></li>
+  </ul>
+  <div class="biz">
+    <p class="bt">회사에선 이렇게 — QR 안내 페이지 <span class="badge biz">업무 활용</span></p>
+    <ul>
+      <li><b>행사·교육 안내</b> — 포스터엔 QR만, 시간표·오시는 길·주차는 페이지에</li>
+      <li><b>제품 설명서</b> — 상자에 QR, 사용법·영상·AS 안내는 페이지에</li>
+      <li><b>매장 메뉴 · 채용 공고 · 명함</b> — 바뀌는 내용은 페이지에서만 고치기</li>
+    </ul>
+    <p>회사에서는 <b>Canva 커넥터</b>로 홍보물 디자인을 불러와 고치거나, <b>Google Drive 커넥터</b>로 공유 폴더의 원본 파일을 바로 읽어 같은 작업을 합니다.</p>
+  </div>
+</section>
+
+<section id="s3" data-n="3">
+  <div class="head"><span class="num">3</span><h2>인터넷에 올리기 — 넷리파이</h2><span class="time">15분</span></div>
+  <p class="one">10월에 해 본 분은 빠르게, 처음인 분은 천천히. <b>무료</b>이고 카드 등록이 없습니다.</p>
+  <table>
+    <tr><th>가입 (처음만)</th><td><b>app.netlify.com/signup</b> → <b>Google로 가입</b>이 가장 간단 (10월에 가입했다면 로그인)</td></tr>
+    <tr><th>올리기</th><td><b>app.netlify.com/drop</b> → <b>올레안내 폴더 통째로</b> 끌어다 놓기</td></tr>
+    <tr><th>주소 바꾸기</th><td><b>Project configuration → Change project name</b> → 영어 소문자로 예) <b>halla-olle-1121</b></td></tr>
+    <tr><th>확인</th><td><b>halla-olle-1121.netlify.app</b> 을 휴대폰으로 열어 보기</td></tr>
+  </table>
+  <p class="warnnote">⚠ 올린 페이지는 <b>주소를 아는 누구나</b> 볼 수 있습니다. 개인 전화번호·집 주소는 넣지 마세요.</p>
+</section>
+
+<div class="rest">☕ 쉬는 시간 10분 — 넷리파이 가입·올리기가 안 된 분은 이때 도와드립니다</div>
+
+<section id="s4" data-n="4" class="key">
+  <div class="head"><span class="num">4</span><h2>QR 코드를 홍보물에 넣기</h2><span class="badge hot">핵심</span><span class="time">20분</span></div>
+  <p class="one">QR 만들기부터 홍보물에 붙이기까지 <b>클로드가 파일로</b> 해 줍니다. 원본은 그대로 두고 <b>새 파일</b>로 저장합니다.</p>
+  <div class="box"><div class="bar"><span>프롬프트 2 — QR 넣은 홍보물</span></div>
+<div class="txt">내 안내 페이지 주소는 <span class="ph">[https://halla-olle-1121.netlify.app]</span> 이야.
+1. 이 주소로 가는 QR 코드 그림을 만들어서 '홍보물' 폴더에 'QR_세부안내.png'로 저장해줘.
+2. 홍보물 pptx의 'QR 넣을 자리' 상자를 지우고 그 자리에 QR 그림을 넣어줘. 아래에 '찍으면 자세한 안내' 한 줄도.
+3. 원본은 그대로 두고 '홍보물_QR.pptx'로 저장하고, 인쇄용 PDF도 같이 만들어줘.</div></div>
+  <div class="ex">세 가지를 저장했어요.
+✔ 홍보물/QR_세부안내.png — https://halla-olle-1121.netlify.app 로 연결
+✔ 홍보물/홍보물_QR.pptx — 1쪽 오른쪽 아래 'QR 넣을 자리'에 QR + "찍으면 자세한 안내"
+✔ 홍보물/홍보물_QR.pdf — 인쇄용
+원본 올레길_팜플렛_실습용.pptx는 그대로 두었어요.</div>
+  <ul class="chk">
+    <li><b>홍보물_QR.pdf</b>를 열어 QR이 제자리에 들어갔는지</li>
+    <li>화면의 QR을 <b>내 휴대폰 카메라로 찍어서</b> 내 페이지가 열리는지</li>
+  </ul>
+  <div class="tip">🛟 QR이 안 만들어지면 — 크롬에서 내 주소를 열고 <b>주소창 오른쪽 공유 아이콘 → QR 코드 만들기 → 다운로드</b>. 받은 그림을 홍보물 폴더에 넣고 "<b>이 그림을 QR 자리에 넣어줘</b>"라고 하면 됩니다.</div>
+</section>
+
+<section id="s5" data-n="5">
+  <div class="head"><span class="num">5</span><h2>내용 고쳐 다시 올리기 — 주소와 QR은 그대로</h2><span class="time">15분</span></div>
+  <p class="one">행사 날짜가 바뀌었어요! 홍보물을 다시 찍을 필요 없이 <b>페이지만 고쳐서</b> 같은 자리에 다시 올립니다.</p>
+  <div class="box"><div class="bar"><span>프롬프트 3 — 페이지 고치기</span></div>
+<div class="txt">올레안내/index.html 에서 다음 행사 날짜를 <span class="ph">[12월 12일 토요일 오전 10시]</span>로 바꾸고,
+맨 위에 '📢 12월은 한 시간 늦게 출발합니다' 알림 띠를 넣어줘. 나머지는 그대로 둬.</div></div>
+  <div class="ex">고쳤어요. 바뀐 곳은 두 군데예요.
+- 맨 위 알림 띠: 📢 12월은 한 시간 늦게 출발합니다
+- 다음 함께 걷기: 12월 12일(토) 오전 10시 · 마을회관 앞
+나머지 내용은 그대로 두었어요.</div>
+  <ol class="step">
+    <li>넷리파이에서 내 프로젝트 → <b>Deploys</b> 탭</li>
+    <li>아래쪽 <b>"Drag and drop your project output folder here"</b> 칸에 <b>올레안내 폴더</b>를 다시 끌어다 놓기</li>
+    <li>휴대폰으로 <b>아까 그 QR</b>을 다시 찍기 → 바뀐 내용이 보이면 성공 🎉</li>
+  </ol>
+  <p class="warnnote">⚠ drop 페이지(app.netlify.com/drop)에 다시 올리면 <b>새 주소</b>가 생겨 QR이 안 맞습니다. 꼭 <b>내 프로젝트의 Deploys 탭</b>에 올리세요.</p>
+  <p class="note">무료 요금제는 한 달 사용량(크레딧) 안에서 게시할 수 있습니다. 수업 중 몇 번은 넉넉하지만, 매일 여러 번 다시 올리는 용도로는 맞지 않을 수 있어요.</p>
+</section>
+
+<section id="s6" data-n="6">
+  <div class="head"><span class="num">6</span><h2>오늘 프롬프트 모으기</h2><span class="time">5분</span></div>
+  <div class="box"><div class="bar"><span>프롬프트 4 — 프롬프트 생성기 스킬로 저장</span></div>
+<div class="txt">오늘 프롬프트 저장해줘. 안내 웹페이지 만든 것과 QR 넣은 것, 두 개를 다른 행사에도 쓸 수 있게 다듬어서.</div></div>
+  <p class="note">프롬프트 폴더에 TXT가 몇 개 모였는지 세어 보세요. 다음 시간에 이걸로 보관함을 만듭니다.</p>
+</section>
+
+<section id="s7" data-n="도전" class="challenge">
+  <div class="head"><span class="num ch">+</span><h2>내 행사로 바꿔 만들기</h2><span class="badge">도전</span><span class="time">자유</span></div>
+  <p class="only">※ 먼저 끝낸 분만.</p>
+  <div class="box"><div class="bar"><span>도전 프롬프트</span></div>
+<div class="txt">방금 만든 안내 페이지와 홍보물을 틀로 삼아서, <span class="ph">[우리 동호회 12월 송년회]</span> 안내 페이지와 A4 홍보물을 새로 만들어줘.
+내용: <span class="ph">[날짜, 장소, 회비, 준비물]</span>
+'송년회안내' 폴더에 index.html과 홍보물.pdf로 저장해줘.</div></div>
+</section>
+
+<section id="s8" data-n="퀴즈">
+  <div class="head"><span class="num y">?</span><h2>오늘의 OX 퀴즈</h2><span class="time">마무리</span></div>
+  <div class="quiz">
+    <details><summary>페이지 내용을 고쳐 같은 프로젝트에 다시 올리면, 예전에 인쇄한 QR로도 바뀐 내용이 보인다.</summary>
+      <p><span class="o">O</span> — QR은 <b>주소</b>를 담고 있어서, 주소가 같으면 계속 쓸 수 있습니다.</p></details>
+    <details><summary>고친 페이지는 app.netlify.com/drop 에 다시 올리면 된다.</summary>
+      <p><span class="x">X</span> — 새 주소가 생깁니다. 내 프로젝트의 <b>Deploys</b> 탭에 올려야 합니다.</p></details>
+    <details><summary>코워크는 pptx 홍보물을 직접 열어 읽고, 고쳐서 새 파일로 저장할 수 있다.</summary>
+      <p><span class="o">O</span> — 기본 제공 파워포인트 스킬 덕분입니다.</p></details>
+  </div>
+  <a class="btn" href="PADLET-ADDRESS" target="_blank" rel="noopener">패들렛에 내 안내 페이지 주소 올리기 ↗</a>
+</section>
+
+<div class="end">
+  <h2>오늘 기억할 것 세 줄</h2>
+  <p><b>1.</b> 홍보물엔 <b>QR 하나</b>, 자세한 안내는 <b>웹페이지</b>에</p>
+  <p><b>2.</b> 코워크는 <b>파일을 읽고 → 만들고 → 새 파일로 저장</b>까지 한 번에</p>
+  <p><b>3.</b> 고칠 땐 <b>Deploys 탭</b>에 다시 올리면 주소도 QR도 그대로</p>
+  <p class="next">📣 다음 시간(11.28, 마지막) — 지금까지 모은 프롬프트로 <b>휴대폰에서 꺼내 쓰는 프롬프트 보관함</b>을 만듭니다. 프롬프트 폴더를 꼭 챙겨 오세요.</p>
+</div>
+
+<footer>클로드가 내 컴퓨터로 들어옵니다 — 서류 정리부터 나만의 프롬프트 보관함까지 · 3차시 &nbsp;|&nbsp; 제주도민대학 · 강사 강지애</footer>
+</div>
+<script src="lesson.js"></script>
+<script src="live.js"></script>
+</body>
+</html>

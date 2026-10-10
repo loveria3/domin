@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>11월 자료실 — 클로드가 내 컴퓨터로 들어옵니다</title>
+<meta name="description" content="서류 정리부터 나만의 프롬프트 보관함까지 — 11월 4차시 수업 자료실 · 강사 강지애">
+<meta name="author" content="강지애">
+<meta property="og:type" content="website">
+<meta property="og:title" content="클로드가 내 컴퓨터로 들어옵니다 — 11월 수업 자료실 · 강사 강지애">
+<meta property="og:description" content="서류 정리부터 나만의 프롬프트 보관함까지 — 11월 4차시 수업 자료실 · 강사 강지애">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --stone:#E4E5DF;
+  --surface:#F7F7F4;
+  --ink:#21231F;
+  --moss:#6B7263;
+  --canola:#F2C230;
+  --line:rgba(33,35,31,.16);
+  --sans:"Pretendard Variable",Pretendard,system-ui,-apple-system,sans-serif;
+  --num:"Space Grotesk",var(--sans);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--stone);
+  color:var(--ink);
+  font-family:var(--sans);
+  line-height:1.6;
+  letter-spacing:-.01em;
+}
+
+.wrap{max-width:760px;margin:0 auto;padding:64px 24px 96px}
+
+/* ── 머리말 ───────────────────────────── */
+.masthead{margin-bottom:48px}
+.eyebrow{
+  font-family:var(--num);
+  font-size:12px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--moss);
+  margin:0 0 14px;
+}
+.masthead h1{
+  font-size:clamp(34px,8vw,52px);
+  font-weight:800;
+  letter-spacing:-.035em;
+  line-height:1.12;
+  margin:0 0 14px;
+}
+.masthead h1 em{
+  font-style:normal;
+  background:linear-gradient(to top,var(--canola) 34%,transparent 34%);
+  padding:0 .06em;
+}
+.lead{margin:0;color:var(--moss);font-size:16px;max-width:36em}
+
+/* ── 강사 표기 ─────────────────────────── */
+.by{margin:16px 0 0;font-size:15px;color:var(--moss)}
+.by a{
+  color:var(--ink);
+  font-weight:700;
+  text-decoration:none;
+  background:linear-gradient(to top,var(--canola) 30%,transparent 30%);
+  padding:0 .12em;
+  transition:background-size .25s ease;
+}
+.by a:hover,.by a:focus-visible{
+  background:linear-gradient(to top,var(--canola) 100%,transparent 100%);
+}
+.by .go{font-family:var(--num);font-size:13px;margin-left:2px}
+
+/* ── 차시 목록 ─────────────────────────── */
+.rail{
+  list-style:none;
+  margin:0;padding:0;
+  border-top:1px solid var(--line);
+}
+.rail li{border-bottom:1px solid var(--line)}
+
+.card{
+  display:grid;
+  grid-template-columns:76px 1fr 28px;
+  align-items:center;
+  gap:8px;
+  padding:22px 12px 22px 4px;
+  text-decoration:none;
+  color:inherit;
+  background:transparent;
+  transition:background .28s ease,padding .28s ease;
+}
+.card:hover,.card:focus-visible{
+  background:var(--surface);
+  padding-left:16px;
+}
+.card:focus-visible{outline:2px solid var(--ink);outline-offset:-2px}
+
+.no{
+  font-family:var(--num);
+  font-size:40px;font-weight:700;
+  line-height:1;
+  letter-spacing:-.04em;
+  color:transparent;
+  -webkit-text-stroke:1.5px var(--ink);
+  transition:color .28s ease,-webkit-text-stroke-color .28s ease;
+}
+.card:hover .no,.card:focus-visible .no{
+  color:var(--canola);
+  -webkit-text-stroke-color:var(--ink);
+}
+
+.label{
+  font-size:12px;font-weight:600;
+  letter-spacing:.06em;
+  color:var(--moss);
+  margin:0 0 3px;
+}
+.title{
+  font-size:19px;font-weight:700;
+  letter-spacing:-.025em;
+  margin:0;
+}
+.desc{
+  font-size:14px;
+  color:var(--moss);
+  margin:4px 0 0;
+}
+
+.arrow{
+  font-family:var(--num);
+  font-size:18px;
+  color:var(--moss);
+  text-align:right;
+  transition:transform .28s ease,color .28s ease;
+}
+.card:hover .arrow,.card:focus-visible .arrow{
+  transform:translateX(4px);
+  color:var(--ink);
+}
+
+/* ── 꼬리말 ───────────────────────────── */
+.foot{
+  margin-top:44px;
+  padding-top:20px;
+  border-top:1px solid var(--line);
+  font-size:13px;
+  color:var(--moss);
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px 16px;
+  justify-content:space-between;
+}
+.foot a{color:var(--moss)}
+
+/* ── 등장 효과 ─────────────────────────── */
+@media (prefers-reduced-motion:no-preference){
+  .rail li{opacity:0;transform:translateY(10px);animation:rise .5s ease forwards}
+  .rail li:nth-child(1){animation-delay:.05s}
+  .rail li:nth-child(2){animation-delay:.11s}
+  .rail li:nth-child(3){animation-delay:.17s}
+  .rail li:nth-child(4){animation-delay:.23s}
+  .rail li:nth-child(5){animation-delay:.29s}
+  .rail li:nth-child(6){animation-delay:.35s}
+  .rail li:nth-child(7){animation-delay:.41s}
+  .rail li:nth-child(8){animation-delay:.47s}
+  @keyframes rise{to{opacity:1;transform:none}}
+}
+
+/* ── 7차시(집에서) ─────────────────────── */
+.rail li.home .no{-webkit-text-stroke-color:var(--moss)}
+.rail li.home .card:hover .no,.rail li.home .card:focus-visible .no{
+  -webkit-text-stroke-color:var(--ink);
+}
+.tag{
+  display:inline-block;
+  font-size:11px;font-weight:700;
+  letter-spacing:.04em;
+  color:var(--moss);
+  border:1px solid var(--line);
+  border-radius:3px;
+  padding:1px 6px;
+  margin-left:6px;
+  vertical-align:2px;
+}
+
+/* ── 참고 자료 ─────────────────────────── */
+.extra{margin-top:46px}
+.extra-head{
+  display:flex;align-items:baseline;gap:10px;
+  margin:0 0 14px;
+}
+.extra-head h2{
+  font-size:15px;font-weight:700;
+  letter-spacing:-.015em;
+  margin:0;
+}
+.extra-head .k{
+  font-family:var(--num);
+  font-size:11px;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;
+  color:var(--moss);
+}
+.ref{
+  display:grid;
+  grid-template-columns:1fr 28px;
+  align-items:center;
+  gap:8px;
+  padding:20px 12px 20px 16px;
+  border:1px solid var(--line);
+  border-radius:4px;
+  background:var(--surface);
+  text-decoration:none;
+  color:inherit;
+  transition:border-color .28s ease,transform .28s ease;
+}
+.ref:hover,.ref:focus-visible{
+  border-color:var(--ink);
+  transform:translateY(-2px);
+}
+.ref:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.ref .label{margin:0 0 4px}
+.ref .title em{
+  font-style:normal;
+  background:linear-gradient(to top,var(--canola) 30%,transparent 30%);
+  padding:0 .1em;
+}
+.ref .desc{margin:5px 0 0}
+.ref .url{
+  font-family:var(--num);
+  font-size:12px;
+  color:var(--moss);
+  margin:9px 0 0;
+  word-break:break-all;
+}
+.ref .arrow{align-self:center}
+.refs{display:grid;gap:10px}
+.ref:hover .arrow,.ref:focus-visible .arrow{
+  transform:translateX(4px);
+  color:var(--ink);
+}
+
+@media (max-width:520px){
+  .wrap{padding:44px 18px 72px}
+  .card{grid-template-columns:58px 1fr 20px;padding:18px 8px}
+  .no{font-size:32px}
+  .title{font-size:17px}
+  .ref{grid-template-columns:1fr 20px;padding:18px 8px 18px 12px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">Claude 11월 &nbsp;·&nbsp; 4 sessions &nbsp;·&nbsp; Cowork</p>
+    <h1>클로드가 내 컴퓨터로 들어옵니다<br><em>서류 정리부터 나만의 프롬프트 보관함까지</em></h1>
+    <p class="lead">맡긴다 → 모은다 → 꺼내 쓴다. 차시를 선택하면 해당 수업 페이지로 이동합니다.<br>2026. 11. 7. ~ 11. 28. 매주 토요일 10:00~12:00 · 제주평생교육장학진흥원</p>
+    <p class="by">만든 사람 —
+      <a href="https://loveria3.github.io/profile/" target="_blank" rel="noopener">강사 강지애</a><span class="go"> ↗</span>
+    </p>
+  </header>
+
+  <ul class="rail">
+    <li>
+      <a class="card" href="1.html">
+        <span class="no">01</span>
+        <span>
+          <span class="label">1차시 · 11.7(토)</span>
+          <p class="title">내 컴퓨터에 비서 들이기</p>
+          <p class="desc">데스크톱 · 코워크 폴더 연결 · 서류 이름 바꾸고 분류 · 첫 프롬프트 TXT</p>
+        </span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+    </li>
+    <li>
+      <a class="card" href="2.html">
+        <span class="no">02</span>
+        <span>
+          <span class="label">2차시 · 11.14(토)</span>
+          <p class="title">일정 비서 + 나만의 스킬</p>
+          <p class="desc">구글 캘린더 커넥터 · 예약 작업 · 회사용 추천 스킬 저장 · 프롬프트 생성기</p>
+        </span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+    </li>
+    <li>
+      <a class="card" href="3.html">
+        <span class="no">03</span>
+        <span>
+          <span class="label">3차시 · 11.21(토)</span>
+          <p class="title">QR로 여는 안내 웹페이지</p>
+          <p class="desc">홍보물 읽혀 웹페이지 · 넷리파이 게시 · QR 넣은 홍보물 · 고쳐 다시 올리기</p>
+        </span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+    </li>
+    <li>
+      <a class="card" href="4.html">
+        <span class="no">04</span>
+        <span>
+          <span class="label">4차시 · 11.28(토)</span>
+          <p class="title">모아 쓰는 프롬프트 보관함</p>
+          <p class="desc">모은 TXT로 보관함 웹앱 · 휴대폰 홈 화면 · 꺼내 쓰기 · 수료 후 활용 지도</p>
+        </span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+    </li>
+  </ul>
+
+  <section class="extra">
+    <div class="extra-head">
+      <span class="k">Materials</span>
+      <h2>수업에 쓰는 자료 · 완성본</h2>
+    </div>
+    <div class="refs">
+    <a class="ref" href="ready.html">
+      <span>
+        <span class="label">1차시 전에 꼭</span>
+        <p class="title"><em>수업 전 준비 안내</em></p>
+        <p class="desc">유료 계정 확인 · 데스크톱 설치 · 첫 인사 · 구글 계정 — 15분이면 끝나요</p>
+      </span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+    <a class="ref" href="skills.html">
+      <span>
+        <span class="label">2차시 · 매 차시 연결</span>
+        <p class="title"><em>회사에서 많이 쓰는 스킬 · 커넥터 안내서</em></p>
+        <p class="desc">추천 스킬 7개 내려받기 · 시험 프롬프트 · 회사용 커넥터(MCP) 표 · 보안 수칙</p>
+      </span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+    <a class="ref" href="files/practice-docs.zip" download>
+      <span>
+        <span class="label">1차시 실습 자료</span>
+        <p class="title"><em>실습 서류 묶음 (내작업실)</em></p>
+        <p class="desc">이름이 엉망인 가상 서류 11개 — 관리비 · 검진 · 계약서 · 세금 고지서</p>
+      </span>
+      <span class="arrow" aria-hidden="true">↓</span>
+    </a>
+    <a class="ref" href="files/prompts.zip" download>
+      <span>
+        <span class="label">1차시부터 모으기</span>
+        <p class="title"><em>추천 프롬프트 13개 (TXT)</em></p>
+        <p class="desc">서류 · 일정 · 글쓰기 · 생활 · 배움 — 프롬프트 폴더의 첫 재료</p>
+      </span>
+      <span class="arrow" aria-hidden="true">↓</span>
+    </a>
+    <a class="ref" href="files/olle-qr-example.pdf" target="_blank" rel="noopener">
+      <span>
+        <span class="label">3차시 완성 예시</span>
+        <p class="title"><em>QR 들어간 올레길 홍보물</em></p>
+        <p class="desc">찍으면 세부 안내 페이지가 열리는 홍보물 — 이런 걸 만듭니다</p>
+      </span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+    <a class="ref" href="box-sample.html">
+      <span>
+        <span class="label">4차시 완성본</span>
+        <p class="title"><em>프롬프트 보관함 예시</em></p>
+        <p class="desc">검색 · 분류 · 복사하기 — 휴대폰에서 꺼내 쓰는 보관함</p>
+      </span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+    <a class="ref" href="https://loveria3.github.io/lecture/claude20.html" target="_blank" rel="noopener">
+      <span>
+        <span class="label">참고 자료</span>
+        <p class="title"><em>클로드 활용법 24가지</em></p>
+        <p class="desc">질문하기부터 자동화까지, 무료·유료 사용 가능 여부까지 함께 표시</p>
+        <p class="url">loveria3.github.io/lecture/claude20.html ↗</p>
+      </span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span>클로드가 내 컴퓨터로 들어옵니다 · 만든 사람
+      <a href="https://loveria3.github.io/profile/" target="_blank" rel="noopener"><b>강사 강지애</b></a></span>
+    <a href="PADLET-ADDRESS" target="_blank" rel="noopener">우리 반 패들렛 ↗</a>
+  </footer>
+
+</main>
+</body>
+</html>

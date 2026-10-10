@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>나의 프롬프트 보관함</title>
+<!--
+  [클로드에게] 이 파일은 프롬프트 보관함 템플릿입니다.
+  아래 PROMPTS 목록만 '프롬프트' 폴더의 TXT 내용으로 바꿔 채우고, 나머지 모양은 그대로 두세요.
+  TXT 형식: 제목 / 분류 / 만든 날 / --- / 본문 / --- / 메모
+  OWNER에는 사용자 이름(또는 별명)을 넣으세요.
+-->
+<style>
+  :root{
+    --bg:#F7F8F6; --card:#FFFFFF; --ink:#1F2A24; --muted:#5E6A63; --line:#DDE3DE;
+    --main:#1F5E45; --main-soft:#E5F0EA; --accent:#E8792B;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif;font-size:18px;line-height:1.6}
+  header{background:var(--main);color:#fff;padding:28px 20px 22px}
+  .wrap{max-width:860px;margin:0 auto;padding:0 16px}
+  header .wrap{padding:0}
+  h1{margin:0;font-size:30px}
+  header p{margin:6px 0 0;opacity:.9;font-size:16px}
+  .tools{position:sticky;top:0;background:var(--bg);padding:16px 0 10px;z-index:2}
+  #q{width:100%;font-size:19px;padding:14px 16px;border:2px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+  #q:focus{outline:none;border-color:var(--main)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .chip{border:2px solid var(--main);background:#fff;color:var(--main);border-radius:999px;padding:6px 16px;font-size:16px;cursor:pointer;font-family:inherit}
+  .chip.on{background:var(--main);color:#fff}
+  #count{color:var(--muted);font-size:15px;margin:6px 2px 0}
+  .list{display:grid;gap:14px;padding:6px 0 40px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 18px 16px}
+  .top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .tag{background:var(--main-soft);color:var(--main);font-size:14px;font-weight:bold;border-radius:8px;padding:2px 10px}
+  .card h2{margin:0;font-size:21px;flex:1 1 auto}
+  .memo{color:var(--muted);font-size:16px;margin:6px 0 10px}
+  details summary{cursor:pointer;color:var(--main);font-size:16px}
+  pre{white-space:pre-wrap;word-break:keep-all;background:#FAFBFA;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-family:inherit;font-size:17px;margin:10px 0 0}
+  .copy{margin-top:12px;background:var(--accent);color:#fff;border:0;border-radius:10px;padding:12px 22px;font-size:18px;font-weight:bold;cursor:pointer;font-family:inherit}
+  .copy.done{background:var(--main)}
+  .empty{text-align:center;color:var(--muted);padding:40px 0}
+  footer{color:var(--muted);font-size:14px;text-align:center;padding:10px 0 30px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1 id="title">나의 프롬프트 보관함</h1>
+  <p>찾고 → 복사해서 → 클로드에 붙여 넣으세요</p>
+</div></header>
+
+<div class="wrap">
+  <div class="tools">
+    <input id="q" type="search" placeholder="찾을 말 (예: 문자, 요약)" aria-label="프롬프트 검색">
+    <div class="chips" id="chips"></div>
+    <div id="count"></div>
+  </div>
+  <div class="list" id="list"></div>
+  <footer>제주도민대학 · 클로드가 내 컴퓨터로 들어옵니다</footer>
+</div>
+
+<script>
+const OWNER = "";
+const PROMPTS = [
+  /* ▼ 여기부터 채우기 — {제목, 분류, 본문, 메모} */
+  {제목:"예시 프롬프트", 분류:"기타", 본문:"[역할] ...\n[할 일] ...\n[조건] ...\n[결과 모양] ...", 메모:"언제 쓰면 좋은지 한 줄"}
+  /* ▲ 여기까지 */
+];
+
+const ORDER = ["전체","서류","일정","글쓰기","생활","배움","기타"];
+let cat = "전체";
+if (OWNER) document.getElementById("title").textContent = OWNER + "의 프롬프트 보관함";
+const $q = document.getElementById("q"), $list = document.getElementById("list"),
+      $chips = document.getElementById("chips"), $count = document.getElementById("count");
+
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+
+function drawChips(){
+  const used = new Set(PROMPTS.map(p=>p.분류));
+  const extra = [...used].filter(c=>!ORDER.includes(c));   // 새로 만든 분류도 단추로
+  $chips.innerHTML = ORDER.filter(c=>c==="전체"||used.has(c)).concat(extra)
+    .map(c=>`<button class="chip${c===cat?" on":""}" data-c="${c}">${c}</button>`).join("");
+}
+function draw(){
+  const q = $q.value.trim();
+  const rows = PROMPTS.filter(p => (cat==="전체"||p.분류===cat) &&
+    (!q || (p.제목+" "+p.본문+" "+(p.메모||"")).includes(q)));
+  $count.textContent = `${rows.length}개`;
+  $list.innerHTML = rows.length ? rows.map((p,i)=>`
+    <article class="card">
+      <div class="top"><span class="tag">${esc(p.분류)}</span><h2>${esc(p.제목)}</h2></div>
+      ${p.메모?`<div class="memo">${esc(p.메모)}</div>`:""}
+      <details><summary>내용 보기</summary><pre>${esc(p.본문)}</pre></details>
+      <button class="copy" data-i="${PROMPTS.indexOf(p)}">복사하기</button>
+    </article>`).join("") : `<div class="empty">찾는 프롬프트가 없어요</div>`;
+}
+function copyText(t){
+  const old=()=>{const a=document.createElement("textarea"); a.value=t; document.body.appendChild(a); a.select();
+    document.execCommand("copy"); a.remove();};
+  if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(t).catch(old);
+  old(); return Promise.resolve();
+}
+$chips.addEventListener("click",e=>{const b=e.target.closest(".chip"); if(!b)return; cat=b.dataset.c; drawChips(); draw();});
+$q.addEventListener("input",draw);
+$list.addEventListener("click",e=>{
+  const b=e.target.closest(".copy"); if(!b)return;
+  copyText(PROMPTS[b.dataset.i].본문).then(()=>{b.textContent="복사했어요!"; b.classList.add("done");
+    setTimeout(()=>{b.textContent="복사하기"; b.classList.remove("done");},1500);});
+});
+drawChips(); draw();
+</script>
+</body>
+</html>
