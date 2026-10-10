@@ -8,6 +8,8 @@
   [클로드에게] 이 파일은 프롬프트 보관함 템플릿입니다.
   아래 PROMPTS 목록만 '프롬프트' 폴더의 TXT 내용으로 바꿔 채우고, 나머지 모양은 그대로 두세요.
   TXT 형식: 제목 / 분류 / 만든 날 / --- / 본문 / --- / 메모
+  준비에는 메모와 작업에 맞는 실행 조건을 넣으세요. 원본·백업·보관 하위 폴더는 제외하세요.
+  PROMPTS 문자열은 안전하게 직렬화하고 HTML의 script 종료 문자가 생기지 않게 이스케이프하세요.
   OWNER에는 사용자 이름(또는 별명)을 넣으세요.
 -->
 <style>
@@ -46,7 +48,7 @@
 <body>
 <header><div class="wrap">
   <h1 id="title">나의 프롬프트 보관함</h1>
-  <p>찾고 → 복사해서 → 클로드에 붙여 넣으세요</p>
+  <p>준비 조건 확인 → 검색 → 복사 → 내 상황에 맞게 사용</p>
 </div></header>
 
 <div class="wrap">
@@ -62,8 +64,8 @@
 <script>
 const OWNER = "";
 const PROMPTS = [
-  /* ▼ 여기부터 채우기 — {제목, 분류, 본문, 메모} */
-  {제목:"예시 프롬프트", 분류:"기타", 본문:"[역할] ...\n[할 일] ...\n[조건] ...\n[결과 모양] ...", 메모:"언제 쓰면 좋은지 한 줄"}
+  /* ▼ 여기부터 채우기 — {제목, 분류, 본문, 메모, 준비} */
+  {제목:"예시 프롬프트", 분류:"기타", 본문:"[역할] ...\n[할 일] ...\n[조건] ...\n[결과 모양] ...", 메모:"언제 쓰면 좋은지 한 줄", 준비:"준비 조건 확인 필요"}
   /* ▲ 여기까지 */
 ];
 
@@ -79,16 +81,17 @@ function drawChips(){
   const used = new Set(PROMPTS.map(p=>p.분류));
   const extra = [...used].filter(c=>!ORDER.includes(c));   // 새로 만든 분류도 단추로
   $chips.innerHTML = ORDER.filter(c=>c==="전체"||used.has(c)).concat(extra)
-    .map(c=>`<button class="chip${c===cat?" on":""}" data-c="${c}">${c}</button>`).join("");
+    .map(c=>`<button class="chip${c===cat?" on":""}" data-c="${esc(c)}">${esc(c)}</button>`).join("");
 }
 function draw(){
   const q = $q.value.trim();
   const rows = PROMPTS.filter(p => (cat==="전체"||p.분류===cat) &&
-    (!q || (p.제목+" "+p.본문+" "+(p.메모||"")).includes(q)));
+    (!q || (p.제목+" "+p.본문+" "+(p.메모||"")+" "+(p.준비||"")).includes(q)));
   $count.textContent = `${rows.length}개`;
   $list.innerHTML = rows.length ? rows.map((p,i)=>`
     <article class="card">
       <div class="top"><span class="tag">${esc(p.분류)}</span><h2>${esc(p.제목)}</h2></div>
+      <div class="memo"><b>준비:</b> ${esc(p.준비||"준비 조건 확인 필요")}</div>
       ${p.메모?`<div class="memo">${esc(p.메모)}</div>`:""}
       <details><summary>내용 보기</summary><pre>${esc(p.본문)}</pre></details>
       <button class="copy" data-i="${PROMPTS.indexOf(p)}">복사하기</button>

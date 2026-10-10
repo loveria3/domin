@@ -13,7 +13,7 @@
 <header>
   <p class="kicker">2차시 · 2026. 11. 14.(토) 10:00~12:00</p>
   <h1>일정 비서 들이고 <em>나만의 스킬</em> 만들기</h1>
-  <p class="sub">오늘은 클로드에게 <b>손발(커넥터)</b>과 <b>업무 매뉴얼(스킬)</b>을 달아 줍니다. 회사에서 가장 많이 쓰는 두 기능입니다.</p>
+  <p class="sub">오늘은 클로드에게 <b>손발(커넥터)</b>과 <b>업무 매뉴얼(스킬)</b>을 달아 줍니다. 반복하는 일을 연결하고 같은 규칙으로 처리하는 두 기능입니다.</p>
   <div class="toprow">
     <a class="btn y" href="skills.html" target="_blank" rel="noopener">스킬 · 커넥터 안내서 열기 ↗</a>
     <a class="btn line" href="skills/prompt-maker.zip" download>프롬프트 생성기 스킬 ↓</a>
@@ -23,9 +23,10 @@
 <div class="hook">
   <p class="q">단톡방 공지에 날짜가 세 개. 달력에 옮겨 적다가 하나쯤 빠뜨린 적 있지요?</p>
   <p>오늘은 공지를 붙여 넣으면 클로드가 <b>내 구글 캘린더에 직접 등록</b>하고, 매주 월요일 아침엔 <b>시키지 않아도</b> 이번 주 일정을 정리해 둡니다.</p>
-  <div class="take"><span>오늘 가져갈 것</span><span>📅 캘린더 일정 3개</span><span>⏰ 매주 도는 예약 작업</span><span>🧰 스킬 3개 저장</span></div>
+  <div class="take"><span>오늘 가져갈 것</span><span>📅 캘린더 일정 3개</span><span>⏰ 매주 도는 예약 작업</span><span>🧰 내 규칙을 넣은 회의록 스킬</span></div>
 </div>
 
+<div class="tip"><b>오늘의 완료 기준</b> — 일정·중복을 확인하고, 예약을 시험·일시정지하며, 바꾼 스킬 규칙을 다른 메모에도 적용할 수 있다.<br><b>120분 운영</b> — 활동 95분 + 휴식 10분 + 완료 확인·퀴즈 5분 + 개별 점검 10분. 선택 도전·참고 읽기는 필수 시간에 포함하지 않습니다.</div>
 <nav class="jump">
   <a href="#s0">0</a><a href="#s1">1</a><a href="#s2">2</a><a href="#s3">3</a><a href="#s4">4</a>
   <a href="#s5">5</a><a href="#s6">6</a><a href="#s7">7</a><a href="#s8">도전</a><a href="#s9">퀴즈</a>
@@ -41,15 +42,15 @@
 </section>
 
 <section id="s1" data-n="1">
-  <div class="head"><span class="num">1</span><h2>커넥터(MCP)가 뭔가요?</h2><span class="time">8분</span></div>
-  <p class="one">클로드는 원래 <b>대화창 안에서만</b> 일합니다. <b>커넥터</b>는 클로드에게 내 캘린더·메일·드라이브에 들어갈 <b>출입증</b>을 주는 것입니다.</p>
+  <div class="head"><span class="num">1</span><h2>커넥터(MCP)가 뭔가요?</h2><span class="time">5분</span></div>
+  <p class="one"><b>커넥터</b>는 클로드에게 내 캘린더·메일·드라이브에 들어갈 <b>출입증</b>을 주는 것입니다.</p>
   <table>
     <tr><th>커넥터</th><td>클로드와 다른 프로그램을 잇는 <b>연결선</b>. "구글 캘린더 커넥터"를 켜면 클로드가 내 달력을 보고 일정을 넣을 수 있습니다.</td></tr>
-    <tr><th>MCP</th><td>그 연결선의 <b>표준 규격</b> 이름. 충전기 USB-C처럼, 규격이 하나라 어떤 회사 프로그램이든 같은 방식으로 꽂힙니다.</td></tr>
+    <tr><th>MCP</th><td>그 연결선의 <b>표준 규격</b> 이름. 충전기 USB-C처럼, 지원하는 서비스끼리 연결하는 공통 약속입니다. 서비스마다 읽기·쓰기 권한은 다릅니다.</td></tr>
     <tr><th>출입증은 내가</th><td>연결할 때 <b>내 계정으로 허락</b>해야만 들어갑니다. 언제든 끊을 수 있습니다.</td></tr>
   </table>
   <div class="biz">
-    <p class="bt">회사에서 가장 많이 쓰는 커넥터 <span class="badge biz">업무 활용</span></p>
+    <p class="bt">다른 커넥터 예시 — 집에서 읽기 <span class="badge biz">업무 활용</span></p>
     <ul>
       <li><b>Gmail · Outlook</b> — "어제 온 메일 중 답장 필요한 것만 추려줘"</li>
       <li><b>Google Drive · OneDrive</b> — "작년 사업계획서 찾아서 올해 것과 비교해줘"</li>
@@ -71,6 +72,7 @@
   <div class="box"><div class="bar"><span>연결 확인 프롬프트</span></div>
 <div class="txt">내 구글 캘린더에서 이번 주 일정을 보여줘. 없으면 없다고 말해줘.</div></div>
   <p class="warnnote">⚠ 회사·학교 구글 계정은 관리자가 막아 둔 경우가 많습니다. 안 되면 <b>개인 구글 계정</b>으로 연결하세요.</p>
+<p class="note">실습은 개인 계정의 <b>수업연습</b> 캘린더를 사용합니다. 없으면 Google Calendar에서 미리 만들고 선택하세요. 연결이 막히면 가상 공지를 표로 정리하며 참여하고, 인증 문제는 개별 점검 시간에 해결합니다.</p>
 </section>
 
 <section id="s3" data-n="3" class="key">
@@ -79,7 +81,10 @@
   <div class="box"><div class="bar"><span>프롬프트 1 — 메모에서 일정 등록 (통째로 복사)</span></div>
 <div class="txt">아래 모임 공지에서 날짜가 있는 일정만 뽑아서 표로 먼저 보여줘.
 날짜나 시간이 애매하면 '확인 필요'라고 표시해.
-내가 '등록해'라고 하면 그때 구글 캘린더에 넣어줘. 장소와 준비물은 일정 설명에 적어줘.
+연도는 2026년, 시간대는 Asia/Seoul이야. '수업연습' 캘린더를 사용할 거야.
+끝나는 시간이 없으면 먼저 물어봐. 이 연습에서는 회비 마감은 종일, 나머지 모임은 1시간으로 정할게.
+제목 앞에 [실습]을 붙이고, 같은 제목·시작 시각이 이미 있으면 중복 등록하지 마. 참석자 초대는 하지 마.
+내가 '등록해'라고 하면 그때 해당 캘린더에 넣어줘. 장소와 준비물은 일정 설명에 적어줘.
 
 <span class="ph">[한라 동창회 공지
 - 송년회: 12월 12일(토) 저녁 6시, 제주시 ○○식당. 회비 3만 원
@@ -95,22 +100,24 @@
     <li>"등록해" → 휴대폰 구글 캘린더 앱에서도 보이는지 확인</li>
   </ul>
   <div class="tip">💡 내 메모로 바꿔 해 보세요 — 학교 가정통신문, 병원 예약 문자, 교회·성당 주보 무엇이든 됩니다.</div>
+<ul class="chk"><li>휴대폰에서 2026년·한국 시간·수업연습 캘린더·종료 시각 확인</li><li>다시 부탁했을 때 중복 등록되지 않는지 먼저 조회</li><li>실습 일정 하나의 시간을 수정하고 확인한 뒤, 수업 후 지울 항목은 목록을 확인하고 직접 정리</li></ul>
 </section>
 
 <section id="s4" data-n="4">
-  <div class="head"><span class="num">4</span><h2>예약 작업 — 시키지 않아도 매주 저절로</h2><span class="badge pro">유료</span><span class="time">12분</span></div>
+  <div class="head"><span class="num">4</span><h2>예약 작업 — 시키지 않아도 매주 저절로</h2><span class="badge pro">유료</span><span class="time">15분</span></div>
   <p class="one">한 번 만들어 두면 <b>정해진 시간마다</b> 클로드가 알아서 일하고 결과를 남깁니다.</p>
   <div class="box"><div class="bar"><span>프롬프트 2 — 월요일 아침 일정 브리핑</span></div>
 <div class="txt">예약 작업을 하나 만들어줘.
 매주 <span class="ph">[월요일 오전 8시]</span>에 내 구글 캘린더에서 이번 주 일정을 읽어서
 요일별로 정리하고, 준비물이 필요한 일정과 '이번 주 꼭 챙길 것' 3개를 뽑아
-내작업실 폴더에 '주간일정_날짜.txt'로 저장해줘.
+예약 작업 결과 화면에 남겨줘. 로컬 폴더 저장은 이번 실습에서 하지 마.
+시간대는 Asia/Seoul, 이번 주는 월요일부터 일요일까지야. 캘린더의 일정을 수정하거나 초대장을 보내지는 마.
 만들고 나면 지금 한 번 바로 실행해서 결과를 보여줘.</div></div>
   <ol class="step">
     <li>왼쪽 사이드바 <b>예약된 작업(Scheduled)</b>에 새 작업이 생겼는지 확인</li>
-    <li>바로 실행한 결과 파일이 <b>내작업실</b>에 생겼는지 확인</li>
+    <li>바로 실행한 <b>결과 화면</b>에서 날짜·내용·실행 상태 확인 → 예약을 <b>일시정지</b>해 보기 → 실제 사용할 분만 다시 켜기</li>
   </ol>
-  <p class="warnnote">⚠ 예약 작업은 <b>컴퓨터가 켜져 있고 클로드 데스크톱이 실행 중</b>일 때 돌아갑니다. 노트북을 덮어 두면 다음에 켰을 때 실행됩니다.</p>
+  <p class="warnnote">⚠ 클라우드 예약과 내 컴퓨터 파일·앱이 필요한 작업은 실행 조건이 다릅니다. <b>로컬 파일에 접근하려면 데스크톱 연결 상태가 필요</b>합니다. 오늘은 캘린더 조회 결과를 예약 작업 화면에서 확인합니다. 계정별 제공 화면은 수업 전 시험합니다.</p>
   <div class="biz">
     <p class="bt">회사에선 이렇게 <span class="badge biz">업무 활용</span></p>
     <ul>
@@ -121,7 +128,7 @@
   </div>
 </section>
 
-<div class="rest">☕ 쉬는 시간 10분 — 캘린더 연결이 안 된 분은 이때 도와드립니다</div>
+<div class="rest">☕ 쉬는 시간 10분 — 잠시 쉬었다가 함께 이어갑니다</div>
 
 <section id="s5" data-n="5">
   <div class="head"><span class="num">5</span><h2>스킬이 뭔가요? — 커넥터와 무엇이 다른가</h2><span class="time">7분</span></div>
@@ -137,24 +144,23 @@
 </section>
 
 <section id="s6" data-n="6" class="key">
-  <div class="head"><span class="num">6</span><h2>회사에서 쓰는 추천 스킬 내려받아 저장하기</h2><span class="badge hot">핵심</span><span class="time">22분</span></div>
-  <p class="one">스킬 안내서에서 <b>마음에 드는 2개</b>를 고르고, 이 수업의 도구인 <b>프롬프트 생성기</b>까지 모두 <b>3개</b>를 저장합니다.</p>
-  <a class="btn y" href="skills.html#rec" target="_blank" rel="noopener">추천 스킬 7개 고르러 가기 ↗</a>
+  <div class="head"><span class="num">6</span><h2>회의록 스킬 하나를 내 규칙으로 고치기</h2><span class="badge hot">핵심</span><span class="time">30분</span></div>
+  <p class="one">공통으로 <b>회의록 정리</b> 하나를 설치하고 시험한 뒤, 규칙 하나를 바꿔 비교합니다. 다른 업무 스킬은 수업 후 선택해서 연습하세요.</p>
+  <a class="btn y" href="skills.html#rec" target="_blank" rel="noopener">회의록 정리 스킬 받으러 가기 ↗</a>
   <h3>① 저장하는 순서 (모든 스킬 똑같아요)</h3>
   <ol class="step">
     <li>스킬 카드의 <b>내려받기</b> → <b>zip 파일 그대로</b> 둡니다 (압축 풀지 않기!)</li>
     <li>클로드 왼쪽 사이드바 <b>사용자 지정(Customize) → 스킬(Skills)</b></li>
     <li><b>＋ → 스킬 만들기(Create skill) → 스킬 업로드(Upload a skill)</b></li>
     <li>다운로드 폴더에서 zip 파일 선택 → 목록에 생기면 <b>켜짐</b> 확인</li>
-    <li>같은 방법으로 2개 더 — 마지막은 위의 <b>프롬프트 생성기 스킬 ↓</b>(prompt-maker.zip)</li>
+    <li>회의록 결과를 확인한 뒤 아래 ③에서 규칙을 하나 바꿉니다.</li>
   </ol>
   <div class="ex">사용자 지정 → 스킬 목록
 ☑ meeting-minutes   회의 메모·녹음 받아쓰기·카톡 대화를 받아…
-☑ business-email    상황만 대충 말하면 제목과 본문을 갖춘…
-☑ prompt-maker      대충 말한 부탁을 좋은 프롬프트로 다듬고…</div>
-  <h3>② 바로 써 보기 — 회의록 정리 스킬을 골랐다면</h3>
+</div>
+  <h3>② 바로 써 보기 — 공통 회의 메모</h3>
   <div class="box"><div class="bar"><span>시험 프롬프트 — 회의 메모</span></div>
-<div class="txt">회의록 정리해줘.
+<div class="txt">meeting-minutes 스킬로 회의록 정리해줘. 연도는 2026년이야.
 
 <span class="ph">11/14 마을 축제 준비 회의. 이장님, 부녀회장, 청년회 김○○, 나.
 부스는 6개 하기로. 먹거리 3개 체험 3개. 천막은 면사무소에 빌리는 걸로 이장님이 다음주 화요일까지 연락.
@@ -166,15 +172,19 @@
 ## 할 일
 | 할 일 | 담당 | 기한 |
 | 천막 대여 연락(면사무소) | 이장님 | 11/17(화) |
-| 홍보 포스터 제작 | 청년회 김○○ | 미정 |
+| 홍보 포스터 제작 | 청년회 (개인 담당 확인 필요) | 미정 |
 ## 확인할 것
 - 포스터 마감일 / 먹거리 재료비</div>
-  <p class="note">다른 스킬을 골랐다면 <a href="skills.html#rec" target="_blank" rel="noopener">안내서</a>의 <b>시험 프롬프트</b>와 예시 결과를 보세요.</p>
+  
   <div class="tip">🔍 스킬이 쓰였는지 보는 법 — 클로드가 일하는 과정에 <b>스킬 이름</b>(예: meeting-minutes)이 잠깐 보입니다. 안 쓰이면 "<b>회의록 정리 스킬로</b> 해줘"처럼 이름을 불러 주세요.</div>
+<h3>③ 규칙 하나 바꾸기 — 설치·시험 15분 + 수정·비교 15분</h3><div class="box"><div class="bar"><span>나만의 회의록 스킬</span></div><div class="txt">meeting-minutes 스킬을 바탕으로 내 회의록 스킬을 만들어줘.
+규칙: 기한이 정해지지 않은 할 일은 '확인할 것' 맨 위에도 모아줘. 기한은 추측하지 마.
+이름은 my-meeting-minutes로 하고 업로드용 zip으로 저장해줘. 원본 스킬은 수정하지 마.</div></div><ol class="step"><li>새 zip 업로드 → 원본 meeting-minutes는 잠시 끄기</li><li>새 대화에서 같은 메모를 넣고 my-meeting-minutes를 지정하기</li><li>포스터 마감이 확인할 것 맨 위에 있는지 비교하기</li><li>다른 메모: “11월 20일 독서모임. 장소 예약은 내가 맡음. 기한 미정.”에도 규칙이 적용되는지 확인하기</li></ol>
 </section>
 
 <section id="s7" data-n="7">
   <div class="head"><span class="num">7</span><h2>프롬프트 생성기 써 보기</h2><span class="time">10분</span></div>
+<p class="note">이 단계에서 <b>prompt-maker.zip</b>을 공통 도구로 설치합니다. 내작업실 폴더를 연결하고, 저장된 TXT의 메모에 사용 전 준비 조건이 있는지 확인하세요.</p>
   <p class="one">대충 말해도 <b>역할 · 할 일 · 조건 · 결과 모양</b> 네 칸을 채운 프롬프트로 바꿔 주고, <b>프롬프트 폴더에 TXT로 저장</b>까지 합니다. 4차시 보관함의 재료를 모으는 도구입니다.</p>
   <div class="box"><div class="bar"><span>프롬프트 3 — 써 보기</span></div>
 <div class="txt">프롬프트 만들어줘. <span class="ph">[다음 주에 거래처에 견적서 늦어진다고 사과하는 메일]</span></div></div>
@@ -189,6 +199,7 @@
     <p class="bt">스킬을 처음부터 직접 만들고 싶다면 <span class="badge biz">심화</span></p>
     <p>"<b>스킬을 만들고 싶어. 우리 팀 출장 보고서 양식이야.</b>"라고 말하고 양식 파일을 주면, 클로드가 몇 가지를 물어본 뒤 스킬 zip을 만들어 줍니다. 회사에서는 팀 양식·용어집·보고 순서를 스킬로 만들어 <b>팀원 모두가 같은 품질</b>로 일하게 합니다.</p>
   </div>
+
 </section>
 
 <section id="s8" data-n="도전" class="challenge">
@@ -199,27 +210,28 @@
 - 프롬프트를 만들 때 말투는 <span class="ph">[존댓말, 짧게]</span> 로
 - 메모 칸에 '언제 쓰는지'를 꼭 한 줄 넣어줘
 고친 스킬을 업로드용 zip으로 만들어 내작업실에 저장해줘.</div></div>
-  <p class="warnnote">⚠ 고친 zip을 올리기 전에 — 스킬 목록에서 원래 <b>prompt-maker</b>를 먼저 <b>삭제</b>(오른쪽 ⋯ 메뉴)하고 올리세요. 같은 이름이 두 개면 올라가지 않거나 헷갈립니다.</p>
+  <p class="warnnote">⚠ 고친 zip을 올리기 전에 — 스킬 목록에서 원본 zip을 보관하고 수정본 이름을 <b>my-prompt-maker</b>로 만드세요. 원본 스킬을 잠시 끄고 수정본만 켜서 시험합니다. 확인 전 원본을 삭제하지 않습니다.</p>
   <p class="note">분류(서류·일정·글쓰기·생활·배움·기타)를 새로 늘려도 4차시 보관함에 단추가 자동으로 생깁니다.</p>
   <div class="box"><div class="bar"><span>도전 2 — 커넥터 + 스킬 + 예약 = 금요일 주간보고 (주간보고 스킬을 저장한 분)</span></div>
 <div class="txt">예약 작업을 하나 더 만들어줘.
 매주 금요일 오후 4시에 내 구글 캘린더의 이번 주 일정을 보고, 주간보고 스킬 양식으로 초안을 써서
-내작업실에 '주간보고_날짜.docx'로 저장해줘. 지금 한 번 실행해서 보여줘.</div></div>
+예약 결과 화면에 남겨줘. 예정된 일과 실제 완료한 일은 구분하고 모르면 확인 필요로 적어줘. 지금 한 번 실행해서 보여줘.</div></div>
 </section>
 
 <section id="s9" data-n="퀴즈">
-  <div class="head"><span class="num y">?</span><h2>오늘의 OX 퀴즈</h2><span class="time">마무리</span></div>
+  <div class="head"><span class="num y">?</span><h2>오늘의 OX 퀴즈</h2><span class="time">5분</span></div>
   <div class="quiz">
     <details><summary>커넥터는 '어디에 닿을 수 있나', 스킬은 '어떻게 일하나'를 정해 준다.</summary>
       <p><span class="o">O</span> — 커넥터는 출입증, 스킬은 업무 매뉴얼입니다.</p></details>
     <details><summary>스킬 zip 파일은 압축을 풀어서 올려야 한다.</summary>
       <p><span class="x">X</span> — zip 파일을 <b>그대로</b> 올립니다.</p></details>
-    <details><summary>예약 작업은 컴퓨터를 꺼 두어도 정해진 시간에 실행된다.</summary>
-      <p><span class="x">X</span> — 컴퓨터와 클로드 데스크톱이 켜져 있어야 합니다.</p></details>
+    <details><summary>예약 작업을 만들면 즉시 실행 결과와 일시정지 방법도 확인해야 한다.</summary>
+      <p><span class="o">O</span> — 실행 환경과 파일 접근 조건이 다를 수 있어 결과 확인까지 해야 설정이 끝납니다.</p></details>
   </div>
-  <a class="btn" href="PADLET-ADDRESS" target="_blank" rel="noopener">패들렛에 '내가 고른 스킬' 올리기 ↗</a>
+  <p class="note">공유: 강사가 안내한 우리 반 패들렛 주소를 사용하세요. 주소 안내 전에는 결과를 내 폴더에 저장합니다.</p>
 </section>
 
+<div class="rest">개별 점검 10분 — 막힌 단계 보완 · 결과 저장 · 다음 시간 준비. 먼저 끝낸 분은 선택 도전을 합니다.</div>
 <div class="end">
   <h2>오늘 기억할 것 세 줄</h2>
   <p><b>1.</b> <b>커넥터</b> = 출입증. 캘린더·메일·드라이브에 클로드가 직접 닿는다</p>
