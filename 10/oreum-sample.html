@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>제주의 오름 이야기 — 수업 교안 (예시)</title>
+<style>
+  :root{--g:#03c75a;--gd:#02a54b;--ink:#1e1e23;--sub:#767678;--line:#e4e8eb;--bg:#f5f6f7}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Pretendard","Malgun Gothic","Apple SD Gothic Neo",sans-serif;overflow:hidden}
+  .top{height:56px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:0 20px}
+  .logo{width:30px;height:30px;border-radius:7px;background:var(--g);color:#fff;font-weight:900;display:grid;place-items:center;font-size:17px}
+  .top b{font-size:17px}
+  .top span{color:var(--sub);font-size:14px}
+  .stage{position:relative;height:calc(100% - 56px);display:flex;align-items:center;justify-content:center;padding:20px 76px}
+  .slide{display:none;width:min(900px,100%);min-height:min(520px,72vh);background:#fff;border:1px solid var(--line);border-radius:18px;padding:44px 52px;box-shadow:0 2px 10px rgba(0,0,0,.04);animation:in .35s ease}
+  .slide.on{display:flex;flex-direction:column;justify-content:center}
+  @keyframes in{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+  .kick{display:inline-block;align-self:flex-start;background:#e9f9f0;color:var(--gd);font-weight:800;font-size:15px;border-radius:20px;padding:4px 14px;margin-bottom:16px}
+  h1{font-size:46px;margin:0 0 14px;letter-spacing:-.03em}
+  h2{font-size:34px;margin:0 0 18px;letter-spacing:-.03em}
+  p{font-size:23px;line-height:1.6;margin:0 0 10px;color:#333}
+  .q{margin-top:22px;border-left:5px solid var(--g);background:#f7fbf9;padding:14px 18px;border-radius:0 10px 10px 0;font-size:21px}
+  .q b{color:var(--gd)}
+  .ox{list-style:none;padding:0;margin:0}
+  .ox li{font-size:22px;padding:12px 0;border-bottom:1px solid var(--line)}
+  .ox li span{float:right;color:var(--gd);font-weight:800}
+  .big{font-size:80px;margin-bottom:10px}
+  .nav{position:absolute;top:50%;transform:translateY(-50%);width:56px;height:56px;border-radius:50%;border:1px solid var(--line);background:#fff;font-size:26px;cursor:pointer;color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+  .nav:hover{background:var(--g);color:#fff;border-color:var(--g)}
+  .prev{left:12px}.next{right:12px}
+  .pg{position:absolute;right:24px;bottom:16px;font-size:16px;color:var(--sub);font-weight:700}
+  .note{position:absolute;left:24px;bottom:16px;font-size:13px;color:var(--sub)}
+  @media(max-width:640px){.stage{padding:12px 12px 70px}.slide{padding:28px 22px;min-height:66vh}h1{font-size:32px}h2{font-size:25px}p{font-size:18px}.q{font-size:17px}.ox li{font-size:17px}
+    .nav{top:auto;bottom:10px;transform:none;width:48px;height:48px}.prev{left:calc(50% - 60px)}.next{right:calc(50% - 60px)}.note{display:none}}
+</style>
+</head>
+<body>
+<div class="top"><div class="logo">오</div><b>제주의 오름 이야기</b><span>· 초등 4학년 수업 교안</span></div>
+<div class="stage">
+  <section class="slide on">
+    <div class="big">⛰️</div>
+    <span class="kick">오늘의 수업</span>
+    <h1>제주의 오름 이야기</h1>
+    <p>제주 곳곳에 솟은 작은 산, 오름을 만나 봐요.</p>
+  </section>
+  <section class="slide">
+    <span class="kick">1 · 오름이 뭘까?</span>
+    <h2>오름은 '작은 화산'이에요</h2>
+    <p>한라산 둘레에 땅속 불이 터져 생긴 작은 산들이에요.</p>
+    <p>제주에는 오름이 <b>360개가 넘게</b> 있어요.</p>
+    <div class="q"><b>생각해 볼 질문</b> — 우리 동네에서 보이는 오름이 있나요?</div>
+  </section>
+  <section class="slide">
+    <span class="kick">2 · 오름의 생김새</span>
+    <h2>꼭대기에 '굼부리'가 있어요</h2>
+    <p>오름 꼭대기의 움푹 파인 곳을 제주말로 <b>굼부리</b>라고 해요.</p>
+    <p>불이 뿜어져 나온 구멍이 남은 자리예요.</p>
+    <div class="q"><b>생각해 볼 질문</b> — 굼부리는 무엇을 닮았나요?</div>
+  </section>
+  <section class="slide">
+    <span class="kick">3 · 새별오름</span>
+    <h2>저녁 하늘의 샛별처럼</h2>
+    <p>제주시 애월읍에 있는 억새가 아름다운 오름이에요.</p>
+    <p>봄이면 들불축제가 열리던 곳으로 유명해요.</p>
+    <div class="q"><b>생각해 볼 질문</b> — 왜 '새별'이라는 이름이 붙었을까요?</div>
+  </section>
+  <section class="slide">
+    <span class="kick">4 · 다랑쉬오름</span>
+    <h2>'오름의 여왕'</h2>
+    <p>구좌읍에 있는 오름으로, 둥글고 깊은 굼부리가 멋져요.</p>
+    <p>꼭대기에서 동쪽 바다와 성산일출봉이 보여요.</p>
+    <div class="q"><b>생각해 볼 질문</b> — 여왕이라는 별명은 어디서 왔을까요?</div>
+  </section>
+  <section class="slide">
+    <span class="kick">5 · 아부오름</span>
+    <h2>낮지만 넓은 오름</h2>
+    <p>구좌읍 송당리에 있는, 금방 오를 수 있는 낮은 오름이에요.</p>
+    <p>꼭대기에 올라서면 커다란 그릇 같은 굼부리가 펼쳐져요.</p>
+    <div class="q"><b>생각해 볼 질문</b> — 낮은 오름의 좋은 점은 무엇일까요?</div>
+  </section>
+  <section class="slide">
+    <span class="kick">6 · 오름을 아끼는 법</span>
+    <h2>오름도 쉬어야 해요</h2>
+    <p>많은 사람이 오르면 흙이 깎이고 풀이 사라져요.</p>
+    <p>정해진 길로만 걷고, 쉬는 오름에는 들어가지 않아요.</p>
+    <div class="q"><b>생각해 볼 질문</b> — 오름에서 지킬 약속 하나를 정해 볼까요?</div>
+  </section>
+  <section class="slide">
+    <span class="kick">7 · OX 퀴즈</span>
+    <h2>맞으면 O, 틀리면 X</h2>
+    <ul class="ox">
+      <li>오름은 작은 화산이다 <span>O</span></li>
+      <li>오름 꼭대기의 움푹한 곳을 '굼부리'라고 한다 <span>O</span></li>
+      <li>오름은 아무 데로나 올라가도 괜찮다 <span>X</span></li>
+    </ul>
+  </section>
+  <section class="slide">
+    <div class="big">🌾</div>
+    <span class="kick">8 · 오늘 배운 것</span>
+    <h2>오름은 제주의 보물이에요</h2>
+    <p>작은 화산 · 굼부리 · 아끼며 걷기 — 세 가지를 기억해요.</p>
+    <p>이번 주말, 가족과 가까운 오름에 올라 볼까요?</p>
+  </section>
+  <button class="nav prev" aria-label="이전">‹</button>
+  <button class="nav next" aria-label="다음">›</button>
+  <div class="pg"><span id="n">1</span> / 8</div>
+  <div class="note">수업 예시 자료 · 오름 정보는 방문 전 다시 확인하세요</div>
+</div>
+<script>
+var s=document.querySelectorAll('.slide'),i=0;
+function go(k){i=Math.max(0,Math.min(s.length-1,k));s.forEach(function(e,j){e.classList.toggle('on',j===i)});document.getElementById('n').textContent=i+1;}
+document.querySelector('.prev').onclick=function(){go(i-1)};
+document.querySelector('.next').onclick=function(){go(i+1)};
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight')go(i+1);if(e.key==='ArrowLeft')go(i-1);});
+</script>
+</body>
+</html>

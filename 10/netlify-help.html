@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>넷리파이 공개로 바꾸기 — 2차시</title>
+<style>
+  :root{--ink:#1f2328;--sub:#5f6873;--line:#e3e6ea;--bg:#f6f5f1;--navy:#1f3864;--soft:#eef1f7;--warn:#8a5a00;--or:#e8590c}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.65;font-family:"Pretendard","Malgun Gothic","맑은 고딕",-apple-system,sans-serif}
+  .wrap{max-width:820px;margin:0 auto;padding:28px 18px 70px}
+  .home{font-size:13px;font-weight:700;color:var(--sub);text-decoration:none}
+  header{border-bottom:3px solid var(--navy);padding-bottom:12px;margin:10px 0 16px}
+  .kicker{font-size:13px;font-weight:700;color:var(--navy);margin:0 0 4px}
+  h1{font-size:26px;margin:0;letter-spacing:-.03em}
+  .sub{font-size:14px;color:var(--sub);margin:6px 0 0}
+  section{background:#fff;border:1px solid var(--line);border-radius:8px;padding:18px 20px;margin:14px 0}
+  .head{display:flex;align-items:center;gap:10px}
+  .num{background:var(--or);color:#fff;font-weight:800;min-width:30px;height:30px;border-radius:15px;display:grid;place-items:center;padding:0 6px}
+  h2{font-size:19px;margin:0}
+  p{margin:10px 0 0;font-size:15.5px}
+  .shot{margin-top:12px}
+  .shot img{width:100%;border:1px solid var(--line);border-radius:8px;display:block}
+  .cap{font-size:12.5px;color:var(--sub);margin-top:4px}
+  .vs{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+  .vs div{flex:1;min-width:220px;border-radius:8px;padding:12px 14px;font-size:15px}
+  .vs .bad{background:#fdf0ec;border:1px solid #f3c9b8}
+  .vs .good{background:#eef7f1;border:1px solid #bfe0cb}
+  .vs b{display:block;margin-bottom:4px}
+  .tip{font-size:14.5px;background:var(--soft);border-radius:6px;padding:10px 14px;margin:12px 0 0}
+  .warn{font-size:14.5px;color:var(--warn);margin:12px 0 0}
+  ol{margin:10px 0 0;padding-left:22px}li{font-size:15.5px;padding:3px 0}
+  .back{display:inline-block;margin-top:18px;background:var(--navy);color:#fff;text-decoration:none;border-radius:6px;padding:10px 18px;font-weight:700}
+  footer{margin-top:26px;font-size:12px;color:var(--sub);text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="home" href="2.html#s6">← 2차시 교안으로 돌아가기</a>
+<header>
+  <p class="kicker">2차시 · 도움말</p>
+  <h1>내 주소를 모두가 볼 수 있게 — 공개로 바꾸기</h1>
+  <p class="sub">처음 가입하면 <b>나만 보이게(비공개)</b> 올라갑니다. 두 번만 누르면 누구나 볼 수 있습니다.</p>
+</header>
+
+<section>
+  <div class="head"><span class="num">?</span><h2>왜 해야 하나요?</h2></div>
+  <div class="vs">
+    <div class="bad"><b>그대로 두면 (비공개)</b>다른 사람이 주소를 열면 넷리파이 <b>로그인 화면</b>이나 <b>Page not found</b>가 뜹니다.</div>
+    <div class="good"><b>공개로 바꾸면</b>주소만 누르면 <b>누구나</b> 폰에서 바로 열립니다.</div>
+  </div>
+  <p class="tip">💡 내 컴퓨터에서는 잘 보여도 안심하면 안 됩니다 — 나는 로그인되어 있어서 보이는 것입니다. 꼭 <b>폰</b>으로 확인하세요.</p>
+</section>
+
+<section>
+  <div class="head"><span class="num">1</span><h2><b>Make public</b> 누르기</h2></div>
+  <p>올리기를 마치면 나오는 내 사이트 화면입니다. 이름 옆에 <b>🔒 Private</b>가 보이면 아직 비공개예요. 바로 아래 <b>Make public</b>(공개하기)을 누릅니다.</p>
+  <div class="shot"><img src="img/netlify-1.jpg" alt="Private 표시와 Make public 단추"></div>
+</section>
+
+<section>
+  <div class="head"><span class="num">2</span><h2>한 번 더 <b>Make public</b></h2></div>
+  <p>작은 창이 뜹니다. 가운데 칸이 <b>Public</b>(누구나)인지 보고, 왼쪽 아래 <b>Make public</b>을 한 번 더 누릅니다.</p>
+  <p class="warn">⚠ 맨 위 주소 칸(연필 모양)은 건드리지 마세요. 주소가 바뀌어 버립니다.</p>
+  <div class="shot"><img src="img/netlify-2.jpg" alt="Make public 확인 창"></div>
+</section>
+
+<section>
+  <div class="head"><span class="num">3</span><h2><b>Your project is public</b> — 끝!</h2></div>
+  <p>이 화면이 나오면 공개로 바뀐 것입니다. 오른쪽 위 <b>✕</b>로 닫으면 이름 옆 표시가 <b>Public</b>으로 바뀌어 있어요.</p>
+  <div class="shot"><img src="img/netlify-3.jpg" alt="Your project is public 화면"></div>
+</section>
+
+<section>
+  <div class="head"><span class="num">✓</span><h2>폰에서 확인</h2></div>
+  <ol>
+    <li>내 주소(<b>○○○.netlify.app</b>)를 카톡 <b>나와의 채팅</b>으로 보내기</li>
+    <li>폰에서 눌러 보기 — <b>로그인 없이</b> 발표자료가 보이면 성공!</li>
+  </ol>
+  <p class="warn">⚠ 주소를 줄여 주는 사이트(숏.한국 등)로 줄인 주소도 마찬가지입니다. 비공개면 줄인 주소로도 안 열립니다 — 먼저 공개로 바꾸세요.</p>
+</section>
+
+<a class="back" href="2.html#s6">← 2차시 교안으로 돌아가기</a>
+<footer>화면은 넷리파이 2026년 10월 기준입니다. 창이 좁으면 메뉴 배치가 조금 다르게 보일 수 있어요.</footer>
+</div>
+</body>
+</html>
