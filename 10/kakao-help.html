@@ -47,6 +47,9 @@
   .map a{font-size:13px;font-weight:700;text-decoration:none;color:var(--navy);background:var(--soft);border-radius:12px;padding:3px 10px}
   .back{display:inline-block;margin-top:18px;background:var(--navy);color:#fff;text-decoration:none;border-radius:6px;padding:10px 18px;font-weight:700}
   footer{margin-top:26px;font-size:12px;color:var(--sub);text-align:center}
+  .shot{margin-top:12px}.shot img{width:100%;border:1px solid var(--line);border-radius:8px;display:block}
+  .cap{font-size:12.5px;color:var(--sub);margin-top:4px}
+  .part{margin:26px 0 4px;font-size:14px;font-weight:800;color:var(--navy);letter-spacing:.02em}
 </style>
 </head>
 <body>
@@ -55,112 +58,111 @@
 <header>
   <p class="kicker">2차시 · 도움말</p>
   <h1>클로드와 카카오톡 연결하기</h1>
-  <p class="sub">위에서부터 한 단계씩 하세요. 막히면 그 단계의 <b>😥 빨간 줄</b>을 눌러 해결 방법을 보세요.</p>
-  <div class="map"><a href="#s1">1 커넥터 찾기</a><a href="#s2">2 연결</a><a href="#s3">3 카카오 로그인</a><a href="#s4">4 동의</a><a href="#s5">5 도구 담기 ★</a><a href="#s6">6 대화에서 켜기</a><a href="#s7">7 보내기·허용</a><a href="#s8">8 폰 확인</a></div>
+  <p class="sub"><b>PlayMCP에 먼저 담고 → 클로드에 연결</b>합니다. 위에서부터 한 단계씩, 막히면 그 단계의 <b>😥 빨간 줄</b>을 누르세요.</p>
+  <div class="map"><a href="#s1">1 PlayMCP 가입</a><a href="#s2">2 나챗방 담기 ★</a><a href="#s3">3 클로드에서 찾기</a><a href="#s4">4 연결·로그인</a><a href="#s5">5 동의</a><a href="#s6">6 대화에서 켜기</a><a href="#s7">7 보내기·허용</a><a href="#s8">8 폰 확인</a></div>
 </header>
 
 <section>
   <div class="head"><span class="num q">?</span><h2>왜 카톡에 바로 연결하지 않고 PlayMCP를 거치나요?</h2></div>
   <p>클로드는 <b>'커넥터'</b>라는 정해진 단자로만 다른 서비스와 연결됩니다. 카카오톡 앱에는 이 단자가 없어서, 카카오가 따로 만든 연결 창구가 <b>PlayMCP</b>입니다.</p>
   <div class="flow"><span class="c">🤖 클로드</span><i>→</i><span class="p">🧰 PlayMCP 도구함</span><i>→</i><span class="k">💬 내 카카오톡</span></div>
-  <p class="tip">🔌 클로드는 <b>플러그</b>, 카카오톡은 콘센트 없는 <b>벽</b>. 카카오가 <b>멀티탭(도구함)</b>을 만들어 두었고, 우리는 거기에 '카톡 나에게 보내기'를 꽂아 쓰는 겁니다. 카톡 비밀번호는 클로드에 주지 않고, 카카오 창에서 <b>허용</b>만 누릅니다.</p>
-  <p class="warn">⚠ 가장 많이 막히는 곳은 <b>5단계</b>입니다. 연결은 됐는데 멀티탭이 <b>비어 있으면</b> 아무것도 안 됩니다.</p>
+  <p class="tip">🔌 클로드는 <b>플러그</b>, 카카오톡은 콘센트 없는 <b>벽</b>. 카카오가 <b>멀티탭(도구함)</b>을 만들어 두었습니다. 그래서 순서가 <b>① 멀티탭에 '카톡 나챗방'을 꽂고 → ② 클로드 플러그를 멀티탭에 꽂기</b>예요. 카톡 비밀번호는 클로드에 주지 않고, 카카오 창에서 <b>동의</b>만 누릅니다.</p>
+  <p class="tip">💰 무료입니다. 클로드 무료 계정에서도 됩니다.</p>
 </section>
 
+<p class="part">PART 1 · PlayMCP에서 준비 (카카오 사이트)</p>
+
 <section id="s1">
-  <div class="head"><span class="num">1</span><h2>클로드에서 PlayMCP 찾기</h2></div>
-  <p class="do">왼쪽 아래 <b>내 이름</b> → <span class="key">설정</span> → <span class="key">커넥터</span> → <span class="key">커넥터 둘러보기</span> → 검색창에 <b>PlayMCP</b> (또는 <b>카카오</b>)</p>
-  <p class="ok">✔ 노란색 PlayMCP 카드가 보이면 누르기</p>
-  <details><summary>'커넥터' 메뉴가 안 보여요</summary><div class="fix">메뉴 이름이 <b>맞춤 설정(Customize)</b> 안에 들어 있을 수 있습니다. 왼쪽 메뉴에서 <b>'커넥터'</b>라는 글자를 찾으세요. 앱보다 <b>크롬에서 claude.ai</b>로 하는 게 가장 쉽습니다.</div></details>
-  <details><summary>검색해도 PlayMCP가 안 나와요</summary><div class="fix">직접 주소로 붙이면 됩니다.<ol>
-    <li>커넥터 화면에서 <span class="key">사용자 정의 커넥터 추가</span> (Add custom connector)</li>
-    <li>이름 <b>PlayMCP</b>, 주소에 아래를 붙여넣고 <span class="key">추가</span> → 2단계로</li></ol>
-    <div class="addr"><code id="mcp">https://playmcp.kakao.com/mcp</code><button type="button" id="cp">복사</button></div></div></details>
-  <details><summary>이미 목록에 PlayMCP가 '연결됨'으로 있어요</summary><div class="fix">연결은 끝난 상태입니다. <a href="#s5"><b>5단계(도구 담기)</b></a>로 바로 가세요.</div></details>
+  <div class="head"><span class="num">1</span><h2>PlayMCP 가입</h2></div>
+  <p class="do">새 탭에서 <a href="https://playmcp.kakao.com" target="_blank" rel="noopener"><b>playmcp.kakao.com</b> ↗</a> → 오른쪽 위 <span class="key">로그인</span> → 카카오 계정 로그인 → <span class="key">모두 동의합니다</span> → <span class="key">시작하기</span></p>
+  <p class="ok">✔ PlayMCP 첫 화면이 보이면 2단계로</p>
+  <details><summary>폰으로 확인하라고 나와요</summary><div class="fix">폰 카카오톡에 온 <b>로그인 확인 알림</b>에서 <b>확인</b>. 폰을 옆에 두세요.</div></details>
+  <details><summary>카카오 아이디·비밀번호를 모르겠어요</summary><div class="fix">폰 카카오톡 → <b>설정(톱니)</b> → <b>카카오계정</b>에서 내 계정을 볼 수 있습니다. 또는 로그인 창의 <b>QR코드 로그인</b> → 폰 카톡으로 QR 찍기.</div></details>
+  <details><summary>가입이 안 된다고 나와요</summary><div class="fix">카카오 계정에 <b>본인 인증</b>과 <b>대표 이메일</b>이 있어야 합니다(만 14세 이상). 폰 카톡 → 설정 → 카카오계정에서 등록 후 다시.</div></details>
 </section>
 
 <section id="s2">
-  <div class="head"><span class="num">2</span><h2><span class="key">연결</span> 누르기</h2></div>
-  <p class="do">PlayMCP 화면에서 <span class="key">연결</span>(Connect)을 누르면 <b>새 창</b>이 뜹니다.</p>
-  <p class="ok">✔ 카카오 로그인 창이 열리면 3단계로</p>
-  <details><summary>눌러도 아무 창도 안 떠요</summary><div class="fix">브라우저가 <b>팝업을 막은</b> 것입니다. 주소창 오른쪽 끝의 <b>차단 아이콘</b> → <b>항상 허용</b> → 다시 <span class="key">연결</span>.</div></details>
-  <details><summary>'업그레이드'나 '한도' 안내가 떠요</summary><div class="fix">무료 계정은 사용자 정의 커넥터를 <b>하나만</b> 붙일 수 있습니다. 이미 다른 것을 붙였다면 그것을 <b>…</b> → <b>제거</b>한 뒤 다시 해 보세요. 그래도 안 되면 오늘은 <b>복사·붙여넣기</b>로 대신합니다.</div></details>
+  <div class="head"><span class="num">2</span><h2>★ 도구함에 '카카오톡 나챗방' 추가</h2></div>
+  <ol>
+    <li>위쪽 메뉴 <span class="key">도구함</span> (바로가기: <a href="https://playmcp.kakao.com/toolbox" target="_blank" rel="noopener">playmcp.kakao.com/toolbox ↗</a>)</li>
+    <li><span class="key">＋ MCP 추가하기</span> 누르기</li>
+    <li>목록에서 <b>카카오톡 나챗방</b>(노란 TALK 아이콘) → <span class="key">추가</span> → <b>추가됨</b>으로 바뀜</li>
+  </ol>
+  <div class="shot"><img src="img/playmcp-toolbox-1.png" alt="비어 있는 도구함 — 추가한 MCP 0/10"></div>
+  <p class="cap">처음엔 비어 있어요 (<b>추가한 MCP 0/10</b>). <b>MCP 추가하기</b>를 누릅니다.</p>
+  <div class="shot"><img src="img/playmcp-toolbox-2.png" alt="카카오톡 나챗방이 담긴 도구함 — 1/10"></div>
+  <p class="cap">✔ <b>카카오톡 나챗방</b> 카드가 생기고 <b>1/10</b>, 스위치가 <b>파란색</b>이면 성공!</p>
+  <p class="warn">⚠ 오른쪽 <b>도구함 URL · 복사하기</b>는 쓰지 않습니다. 클로드에서는 4단계처럼 <b>목록에서 골라</b> 연결해요.</p>
+  <details><summary>카드 스위치가 회색이에요</summary><div class="fix">눌러서 <b>파란색(켜짐)</b>으로 바꾸세요. 꺼져 있으면 클로드가 이 도구를 못 씁니다.</div></details>
+  <p class="tip">💡 처음엔 <b>이것 하나만</b> 담으세요. 모르는 사람이 만든 도구까지 담으면 클로드가 헷갈리고 내 정보가 새 나갈 수 있습니다.</p>
 </section>
 
+<p class="part">PART 2 · 클로드에 연결 (클로드 사이트)</p>
+
 <section id="s3">
-  <div class="head"><span class="num">3</span><h2>카카오 로그인</h2></div>
-  <p class="do">카카오 계정(이메일 또는 전화번호)과 비밀번호로 로그인합니다. 주소창이 <b>kakao.com</b>인지 확인하세요.</p>
-  <p class="ok">✔ 동의 화면이 나오면 4단계로</p>
-  <details><summary>폰으로 확인하라고 나와요</summary><div class="fix">폰 카카오톡에 온 <b>로그인 확인 알림</b>에서 <b>확인</b>을 누르면 컴퓨터 화면이 넘어갑니다. 폰을 옆에 두세요.</div></details>
-  <details><summary>카카오 아이디·비밀번호를 모르겠어요</summary><div class="fix">폰 카카오톡 → <b>설정(톱니)</b> → <b>카카오계정</b>에서 내 계정 이메일/전화번호를 볼 수 있습니다. 또는 로그인 창의 <b>QR코드 로그인</b> → 폰 카톡으로 QR 찍기.</div></details>
-  <details><summary>로그인했는데 빈 화면이에요</summary><div class="fix">그 창을 닫고 클로드로 돌아가 <span class="key">연결</span>을 한 번 더 누르세요. 이미 로그인돼 있어서 바로 동의 화면이 뜹니다.</div></details>
+  <div class="head"><span class="num">3</span><h2>클로드에서 PlayMCP 찾기</h2></div>
+  <p class="do">왼쪽 아래 <b>내 이름</b> → <span class="key">설정</span> → <span class="key">커넥터</span> (사이드바 <b>사용자 지정</b> 아래) → 위쪽 <span class="key">탐색</span> 탭 → 검색창에 <b>play</b></p>
+  <p class="ok">✔ <b>PlayMCP</b>가 보이면 누르기</p>
+  <details><summary>'커넥터' 메뉴가 안 보여요</summary><div class="fix">왼쪽 메뉴에서 <b>'커넥터'</b>라는 글자를 찾으세요. 폰 앱보다 <b>크롬에서 claude.ai</b>로 하는 게 가장 쉽습니다.</div></details>
+  <details><summary>검색해도 PlayMCP가 안 나와요</summary><div class="fix"><b>내 커넥터</b> 탭이 아니라 그 옆 <b>탐색</b> 탭인지 확인하세요. 회사(Team) 계정이면 관리자가 먼저 PlayMCP를 <b>팀에 추가</b>해야 합니다 — 오늘은 개인 계정으로 하세요.</div></details>
+  <details><summary>목록에 이미 PlayMCP가 '연결됨'이에요</summary><div class="fix">연결은 끝난 상태입니다. 2단계에서 나챗방을 담았는지만 확인하고 <a href="#s6"><b>6단계</b></a>로.</div></details>
 </section>
 
 <section id="s4">
-  <div class="head"><span class="num">4</span><h2>동의하고 돌아오기</h2></div>
-  <p class="do">PlayMCP를 처음 쓰면 <b>이용 약관 동의</b> → <b>정보 제공 동의</b>가 차례로 나옵니다. 필수 항목에 체크하고 <span class="key">동의하고 계속하기</span>.</p>
-  <p class="ok">✔ 창이 닫히고 클로드 커넥터 목록에 <b>PlayMCP · 연결됨</b>이 보이면 성공</p>
-  <details><summary>창은 닫혔는데 '연결됨'이 안 보여요</summary><div class="fix">클로드 화면을 <b>새로고침(F5)</b> 하세요. 그래도 없으면 2단계부터 한 번 더.</div></details>
+  <div class="head"><span class="num">4</span><h2><span class="key">Claude에 연결</span> → 카카오 로그인</h2></div>
+  <p class="do">PlayMCP 화면에서 <span class="key">Claude에 연결</span>(또는 <span class="key">연결</span>) → 새 창에서 카카오 로그인. <b>1단계와 같은 카카오 계정</b>이어야 합니다.</p>
+  <p class="ok">✔ 동의 화면이 나오면 5단계로</p>
+  <details><summary>눌러도 아무 창도 안 떠요</summary><div class="fix">브라우저가 <b>팝업을 막은</b> 것입니다. 주소창 오른쪽 끝 <b>차단 아이콘</b> → <b>항상 허용</b> → 다시 연결.</div></details>
+  <details><summary>'커넥터 연결을 완료하시겠습니까?' 창이 떠요</summary><div class="fix">클로드 <b>데스크톱 앱</b>에서 시작하면 브라우저에 이 창이 뜹니다. 내가 방금 시작한 것이면 <b>계속 연결</b>. 내가 하지 않은 연결이면 누르지 말고 닫으세요.</div></details>
+  <details><summary>'허용되지 않는 IP 대역' 오류가 나요</summary><div class="fix">주소(URL)를 직접 붙여넣어 만든 커넥터라서 그렇습니다. 그 커넥터를 <b>…</b> → <b>제거</b>하고, 3단계처럼 <b>탐색</b> 탭의 PlayMCP로 다시 연결하세요.</div></details>
+  <details><summary>로그인했는데 빈 화면이에요</summary><div class="fix">그 창을 닫고 클로드에서 <b>연결</b>을 한 번 더. 이미 로그인돼 있어서 바로 동의 화면이 뜹니다.</div></details>
 </section>
 
 <section id="s5">
-  <div class="head"><span class="num">5</span><h2>★ 도구함에 '카카오톡 나에게 보내기' 담기</h2></div>
-  <p>연결만 하고 이 단계를 빼먹는 경우가 제일 많습니다. <b>멀티탭에 아무것도 안 꽂힌 상태</b>예요.</p>
-  <ol>
-    <li>새 탭에서 <a href="https://playmcp.kakao.com" target="_blank" rel="noopener"><b>playmcp.kakao.com</b> ↗</a> → 로그인 (같은 카카오 계정)</li>
-    <li>검색창에 <b>카카오톡</b> → <b>카카오톡 나에게 보내기</b>(나와의 채팅방) 카드 → 만든 곳이 <b>카카오</b>인지 확인</li>
-    <li><span class="key">도구함에 담기</span> 누르기</li>
-    <li>위쪽 <span class="key">도구함</span> 메뉴에 들어가 담긴 것 확인</li>
-  </ol>
-  <p class="ok">✔ 클로드 커넥터 화면에서 PlayMCP를 누르면 아래에 <b>도구 이름</b>이 보이면 성공</p>
-  <details><summary>클로드에서 PlayMCP를 눌렀는데 도구 목록이 비어 있어요</summary><div class="fix">도구함이 비어 있는 것입니다. 위 1~4번을 하세요. 클로드 쪽은 다시 연결할 필요 없습니다.</div></details>
-  <details><summary>담았는데 클로드에 아직 안 보여요</summary><div class="fix"><ol><li>클로드 화면 <b>새로고침(F5)</b></li><li><b>새 대화</b> 시작</li><li>그래도 안 되면 커넥터에서 PlayMCP <b>연결 해제 → 다시 연결</b></li></ol></div></details>
-  <details><summary>PlayMCP와 클로드에 다른 카카오 계정으로 로그인한 것 같아요</summary><div class="fix">두 곳이 같은 계정이어야 합니다. PlayMCP 오른쪽 위 프로필에서 계정을 확인하고, 다르면 로그아웃 후 3단계에서 쓴 계정으로 다시 로그인해 도구를 담으세요.</div></details>
-  <p class="tip">💡 처음엔 <b>이 도구 하나만</b> 담으세요. 이것저것 담으면 클로드가 헷갈리고, 모르는 사람이 만든 도구는 내 정보를 가져갈 수 있습니다.</p>
+  <div class="head"><span class="num">5</span><h2>동의하고 돌아오기</h2></div>
+  <p class="do"><b>Claude에 PlayMCP 연결하기</b> 창에서 권한과 필수 동의를 확인 → <span class="key">모두 동의 후 계속하기</span></p>
+  <p class="ok">✔ <b>연결됨</b>이 뜨면 탭을 닫고 클로드로. 커넥터 목록에 <b>PlayMCP · 연결됨</b></p>
+  <details><summary>무엇에 동의하는 건가요?</summary><div class="fix">PlayMCP 계정 확인, 도구함 목록 확인, 도구 사용 권한입니다. 그리고 개인정보 <b>제3자 제공</b>·<b>국외 이전</b> 동의(클로드 회사가 해외에 있어서)가 필수로 붙어 있어요. 각 항목 <b>보기</b>로 펼쳐 읽을 수 있습니다.</div></details>
+  <details><summary>창은 닫혔는데 '연결됨'이 안 보여요</summary><div class="fix">클로드 화면 <b>새로고침(F5)</b>. 그래도 없으면 3단계부터 다시.</div></details>
 </section>
+
+<p class="part">PART 3 · 써 보기</p>
 
 <section id="s6">
   <div class="head"><span class="num">6</span><h2>대화창에서 PlayMCP 켜기</h2></div>
-  <p class="do">클로드 <b>새 대화</b> → 입력창 아래 <span class="key">＋</span> → <b>커넥터</b> → <b>PlayMCP</b> 스위치가 <b>파란색(켜짐)</b>인지 확인</p>
+  <p class="do">클로드 <b>새 대화</b> → 입력창 아래 <span class="key">＋</span> → <b>커넥터</b> → <b>PlayMCP</b> 스위치가 <b>파란색</b>인지 확인</p>
   <p class="ok">✔ 켜져 있으면 7단계로</p>
-  <details><summary>＋ 메뉴에 PlayMCP가 없어요</summary><div class="fix">설정 → 커넥터에서 '연결됨'인지 다시 보고, 화면 새로고침 후 <b>새 대화</b>를 여세요. 이미 열려 있던 대화에는 늦게 뜨기도 합니다.</div></details>
+  <details><summary>＋ 메뉴에 PlayMCP가 없어요</summary><div class="fix">화면 새로고침 후 <b>새 대화</b>를 여세요. 이미 열려 있던 대화에는 늦게 뜨기도 합니다.</div></details>
 </section>
 
 <section id="s7">
   <div class="head"><span class="num">7</span><h2>보내 달라고 하고 '허용'</h2></div>
-  <p class="do">교안의 보너스 프롬프트를 보내면, 보내기 직전 <b>"이 도구를 사용할까요?"</b> 창이 뜹니다. 보낼 내용을 읽고 <span class="key">이번만 허용</span>.</p>
-  <p class="ok">✔ 클로드가 "보냈습니다"라고 하면 8단계로</p>
-  <details><summary>"카카오톡으로는 보낼 수 없어요"라고 해요</summary><div class="fix">대개 6단계 스위치가 꺼져 있습니다. 켠 뒤 이렇게 다시 말해 보세요: <b>"PlayMCP의 카카오톡 나에게 보내기 도구로 보내줘."</b></div></details>
-  <details><summary>글만 써 주고 허용 창이 안 떠요</summary><div class="fix">'보내줘'를 빠뜨리면 글만 씁니다. <b>"방금 글을 카카오톡 나와의 채팅방에 보내줘"</b> 한마디 더.</div></details>
-  <details><summary>카카오 동의 창이 또 떠요</summary><div class="fix">메시지 보내기 권한을 처음 쓸 때 한 번 더 묻는 것입니다. <b>동의</b>하고 한 번 더 보내 달라고 하세요.</div></details>
-  <details><summary>'항상 허용'은 눌러도 되나요?</summary><div class="fix">누르면 다음부터 묻지 않고 바로 보냅니다. 익숙해지기 전엔 <b>이번만 허용</b>으로 매번 내용을 확인하세요.</div></details>
-  <details><summary>오류가 나거나 '인증이 만료됐다'고 해요</summary><div class="fix">설정 → 커넥터 → PlayMCP → <b>연결 해제 → 다시 연결</b> (3~4단계 다시).</div></details>
+  <p class="do">먼저 짧게 시험: <b>"빨리 퇴근하자"라고 나챗방에 보내줘</b> → <b>"도구를 사용할까요?"</b> 창에서 내용 확인 → <span class="key">허용</span></p>
+  <p class="ok">✔ 클로드가 "보냈습니다"라고 하면 8단계로. 그다음 교안의 보너스 프롬프트!</p>
+  <details><summary>"카카오톡으로는 보낼 수 없어요" / 도구를 못 찾아요</summary><div class="fix"><ol><li>6단계 스위치가 켜져 있는지</li><li>2단계 도구함에 <b>카카오톡 나챗방</b>이 <b>추가됨·파란 스위치</b>인지</li><li>그다음 <b>"PlayMCP 카카오톡 나챗방 도구로 보내줘"</b>라고 다시</li></ol></div></details>
+  <details><summary>글만 써 주고 허용 창이 안 떠요</summary><div class="fix">'보내줘'가 빠지면 글만 씁니다. <b>"방금 글을 나챗방에 보내줘"</b> 한마디 더.</div></details>
+  <details><summary>길게 쓴 글이 안 가요 / 잘려요</summary><div class="fix">한 번에 <b>200자</b>까지입니다. <b>"200자 안으로 줄여서 보내줘"</b>.</div></details>
+  <details><summary>친구나 단톡방에 바로 보내 달라고 해도 되나요?</summary><div class="fix">안 됩니다. <b>나에게만</b> 보내는 도구예요. 나챗방에서 받은 글을 <b>꾹 눌러 → 전달</b>하세요.</div></details>
+  <details><summary>매번 허용 누르기 번거로워요</summary><div class="fix">설정 → 커넥터 → PlayMCP를 열면 도구마다 <b>항상 허용 / 승인 필요 / 차단</b>을 고를 수 있어요. 익숙해지기 전엔 <b>승인 필요</b>로 매번 내용을 확인하세요.</div></details>
+  <details><summary>오류가 나거나 '인증이 만료됐다'고 해요</summary><div class="fix">설정 → 커넥터 → PlayMCP <b>연결 해제 → 다시 연결</b> (4~5단계).</div></details>
 </section>
 
 <section id="s8">
   <div class="head"><span class="num" style="background:var(--ok)">✓</span><h2>폰에서 확인</h2></div>
-  <p class="do">폰 카카오톡 → <b>나와의 채팅</b> → 클로드가 쓴 글 확인 → 주소 눌러 열어 보기</p>
-  <details><summary>'나와의 채팅' 방을 못 찾겠어요</summary><div class="fix">카카오톡 <b>친구</b> 탭 맨 위 <b>내 프로필</b> 누르기 → <b>나와의 채팅</b>. 채팅 목록 위쪽에 고정되어 있기도 합니다.</div></details>
-  <details><summary>클로드는 보냈다는데 폰에 없어요</summary><div class="fix">카톡 앱을 <b>껐다 켜기</b>. 그래도 없으면 폰 카톡과 3단계에서 로그인한 카카오 계정이 같은지 확인하세요.</div></details>
+  <p class="do">폰 카카오톡 → <b>나와의 채팅</b> → 클로드가 보낸 글 확인 → 주소 눌러 열어 보기</p>
+  <details><summary>'나와의 채팅' 방을 못 찾겠어요</summary><div class="fix">카카오톡 <b>친구</b> 탭 맨 위 <b>내 프로필</b> → <b>나와의 채팅</b>.</div></details>
+  <details><summary>클로드는 보냈다는데 폰에 없어요</summary><div class="fix">카톡 앱을 <b>껐다 켜기</b>. 그래도 없으면 폰 카톡 계정과 1·4단계 카카오 계정이 같은지 확인하세요.</div></details>
   <p class="tip">🎉 성공했으면 → <a href="kakao-practice.html"><b>실습 5가지</b></a>로 더 해 보기</p>
 </section>
 
 <section>
   <div class="head"><span class="num q">!</span><h2>끝내 안 될 때 · 연결 끊기</h2></div>
   <p>오늘은 그냥 넘어갑니다 — 클로드가 쓴 글을 <b>복사해서 카톡에 붙여넣으면</b> 결과는 같습니다.</p>
-  <p>나중에 끊고 싶으면: 클로드 <span class="key">설정</span> → <span class="key">커넥터</span> → PlayMCP <b>…</b> → <b>제거</b>, 그리고 PlayMCP 내 프로필 → <b>설정 → 연결된 서비스</b>에서 해제.</p>
+  <p>끊고 싶으면: PlayMCP 내 프로필 → <b>설정 → 연결된 서비스</b> → Claude <b>액세스 권한 삭제</b> → <b>삭제하기</b>. 클로드 쪽은 설정 → 커넥터 → PlayMCP <b>연결 해제</b>.</p>
 </section>
 
 <a class="back" href="2.html#s8">← 2차시 교안으로 돌아가기</a>
 <footer>2026년 10월 기준입니다. 카카오·클로드 화면은 자주 바뀌니 버튼 위치보다 <b>글자</b>를 보고 찾으세요.</footer>
 </div>
-<script>
-document.getElementById('cp').addEventListener('click',function(e){
-  e.preventDefault();var b=this,t=document.getElementById('mcp').innerText;
-  function ok(){b.textContent='복사됨 ✓';setTimeout(function(){b.textContent='복사';},1500);}
-  function fb(){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok();}catch(x){}ta.remove();}
-  if(navigator.clipboard){navigator.clipboard.writeText(t).then(ok,fb);}else fb();
-});
-</script>
 </body>
 </html>
