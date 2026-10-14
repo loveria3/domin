@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>카톡 나챗방으로 주소 보내기 실습 — 2차시</title>
+<style>
+  :root{--ink:#1f2328;--sub:#5f6873;--line:#e3e6ea;--bg:#f6f5f1;--navy:#1f3864;--soft:#eef1f7;--warn:#8a5a00;--or:#e8590c;--blue:#1668dc;--kakao:#fee500}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.65;font-family:"Pretendard","Malgun Gothic","맑은 고딕",-apple-system,sans-serif}
+  .wrap{max-width:820px;margin:0 auto;padding:28px 18px 70px}
+  .home{font-size:13px;font-weight:700;color:var(--sub);text-decoration:none}
+  header{border-bottom:3px solid var(--navy);padding-bottom:12px;margin:10px 0 16px}
+  .kicker{font-size:13px;font-weight:700;color:var(--navy);margin:0 0 4px}
+  h1{font-size:26px;margin:0;letter-spacing:-.03em}
+  .sub{font-size:14px;color:var(--sub);margin:6px 0 0}
+  section{background:#fff;border:1px solid var(--line);border-radius:8px;padding:18px 20px;margin:14px 0}
+  .head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .num{background:var(--or);color:#fff;font-weight:800;min-width:30px;height:30px;border-radius:15px;display:grid;place-items:center;padding:0 6px}
+  .num.q{background:var(--navy)}
+  .lv{font-size:12px;font-weight:700;color:var(--sub);border:1px solid var(--line);border-radius:10px;padding:1px 8px}
+  h2{font-size:19px;margin:0}
+  p{margin:10px 0 0;font-size:15.5px}
+  .mine{background:var(--kakao);border:0}
+  .mine label{font-weight:800;font-size:16px;display:block}
+  .mine input{width:100%;margin-top:8px;font-size:17px;padding:10px 12px;border:2px solid #1f2328;border-radius:8px;font-family:inherit}
+  .mine small{display:block;margin-top:6px;font-size:13px}
+  .box{margin-top:12px;border:1px solid #cdd5e6;border-radius:8px;overflow:hidden}
+  .bar{display:flex;justify-content:space-between;align-items:center;background:var(--soft);padding:8px 12px;font-size:13.5px;font-weight:700;color:var(--navy)}
+  .bar button{border:0;background:var(--navy);color:#fff;font-weight:700;border-radius:6px;padding:5px 14px;cursor:pointer;font-family:inherit}
+  .txt{white-space:pre-wrap;padding:12px 14px;font-size:15.5px}
+  .ph{color:var(--blue);font-weight:700}
+  .ex{margin-top:10px;background:#fffbe6;border-left:4px solid var(--kakao);border-radius:4px;padding:10px 14px;font-size:14.5px;white-space:pre-wrap}
+  .ex b{display:block;font-size:12.5px;color:var(--sub);margin-bottom:2px}
+  .tip{font-size:14.5px;background:var(--soft);border-radius:6px;padding:10px 14px;margin:12px 0 0}
+  .warn{font-size:14.5px;color:var(--warn);margin:12px 0 0}
+  ul.chk{list-style:none;padding:0;margin:10px 0 0}
+  ul.chk li{font-size:15.5px;padding:4px 0}
+  ul.chk input{width:18px;height:18px;vertical-align:-3px;margin-right:8px}
+  ol{margin:10px 0 0;padding-left:22px}li{font-size:15.5px;padding:3px 0}
+  .back{display:inline-block;margin-top:18px;background:var(--navy);color:#fff;text-decoration:none;border-radius:6px;padding:10px 18px;font-weight:700}
+  footer{margin-top:26px;font-size:12px;color:var(--sub);text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="home" href="2.html#s8">← 2차시 교안으로 돌아가기</a>
+<header>
+  <p class="kicker">2차시 · 보너스 실습</p>
+  <h1>카톡 나챗방으로 내 주소 보내기 💬</h1>
+  <p class="sub">클로드에게 말로 시키고, <b>폰 카카오톡 → 나와의 채팅</b>에서 받아 봅니다. 위에서부터 하나씩 해 보세요.</p>
+</header>
+
+<section class="mine">
+  <label for="url">✏️ 먼저 내 발표자료 주소를 넣으세요</label>
+  <input id="url" type="text" placeholder="예) https://○○○.netlify.app" autocomplete="off">
+  <small>넣으면 아래 프롬프트의 <b>[내 netlify 주소]</b>가 자동으로 바뀝니다. 그대로 <b>복사</b>만 누르세요.</small>
+</section>
+
+<section>
+  <div class="head"><span class="num q">✓</span><h2>시작 전 확인</h2></div>
+  <ul class="chk">
+    <li><label><input type="checkbox">클로드 설정 → 커넥터에 <b>PlayMCP 연결됨</b></label></li>
+    <li><label><input type="checkbox">새 대화 입력창 아래 <b>＋(도구)</b>에서 <b>PlayMCP 켜짐</b></label></li>
+    <li><label><input type="checkbox">폰 카카오톡에서 <b>나와의 채팅</b> 방 열어 두기</label></li>
+  </ul>
+  <p class="warn">⚠ 연결이 아직이면 → <a href="kakao-help.html">카카오 연결 도움말</a>부터</p>
+</section>
+
+<section>
+  <div class="head"><span class="num">1</span><h2>주소만 보내기</h2><span class="lv">맛보기</span></div>
+  <div class="box"><div class="bar"><span>실습 1</span></div>
+<div class="txt"><span class="ph u">[내 netlify 주소]</span> 이 주소를 카카오톡 나와의 채팅방에 보내줘.</div></div>
+  <p class="tip">💡 <b>"도구를 사용할까요?"</b> 창이 뜨면 보낼 내용을 한 번 읽고 <b>허용</b> → 폰 확인 → 주소 눌러 열리는지 보기</p>
+</section>
+
+<section>
+  <div class="head"><span class="num">2</span><h2>가족에게 보낼 글로 보내기</h2><span class="lv">기본</span></div>
+  <div class="box"><div class="bar"><span>실습 2</span></div>
+<div class="txt">내 발표자료 주소는 <span class="ph u">[내 netlify 주소]</span> 야.
+<span class="ph">[우리 가족]</span>에게 보낼 다정한 소개 글을 3줄로 써서 카카오톡 나와의 채팅방에 보내줘.
+마지막 줄에 주소를 꼭 넣어줘.</div></div>
+  <div class="ex"><b>이런 식으로 와요</b>엄마가 요즘 컴퓨터 배우면서 발표자료를 직접 만들었어요 😊
+폰에서 눌러 보면 한 장씩 넘겨 볼 수 있어요.
+👉 https://○○○.netlify.app</div>
+</section>
+
+<section>
+  <div class="head"><span class="num">3</span><h2>모임 단톡방 공지로 보내기</h2><span class="lv">기본</span></div>
+  <div class="box"><div class="bar"><span>실습 3</span></div>
+<div class="txt"><span class="ph">[걷기 동호회 '느영나영']</span> 단톡방에 올릴 공지를 써서 카카오톡 나와의 채팅방에 보내줘.
+내용은 <span class="ph">[다음 모임 전에 소개 자료를 한번 봐 달라]</span> 는 것이고,
+주소는 <span class="ph u">[내 netlify 주소]</span> 야.
+한눈에 보이게 줄을 나누고, 이모지는 조금만.</div></div>
+</section>
+
+<section>
+  <div class="head"><span class="num">4</span><h2>고쳐서 다시 보내기</h2><span class="lv">고치기</span></div>
+  <p>받아 본 글이 마음에 안 들면, 같은 대화에서 <b>고칠 곳만</b> 말합니다. 아래에서 골라 쓰세요.</p>
+  <div class="box"><div class="bar"><span>고치기 ① 짧게</span></div>
+<div class="txt">방금 보낸 글을 2줄로 더 짧게 고쳐서 나와의 채팅방에 다시 보내줘.</div></div>
+  <div class="box"><div class="bar"><span>고치기 ② 말투</span></div>
+<div class="txt">방금 글을 <span class="ph">[존댓말로, 조금 더 정중하게]</span> 바꿔서 다시 보내줘. 주소는 그대로 둬.</div></div>
+  <p class="tip">🔑 2시간 전에 배운 그 공식 — <b>"[어디]를 [어떻게] 바꿔줘. 나머지는 그대로 둬."</b></p>
+</section>
+
+<section>
+  <div class="head"><span class="num">5</span><h2>내 발표 내용으로 요약해서 보내기</h2><span class="lv">도전</span></div>
+  <p>발표자료를 만든 <b>그 대화창</b>에서 보내면, 클로드가 내용을 알고 있어서 더 잘 써 줍니다.</p>
+  <div class="box"><div class="bar"><span>실습 5</span></div>
+<div class="txt">이 대화에서 만든 발표자료의 핵심을 세 줄로 요약해줘.
+그 아래에 "자세한 건 여기서 보세요 👉 <span class="ph u">[내 netlify 주소]</span>" 를 붙여서
+카카오톡 나와의 채팅방에 보내줘.</div></div>
+</section>
+
+<section>
+  <div class="head"><span class="num" style="background:#2f6b4f">📱</span><h2>폰에서 마무리</h2></div>
+  <ol>
+    <li>카카오톡 → <b>나와의 채팅</b>에서 온 글 확인 → 주소 눌러 열어 보기</li>
+    <li>마음에 드는 글을 <b>꾹 눌러 → 전달</b> → 가족·모임 단톡방 고르기</li>
+    <li>우리 반 <a href="https://padlet.com/loveria/padlet-s0248e8jku350jxnybsr" target="_blank" rel="noopener">패들렛 ↗</a>에 제일 마음에 든 글 올리기</li>
+  </ol>
+  <p class="tip">💡 나와의 채팅에서 한 번 보고 <b>전달</b>하기 — 실수한 글이 바로 단톡방에 가지 않아 안심입니다.</p>
+</section>
+
+<section>
+  <div class="head"><span class="num q">!</span><h2>안 될 때</h2></div>
+  <ul>
+    <li><b>"카톡으로 보낼 수 없어요"라고 답할 때</b> → 입력창 아래 <b>＋(도구)</b>에서 PlayMCP가 꺼져 있는지 확인</li>
+    <li><b>허용 창 없이 끝났을 때</b> → "카카오톡 나에게 보내기 도구로 보내줘" 라고 한 번 더</li>
+    <li><b>폰에 안 왔을 때</b> → 카톡 앱을 껐다 켜고, 나와의 채팅 방을 다시 열기</li>
+    <li><b>그래도 안 되면</b> → 클로드가 써 준 글을 <b>복사해서</b> 카톡에 직접 붙여넣어도 결과는 같습니다</li>
+  </ul>
+</section>
+
+<a class="back" href="2.html#s8">← 2차시 교안으로 돌아가기</a>
+<footer>클로드로 만드는 내 일상 · 2차시 보너스 실습 &nbsp;|&nbsp; 제주도민대학 · 강사 강지애</footer>
+</div>
+<script>
+(function(){
+  var inp=document.getElementById('url'),slots=[].slice.call(document.querySelectorAll('.ph.u'));
+  var KEY='domin2-url';
+  function fill(){var v=inp.value.trim();slots.forEach(function(s){s.textContent=v||'[내 netlify 주소]';});
+    try{localStorage.setItem(KEY,v);}catch(e){}}
+  try{inp.value=localStorage.getItem(KEY)||'';}catch(e){}
+  inp.addEventListener('input',fill);fill();
+  document.querySelectorAll('.box').forEach(function(box){
+    var b=document.createElement('button');b.type='button';b.textContent='복사';box.querySelector('.bar').appendChild(b);
+    b.addEventListener('click',function(){
+      var t=box.querySelector('.txt').innerText;
+      function ok(){b.textContent='복사됨 ✓';setTimeout(function(){b.textContent='복사';},1500);}
+      if(navigator.clipboard){navigator.clipboard.writeText(t).then(ok,fb);}else fb();
+      function fb(){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok();}catch(e){}ta.remove();}
+    });
+  });
+})();
+</script>
+</body>
+</html>
