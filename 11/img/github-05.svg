@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" width="800" height="560">
+<rect width="800" height="560" fill="#ffffff"/>
+<circle cx="400" cy="60" r="18" fill="#1f2328"/>
+<circle cx="393.7" cy="59.1" r="2.88" fill="#fff"/>
+<circle cx="406.3" cy="59.1" r="2.88" fill="#fff"/>
+<text x="400" y="118" font-size="24" font-weight="700" fill="#1f2328" text-anchor="middle" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Sign in to GitHub</text>
+<rect x="240" y="140" width="320" height="250" rx="8" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+<text x="260" y="177" font-size="14" font-weight="600" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Username or email address</text>
+<rect x="260" y="185" width="280" height="34" rx="6" fill="#fff" stroke="#d0d7de" stroke-width="1"/>
+<text x="270" y="207.0" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">jiae-domin</text>
+<text x="260" y="257" font-size="14" font-weight="600" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Password</text>
+<rect x="260" y="265" width="280" height="34" rx="6" fill="#fff" stroke="#d0d7de" stroke-width="1"/>
+<text x="270" y="287.0" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">••••••••••••••••</text>
+<rect x="260" y="325" width="280" height="36" rx="6" fill="#1f883d"/>
+<text x="400.0" y="348.04" font-size="14" font-weight="600" fill="#fff" text-anchor="middle" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Sign in</text>
+</svg>

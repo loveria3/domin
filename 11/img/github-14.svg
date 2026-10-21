@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" width="800" height="560">
+<rect width="800" height="560" fill="#ffffff"/>
+<rect x="0" y="0" width="800" height="64" rx="0" fill="#f6f8fa"/>
+<line x1="0" y1="64" x2="800" y2="64" stroke="#d0d7de" stroke-width="1"/>
+<circle cx="32" cy="32" r="14" fill="#1f2328"/>
+<circle cx="27.1" cy="31.3" r="2.24" fill="#fff"/>
+<circle cx="36.9" cy="31.3" r="2.24" fill="#fff"/>
+<text x="56" y="37" font-size="14" font-weight="600" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">jiae-domin / halla-olle</text>
+<rect x="660" y="18" width="52" height="28" rx="6" fill="#fff" stroke="#d0d7de" stroke-width="1"/>
+<text x="686" y="37" font-size="14" font-weight="600" fill="#1f2328" text-anchor="middle" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">+ ▾</text>
+<circle cx="752" cy="32" r="14" fill="#9a6dd7"/>
+<text x="24" y="98" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Code</text>
+<text x="86" y="98" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Issues</text>
+<text x="166" y="98" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Pull requests</text>
+<text x="309" y="98" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Actions</text>
+<text x="398" y="98" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Projects</text>
+<text x="496" y="98" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Security</text>
+<text x="594" y="98" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Insights</text>
+<rect x="692" y="108" width="88" height="3" rx="1" fill="#fd8c73"/>
+<text x="692" y="98" font-size="14" font-weight="600" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Settings</text>
+<line x1="0" y1="112" x2="800" y2="112" stroke="#d0d7de" stroke-width="1"/>
+<text x="40" y="160" font-size="22" font-weight="700" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">GitHub Pages</text>
+<line x1="40" y1="178" x2="760" y2="178" stroke="#d0d7de" stroke-width="1"/>
+<rect x="40" y="200" width="720" height="92" rx="8" fill="#dafbe1" stroke="#4ac26b" stroke-width="1"/>
+<text x="64" y="235" font-size="15" font-weight="600" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Your site is live at</text>
+<text x="64" y="266" font-size="15" font-weight="600" fill="#0969da" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">https://jiae-domin.github.io/halla-olle/</text>
+<rect x="620" y="228" width="120" height="34" rx="6" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+<text x="680.0" y="250.04" font-size="14" font-weight="600" fill="#1f2328" text-anchor="middle" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Visit site ↗</text>
+<text x="40" y="330" font-size="13" font-weight="400" fill="#59636e" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Last deployed by jiae-domin 1 minute ago</text>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 640" width="800" height="640">
+<rect width="800" height="640" fill="#ffffff"/>
+<rect x="0" y="0" width="800" height="64" rx="0" fill="#f6f8fa"/>
+<line x1="0" y1="64" x2="800" y2="64" stroke="#d0d7de" stroke-width="1"/>
+<circle cx="32" cy="32" r="14" fill="#1f2328"/>
+<circle cx="27.1" cy="31.3" r="2.24" fill="#fff"/>
+<circle cx="36.9" cy="31.3" r="2.24" fill="#fff"/>
+<text x="56" y="37" font-size="14" font-weight="600" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">jiae-domin / halla-olle</text>
+<rect x="660" y="18" width="52" height="28" rx="6" fill="#fff" stroke="#d0d7de" stroke-width="1"/>
+<text x="686" y="37" font-size="14" font-weight="600" fill="#1f2328" text-anchor="middle" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">+ ▾</text>
+<circle cx="752" cy="32" r="14" fill="#9a6dd7"/>
+<rect x="40" y="90" width="720" height="120" rx="8" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+<text x="60" y="125" font-size="14" font-weight="400" fill="#59636e" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Drag additional files here to add them to your repository</text>
+<rect x="40" y="230" width="720" height="44" rx="6" fill="#fff" stroke="#d0d7de" stroke-width="1"/>
+<text x="60" y="258" font-size="14" font-weight="600" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">📄 index.html</text>
+<text x="740" y="258" font-size="14" font-weight="400" fill="#59636e" text-anchor="end" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">✕</text>
+<text x="40" y="320" font-size="18" font-weight="700" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Commit changes</text>
+<rect x="40" y="335" width="720" height="34" rx="6" fill="#fff" stroke="#d0d7de" stroke-width="1"/>
+<text x="52" y="357" font-size="14" font-weight="400" fill="#59636e" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Add files via upload</text>
+<rect x="40" y="380" width="720" height="70" rx="6" fill="#fff" stroke="#d0d7de" stroke-width="1"/>
+<text x="52" y="402" font-size="13" font-weight="400" fill="#8c959f" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Add an optional extended description…</text>
+<circle cx="52" cy="482" r="7" fill="#0969da"/>
+<text x="68" y="487" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Commit directly to the main branch.</text>
+<rect x="40" y="520" width="150" height="36" rx="6" fill="#1f883d"/>
+<text x="115.0" y="543.04" font-size="14" font-weight="600" fill="#fff" text-anchor="middle" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Commit changes</text>
+</svg>

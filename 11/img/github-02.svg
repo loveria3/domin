@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 700" width="800" height="700">
+<rect width="800" height="700" fill="#ffffff"/>
+<circle cx="400" cy="60" r="18" fill="#1f2328"/>
+<circle cx="393.7" cy="59.1" r="2.88" fill="#fff"/>
+<circle cx="406.3" cy="59.1" r="2.88" fill="#fff"/>
+<text x="400" y="120" font-size="26" font-weight="700" fill="#1f2328" text-anchor="middle" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Sign up for GitHub</text>
+<text x="200" y="167" font-size="14" font-weight="600" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Email*</text>
+<rect x="200" y="175" width="400" height="34" rx="6" fill="#fff" stroke="#d0d7de" stroke-width="1"/>
+<text x="210" y="197.0" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">jiae.domin@gmail.com</text>
+<text x="200" y="242" font-size="14" font-weight="600" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Password*</text>
+<rect x="200" y="250" width="400" height="34" rx="6" fill="#fff" stroke="#d0d7de" stroke-width="1"/>
+<text x="210" y="272.0" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">••••••••••••••••</text>
+<text x="200" y="300" font-size="12" font-weight="400" fill="#59636e" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">15자 이상, 또는 숫자·소문자를 넣어 8자 이상</text>
+<text x="200" y="337" font-size="14" font-weight="600" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Username*</text>
+<rect x="200" y="345" width="400" height="34" rx="6" fill="#fff" stroke="#d0d7de" stroke-width="1"/>
+<text x="210" y="367.0" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">jiae-domin</text>
+<text x="200" y="395" font-size="12" font-weight="400" fill="#1a7f37" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">영어 소문자·숫자·- 만. 이 이름이 주소가 됩니다</text>
+<text x="200" y="432" font-size="14" font-weight="600" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Your Country/Region*</text>
+<rect x="200" y="440" width="400" height="34" rx="6" fill="#fff" stroke="#d0d7de" stroke-width="1"/>
+<text x="210" y="462.0" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">South Korea ▾</text>
+<rect x="200" y="498" width="16" height="16" rx="3" fill="#fff" stroke="#d0d7de" stroke-width="1"/>
+<text x="226" y="511" font-size="13" font-weight="400" fill="#59636e" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Receive occasional product updates (선택)</text>
+<rect x="200" y="540" width="400" height="40" rx="6" fill="#1f2328"/>
+<text x="400.0" y="565.4" font-size="15" font-weight="600" fill="#fff" text-anchor="middle" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Continue ›</text>
+</svg>

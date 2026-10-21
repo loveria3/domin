@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 720" width="800" height="720">
+<rect width="800" height="720" fill="#ffffff"/>
+<rect x="0" y="0" width="800" height="64" rx="0" fill="#f6f8fa"/>
+<line x1="0" y1="64" x2="800" y2="64" stroke="#d0d7de" stroke-width="1"/>
+<circle cx="32" cy="32" r="14" fill="#1f2328"/>
+<circle cx="27.1" cy="31.3" r="2.24" fill="#fff"/>
+<circle cx="36.9" cy="31.3" r="2.24" fill="#fff"/>
+<rect x="660" y="18" width="52" height="28" rx="6" fill="#fff" stroke="#d0d7de" stroke-width="1"/>
+<text x="686" y="37" font-size="14" font-weight="600" fill="#1f2328" text-anchor="middle" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">+ ▾</text>
+<circle cx="752" cy="32" r="14" fill="#9a6dd7"/>
+<text x="40" y="112" font-size="22" font-weight="700" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Create a new repository</text>
+<line x1="40" y1="130" x2="760" y2="130" stroke="#d0d7de" stroke-width="1"/>
+<text x="40" y="167" font-size="14" font-weight="600" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Owner *</text>
+<rect x="40" y="175" width="150" height="34" rx="6" fill="#fff" stroke="#d0d7de" stroke-width="1"/>
+<text x="50" y="197.0" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">jiae-domin ▾</text>
+<text x="198" y="197" font-size="20" font-weight="400" fill="#59636e" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">/</text>
+<text x="214" y="167" font-size="14" font-weight="600" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Repository name *</text>
+<rect x="214" y="175" width="300" height="34" rx="6" fill="#fff" stroke="#d0d7de" stroke-width="1"/>
+<text x="224" y="197.0" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">halla-olle</text>
+<text x="214" y="228" font-size="13" font-weight="600" fill="#1a7f37" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">✓ halla-olle is available.</text>
+<text x="40" y="267" font-size="14" font-weight="600" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Description (optional)</text>
+<rect x="40" y="275" width="720" height="34" rx="6" fill="#fff" stroke="#d0d7de" stroke-width="1"/>
+<text x="50" y="297.0" font-size="14" font-weight="400" fill="#8c959f" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">한라마을 돌담 올레 안내</text>
+<circle cx="52" cy="353" r="8" fill="#fff"/>
+<circle cx="52" cy="353" r="8" fill="none" stroke="#59636e" stroke-width="1.5"/>
+<circle cx="52" cy="353" r="4.5" fill="#0969da"/>
+<text x="72" y="358" font-size="15" font-weight="600" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Public</text>
+<text x="72" y="378" font-size="13" font-weight="400" fill="#59636e" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Anyone on the internet can see this repository.</text>
+<circle cx="52" cy="409" r="8" fill="#fff"/>
+<circle cx="52" cy="409" r="8" fill="none" stroke="#59636e" stroke-width="1.5"/>
+<text x="72" y="414" font-size="15" font-weight="600" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Private</text>
+<text x="72" y="434" font-size="13" font-weight="400" fill="#59636e" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">You choose who can see and commit to this repository.</text>
+<line x1="40" y1="470" x2="760" y2="470" stroke="#d0d7de" stroke-width="1"/>
+<text x="40" y="500" font-size="14" font-weight="600" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Initialize this repository with:</text>
+<rect x="40" y="514" width="16" height="16" rx="3" fill="#fff" stroke="#d0d7de" stroke-width="1"/>
+<text x="64" y="527" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Add a README file</text>
+<line x1="40" y1="600" x2="760" y2="600" stroke="#d0d7de" stroke-width="1"/>
+<rect x="600" y="620" width="160" height="36" rx="6" fill="#1f883d"/>
+<text x="680.0" y="643.04" font-size="14" font-weight="600" fill="#fff" text-anchor="middle" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Create repository</text>
+</svg>

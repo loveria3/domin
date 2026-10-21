@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" width="800" height="560">
+<rect width="800" height="560" fill="#ffffff"/>
+<rect x="0" y="0" width="800" height="64" rx="0" fill="#f6f8fa"/>
+<line x1="0" y1="64" x2="800" y2="64" stroke="#d0d7de" stroke-width="1"/>
+<circle cx="32" cy="32" r="14" fill="#1f2328"/>
+<circle cx="27.1" cy="31.3" r="2.24" fill="#fff"/>
+<circle cx="36.9" cy="31.3" r="2.24" fill="#fff"/>
+<text x="56" y="37" font-size="14" font-weight="600" fill="#1f2328" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">jiae-domin / halla-olle</text>
+<rect x="660" y="18" width="52" height="28" rx="6" fill="#fff" stroke="#d0d7de" stroke-width="1"/>
+<text x="686" y="37" font-size="14" font-weight="600" fill="#1f2328" text-anchor="middle" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">+ ▾</text>
+<circle cx="752" cy="32" r="14" fill="#9a6dd7"/>
+<text x="40" y="112" font-size="18" font-weight="600" fill="#0969da" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">halla-olle /</text>
+<rect x="40" y="140" width="720" height="260" rx="8" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+<rect x="40" y="140" width="720" height="260" rx="8" fill="none" stroke="#8c959f" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="400" y="255" font-size="40" font-weight="400" fill="#59636e" text-anchor="middle" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">📄</text>
+<text x="400" y="300" font-size="17" font-weight="600" fill="#1f2328" text-anchor="middle" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Drag files here to add them to your repository</text>
+<text x="400" y="328" font-size="14" font-weight="400" fill="#0969da" text-anchor="middle" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">Or choose your files</text>
+<rect x="40" y="470" width="230" height="60" rx="8" fill="#fffdf5" stroke="#e8d48a" stroke-width="1"/>
+<text x="56" y="496" font-size="13" font-weight="600" fill="#5a4a12" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">내 컴퓨터 — 올레안내 폴더</text>
+<text x="56" y="517" font-size="13" font-weight="400" fill="#5a4a12" text-anchor="start" font-family="Segoe UI, Malgun Gothic, Apple SD Gothic Neo, sans-serif">index.html</text>
+</svg>
