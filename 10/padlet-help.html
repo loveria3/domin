@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>패들렛 처음 만들기 — 3차시</title>
+<style>
+:root{--ink:#1f2328;--sub:#5f6873;--line:#e3e6ea;--bg:#f6f5f1;--navy:#1f3864;--soft:#eef1f7;--warn:#b42318;--or:#e8590c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);line-height:1.65;font-family:"Pretendard","Malgun Gothic","맑은 고딕",-apple-system,sans-serif}
+.wrap{max-width:820px;margin:0 auto;padding:28px 18px 70px}
+.home{font-size:13px;font-weight:700;color:var(--sub);text-decoration:none}
+header{border-bottom:3px solid var(--navy);padding-bottom:12px;margin:10px 0 16px}
+.kicker{font-size:13px;font-weight:700;color:var(--navy);margin:0 0 4px}
+h1{font-size:26px;margin:0;letter-spacing:-.03em}
+.sub{font-size:14.5px;color:var(--sub);margin:6px 0 0}
+section{background:#fff;border:1px solid var(--line);border-radius:8px;padding:18px 20px;margin:14px 0}
+h2{font-size:19px;margin:0 0 6px}
+p{margin:8px 0 0;font-size:15.5px}
+
+/* ── 플레이어 ── */
+.player{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.cap{padding:14px 18px 12px;border-bottom:1px solid var(--line);min-height:92px}
+.cap .no{display:inline-block;background:var(--or);color:#fff;font-weight:800;border-radius:14px;padding:1px 11px;font-size:14px;margin-right:6px}
+.cap .t{font-size:19px;font-weight:800;letter-spacing:-.02em}
+.cap .d{font-size:15px;color:var(--sub);margin-top:4px}
+.cap .d b{color:var(--ink)}
+.cap .w{display:block;color:var(--warn);font-weight:700;margin-top:4px}
+.stage{position:relative;background:#fafafa}
+.frame{position:relative;max-width:560px;margin:0 auto}
+.frame img{width:100%;display:block}
+.cursor{position:absolute;width:30px;height:30px;left:50%;top:110%;transform:translate(-4px,-3px);transition:left .9s cubic-bezier(.4,0,.2,1),top .9s cubic-bezier(.4,0,.2,1);z-index:5;pointer-events:none;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35))}
+.ring{position:absolute;width:56px;height:56px;margin:-28px 0 0 -28px;border:4px solid var(--or);border-radius:50%;opacity:0;z-index:4;pointer-events:none}
+.ring.go{animation:ring 1.4s ease-out infinite}
+@keyframes ring{0%{transform:scale(.4);opacity:1}100%{transform:scale(1.5);opacity:0}}
+.box{position:absolute;border:4px solid var(--or);border-radius:8px;background:rgba(232,89,12,.08);opacity:0;transition:opacity .4s;z-index:3;pointer-events:none}
+.box.on{opacity:1}
+.box.x{border-color:#9aa1a9;background:rgba(0,0,0,.04)}
+.tag{position:absolute;background:var(--or);color:#fff;font-weight:800;font-size:13px;border-radius:6px;padding:2px 8px;white-space:nowrap;opacity:0;transition:opacity .4s;z-index:6;pointer-events:none}
+.tag.on{opacity:1}
+.tag.gray{background:#6b7280}
+.chip{position:absolute;display:flex;align-items:center;gap:6px;background:#fff;border:2px solid var(--navy);border-radius:8px;padding:6px 10px;font-weight:800;font-size:14px;z-index:6;box-shadow:0 6px 16px rgba(0,0,0,.18);transition:left 1.4s cubic-bezier(.4,0,.2,1),top 1.4s cubic-bezier(.4,0,.2,1),opacity .3s;transform:translate(-50%,-50%);opacity:0;pointer-events:none}
+.chip.on{opacity:1}
+.ctrl{display:flex;align-items:center;gap:8px;padding:10px 14px;border-top:1px solid var(--line);flex-wrap:wrap}
+.ctrl button{font:inherit;font-weight:800;border:1px solid var(--line);background:#fff;border-radius:6px;padding:7px 14px;cursor:pointer;font-size:15px}
+.ctrl button.main{background:var(--navy);color:#fff;border-color:var(--navy);min-width:96px}
+.dots{display:flex;gap:5px;flex-wrap:wrap;margin-left:auto}
+.dots i{width:12px;height:12px;border-radius:50%;background:#d6dae0;cursor:pointer}
+.dots i.on{background:var(--or)}
+.bar{height:4px;background:#eceef1}
+.bar span{display:block;height:100%;width:0;background:var(--or)}
+
+/* ── 도움말 카드 ── */
+.tips{display:grid;gap:12px;margin-top:4px}
+.tipc{border-radius:8px;padding:12px 14px;font-size:15px}
+.tipc b.h{display:block;font-size:16px;margin-bottom:2px}
+.tipc.red{background:#fdf0ec;border:1px solid #f3c9b8}
+.tipc.blue{background:var(--soft);border:1px solid #d3dbea}
+.tipc.green{background:#eef7f1;border:1px solid #bfe0cb}
+.tipc img{width:100%;max-width:340px;display:block;border:1px solid var(--line);border-radius:6px;margin-top:8px}
+code{background:#f1f2f4;border-radius:4px;padding:0 5px;font-size:14px}
+.back{display:inline-block;margin-top:18px;background:var(--navy);color:#fff;text-decoration:none;border-radius:6px;padding:10px 18px;font-weight:700}
+footer{margin-top:26px;font-size:12px;color:var(--sub);text-align:center}
+@media (prefers-reduced-motion:reduce){.cursor,.chip{transition:none}.ring.go{animation:none;opacity:1}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="home" href="3.html#s6">← 3차시 교안으로 돌아가기</a>
+<header>
+  <p class="kicker">3차시 · 도움말</p>
+  <h1>패들렛 처음 만들기 — 가입부터 가족 초대까지</h1>
+  <p class="sub">구글로 가입 → <b>컬럼</b> 고르기 → 칸 이름 → 설정 → 공유(작성자 · QR). 화면이 저절로 넘어가요.</p>
+</header>
+
+<div class="player" id="player">
+  <div class="cap" id="cap"></div>
+  <div class="bar"><span id="bar"></span></div>
+  <div class="stage">
+    <div class="frame" id="frame">
+      <img id="shot" alt="">
+      <svg class="cursor" id="cursor" viewBox="0 0 24 24"><path d="M3 2l17 9-7.5 1.8L9 20z" fill="#fff" stroke="#111" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      <div class="ring" id="ring"></div>
+      <div class="chip" id="chip">📄 index.html</div>
+    </div>
+  </div>
+  <div class="ctrl">
+    <button id="prev" type="button">◀ 이전</button>
+    <button id="play" class="main" type="button">⏸ 멈춤</button>
+    <button id="next" type="button">다음 ▶</button>
+    <div class="dots" id="dots"></div>
+  </div>
+</div>
+
+<section>
+  <h2>막히면 여기를 보세요</h2>
+  <div class="tips">
+    <div class="tipc blue"><b class="h">💡 "Padlet을 어떻게 사용하시나요?" 질문</b>
+      처음 가입하면 한 번 물어봐요. <b>개인 프로젝트용</b>을 누르면 됩니다.</div>
+    <div class="tipc blue"><b class="h">💡 모양(형식)은 나중에 바꿔도 돼요</b>
+      설정(톱니) → 레이아웃 → <b>형식</b>에서 언제든 담벼락·컬럼·지도 등으로 바꿀 수 있어요.</div>
+    <div class="tipc red"><b class="h">⚠ 가족이 글을 못 올려요</b>
+      공유 → <b>링크가 있는 방문자</b>가 <b>작성자</b>인지 확인하세요. <b>뷰어</b>면 보기만 돼요.</div>
+    <div class="tipc red"><b class="h">⚠ 프로필 및 웹에 게시는 꺼 두기</b>
+      켜면 인터넷 검색에 나와요. 가족·모임용은 <b>꺼 둔 그대로</b> 두세요.</div>
+    <div class="tipc green"><b class="h">📋 가족에게 보내는 법</b>
+      공유 → <b>보드 링크 복사</b> → 카톡에 <b>Ctrl + V</b> · 또는 <b>QR 코드</b> → <b>이미지 다운로드</b> → 카톡으로 사진 보내기</div>
+    <div class="tipc green"><b class="h">🗂 무료는 3개까지</b>
+      연습용은 다 쓰고 지우면 다시 만들 수 있어요. 글·참여자 수는 무제한이에요.</div>
+  </div>
+</section>
+
+<section>
+  <h2>✓ 마지막 확인</h2>
+  <p>내 주소를 카톡 <b>나와의 채팅</b>으로 보내고 <b>폰</b>에서 눌러 보세요. 로그인 없이 발표자료가 보이면 성공!</p>
+  <p style="color:var(--warn);font-weight:700">⚠ 올린 자료는 주소를 아는 누구나 볼 수 있어요. 전화번호·집 주소 같은 개인정보는 넣지 마세요.</p>
+</section>
+
+<a class="back" href="3.html#s6">← 3차시 교안으로 돌아가기</a>
+<footer>화면은 패들렛 2026년 10월 기준입니다. 창 크기에 따라 배치가 조금 다르게 보일 수 있어요.</footer>
+</div>
+
+<script>
+(function(){
+  // h: 이미지 높이(가로 800 기준). x,y: 이미지 안 위치(px)
+  var S=[
+    {img:'01',h:711,t:'구글로 가입',d:'<b>padlet.com</b> → <b>가입</b> → <b>Google로 계속</b> → 내 계정 고르고 <b>계속</b>',
+      act:[{c:[647,509]}]},
+    {img:'02',h:500,t:'처음 질문 — 개인 프로젝트용',d:'"Padlet을 어떻게 사용하시나요?" → <b>개인 프로젝트용</b> 누르기',
+      act:[{c:[177,180]}]},
+    {img:'03',h:506,t:'＋ 만들기 — 컬럼 고르기',d:'Padlet 만들기 화면에서 <b>컬럼</b> 누르기 (자유롭게 모을 땐 담벼락)',
+      act:[{box:[180,108,320,192],tag:'오늘은 컬럼'},{c:[248,150]}]},
+    {img:'04',h:506,t:'제목 쓰고 모양 확인',d:'오른쪽 <b>제목</b> 칸에 "우리 가족 가을 여행" · 아래 <b>형식</b>에 9가지 모양이 있어요',
+      act:[{c:[657,74]},{box:[527,126,790,376],tag:'9가지 모양'}]},
+    {img:'05',h:506,t:'컬럼 ✓ → 완료',d:'<b>컬럼</b>에 체크가 있는지 보고 오른쪽 위 <b>완료</b>',
+      act:[{c:[657,158]},{c:[774,16]}]},
+    {img:'06',h:506,t:'칸(섹션) 이름 정하기',d:'섹션 이름을 눌러 바꾸고 <b>완료</b> → <b>섹션 추가</b>로 칸을 늘려요',
+      act:[{c:[520,92]},{c:[593,92]},{c:[655,95]}]},
+    {img:'07',h:506,t:'칸 완성',d:'예) 여행 일정 · 인포그래픽 · 관련 업체 · 여행 사진',
+      act:[{box:[34,80,700,104],tag:'섹션 4개'}]},
+    {img:'08',h:880,t:'설정(톱니) — 머리글',d:'위쪽 <b>톱니</b> → <b>제목</b>·<b>설명</b> 한 줄 · 아이콘',
+      act:[{box:[386,156,750,420],tag:'머리글'}]},
+    {img:'09',h:506,t:'배경 화면 고르기',d:'<b>배경 화면</b> → 색이나 그림 고르고 → <b>저장</b>',
+      act:[{c:[738,478]},{c:[763,26]}]},
+    {img:'10',h:506,t:'레이아웃 · 게시물',d:'<b>새 게시물 위치</b>: 첫 번째(새 글이 위) / 마지막(올린 순서) · <b>작성자 이름 및 시간</b> 켜기',
+      act:[{box:[562,180,770,208],tag:'글 순서'},{c:[749,322]}]},
+    {img:'11',h:506,t:'참여도 · 콘텐츠',d:'<b>댓글</b> 켜짐 · <b>이모지 반응</b> · <b>콘텐츠 검토</b>(가족이면 없음, 모르는 사람 많으면 승인)',
+      act:[{box:[562,108,770,224],tag:'댓글·반응'},{box:[562,256,770,346],tag:'검토·복사 방지'}]},
+    {img:'12',h:880,t:'공유 — 권한 확인',d:'위쪽 <b>공유</b> → <b>링크가 있는 방문자</b> 옆 단추 누르기',
+      act:[{c:[690,236]}]},
+    {img:'13',h:880,t:'작성자로 두기 ⭐',d:'가족이 글을 올리려면 <b>작성자</b> · 보기만 하게 하려면 <b>뷰어</b>',
+      act:[{box:[486,508,718,576],tag:'⭐ 가족용'},{c:[703,543]}]},
+    {img:'12',h:880,t:'프라이버시 옵션',d:'<b>비밀번호 필수</b>(필요할 때만) · <b>프로필 및 웹에 게시</b>는 <b>끈 채로</b>',w:'⚠ 켜면 인터넷 검색에 나와요',
+      act:[{box:[386,420,750,596],tag:'끈 그대로'}]},
+    {img:'14',h:506,t:'QR 코드로 초대',d:'<b>QR 코드</b> → <b>이미지 다운로드</b> → 카톡으로 보내기 (또는 <b>보드 링크 복사</b>)',
+      act:[{c:[516,418]}]},
+    {img:'15',h:880,t:'첫 글 올리기',d:'칸 아래 <b>＋</b> → 제목 · <b>올리기(↑)</b>로 인포그래픽 사진 → <b>게시</b>',
+      act:[{c:[283,528]},{c:[600,361]}]}
+  ];
+  var W=800, i=0, playing=true, timer=null, seq=[];
+  var $=function(id){return document.getElementById(id)};
+  var frame=$('frame'),shot=$('shot'),cur=$('cursor'),ring=$('ring'),chip=$('chip');
+  var dots=$('dots');
+  S.forEach(function(_,k){var e=document.createElement('i');e.title=(k+1)+'단계';e.onclick=function(){go(k)};dots.appendChild(e)});
+  // 미리 불러오기
+  S.forEach(function(s){var im=new Image();im.src='img/padlet-help-'+s.img+'.jpg'});
+  function pct(x,y,h){return {l:(x/W*100)+'%',t:(y/h*100)+'%'}}
+  function clear(){seq.forEach(clearTimeout);seq=[];
+    frame.querySelectorAll('.box,.tag').forEach(function(e){e.remove()});
+    ring.classList.remove('go');chip.classList.remove('on');}
+  function later(fn,ms){seq.push(setTimeout(fn,ms))}
+  function moveCursor(x,y,h){var p=pct(x,y,h);cur.style.left=p.l;cur.style.top=p.t}
+  function render(){
+    clear();
+    var s=S[i];
+    $('cap').innerHTML='<span class="no">'+(i+1)+' / '+S.length+'</span><span class="t">'+s.t+'</span><div class="d">'+s.d+(s.w?'<span class="w">'+s.w+'</span>':'')+'</div>';
+    shot.src='img/padlet-help-'+s.img+'.jpg'; shot.alt=s.t;
+    [].forEach.call(dots.children,function(e,k){e.classList.toggle('on',k===i)});
+    // 커서는 화면 아래쪽에서 출발
+    cur.style.transition='none';moveCursor(560,s.h*0.92,s.h);cur.getBoundingClientRect();cur.style.transition='';
+    var t=500;
+    s.act.forEach(function(a){
+      if(a.box){later(function(){
+          var b=document.createElement('div');b.className='box'+(a.gray?' x':'');
+          var p=pct(a.box[0],a.box[1],s.h);b.style.left=p.l;b.style.top=p.t;
+          b.style.width=((a.box[2]-a.box[0])/W*100)+'%';b.style.height=((a.box[3]-a.box[1])/s.h*100)+'%';
+          frame.appendChild(b);requestAnimationFrame(function(){b.classList.add('on')});
+          if(a.tag){var g=document.createElement('div');g.className='tag'+(a.gray?' gray':'');g.textContent=a.tag;
+            var q=pct(a.box[2]+6,a.box[1]-2,s.h);g.style.left=q.l;g.style.top=q.t;
+            if(a.box[2]>640){g.style.left='auto';g.style.right=((W-a.box[2])/W*100)+'%';g.style.top=((a.box[1]-26)/s.h*100)+'%'}
+            frame.appendChild(g);requestAnimationFrame(function(){g.classList.add('on')});}
+        },t);t+=700;}
+      if(a.c){later(function(){ring.classList.remove('go');moveCursor(a.c[0],a.c[1],s.h)},t);
+        later(function(){var p=pct(a.c[0],a.c[1],s.h);ring.style.left=p.l;ring.style.top=p.t;ring.classList.add('go')},t+950);
+        t+=1900;}
+      if(a.drag){var f=a.drag[0],to=a.drag[1];
+        later(function(){chip.style.transition='none';var p=pct(f[0],f[1],s.h);chip.style.left=p.l;chip.style.top=p.t;
+          chip.getBoundingClientRect();chip.style.transition='';chip.classList.add('on');moveCursor(f[0]+10,f[1]+8,s.h)},t);
+        later(function(){var p=pct(to[0],to[1],s.h);chip.style.left=p.l;chip.style.top=p.t;moveCursor(to[0]+10,to[1]+8,s.h)},t+1000);
+        later(function(){var p=pct(to[0],to[1],s.h);ring.style.left=p.l;ring.style.top=p.t;ring.classList.add('go')},t+2400);
+        t+=3000;}
+    });
+    var dur=Math.max(t+1800,3800);
+    var bar=$('bar');bar.style.transition='none';bar.style.width='0';bar.getBoundingClientRect();
+    if(playing){bar.style.transition='width '+dur+'ms linear';bar.style.width='100%';
+      clearTimeout(timer);timer=setTimeout(function(){go(i<S.length-1?i+1:0)},dur);}
+  }
+  function go(k){i=k;clearTimeout(timer);render()}
+  $('prev').onclick=function(){go(Math.max(0,i-1))};
+  $('next').onclick=function(){go(Math.min(S.length-1,i+1))};
+  $('play').onclick=function(){playing=!playing;this.textContent=playing?'⏸ 멈춤':'▶ 재생';
+    if(playing){render()}else{clearTimeout(timer);var b=$('bar');b.style.transition='none';}};
+  document.addEventListener('keydown',function(e){if(e.key==='ArrowRight')$('next').click();if(e.key==='ArrowLeft')$('prev').click();if(e.key===' '){e.preventDefault();$('play').click()}});
+  render();
+})();
+</script>
+</body>
+</html>
