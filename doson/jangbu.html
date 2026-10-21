@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>경조사비 장부</title>
+<style>
+  :root{--bg:#f4ede2;--card:#fffaf1;--line:#dccfb9;--ink:#1f1d1a;--sub:#6f665c;
+    --green:#2f5d3a;--give:#1d4f9a;--get:#2f7a45;--danger:#a33a2a;}
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font-size:18px;line-height:1.6;
+    font-family:"Malgun Gothic","맑은 고딕",-apple-system,"Segoe UI",sans-serif}
+  .wrap{max-width:760px;margin:0 auto;padding:28px 16px 80px}
+  h1{font-size:28px;margin:0 0 4px;cursor:pointer;letter-spacing:-.02em}
+  h1 small{font-size:12px;color:var(--sub);font-weight:400;margin-left:8px}
+  .lead{color:var(--sub);font-size:15px;margin:0 0 18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:0 0 16px}
+  .card h2{font-size:20px;margin:0 0 12px}
+  label{display:block;font-size:15px;color:var(--sub);margin:10px 0 4px}
+  input,select{width:100%;font-size:18px;padding:12px;border:1px solid var(--line);border-radius:10px;background:#fff;font-family:inherit}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
+  .seg{display:flex;gap:8px}
+  .seg button{flex:1}
+  button{font-family:inherit;font-size:18px;font-weight:700;border-radius:999px;border:0;padding:13px 18px;cursor:pointer}
+  .primary{background:var(--green);color:#fffaf1;width:100%;margin-top:14px}
+  .ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+  .seg .on.give{background:var(--give);color:#fff;border-color:var(--give)}
+  .seg .on.get{background:var(--get);color:#fff;border-color:var(--get)}
+  .tools{display:flex;flex-wrap:wrap;gap:8px}
+  .tools button{font-size:15px;padding:10px 14px}
+  .big{font-size:22px;font-weight:800;margin:4px 0}
+  .give-t{color:var(--give)} .get-t{color:var(--get)}
+  .sum{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+  .sum div{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+  .sum span{display:block;font-size:14px;color:var(--sub)}
+  .sum b{font-size:22px}
+  table{width:100%;border-collapse:collapse;margin-top:12px;font-size:17px;background:#fff}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}
+  th{background:#f3eadb}
+  td.n{text-align:right;white-space:nowrap}
+  ul.list{list-style:none;padding:0;margin:0}
+  ul.list li{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px;margin:8px 0}
+  ul.list .who{flex:1}
+  ul.list .who b{font-size:19px}
+  ul.list .who span{display:block;font-size:14px;color:var(--sub)}
+  ul.list .amt{font-weight:800;white-space:nowrap;text-align:right}
+  ul.list .amt small{display:block;font-size:13px;font-weight:700}
+  .del{background:#fff;color:var(--danger);border:1px solid #e3c2bb;font-size:14px;padding:8px 12px}
+  .empty{color:var(--sub);text-align:center;padding:20px 0}
+  .msg{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;
+    padding:10px 18px;border-radius:999px;font-size:15px;opacity:0;transition:.25s;pointer-events:none}
+  .msg.show{opacity:1}
+  .note{font-size:14px;color:var(--sub);margin:10px 0 0}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}.sum{grid-template-columns:1fr}}
+  @media print{.tools,.primary,.del,#formCard{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1 id="title" title="눌러서 이름 바꾸기">나의 경조사비 장부<small>✎ 눌러서 이름 바꾸기</small></h1>
+  <p class="lead">적어 두면 "그때 얼마 했더라?"가 사라집니다. 내용은 <b>이 기기의 이 브라우저에만</b> 저장됩니다.</p>
+
+  <!-- 적기 -->
+  <div class="card" id="formCard">
+    <h2>✍ 적기</h2>
+    <label for="fName">이름</label>
+    <input id="fName" placeholder="예: 홍길동" autocomplete="off">
+    <div class="grid">
+      <div><label for="fRel">관계</label>
+        <select id="fRel"><option>가족</option><option>친척</option><option selected>친구</option><option>직장</option><option>이웃</option><option>기타</option></select></div>
+      <div><label for="fEvt">행사</label>
+        <select id="fEvt"><option>결혼</option><option>장례</option><option>돌잔치</option><option>칠순팔순</option><option>개업</option><option>기타</option></select></div>
+      <div><label for="fDate">날짜</label><input id="fDate" type="date"></div>
+      <div><label for="fAmt">금액 (원)</label><input id="fAmt" inputmode="numeric" placeholder="50,000"></div>
+    </div>
+    <label>주고받음</label>
+    <div class="seg">
+      <button type="button" class="ghost give on" data-dir="give">냈음</button>
+      <button type="button" class="ghost get" data-dir="get">받았음</button>
+    </div>
+    <button class="primary" id="addBtn" type="button">장부에 적기</button>
+  </div>
+
+  <!-- 합계 -->
+  <div class="card">
+    <h2>📊 합계</h2>
+    <div class="grid">
+      <div><label for="year">연도 고르기</label><select id="year"></select></div>
+    </div>
+    <p class="big" id="yearLine"></p>
+    <div class="sum">
+      <div><span>낸 돈</span><b class="give-t" id="yGive">0원</b></div>
+      <div><span>받은 돈</span><b class="get-t" id="yGet">0원</b></div>
+    </div>
+    <table id="evtTable"></table>
+  </div>
+
+  <!-- 찾기 + 목록 -->
+  <div class="card">
+    <h2>🔍 찾기 · 목록</h2>
+    <input id="q" placeholder="이름을 한 글자만 쳐도 찾아요" autocomplete="off">
+    <div class="sum" id="qSum" hidden>
+      <div><span>내가 낸 돈</span><b class="give-t" id="qGive">0원</b></div>
+      <div><span>내가 받은 돈</span><b class="get-t" id="qGet">0원</b></div>
+    </div>
+    <ul class="list" id="list"></ul>
+  </div>
+
+  <!-- 백업 -->
+  <div class="card">
+    <h2>💾 백업 · 연습</h2>
+    <div class="tools">
+      <button class="ghost" id="bkBtn" type="button">백업 받기</button>
+      <button class="ghost" id="rsBtn" type="button">백업 불러오기</button>
+      <button class="ghost" id="csvBtn" type="button">엑셀로 받기</button>
+      <button class="ghost" id="demoBtn" type="button">연습 기록 넣기</button>
+      <button class="ghost" id="clearBtn" type="button">전부 지우기</button>
+    </div>
+    <input type="file" id="file" accept=".json,application/json" hidden>
+    <p class="note">폰에서 이어 쓰려면 — 컴퓨터에서 <b>백업 받기</b> → 그 파일을 카톡 '나와의 채팅'으로 보내기 → 폰에서 이 장부를 열고 <b>백업 불러오기</b>.</p>
+  </div>
+</div>
+<div class="msg" id="msg"></div>
+
+<script>
+(function(){
+  var KEY='jangbu-v1', TKEY='jangbu-title';
+  var EVENTS=['결혼','장례','돌잔치','칠순팔순','개업','기타'];
+  var rows=[], dir='give';
+  var $=function(id){return document.getElementById(id);};
+
+  // ── 저장 (안 되는 곳에서는 조용히 넘어감)
+  function load(){try{rows=JSON.parse(localStorage.getItem(KEY))||[];}catch(e){rows=[];}
+    try{var t=localStorage.getItem(TKEY);if(t)setTitle(t);}catch(e){}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(rows));}catch(e){}}
+
+  function won(n){return (Number(n)||0).toLocaleString('ko-KR')+'원';}
+  function toast(t){var m=$('msg');m.textContent=t;m.classList.add('show');clearTimeout(m._t);m._t=setTimeout(function(){m.classList.remove('show');},1600);}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7);}
+  function today(){var d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,10);}
+
+  // ── 제목 바꾸기
+  function setTitle(t){$('title').firstChild.nodeValue=t;document.title=t;}
+  $('title').addEventListener('click',function(){
+    var t=prompt('장부 이름을 적어 주세요',$('title').firstChild.nodeValue.trim());
+    if(t&&t.trim()){setTitle(t.trim());try{localStorage.setItem(TKEY,t.trim());}catch(e){}}
+  });
+
+  // ── 적기
+  $('fDate').value=today();
+  document.querySelectorAll('.seg button').forEach(function(b){
+    b.addEventListener('click',function(){dir=b.dataset.dir;
+      document.querySelectorAll('.seg button').forEach(function(x){x.classList.toggle('on',x===b);});});
+  });
+  $('fAmt').addEventListener('input',function(){
+    var v=this.value.replace(/[^0-9]/g,'');this.value=v?Number(v).toLocaleString('ko-KR'):'';
+  });
+  $('addBtn').addEventListener('click',function(){
+    var name=$('fName').value.trim(), amt=Number($('fAmt').value.replace(/[^0-9]/g,''));
+    if(!name){toast('이름을 적어 주세요');$('fName').focus();return;}
+    if(!amt){toast('금액을 적어 주세요');$('fAmt').focus();return;}
+    rows.push({id:uid(),name:name,rel:$('fRel').value,evt:$('fEvt').value,date:$('fDate').value||today(),amt:amt,dir:dir});
+    save();$('fName').value='';$('fAmt').value='';render();toast('적었습니다 ✔');
+  });
+
+  // ── 그리기
+  function render(){
+    rows.sort(function(a,b){return a.date<b.date?1:a.date>b.date?-1:0;});
+    var q=$('q').value.trim();
+    var shown=q?rows.filter(function(r){return r.name.indexOf(q)>-1;}):rows;
+    var ul=$('list');
+    ul.innerHTML=shown.length?shown.map(function(r){
+      return '<li><div class="who"><b>'+esc(r.name)+'</b><span>'+esc(r.rel)+' · '+esc(r.evt)+' · '+esc(r.date)+'</span></div>'+
+        '<div class="amt '+(r.dir==='give'?'give-t':'get-t')+'">'+won(r.amt)+'<small>'+(r.dir==='give'?'냈음':'받았음')+'</small></div>'+
+        '<button class="del" data-id="'+r.id+'" type="button">지우기</button></li>';
+    }).join(''):'<li class="empty">'+(q?'찾는 이름이 없어요':'아직 적은 것이 없어요. 위에서 적거나 아래 [연습 기록 넣기]를 눌러 보세요')+'</li>';
+    if(q){$('qSum').hidden=false;$('qGive').textContent=won(total(shown,'give'));$('qGet').textContent=won(total(shown,'get'));}
+    else $('qSum').hidden=true;
+    renderYear();
+  }
+  function total(list,d){return list.filter(function(r){return r.dir===d;}).reduce(function(s,r){return s+r.amt;},0);}
+  function renderYear(){
+    var sel=$('year'), cur=sel.value, thisY=String(new Date().getFullYear());
+    var years=rows.map(function(r){return r.date.slice(0,4);});years.push(thisY);
+    years=years.filter(function(y,i){return years.indexOf(y)===i;}).sort().reverse();
+    sel.innerHTML=years.map(function(y){return '<option>'+y+'</option>';}).join('');
+    sel.value=years.indexOf(cur)>-1?cur:thisY;
+    var y=sel.value, list=rows.filter(function(r){return r.date.slice(0,4)===y;});
+    $('yearLine').innerHTML=(y===thisY?'올해':y+'년')+' 낸 돈 <span class="give-t">'+won(total(list,'give'))+'</span>';
+    $('yGive').textContent=won(total(list,'give'));$('yGet').textContent=won(total(list,'get'));
+    var body=EVENTS.map(function(e){var l=list.filter(function(r){return r.evt===e;});
+      if(!l.length)return '';return '<tr><td>'+e+'</td><td class="n">'+won(total(l,'give'))+'</td><td class="n">'+won(total(l,'get'))+'</td><td class="n">'+l.length+'건</td></tr>';}).join('');
+    $('evtTable').innerHTML='<tr><th>행사</th><th>낸 돈</th><th>받은 돈</th><th>건수</th></tr>'+(body||'<tr><td colspan="4">이 해에 적은 것이 없어요</td></tr>');
+  }
+  $('year').addEventListener('change',renderYear);
+  $('q').addEventListener('input',render);
+  $('list').addEventListener('click',function(e){
+    var b=e.target.closest('.del');if(!b)return;
+    var r=rows.filter(function(x){return x.id===b.dataset.id;})[0];
+    if(r&&confirm(r.name+' ('+r.evt+', '+won(r.amt)+') 기록을 정말 지울까요?')){
+      rows=rows.filter(function(x){return x.id!==r.id;});save();render();toast('지웠습니다');}
+  });
+
+  // ── 백업
+  function download(name,text,type){
+    var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:type}));a.download=name;
+    document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},500);
+  }
+  $('bkBtn').addEventListener('click',function(){
+    if(!rows.length){toast('백업할 기록이 없어요');return;}
+    download('경조사비장부_백업_'+today()+'.json',JSON.stringify({app:'jangbu',saved:today(),rows:rows},null,1),'application/json');
+    toast('백업 파일을 받았습니다');
+  });
+  $('rsBtn').addEventListener('click',function(){$('file').click();});
+  $('file').addEventListener('change',function(){
+    var f=this.files[0];if(!f)return;var rd=new FileReader();
+    rd.onload=function(){
+      try{var d=JSON.parse(rd.result), list=Array.isArray(d)?d:d.rows;if(!Array.isArray(list))throw 0;
+        list=list.filter(function(r){return r&&r.name&&r.amt;}).map(function(r){
+          return {id:r.id||uid(),name:String(r.name),rel:r.rel||'기타',evt:r.evt||'기타',date:r.date||today(),amt:Number(r.amt)||0,dir:r.dir==='get'?'get':'give'};});
+        if(rows.length&&!confirm('지금 장부를 백업 내용으로 바꿀까요?\n\n[확인] 바꾸기   [취소] 합치기')){
+          var ids=rows.map(function(r){return r.id;});
+          rows=rows.concat(list.filter(function(r){return ids.indexOf(r.id)<0;}));
+        }else rows=list;
+        save();render();toast(list.length+'건을 불러왔습니다');
+      }catch(e){alert('이 장부의 백업 파일이 아니에요. 파일을 다시 확인해 주세요.');}
+    };
+    rd.readAsText(f);this.value='';
+  });
+  $('csvBtn').addEventListener('click',function(){
+    if(!rows.length){toast('받을 기록이 없어요');return;}
+    var lines=[['이름','관계','행사','날짜','금액','주고받음']].concat(rows.map(function(r){
+      return [r.name,r.rel,r.evt,r.date,r.amt,r.dir==='give'?'냈음':'받았음'];}));
+    download('경조사비장부_'+today()+'.csv','﻿'+lines.map(function(l){return l.map(function(v){return '"'+String(v).replace(/"/g,'""')+'"';}).join(',');}).join('\r\n'),'text/csv');
+  });
+  $('demoBtn').addEventListener('click',function(){
+    var demo=[['고한라','친구','결혼','2025-05-17',100000,'give'],['고한라','친구','칠순팔순','2026-03-08',50000,'give'],
+      ['고한라','친구','결혼','2024-11-02',100000,'get'],['부오름','직장','장례','2026-02-11',50000,'give'],
+      ['양사려니','이웃','개업','2026-06-20',30000,'give'],['문성산','친척','돌잔치','2025-09-14',100000,'give'],
+      ['강새별','친구','결혼','2026-09-26',100000,'give'],['현우도','직장','결혼','2026-04-25',50000,'give'],
+      ['좌비양','가족','칠순팔순','2026-07-05',300000,'give'],['오다랑','이웃','장례','2025-12-03',50000,'get']];
+    demo.forEach(function(d){rows.push({id:uid(),name:d[0],rel:d[1],evt:d[2],date:d[3],amt:d[4],dir:d[5]});});
+    save();render();toast('연습 기록 10건을 넣었습니다');
+  });
+  $('clearBtn').addEventListener('click',function(){
+    if(!rows.length)return;
+    if(confirm('장부를 전부 지울까요? 되돌릴 수 없습니다.\n(먼저 [백업 받기]를 해 두면 안전합니다)')){rows=[];save();render();toast('모두 지웠습니다');}
+  });
+
+  load();render();
+})();
+</script>
+</body>
+</html>

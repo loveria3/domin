@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>강사용 점검표 — 마음에도순</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="lesson.css">
+</head>
+<body>
+<div class="wrap">
+<a class="home" href="index.html">← 자료실 처음으로</a>
+<header>
+  <p class="kicker">강사용 · 자료실에 링크하지 않은 페이지</p>
+  <h1>수업 전 <em>무료 계정으로</em> 해 볼 것</h1>
+  <p class="sub">모든 실습은 무료 계정 기준입니다. 강사도 <b>무료 시험 계정</b>으로 한 번씩 해 보고 들어갑니다. 체크 표시는 이 브라우저에만 저장됩니다.</p>
+</header>
+<section id="s1">
+  <div class="head"><span class="num">1</span><h2>공통</h2></div>
+  <ul class="chk">
+    <li><input type="checkbox"> 패들렛 주소 확정 → 1~4.html의 <b>PADLET-ADDRESS</b> 자리 4곳 바꾸기 (1차시 2곳, 2·3·4차시 각 1곳)</li>
+    <li><input type="checkbox"> Firebase 규칙이 <b>live/doson-1 ~ doson-4</b> 경로 쓰기를 허용하는지 — <b>1.html?t=비밀번호</b>로 강사 모드 켜고 다른 기기에서 '지금 여기' 따라오는지</li>
+    <li><input type="checkbox"> 마음에도순 와이파이·빔프로젝터·멀티탭 (노트북 10대)</li>
+    <li><input type="checkbox"> 무료 계정 하루 사용량 — 한 차시 안에서 몇 번까지 부탁할 수 있는지 감 잡기</li>
+  </ul>
+</section>
+<section id="s2">
+  <div class="head"><span class="num">2</span><h2>차시별</h2></div>
+  <ul class="chk">
+    <li><input type="checkbox"> 1차시 — 김장 안내문·약 봉투 사진(img/)의 글자를 정확히 읽는지 · 웹 검색 켜는 위치 · 출처 링크가 붙는지</li>
+    <li><input type="checkbox"> 2차시 — 무료 시험 계정에 <b>Publish</b>(로그인 없이 열리는 링크)가 있는지, 새 <b>Share</b> 화면만 있는지 (Share 링크는 받는 사람도 클로드 계정 필요)</li>
+    <li><input type="checkbox"> 2차시 — PlayMCP '카카오톡 나에게 보내기' 도구함 → 사용자 정의 커넥터 추가 → 나와의 채팅 전송 (무료 계정 1개 제한)</li>
+    <li><input type="checkbox"> 3차시 — GitHub zip을 클로드로 <b>hwpx.zip</b>(폴더 이름 hwpx)으로 다시 묶어 업로드되는지 — 폴더 이름이 스킬 이름과 달라 그대로는 실패할 수 있음. 라이선스 표시가 없는 저장소라 강사가 묶은 zip을 배포하지 않고 각자 묶게 함. 무료 계정에서 .hwpx가 실제로 만들어지고 한글에서 열리는지 (안 되면 docx 대안)</li>
+    <li><input type="checkbox"> 3차시 — Gmail 커넥터 연결 위치와 권한 화면, 최근 7일 요약이 되는지</li>
+    <li><input type="checkbox"> 4차시 — "스킬 만들어줘"로 zip(.skill)이 나오는지, 업로드 후 새 대화에서 "공지 써줘"에 스킬이 쓰이는지 · 예비용 skills/moim-notice.zip</li>
+    <li><input type="checkbox"> 4차시 — 「내앱」 폴더째 vercel.com/drop → 폰에서 index·장부·발표자료 열림 → 내 프로젝트 화면에 다시 끌어다 놓아 같은 주소 갱신</li>
+  </ul>
+</section>
+<footer>강사용 사전 점검표 · 마음에도순 &nbsp;|&nbsp; 강지애</footer>
+</div>
+<script>
+document.querySelectorAll('input[type=checkbox]').forEach(function(c,i){
+  try{c.checked=localStorage.getItem('doson-chk-'+i)==='1';}catch(e){}
+  c.addEventListener('change',function(){try{localStorage.setItem('doson-chk-'+i,c.checked?'1':'0');}catch(e){}});
+});
+</script>
+</body>
+</html>
