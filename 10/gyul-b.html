@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>감귤 홍보물 B — 세련된 잡지형 (수업 예시)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Serif+KR:wght@500;700;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#22301f;--leaf:#3f5a2e;--orange:#ef7c1a;--orange-d:#d9620a;--paper:#fffdf8;--soft:#f6f3ea;--line:#e5dfcf}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:#d9d4c7;font-family:"Noto Sans KR",sans-serif;color:var(--ink)}
+.page{width:210mm;height:297mm;margin:16px auto;background:var(--paper);position:relative;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.18)}
+@page{size:A4;margin:0}
+@media print{body{background:none}.page{margin:0;box-shadow:none}.noprint{display:none!important}}
+
+/* ── 위: 사진 영역 ── */
+.hero{position:absolute;left:0;top:0;width:100%;height:170mm;background-size:cover;background-position:center}
+.hero svg{position:absolute;inset:0;width:100%;height:100%}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,253,248,.92) 0%,rgba(255,253,248,.55) 28%,rgba(255,253,248,0) 46%,rgba(255,253,248,0) 88%,var(--paper) 100%)}
+.head{position:absolute;left:15mm;top:15mm;z-index:2}
+.brand{font-family:"Gowun Batang",serif;font-size:15pt;letter-spacing:.06em;color:#3b3b33;display:flex;align-items:center;gap:10px}
+.brand::after{content:"";width:22mm;height:1px;background:#3b3b33}
+h1{margin:5mm 0 0;font-family:"Noto Serif KR",serif;font-weight:900;line-height:1.02;letter-spacing:-.02em}
+h1 .a{display:block;font-size:52pt;color:var(--ink)}
+h1 .b{display:block;font-size:62pt;color:var(--orange)}
+.tagline{margin:5mm 0 0;font-family:"Gowun Batang",serif;font-style:italic;font-size:13pt;color:#3f3f38}
+.year{position:absolute;right:16mm;top:44mm;z-index:2;text-align:center;font-family:"Noto Serif KR",serif;color:var(--ink)}
+.year b{font-size:34pt;font-weight:700}.year small{font-size:15pt;font-weight:700}
+.year::after{content:"";display:block;width:16mm;height:1px;background:var(--ink);margin:2mm auto 0}
+.year .lf{display:block;margin:0 auto -2mm;width:12mm}
+.seal{position:absolute;right:10mm;top:66mm;z-index:2;width:44mm;height:44mm;border-radius:50%;background:rgba(255,253,248,.95);box-shadow:0 6px 20px rgba(0,0,0,.12);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transform:rotate(-6deg);font-family:"Noto Sans KR",sans-serif}
+.seal .s1{font-size:12pt;font-weight:700;color:var(--orange-d)}
+.seal .s2{font-size:21pt;font-weight:900;color:var(--leaf);line-height:1.15}
+
+/* ── 가격표 ── */
+.price{position:absolute;left:30mm;right:30mm;top:174mm}
+.row{display:grid;grid-template-columns:30mm 20mm 1fr 44mm 22mm;align-items:center;gap:3mm;padding:2.4mm 0;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.pill{display:inline-flex;justify-content:center;align-items:center;height:10mm;border-radius:5mm;background:var(--orange);color:#fff;font-weight:700;font-size:13pt}
+.pill.g{background:#5b7348}
+.kg{font-family:"Noto Serif KR",serif;font-size:19pt}
+.dots{border-bottom:2px dotted #b9b2a0;height:0;margin-top:2mm}
+.won{font-family:"Noto Sans KR",sans-serif;font-weight:900;font-size:24pt;color:var(--orange-d);text-align:right;letter-spacing:-.02em}
+.won small{font-size:16pt}
+.inc{font-size:10.5pt;color:#55554c}
+
+/* ── 아래 두 상자 ── */
+.foot{position:absolute;left:12mm;right:12mm;bottom:10mm;display:grid;grid-template-columns:1fr 1px 1fr;gap:6mm;align-items:stretch}
+.card{background:var(--soft);border-radius:6mm;padding:5mm 7mm}
+.card h3{margin:0 0 3mm;font-size:17pt;display:flex;align-items:center;gap:3mm;color:#4a4a42}
+.card p{margin:1.4mm 0;font-size:12.5pt;color:#55554c}
+.card ul{margin:0;padding:0;list-style:none}
+.card li{font-size:12.5pt;margin:1.6mm 0;color:#2e2e28}
+.vr{background:#cfc8b6}
+.ph{background:#fff1c7;padding:0 4px;border-radius:3px}
+
+/* 사진 넣기 단추 (화면에서만) */
+.tool{position:fixed;right:16px;bottom:16px;z-index:9;display:flex;gap:8px}
+.tool label,.tool button{font:700 14px "Noto Sans KR",sans-serif;background:#22301f;color:#fff;border:0;border-radius:24px;padding:11px 18px;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.2)}
+.tool input{display:none}
+.note{max-width:210mm;margin:0 auto 18px;font:13px/1.6 "Noto Sans KR",sans-serif;color:#4b4b44;text-align:center}
+</style>
+</head>
+<body>
+<p class="note noprint">수업 예시 · <b>세련된 잡지형(B)</b> — 귤집 이름·연락처·계좌는 가상입니다. 오른쪽 아래 <b>📷 내 사진 넣기</b>로 그림을 내 귤밭 사진으로 바꿔 볼 수 있어요. 인쇄: Ctrl+P → PDF로 저장 · 여백 없음 · 배경 그래픽 켜기</p>
+<div class="page">
+  <div class="hero" id="hero">
+    <svg viewBox="0 0 800 680" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dfeaf2"/><stop offset=".55" stop-color="#f4efe2"/><stop offset="1" stop-color="#f7f1e3"/></linearGradient>
+        <radialGradient id="og" cx="38%" cy="32%" r="70%"><stop offset="0" stop-color="#ffd58a"/><stop offset=".45" stop-color="#ffa531"/><stop offset="1" stop-color="#e66d0d"/></radialGradient>
+        <radialGradient id="flesh" cx="50%" cy="50%" r="55%"><stop offset="0" stop-color="#fff3d2"/><stop offset=".6" stop-color="#ffc35a"/><stop offset="1" stop-color="#f39a22"/></radialGradient>
+        <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6e9a4b"/><stop offset="1" stop-color="#2f5a26"/></linearGradient>
+        <linearGradient id="bask" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b8834a"/><stop offset="1" stop-color="#7a5129"/></linearGradient>
+        <pattern id="weave" width="18" height="10" patternUnits="userSpaceOnUse"><path d="M0 5 Q4.5 0 9 5 T18 5" fill="none" stroke="#5e3d1d" stroke-width="1.4" opacity=".55"/></pattern>
+        <pattern id="pore" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".8" fill="#c8550a" opacity=".35"/><circle cx="5.5" cy="5" r=".6" fill="#fff" opacity=".25"/></pattern>
+        <filter id="soft"><feGaussianBlur stdDeviation="2.2"/></filter>
+        <filter id="sh"><feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#3b2a14" flood-opacity=".28"/></filter>
+      </defs>
+      <rect width="800" height="680" fill="url(#sky)"/>
+      <g filter="url(#soft)" opacity=".85">
+        <path d="M380 330 Q470 270 560 285 Q640 300 720 335 L720 345 L380 345Z" fill="#9fb4c2"/>
+        <rect x="0" y="335" width="800" height="26" fill="#bcd0da"/>
+        <path d="M0 360 Q120 330 260 352 T520 350 T800 356 V430 H0Z" fill="#7f9c62"/>
+      </g>
+      <g opacity=".9" filter="url(#soft)">
+        <path d="M0 395 Q200 372 420 392 T800 388 V470 H0Z" fill="#5d8343"/>
+        <g fill="#f19a2a">
+          <circle cx="40" cy="420" r="5"/><circle cx="78" cy="410" r="4"/><circle cx="120" cy="428" r="5"/><circle cx="168" cy="414" r="4"/><circle cx="215" cy="430" r="5"/><circle cx="262" cy="418" r="4"/><circle cx="300" cy="436" r="5"/><circle cx="96" cy="446" r="4"/><circle cx="190" cy="450" r="5"/><circle cx="58" cy="452" r="5"/>
+        </g>
+      </g>
+      <path d="M0 470 Q160 452 330 470 T800 466 V680 H0Z" fill="#9a9182"/>
+      <g fill="#7d7566"><ellipse cx="70" cy="520" rx="70" ry="34"/><ellipse cx="190" cy="540" rx="80" ry="40"/><ellipse cx="300" cy="512" rx="60" ry="30"/></g>
+      <!-- 바구니 -->
+      <g filter="url(#sh)">
+        <path d="M300 520 Q545 470 790 520 L760 640 Q545 690 330 640Z" fill="url(#bask)"/>
+        <path d="M300 520 Q545 470 790 520 L760 640 Q545 690 330 640Z" fill="url(#weave)"/>
+        <ellipse cx="545" cy="512" rx="250" ry="34" fill="#9b6a37"/>
+      </g>
+      <!-- 귤 -->
+      <g filter="url(#sh)">
+        <circle cx="440" cy="455" r="108" fill="url(#og)"/><circle cx="440" cy="455" r="108" fill="url(#pore)"/>
+        <circle cx="610" cy="375" r="112" fill="url(#og)"/><circle cx="610" cy="375" r="112" fill="url(#pore)"/>
+        <circle cx="745" cy="470" r="104" fill="url(#og)"/><circle cx="745" cy="470" r="104" fill="url(#pore)"/>
+        <g transform="translate(595 545)">
+          <ellipse rx="118" ry="104" fill="#f08a1c"/><ellipse rx="108" ry="95" fill="#fff4dc"/><ellipse rx="100" ry="88" fill="url(#flesh)"/>
+          <g stroke="#fff2d6" stroke-width="4" opacity=".9">
+            <line x1="0" y1="0" x2="0" y2="-88"/><line x1="0" y1="0" x2="62" y2="-62"/><line x1="0" y1="0" x2="98" y2="0"/><line x1="0" y1="0" x2="64" y2="62"/>
+            <line x1="0" y1="0" x2="0" y2="88"/><line x1="0" y1="0" x2="-64" y2="62"/><line x1="0" y1="0" x2="-98" y2="0"/><line x1="0" y1="0" x2="-62" y2="-62"/>
+          </g>
+          <circle r="10" fill="#fff8e8"/>
+        </g>
+      </g>
+      <path d="M560 268 q60 -38 120 4 q-58 28 -120 -4z" fill="url(#leaf)"/><path d="M560 268 q60 -16 120 4" stroke="#264b1f" stroke-width="2" fill="none"/>
+      <path d="M388 360 q-44 -60 6 -110 q30 56 -6 110z" fill="url(#leaf)"/>
+      <path d="M455 600 q-70 10 -110 70 q72 6 110 -70z" fill="url(#leaf)"/>
+      <rect x="604" y="252" width="6" height="22" rx="3" fill="#5c4a22"/>
+    </svg>
+  </div>
+  <div class="head">
+    <div class="brand">정성가득 한라귤집</div>
+    <h1><span class="a">제주도</span><span class="b">노지황금향</span></h1>
+    <p class="tagline">제주의 햇살과 바람이 키운 달콤한 노지황금향</p>
+  </div>
+  <div class="year"><svg class="lf" viewBox="0 0 40 26"><path d="M20 24 q-16 -4 -16 -20 q14 2 16 20z" fill="#4c6b35"/><path d="M20 24 q16 -6 16 -22 q-14 4 -16 22z" fill="#6b8f4a"/></svg><b>2026</b><small>년</small></div>
+  <div class="seal"><span class="s1">상큼한 100%</span><span class="s2">바로수확<br>신선배송</span></div>
+
+  <div class="price">
+    <div class="row"><span class="pill">상품</span><span class="kg">5kg</span><span class="dots"></span><span class="won">35,000<small>원</small></span><span class="inc">(택배포함)</span></div>
+    <div class="row"><span class="pill">상품</span><span class="kg">10kg</span><span class="dots"></span><span class="won">55,000<small>원</small></span><span class="inc">(택배포함)</span></div>
+    <div class="row"><span class="pill g">중상품</span><span class="kg">10kg</span><span class="dots"></span><span class="won">45,000<small>원</small></span><span class="inc">(택배포함)</span></div>
+  </div>
+
+  <div class="foot">
+    <div class="card">
+      <h3><svg width="28" height="34" viewBox="0 0 28 34"><rect x="2" y="1" width="24" height="32" rx="5" fill="none" stroke="#ef7c1a" stroke-width="3"/><circle cx="14" cy="28" r="1.8" fill="#ef7c1a"/></svg>문자/카톡 주문</h3>
+      <p>연락처 : 010-0000-0000 (○○○)</p>
+      <p>계좌 : ○○은행 000-00-000000, ○○○</p>
+    </div>
+    <div class="vr"></div>
+    <div class="card">
+      <h3 style="font-size:14.5pt;color:#22301f"><svg width="22" height="22" viewBox="0 0 22 22"><path d="M2 20 Q2 4 20 2 Q18 18 2 20z" fill="#3f5a2e"/></svg>주문 시 알려주세요</h3>
+      <ul><li>황금향 종류 / 구매 수량</li><li>보내는 분 : 성명, 연락처, 주소</li><li>받는 분 : 성명, 연락처, 주소</li></ul>
+    </div>
+  </div>
+</div>
+<div class="tool noprint"><label>📷 내 사진 넣기<input type="file" accept="image/*" id="pick"></label><button type="button" onclick="print()">🖨 인쇄·PDF</button></div>
+<script>
+if(location.search.indexOf('png')>-1){document.body.style.background='none';document.querySelectorAll('.noprint').forEach(function(e){e.style.display='none'});document.querySelector('.page').style.margin='0';document.querySelector('.page').style.boxShadow='none';}
+document.getElementById('pick').addEventListener('change',function(e){
+  var f=e.target.files[0];if(!f)return;var r=new FileReader();
+  r.onload=function(){var h=document.getElementById('hero');h.style.backgroundImage='url('+r.result+')';var s=h.querySelector('svg');if(s)s.style.display='none';};
+  r.readAsDataURL(f);
+});
+</script>
+</body>
+</html>

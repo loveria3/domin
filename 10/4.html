@@ -122,6 +122,18 @@
   @media(max-width:600px){h1{font-size:22px}h2{font-size:18px}.txt{font-size:14px}
     .time{margin-left:0}.vs{grid-template-columns:1fr}section{padding:16px 15px}}
   @media print{body{background:#fff}button,.jump,.dl,.btn,.home{display:none!important}section{page-break-inside:avoid}}
+  /* 1안·2안 바꾸기 */
+  .plan{display:flex;gap:8px;margin:14px 0 0}
+  .plan a{flex:1;text-align:center;text-decoration:none;border:2px solid var(--navy);border-radius:10px;padding:10px 8px;color:var(--navy);font-weight:700;font-size:15px;background:#fff}
+  .plan a b{display:inline-block;background:var(--soft);border-radius:12px;padding:0 9px;margin-right:6px}
+  .plan a.on{background:var(--navy);color:#fff}
+  .plan a.on b{background:var(--yellow);color:var(--ink)}
+  .alt{font-size:12px;font-weight:700;text-decoration:none;color:var(--navy);border:1px solid var(--navy);border-radius:12px;padding:2px 9px;white-space:nowrap;background:#fff}
+  .alt:hover{background:var(--navy);color:#fff}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+  .two figure{margin:0}.two .shot{margin-top:0}
+  .two figcaption{font-size:13.5px;color:var(--sub);margin-top:6px}
+  @media(max-width:600px){.two{grid-template-columns:1fr}.plan a{font-size:14px}}
 </style>
 </head>
 <body>
@@ -133,10 +145,16 @@
   <p class="sub">파란 대괄호 <span class="ph">[이렇게]</span> 표시된 곳만 내 상황으로 바꾸세요. 오늘 나오는 것은 전부 무료로 됩니다.</p>
 </header>
 
+<nav class="plan" aria-label="오늘의 두 가지 안">
+  <a class="on" href="4.html"><b>1안</b> 3단 리플렛</a>
+  <a href="4-gyul.html"><b>2안</b> 감귤 한 장 홍보물</a>
+</nav>
+
 <div class="hook">
   <p class="q">백지에서 시작하면 어렵습니다. 잘 만든 것 하나를 보여 주면요?</p>
   <p>오늘은 잘 만든 리플렛 사진을 클로드에게 보여 주고 <b>"이것처럼, 내용만 내 걸로"</b>라고 부탁합니다. 이것이 프로들이 쓰는 비법입니다.</p>
   <div class="take"><span>오늘 가져갈 것</span><span>📄 인쇄용 3단 리플렛 PDF</span></div>
+  <p style="margin-top:10px">🍊 <b>귤 홍보물 한 장</b>을 만들고 싶은 분은 위의 <b>2안</b>으로 — 단계 번호가 같아서, 단계마다 오른쪽 <b>2안 감귤 →</b> 단추로 오갈 수 있어요.</p>
 </div>
 
 <div class="tip" style="margin-top:14px"><b>시작하기 전에</b> — 왼쪽 아래 내 이름 → <b>설정 → 기능</b>에서 <b>코드 실행 및 파일 만들기</b>가 켜져 있는지 확인하세요. 꺼져 있으면 7번(PDF 받기)이 안 됩니다.</div>
@@ -360,6 +378,13 @@ function fb(t,ok){var a=document.createElement('textarea');a.value=t;a.style.pos
   document.body.appendChild(a);a.select();
   try{document.execCommand('copy');ok();}catch(e){alert('직접 드래그해서 복사해 주세요.');}
   document.body.removeChild(a);}
+</script>
+<script>
+/* 단계마다 다른 안의 같은 단계로 가는 단추 */
+document.querySelectorAll('section[id^="s"] .head').forEach(function(h){
+  var id=h.parentNode.id, a=document.createElement('a');a.className='alt';
+  a.href='4-gyul.html#'+id; a.textContent='2안 감귤 →'; h.appendChild(a);
+});
 </script>
 <script src="live.js"></script>
 </body>

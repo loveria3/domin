@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>4차시 2안 — 감귤 한 장 홍보물 (A4)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root{--ink:#1f2328;--sub:#5f6873;--line:#e3e6ea;--bg:#f6f5f1;--navy:#1f3864;--soft:#eef1f7;
+    --ok:#2f6b4f;--warn:#8a5a00;--yellow:#F2C230;--cream:#fff8e1;--blue:#1668dc;}
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.65;letter-spacing:-.01em;
+    font-family:"Pretendard Variable",Pretendard,"Malgun Gothic","맑은 고딕",-apple-system,"Segoe UI",sans-serif;}
+  .wrap{max-width:820px;margin:0 auto;padding:30px 18px 70px}
+  a{color:var(--navy)}
+
+  header{border-bottom:3px solid var(--navy);padding-bottom:14px;margin-bottom:8px}
+  .kicker{font-size:13px;font-weight:700;color:var(--navy);margin:0 0 4px}
+  h1{font-size:27px;margin:0;letter-spacing:-.03em;line-height:1.3}
+  h1 em{font-style:normal;background:linear-gradient(to top,var(--yellow) 35%,transparent 35%)}
+  .sub{font-size:13px;color:var(--sub);margin:8px 0 0}
+  .home{display:inline-block;font-size:13px;font-weight:700;text-decoration:none;margin-bottom:10px;color:var(--sub)}
+  .home:hover{color:var(--navy)}
+  .toprow{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}
+
+  /* 오늘의 한 장면 */
+  .hook{background:var(--cream);border:1px solid #efd98a;border-radius:10px;padding:16px 20px;margin:16px 0 0}
+  .hook .q{font-size:18px;font-weight:800;margin:0;letter-spacing:-.02em}
+  .hook p{margin:6px 0 0;font-size:14px;color:#5a4a12}
+  .take{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 0}
+  .take span{background:#fff;border:1px solid #e8d48a;border-radius:20px;padding:3px 12px;font-size:13px;font-weight:700}
+
+  section{background:#fff;border:1px solid var(--line);border-radius:8px;padding:20px 22px;margin:14px 0;scroll-margin-top:66px}
+  section.challenge{border:1px dashed var(--navy);background:#fcfcfe}
+  section.key{border:2px solid var(--navy)}
+  .head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .num{background:var(--navy);color:#fff;font-size:14px;font-weight:700;min-width:28px;height:28px;padding:0 6px;
+    border-radius:14px;display:flex;align-items:center;justify-content:center}
+  .num.ch{background:#fff;color:var(--navy);border:1px dashed var(--navy)}
+  .num.y{background:var(--yellow);color:var(--ink)}
+  h2{font-size:20px;margin:0;letter-spacing:-.02em}
+  .badge{font-size:11px;font-weight:700;color:var(--navy);border:1px solid var(--navy);border-radius:3px;padding:1px 6px}
+  .badge.hot{background:var(--navy);color:#fff}
+  .time{margin-left:auto;font-size:12px;color:var(--sub);white-space:nowrap}
+  .one{font-size:15px;color:var(--sub);margin:10px 0 0}
+  .only{font-size:13px;color:var(--warn);margin:8px 0 0}
+  h3{font-size:15px;margin:18px 0 0;color:var(--navy)}
+
+  .box{background:#fbfcfd;border:1px solid var(--line);border-radius:6px;margin:14px 0 0}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:7px 12px;
+    background:#f0f3f8;border-bottom:1px solid var(--line);border-radius:6px 6px 0 0}
+  .bar span{font-size:12.5px;font-weight:700;color:var(--navy)}
+  .txt{padding:14px 16px;font-size:15px;white-space:pre-wrap;word-break:keep-all}
+  button.cp{background:var(--navy);color:#fff;border:0;border-radius:4px;padding:6px 14px;
+    font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap}
+  button.cp:hover{background:#16294a}
+  button.cp.copied{background:var(--ok)}
+  .ph{color:var(--blue);font-weight:700}
+
+  /* 이렇게 나와요 (예시 결과) */
+  .ex{margin:10px 0 0;border-left:4px solid var(--yellow);background:#fffdf5;border-radius:0 6px 6px 0;padding:10px 14px;font-size:14px;color:#3d3a30;white-space:pre-wrap;word-break:keep-all}
+  .ex::before{content:"이렇게 나와요 (예시)";display:block;font-size:11px;font-weight:800;color:#9a7a00;margin-bottom:4px;letter-spacing:.02em;white-space:normal}
+
+  /* 비교 */
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 0}
+  .vs div{border:1px solid var(--line);border-radius:6px;padding:12px 14px;font-size:14px;white-space:pre-wrap;word-break:keep-all}
+  .vs .bad{background:#fbf3f3;border-color:#efd0d0}
+  .vs .good{background:#f1f8f4;border-color:#cfe6d8}
+  .vs b{display:block;font-size:12px;margin-bottom:4px;white-space:normal}
+  .vs .bad b{color:#a33}
+  .vs .good b{color:var(--ok)}
+
+  .jump{position:sticky;top:0;z-index:10;display:flex;gap:6px;flex-wrap:wrap;
+    padding:10px 0 9px;background:rgba(246,245,241,.96);border-bottom:1px solid var(--line)}
+  .jump a{min-width:42px;height:42px;padding:0 8px;border:1px solid var(--line);border-radius:8px;background:#fff;
+    color:var(--sub);text-decoration:none;font-weight:700;font-size:15px;
+    display:flex;align-items:center;justify-content:center}
+  .jump a.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+  .shot{width:100%;border:1px solid var(--line);border-radius:6px;margin-top:12px;display:block}
+  .btn,.dl{display:inline-block;margin-top:10px;background:var(--navy);color:#fff;text-decoration:none;
+    border-radius:6px;padding:10px 18px;font-size:14px;font-weight:700}
+  .btn:hover,.dl:hover{background:#16294a}
+  .btn.line{background:#fff;color:var(--navy);border:1px solid var(--navy)}
+  .btn.y{background:var(--yellow);color:var(--ink)}
+  .toprow .btn{margin-top:0}
+  .note{font-size:13.5px;color:var(--sub);margin:12px 0 0}
+  .warnnote{font-size:13.5px;color:var(--warn);margin:12px 0 0}
+  .tip{font-size:14px;background:var(--soft);border-radius:6px;padding:10px 14px;margin:12px 0 0}
+  ul.chk{list-style:none;padding:0;margin:12px 0 0}
+  ul.chk li{font-size:15px;padding:3px 0 3px 26px;position:relative}
+  ul.chk li::before{content:"☐";position:absolute;left:0;color:var(--navy)}
+  ol.step{margin:12px 0 0;padding-left:22px}
+  ol.step li{font-size:15px;padding:3px 0}
+
+  table{width:100%;border-collapse:collapse;margin-top:12px;font-size:14.5px}
+  th,td{border:1px solid var(--line);padding:8px 12px;text-align:left;vertical-align:top}
+  th{background:var(--soft);color:var(--navy);width:30%}
+  td{color:#3a4048}
+  table.plain th{width:auto}
+
+  /* OX 퀴즈 */
+  .quiz{margin:12px 0 0}
+  .quiz details{border:1px solid var(--line);border-radius:6px;padding:10px 14px;margin:8px 0 0;background:#fff}
+  .quiz summary{cursor:pointer;font-weight:700;font-size:15px;list-style:none}
+  .quiz summary::-webkit-details-marker{display:none}
+  .quiz summary::before{content:"Q ";color:var(--navy)}
+  .quiz summary::after{content:"  ▸ 정답 보기";font-size:12px;color:var(--sub);font-weight:400}
+  .quiz details[open] summary::after{content:""}
+  .quiz details p{margin:8px 0 0;font-size:14.5px;color:#3a4048}
+  .quiz .o{color:var(--ok);font-weight:800}
+  .quiz .x{color:#b33;font-weight:800}
+
+  .end{background:#fff;border:2px solid var(--navy);border-radius:8px;padding:18px 22px;margin:22px 0 0}
+  .end h2{font-size:17px;margin:0 0 6px}
+  .end p{margin:6px 0;font-size:15px}
+  .end b{color:var(--navy)}
+  .next{font-size:14px;color:var(--sub);margin:14px 0 0}
+  footer{margin-top:26px;font-size:12px;color:var(--sub);text-align:center}
+
+  @media(max-width:600px){h1{font-size:22px}h2{font-size:18px}.txt{font-size:14px}
+    .time{margin-left:0}.vs{grid-template-columns:1fr}section{padding:16px 15px}}
+  @media print{body{background:#fff}button,.jump,.dl,.btn,.home{display:none!important}section{page-break-inside:avoid}}
+  /* 1안·2안 바꾸기 */
+  .plan{display:flex;gap:8px;margin:14px 0 0}
+  .plan a{flex:1;text-align:center;text-decoration:none;border:2px solid var(--navy);border-radius:10px;padding:10px 8px;color:var(--navy);font-weight:700;font-size:15px;background:#fff}
+  .plan a b{display:inline-block;background:var(--soft);border-radius:12px;padding:0 9px;margin-right:6px}
+  .plan a.on{background:var(--navy);color:#fff}
+  .plan a.on b{background:var(--yellow);color:var(--ink)}
+  .alt{font-size:12px;font-weight:700;text-decoration:none;color:var(--navy);border:1px solid var(--navy);border-radius:12px;padding:2px 9px;white-space:nowrap;background:#fff}
+  .alt:hover{background:var(--navy);color:#fff}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+  .two figure{margin:0}.two .shot{margin-top:0}
+  .two figcaption{font-size:13.5px;color:var(--sub);margin-top:6px}
+  @media(max-width:600px){.two{grid-template-columns:1fr}.plan a{font-size:14px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="home" href="index.html">← 자료실 처음으로</a>
+<header>
+  <p class="kicker">4차시 · 2026. 10. 23.(금) 18:00~20:00 · 2안</p>
+  <h1>한 장으로 끝내는 — <em>감귤 홍보물 (A4)</em></h1>
+  <p class="sub">파란 대괄호 <span class="ph">[이렇게]</span> 표시된 곳만 내 상황으로 바꾸세요. 오늘 나오는 것은 전부 무료로 됩니다.</p>
+  <div class="toprow">
+    <a class="btn y" href="gyul-a.html" target="_blank" rel="noopener">완성 예시 A — 산뜻한 사진형 ↗</a>
+    <a class="btn y" href="gyul-b.html" target="_blank" rel="noopener">완성 예시 B — 세련된 잡지형 ↗</a>
+    <a class="btn line" href="https://chatgpt.com" target="_blank" rel="noopener">🎨 ChatGPT 열기 (사진 만들기) ↗</a>
+  </div>
+</header>
+
+<nav class="plan" aria-label="오늘의 두 가지 안">
+  <a href="4.html"><b>1안</b> 3단 리플렛</a>
+  <a class="on" href="4-gyul.html"><b>2안</b> 감귤 한 장 홍보물</a>
+</nav>
+
+<div class="hook">
+  <p class="q">귤 따는 철, 단톡방에 올릴 '주문 안내' 한 장 있으면 좋겠죠?</p>
+  <p>3단 리플렛과 <b>같은 순서</b>로, 이번엔 <b>A4 한 장짜리 귤 홍보물</b>을 만듭니다. 잘 만든 홍보물 두 장을 보여 주고 <b>"이것처럼, 내용만 우리 귤로"</b>. 사진은 <b>ChatGPT</b>로 만들고, 글자와 숫자는 <b>클로드</b>가 맡습니다 — AI 두 개를 <b>잘하는 일대로 나눠 쓰는 법</b>을 배웁니다.</p>
+  <div class="take"><span>오늘 가져갈 것</span><span>📄 A4 한 장 PDF</span><span>🖼 단톡방용 이미지</span><span>🎨 ChatGPT로 만든 귤 사진</span><span>🤝 AI 두 개 나눠 쓰기</span></div>
+</div>
+
+<div class="tip" style="margin-top:14px"><b>시작하기 전에</b> — 새 탭에 <b>chatgpt.com</b>을 열고 <b>구글로 로그인</b>해 두세요(처음이면 '구글로 계속하기'로 가입). 내 귤밭·귤 사진이 휴대폰에 있으면 그걸 써도 됩니다(카톡 '나와의 채팅'으로 보내 PC 카톡에서 저장).</div>
+<table style="margin-top:12px">
+  <tr><th>🎨 ChatGPT</th><td><b>사진·그림</b> — 귤 바구니, 귤밭 풍경처럼 <b>글자 없는 그림</b></td></tr>
+  <tr><th>✍ 클로드</th><td><b>글자·숫자·배치</b> — 제목, 가격표, 연락처, A4 한 장 짜임</td></tr>
+  <tr><th>왜 나누나요?</th><td>그림 AI는 그림 속 <b>글자·숫자를 자주 틀립니다</b>(35,000원 → 36,000원, 받침 빠짐). 틀리면 안 되는 가격·계좌는 클로드가 글자로 넣어야 안전합니다.</td></tr>
+</table>
+
+<nav class="jump">
+  <a href="#s0">0</a>
+  <a href="#s1">1</a>
+  <a href="#s2">2</a>
+  <a href="#s3">3</a>
+  <a href="#s4">4</a>
+  <a href="#s5">5</a>
+  <a href="#s6">6</a>
+  <a href="#s7">7</a>
+  <a href="#s8">8</a>
+  <a href="#s9">도전</a>
+  <a href="#s10">퀴즈</a>
+</nav>
+
+
+<section id="s0" data-n="0">
+  <div class="head"><span class="num y">0</span><h2>오늘의 생활 프롬프트</h2><span class="time">5분</span></div>
+  <p class="one">1안과 같습니다.</p>
+  <div class="box"><div class="bar"><span>카드 19 — 사기 문자 판별</span></div>
+<div class="txt">이런 문자가 왔어.
+<span class="ph">[엄마 나 폰 액정 깨져서 임시폰이야. 급하게 상품권 좀 사줄 수 있어?]</span>
+사기일 가능성이 있는지, 왜 그런지, 내가 지금 할 일을 순서대로 알려줘.</div></div>
+</section>
+
+<section id="s1" data-n="1">
+  <div class="head"><span class="num">1</span><h2>무엇을 알릴까 — 여섯 칸 채우기</h2><span class="time">5분</span></div>
+  <p class="one">머릿속으로만 채워도 됩니다. 수업 중에는 <b>전화번호·계좌는 가짜</b>로 쓰고, 진짜는 집에서 넣으세요.</p>
+  <table>
+    <tr><th>무엇을</th><td><span class="ph">[노지황금향 / 노지감귤 / 한라봉 / 레드향]</span> · 귤집 이름 <span class="ph">[정성가득 한라귤집]</span></td></tr>
+    <tr><th>한 줄 자랑</th><td><span class="ph">[제주의 햇살과 바람이 키운 달콤한 노지황금향]</span></td></tr>
+    <tr><th>가격표</th><td><span class="ph">[상품 5kg 35,000원 / 상품 10kg 55,000원 / 중상품 10kg 45,000원 — 택배포함]</span></td></tr>
+    <tr><th>언제</th><td><span class="ph">[11월 중순부터 수확·발송]</span></td></tr>
+    <tr><th>주문 방법</th><td>문자·카톡으로 — 종류/수량, 보내는 분·받는 분 성명·연락처·주소</td></tr>
+    <tr><th>연락처 · 계좌</th><td><span class="ph">[010-0000-0000 / ○○은행 000-00-000000]</span> (수업 중엔 가짜)</td></tr>
+  </table>
+</section>
+
+<section id="s2" data-n="2" class="key">
+  <div class="head"><span class="num">2</span><h2>잘 만든 홍보물 올려서 뜯어보기</h2><span class="badge hot">오늘의 핵심</span><span class="time">15분</span></div>
+  <p class="one">분위기가 다른 두 장입니다. 둘 다 내려받아 클로드 입력창에 <b>끌어다 놓으세요</b>.</p>
+  <div class="two">
+    <figure><img class="shot" src="img/gyul-a.png" alt="감귤 홍보물 예시 A — 산뜻한 사진형"><figcaption><b>A 산뜻한 사진형</b> — 파란 하늘·굵은 둥근 글씨·노란 상자</figcaption>
+      <a class="dl" href="img/gyul-a.png" download="gyul-sample-A.png">⬇ 예시 A 사진</a></figure>
+    <figure><img class="shot" src="img/gyul-b.png" alt="감귤 홍보물 예시 B — 세련된 잡지형"><figcaption><b>B 세련된 잡지형</b> — 넉넉한 여백·명조 제목·차분한 색</figcaption>
+      <a class="dl" href="img/gyul-b.png" download="gyul-sample-B.png">⬇ 예시 B 사진</a></figure>
+  </div>
+  <div class="box"><div class="bar"><span>프롬프트 1 — 구조 뜯어보기</span></div>
+<div class="txt">올린 귤 홍보물 두 장을 보고 어떻게 짜여 있는지 알려줘.
+위에서 아래로 어떤 칸이 있고 각 칸에 무엇이 들어갔는지 표로 정리해줘.
+두 장의 분위기가 어떻게 다른지 세 가지(글씨체·색·여백), 둘 다 잘 읽히는 이유도 세 가지만 짚어줘.</div></div>
+  <div class="ex">| 순서 | 들어간 것 |
+| ① 맨 위 | 귤집 이름 · 큰 제목(제주도 / 노지황금향) |
+| ② 가운데 | 큰 귤 사진 + 동그란 배지(바로수확 신선배송) |
+| ③ 아래 | 가격표 — 등급 단추 · 무게 · 점선 · 가격(택배포함) |
+| ④ 맨 아래 | 주문 방법 · 연락처 · 주문 때 알려줄 것 |
+분위기: A는 굵은 둥근 글씨·파란 하늘로 밝게 / B는 명조 글씨·여백·차분한 색으로 고급스럽게
+잘 읽히는 이유: ① 상품 이름이 가장 크다 ② 가격이 한 줄씩 정렬 ③ 주문 방법이 맨 아래 한곳에</div>
+  <p class="note">💡 <b>내 마음에 드는 홍보물</b>(전단지 사진·인터넷 광고 캡처)을 올려도 됩니다. 다만 남의 디자인을 그대로 베끼지 말고 <b>짜임새만</b> 참고하세요.</p>
+</section>
+
+<section id="s3" data-n="3">
+  <div class="head"><span class="num">3</span><h2>우리 귤로 갈아 끼우기</h2><span class="time">12분</span></div>
+  <p class="one">짜임은 그대로, 내용만 바꿉니다. 1번에서 생각한 것을 넣으세요.</p>
+  <div class="box"><div class="bar"><span>프롬프트 2 — 우리 귤 내용으로</span></div>
+<div class="txt">위 홍보물과 같은 순서로 우리 귤 홍보물에 들어갈 글을 써줘.
+- 귤집 이름: <span class="ph">[정성가득 한라귤집]</span>
+- 상품: <span class="ph">[제주도 노지황금향]</span>, 수확·발송: <span class="ph">[11월 중순부터]</span>
+- 가격: <span class="ph">[상품 5kg 35,000원 / 상품 10kg 55,000원 / 중상품 10kg 45,000원, 모두 택배포함]</span>
+- 주문: 문자·카톡, 연락처 <span class="ph">[010-0000-0000]</span>, 계좌 <span class="ph">[○○은행 000-00-000000]</span>
+- 주문 때 알려줄 것: 종류/수량, 보내는 분·받는 분 성명·연락처·주소
+
+칸마다 들어갈 글을 나눠서 보여주고, 가격과 숫자는 내가 준 그대로 써. 내가 안 알려준 것은 [확인 필요] 라고 표시해줘.</div></div>
+  <div class="box"><div class="bar"><span>프롬프트 3 — 한 칸만 고치기</span></div>
+<div class="txt"><span class="ph">[한 줄 자랑]</span> 만 다시 써줘. 나머지는 그대로 둬. <span class="ph">[더 짧고 맛있게 느껴지게]</span> 부탁해.</div></div>
+</section>
+
+<section id="s4" data-n="4">
+  <div class="head"><span class="num">4</span><h2>전문가 부르기 · 문구 고르기</h2><span class="time">8분</span></div>
+  <table>
+    <tr><th>직거래 홍보</th><td>"너는 제주 농산물 직거래 <b>카피라이터</b>야"</td></tr>
+    <tr><th>선물용</th><td>"너는 명절 <b>선물 상품 기획자</b>야"</td></tr>
+    <tr><th>단골 손님용</th><td>"너는 손님과 오래 지낸 <b>동네 과일가게 사장님</b>이야"</td></tr>
+  </table>
+  <div class="box"><div class="bar"><span>프롬프트 4 — 전문가 지정</span></div>
+<div class="txt">너는 제주 농산물 직거래 카피라이터야.
+위 홍보물에 쓸 문구를 후보로 보여줘.
+- 큰 제목 3개 (상품 이름이 잘 보이게)
+- 한 줄 자랑 3개 (20자 안팎)
+- 동그란 배지 문구 3개 (두세 줄, 짧게)
+과장하거나 확인되지 않은 효능(당도 몇 브릭스, 무농약 등)은 내가 말하지 않았으면 쓰지 마.</div></div>
+  <div class="ex">한 줄 자랑 후보
+① 제주의 햇살과 바람이 키운 달콤함
+② 나무에서 익혀 바로 따서 보내요
+③ 한 입에 퍼지는 노지의 진한 향
+배지 후보 — 상큼함 100% / 바로수확 신선배송</div>
+  <p class="warnnote">⚠ "무농약·유기농·당도 ○브릭스" 같은 말은 <b>인증이나 측정 근거가 있을 때만</b> 씁니다.</p>
+  <h3>덤 — ChatGPT에게 줄 '사진 주문서'도 클로드에게</h3>
+  <div class="box"><div class="bar"><span>프롬프트 4-2 — 사진 주문서 쓰기</span></div>
+<div class="txt">이 홍보물 위쪽에 들어갈 사진을 ChatGPT로 만들려고 해. ChatGPT에 붙여 넣을 '사진 주문서'를 써줘.
+- 사진에 담을 것: <span class="ph">[제주 노지 귤밭, 바구니에 담긴 황금향, 반으로 자른 귤]</span>
+- 분위기: <span class="ph">[맑은 가을 아침, 따뜻하고 싱그럽게]</span>
+- 실제 사진처럼, 가로로 긴 3:2 비율
+- 제목이 들어갈 <span class="ph">[위쪽]</span>은 하늘이나 흐린 배경으로 비워 두기
+- 사진 안에 글자·숫자·로고는 하나도 넣지 말 것
+문장으로 자연스럽게, 한국어로 써줘.</div></div>
+  <p class="note">그림 AI는 '귤, 바구니, 4K' 같은 낱말 나열보다 <b>장면을 문장으로 설명</b>할 때 잘 그립니다. 클로드가 써 준 주문서는 6번에서 ChatGPT에 붙여 넣습니다.</p>
+</section>
+
+<section id="s5" data-n="5" class="key">
+  <div class="head"><span class="num">5</span><h2>A4 한 장으로 만들기 — 스타일 A · B</h2><span class="badge hot">오늘의 핵심</span><span class="time">20분</span></div>
+  <p class="one">먼저 마음에 드는 스타일 <b>하나</b>를 만들고, 시간이 남으면 같은 대화에서 다른 스타일도 만들어 비교합니다.</p>
+  <div class="box"><div class="bar"><span>프롬프트 5-A — 산뜻한 사진형 (통째로 복사)</span></div>
+<div class="txt">위에서 정한 내용으로 귤 홍보물을 아티팩트로 만들어줘. 올린 예시 A처럼.
+
+[크기]
+- A4 세로 한 장 (210mm × 297mm). 인쇄하면 정확히 한 장, 여백 없이, 배경색도 인쇄되게
+
+[짜임 — 위에서 아래로]
+- 위쪽 60%: 큰 사진 자리. 사진은 나중에 ChatGPT로 만들어 넣을 거야. 그 전까지는 파란 하늘·귤밭·귤 더미를 간단한 그림으로 채워줘
+- 사진 위 가운데: 귤집 이름(작게) → '제주도'(진한 회색) → '<span class="ph">[노지황금향]</span>'(아주 크게, 주황)
+- 사진 오른쪽: 흰 동그라미 배지 '<span class="ph">[상큼함 100% / 바로수확 / 신선배송]</span>'
+- 아래: 점선 테두리 안 가격표 — 주황 알약 단추(상품·중상품) · 무게 · 점선 · 가격(택배포함)
+- 맨 아래 왼쪽: "문자/카톡 주문 방법" + 연락처·계좌 / 오른쪽: 연노랑 상자에 주문 때 알려줄 것
+
+[모양]
+- 제목은 굵고 둥근 글씨, 색은 파란 하늘 + 귤 주황 + 초록
+- 화면 오른쪽 아래에 '📷 내 사진 넣기' 단추: 사진 파일을 고르면 위쪽 그림 자리에 그 사진이 꽉 차게. 인쇄할 때는 단추 숨기기
+
+[꼭 지킬 것]
+- html 파일 하나로. 가격·전화번호는 내가 준 그대로</div></div>
+  <div class="box"><div class="bar"><span>프롬프트 5-B — 세련된 잡지형 (통째로 복사)</span></div>
+<div class="txt">같은 내용으로 다른 스타일 홍보물도 만들어줘. 올린 예시 B처럼.
+
+[크기] A4 세로 한 장, 여백 없이, 배경색도 인쇄되게
+
+[짜임]
+- 위쪽 왼쪽: 귤집 이름과 가는 선 → 명조체 큰 제목 두 줄('제주도'는 진한 초록, '<span class="ph">[노지황금향]</span>'은 주황) → 기울인 한 줄 자랑
+- 위쪽 오른쪽: '<span class="ph">[2026]</span>년'과 작은 잎, 그 아래 흰 동그라미 배지
+- 가운데: 바구니에 담긴 귤과 반으로 자른 귤 그림 (뒤로 흐린 제주 바다·밭). 위아래는 종이색으로 부드럽게 번지게
+- 아래: 가격표를 줄마다 가는 선으로 — 알약 단추 · 무게 · 점선 · 큰 주황 가격 · (택배포함)
+- 맨 아래: 둥근 연베이지 상자 두 개 (문자/카톡 주문 | 주문 시 알려주세요)
+
+[모양] 여백 넉넉히, 색은 크림·짙은 초록·주황 세 가지만. 고급스럽고 차분하게
+[사진] 예시 A처럼 '📷 내 사진 넣기' 단추도 넣어줘 (인쇄 땐 숨기기)
+[꼭 지킬 것] html 파일 하나로. 가격·전화번호는 내가 준 그대로</div></div>
+  <ul class="chk">
+    <li>세로로 긴 <b>한 장</b>이 나왔는지</li>
+    <li>상품 이름이 <b>가장 크게</b> 보이는지 · 가격 줄이 반듯한지</li>
+    <li>글자가 넘치면 → "가격표 글씨를 조금 줄여줘" / 두 장이 되면 → "A4 한 장에 맞게 줄여줘"</li>
+  </ul>
+  <p class="note">모양이 자꾸 어긋나면 2번의 예시 사진을 다시 올리고 <b>"이 사진처럼 만들어줘"</b>. 고칠 땐 주문 공식 — <b>"[어디]를 [어떻게]. 나머지는 그대로"</b></p>
+</section>
+
+<section id="s6" data-n="6" class="key">
+  <div class="head"><span class="num">6</span><h2>ChatGPT로 귤 사진 만들어 넣기 · 마지막 점검</h2><span class="badge hot">핵심</span><span class="time">15분</span></div>
+  <p class="one">클로드 홍보물의 <b>그림 자리</b>에, ChatGPT로 만든 <b>진짜 같은 귤 사진</b>을 끼웁니다.</p>
+  <h3>① ChatGPT에서 사진 만들기</h3>
+  <ol class="step">
+    <li><b>chatgpt.com</b> 탭 → 입력창에 아래 주문서 붙여넣기 (4번에서 클로드가 써 준 것도 좋아요)</li>
+    <li>1분쯤 기다리면 사진이 나와요 → 사진에 마우스를 올리고 <b>⬇ 다운로드</b></li>
+    <li>마음에 안 들면 다시 만들지 말고 <b>고칠 것만</b> — "귤을 조금 더 크게, 나머지는 그대로"</li>
+  </ol>
+  <div class="box"><div class="bar"><span>ChatGPT 주문서 A — 산뜻한 사진형용 (귤밭 + 귤 더미)</span></div>
+<div class="txt">제주도 노지 귤밭을 실제 사진처럼 만들어줘.
+맑은 가을 아침, 진한 파란 하늘에 흰 구름이 조금 떠 있어.
+화면 아래쪽 가운데에는 갓 딴 큼직한 노지 황금향 여섯 개쯤이 탐스럽게 쌓여 있고, 껍질의 오톨도톨한 결과 윤기가 잘 보이게 가까이 찍어줘.
+뒤로는 귤이 주렁주렁 달린 귤나무 밭과 낮은 돌담, 멀리 작은 비닐하우스가 흐릿하게 보이게.
+화면 위쪽 3분의 1은 제목이 들어갈 수 있도록 하늘만 넓게 비워 둬.
+밝은 햇살이 왼쪽에서 비추는 산뜻하고 싱그러운 분위기, 35mm 카메라로 찍은 듯한 선명한 사진.
+가로로 긴 3:2 비율. 사진 안에 글자, 숫자, 로고, 워터마크는 넣지 마.</div></div>
+  <div class="box"><div class="bar"><span>ChatGPT 주문서 B — 세련된 잡지형용 (바구니 귤 + 제주 바다)</span></div>
+<div class="txt">고급 잡지 광고처럼 세련된 실제 사진을 만들어줘.
+제주 바닷가 언덕의 현무암 돌담 위에 둥근 대나무 바구니가 놓여 있고, 그 안에 잎이 달린 노지 황금향 세 개와 반으로 잘라 과즙이 반짝이는 황금향 하나가 담겨 있어.
+바구니는 화면 오른쪽 아래에 크게, 귤의 껍질 결과 단면이 선명하게 보이게.
+뒤로는 귤밭과 푸른 바다, 멀리 오름 능선이 부드럽게 흐려져 있어.
+화면 왼쪽 위 절반은 제목이 들어갈 수 있도록 맑고 옅은 하늘로 여백을 넉넉히 비워 둬.
+따뜻한 늦은 오후 햇살, 크림색과 주황·짙은 초록이 어우러진 차분한 색감, 얕은 심도의 85mm 렌즈 느낌.
+가로로 긴 3:2 비율. 사진 안에 글자, 숫자, 로고, 워터마크는 넣지 마.</div></div>
+  <h3>② 클로드 홍보물에 넣기</h3>
+  <ol class="step">
+    <li>클로드 아티팩트 오른쪽 위 <b>다운로드</b> → 받은 파일 <b>더블클릭</b> → 크롬에서 열기</li>
+    <li>오른쪽 아래 <b>📷 내 사진 넣기</b> → 방금 받은 ChatGPT 사진 고르기 → 그림 자리에 쏙</li>
+    <li>제목 글씨가 사진에 묻히면 클로드에게 — "<b>제목 뒤에 옅은 흰 그림자를 넣어 잘 보이게 해줘</b>"</li>
+  </ol>
+  <p class="note">아티팩트 미리보기 안에서는 사진 고르기가 막힐 수 있어요. <b>내려받은 파일로</b> 하세요. 내 귤밭 사진이 있으면 ChatGPT 사진 대신 그걸 넣어도 됩니다 — 손님에겐 <b>진짜 우리 밭</b>이 가장 믿음직해요.</p>
+  <p class="warnnote">⚠ ChatGPT 무료 계정은 <b>하루에 만들 수 있는 사진 수가 적습니다.</b> 한두 장 안에서 고르고, 한도가 차면 예시 그림이나 내 사진을 쓰세요.</p>
+  <h3>③ 마지막 점검</h3>
+  <div class="box"><div class="bar"><span>프롬프트 6 — 검토 부탁 (클로드에게)</span></div>
+<div class="txt">홍보물에서 틀린 글자와 어색한 문장을 찾아 고쳐줘. 고친 곳은 목록으로 알려줘. 가격과 전화번호는 바꾸지 마.</div></div>
+  <ul class="chk">
+    <li>가격 — 세 줄 모두 숫자와 <b>(택배포함)</b> 여부</li>
+    <li>전화번호 · 계좌번호 — 한 자 한 자</li>
+    <li>사진 속에 <b>엉뚱한 글자·로고</b>가 숨어 있지 않은지, 귤 모양이 이상하지 않은지</li>
+  </ul>
+  <p class="warnnote">⚠ AI로 만든 사진을 실제 상품 사진처럼 쓰면 손님이 오해할 수 있어요. 판매용으로 쓸 땐 <b>내 귤 사진</b>을 쓰거나 작게 <b>"이미지는 연출 컷입니다"</b>를 넣으세요.</p>
+</section>
+
+<section id="s7" data-n="7">
+  <div class="head"><span class="num">7</span><h2>인쇄용 PDF · 단톡방용 사진으로 받기</h2><span class="time">8분</span></div>
+  <h3>① PDF — 인쇄소·프린터용</h3>
+  <ol class="step">
+    <li>사진을 넣은 화면에서 <b>Ctrl + P</b> (또는 🖨 단추)</li>
+    <li>대상 <b>PDF로 저장</b> · 용지 <b>A4</b> · 여백 <b>없음</b> · <b>배경 그래픽</b> 체크</li>
+    <li>미리보기가 <b>딱 한 장</b>인지 확인 → 저장</li>
+  </ol>
+  <h3>② 사진 — 단톡방·문자용</h3>
+  <ol class="step">
+    <li>홍보물이 화면에 다 보이게 크롬 확대를 줄이기 (<b>Ctrl + −</b>)</li>
+    <li><b>윈도우 + Shift + S</b> → 홍보물 부분만 네모로 잡기</li>
+    <li>카톡 <b>나와의 채팅</b>에 <b>Ctrl + V</b> → 폰에서 열어 글씨가 읽히는지 확인</li>
+  </ol>
+  <p class="note">PDF 받기가 막히면 클로드에게 — <b>"이 홍보물을 A4 세로 한 장 PDF 파일로 만들어 내려받게 해줘"</b>. 다만 이 방법은 넣은 사진이 빠질 수 있어요.</p>
+</section>
+
+<section id="s8" data-n="8">
+  <div class="head"><span class="num">8</span><h2>패들렛에 올리기</h2><span class="time">5분</span></div>
+  <ul class="chk">
+    <li>우리 반 패들렛 → "4차시 2안 — <span class="ph">[내 이름]</span>" + 홍보물 사진</li>
+    <li>A형 · B형 중 <b>더 사고 싶어지는 홍보물</b>에 ❤</li>
+  </ul>
+  <a class="btn" href="https://padlet.com/loveria/padlet-s0248e8jku350jxnybsr" target="_blank" rel="noopener">우리 반 패들렛 열기 ↗</a>
+</section>
+
+<section id="s9" data-n="도전" class="challenge">
+  <div class="head"><span class="num ch">+</span><h2>주문 답장 문자 · 다른 귤 버전</h2><span class="badge">도전</span><span class="time">자유</span></div>
+  <p class="only">※ 먼저 끝낸 분만 — 집에서 해도 됩니다.</p>
+  <div class="box"><div class="bar"><span>도전 1 — 주문 받으면 보낼 답장</span></div>
+<div class="txt">홍보물을 보고 주문이 오면 보낼 답장 문자를 세 가지 써줘.
+① 주문 확인 + 입금 안내 ② 입금 확인 + 발송 날짜 ③ 발송 완료 + 송장 번호 자리
+짧고 정중하게, 귤집 이름 <span class="ph">[정성가득 한라귤집]</span>을 넣어서.</div></div>
+  <div class="box"><div class="bar"><span>도전 2 — 다른 귤로 한 장 더</span></div>
+<div class="txt">같은 모양 그대로 <span class="ph">[한라봉]</span> 버전도 만들어줘. 색은 <span class="ph">[조금 더 진한 주황]</span>으로, 가격은 <span class="ph">[5kg 40,000원 / 3kg 28,000원]</span>.</div></div>
+  <div class="box"><div class="bar"><span>도전 3 — ChatGPT에게 홍보물을 통째로 맡기면? (비교 실험)</span></div>
+<div class="txt">제주 노지황금향 판매 홍보물을 A4 세로 포스터 한 장으로 만들어줘.
+맨 위 "정성가득 한라귤집", 큰 제목 "제주도 노지황금향", 가격표
+"상품 5kg 35,000원", "상품 10kg 55,000원", "중상품 10kg 45,000원" (모두 택배포함),
+맨 아래 "문자/카톡 주문 010-0000-0000". 글자는 따옴표 안 그대로 정확하게.</div></div>
+  <p class="note">ChatGPT에 붙여 넣고, 나온 포스터의 <b>가격·전화번호·받침</b>을 클로드 홍보물과 비교해 보세요. 모양은 멋져도 숫자가 틀리는 일이 많습니다 — 그래서 오늘은 <b>사진만 GPT, 글자는 클로드</b>로 나눴어요.</p>
+  <p class="note">진짜 귤 사진을 더 예쁘게 다듬고 싶으면 <a href="4.html#s9">1안 도전 — Canva에서 진짜 사진 넣기</a>를 참고하세요.</p>
+</section>
+
+<section id="s10" data-n="퀴즈">
+  <div class="head"><span class="num y">?</span><h2>오늘의 OX 퀴즈</h2><span class="time">마무리</span></div>
+  <div class="quiz">
+    <details><summary>클로드에게 부탁하면 우리 귤밭 사진을 새로 찍은 것처럼 만들어 준다.</summary>
+      <p><span class="x">X</span> — 클로드는 사진을 새로 만들지 못합니다. 사진은 <b>ChatGPT</b>로 만들거나 <b>내가 찍은 사진</b>을 넣습니다.</p></details>
+    <details><summary>가격표까지 그림 AI에게 맡기면 숫자가 틀릴 수 있으니, 글자·숫자는 클로드로 넣는 게 안전하다.</summary>
+      <p><span class="o">O</span> — 오늘의 나눠 쓰기: <b>사진은 GPT, 글자·숫자는 클로드</b>.</p></details>
+    <details><summary>PDF로 저장할 때 '배경 그래픽'을 켜야 색과 그림이 같이 인쇄된다.</summary>
+      <p><span class="o">O</span> — 끄면 하얀 바탕에 글씨만 나올 수 있어요.</p></details>
+    <details><summary>가격과 계좌번호는 클로드가 썼으니 다시 볼 필요 없다.</summary>
+      <p><span class="x">X</span> — 숫자는 꼭 사람이 한 자씩 확인합니다.</p></details>
+  </div>
+</section>
+
+<div class="end">
+  <h2>오늘 기억할 것 세 줄</h2>
+  <p><b>1.</b> 잘 만든 예시를 보여 주고 <b>"이것처럼, 내용만 우리 귤로"</b></p>
+  <p><b>2.</b> AI는 잘하는 일대로 — <b>사진은 ChatGPT, 글자·숫자·배치는 클로드</b></p>
+  <p><b>3.</b> 가격 · 전화번호 · 계좌번호는 <b>사람이 확인</b></p>
+  <p class="next">📣 다음 시간(10.28) — 드디어 <b>나만의 앱</b>! "저 집 결혼식 때 얼마 했더라?"를 해결하는 <b>경조사비 장부</b>를 만듭니다. 귤 주문 장부로 바꿔 만들어도 좋아요.</p>
+</div>
+
+<footer>클로드로 만드는 내 일상 — 발표자료부터 나만의 앱까지 · 4차시 2안 &nbsp;|&nbsp; 제주도민대학 · 강사 강지애</footer>
+</div>
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.jump a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  function mark(){var i=0;for(var k=0;k<secs.length;k++){if(secs[k]&&secs[k].getBoundingClientRect().top<=90)i=k;}
+    links.forEach(function(a,k){a.classList.toggle('on',k===i);});}
+  window.addEventListener('scroll',mark,{passive:true});mark();
+})();
+document.querySelectorAll('.box').forEach(function(box){
+  var bar=box.querySelector('.bar');if(!bar||bar.querySelector('button'))return;
+  var b=document.createElement('button');b.className='cp';b.type='button';b.textContent='복사';bar.appendChild(b);
+});
+document.querySelectorAll('button.cp').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.closest('.box').querySelector('.txt').innerText;
+    var ok=function(){b.textContent='복사됨!';b.classList.add('copied');
+      setTimeout(function(){b.textContent='복사';b.classList.remove('copied');},1500);};
+    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(ok,function(){fb(t,ok);});}
+    else{fb(t,ok);}
+  });
+});
+function fb(t,ok){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';
+  document.body.appendChild(a);a.select();
+  try{document.execCommand('copy');ok();}catch(e){alert('직접 드래그해서 복사해 주세요.');}
+  document.body.removeChild(a);}
+</script>
+<script>
+/* 단계마다 다른 안의 같은 단계로 가는 단추 */
+document.querySelectorAll('section[id^="s"] .head').forEach(function(h){
+  var id=h.parentNode.id, a=document.createElement('a');a.className='alt';
+  a.href='4.html#'+id; a.textContent='1안 리플렛 →'; h.appendChild(a);
+});
+</script>
+<script src="live.js"></script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>감귤 홍보물 A — 산뜻한 사진형 (수업 예시)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#3b3b3b;--orange:#f47b20;--orange-d:#e2650c;--green:#2f7a3c;--red:#e23b3b;--cream:#fff8dc}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:#cfd8de;font-family:"Noto Sans KR",sans-serif;color:var(--ink)}
+.page{width:210mm;height:297mm;margin:16px auto;background:#fff;position:relative;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.18)}
+@page{size:A4;margin:0}
+@media print{body{background:none}.page{margin:0;box-shadow:none}.noprint{display:none!important}}
+
+.hero{position:absolute;left:0;top:0;width:100%;height:172mm;background-size:cover;background-position:center bottom}
+.hero svg{position:absolute;inset:0;width:100%;height:100%}
+.top{position:absolute;left:0;right:0;top:12mm;text-align:center;z-index:2}
+.brand{font-family:"Jua",sans-serif;font-size:19pt;color:#2b2b2b}
+h1{margin:2mm 0 0;font-family:"Jua",sans-serif;font-weight:400;line-height:1;letter-spacing:-.01em}
+h1 .a{display:block;font-size:54pt;color:#4a4a4a;text-shadow:0 2px 0 rgba(255,255,255,.6)}
+h1 .b{display:block;font-size:74pt;color:var(--orange);margin-top:2mm;text-shadow:0 3px 0 #fff,0 6px 14px rgba(0,0,0,.12)}
+.seal{position:absolute;right:11mm;top:92mm;z-index:3;width:46mm;height:46mm;border-radius:50%;background:#fff;box-shadow:0 8px 20px rgba(0,0,0,.18);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transform:rotate(8deg);font-family:"Jua",sans-serif;line-height:1.12}
+.seal .s1{font-size:14pt;color:var(--orange-d)}
+.seal .s2{font-size:24pt;color:var(--orange)}
+.seal .s3{font-size:24pt;color:#1f1f1f}
+.stamp{position:absolute;right:20mm;top:174mm;z-index:3;font-family:"Jua",sans-serif;font-size:27pt;color:#fff;-webkit-text-stroke:2.2px var(--green);paint-order:stroke fill;
+  text-shadow:3px 3px 0 var(--green);transform:rotate(-4deg)}
+
+.price{position:absolute;left:20mm;right:20mm;top:190mm;border:2.5px dashed #c9cdd1;border-radius:8mm;padding:4mm 8mm}
+.row{display:grid;grid-template-columns:30mm 22mm 18mm 1fr;align-items:center;gap:4mm;padding:2.2mm 0}
+.pill{display:inline-flex;justify-content:center;align-items:center;height:11mm;border-radius:6mm;background:var(--orange);color:#fff;font-family:"Jua",sans-serif;font-size:15pt}
+.pill.r{background:var(--red)}
+.kg{font-family:"Gowun Batang",serif;font-size:21pt;color:#222}
+.dots{border-bottom:2px dotted var(--green);margin-top:2mm}
+.won{font-family:"Gowun Batang",serif;font-weight:700;font-size:21pt;color:#2a2a2a;white-space:nowrap}
+.won em{font-style:normal;color:var(--orange-d)}
+
+.order{position:absolute;left:12mm;right:12mm;bottom:11mm;display:grid;grid-template-columns:1fr 1fr;gap:6mm;align-items:center}
+.how{text-align:center}
+.how h3{margin:0;font-family:"Jua",sans-serif;font-weight:400;font-size:21pt;color:var(--orange)}
+.how h3 span{position:relative;display:inline-block}
+.how h3 span::after{content:"";position:absolute;inset:-3mm -2.5mm;border:2.5px solid var(--red);border-radius:50%;transform:rotate(-8deg)}
+.how p{margin:2mm 0 0;font-family:"Gowun Batang",serif;font-size:13pt;color:#222}
+.info{background:var(--cream);border-radius:4mm;padding:5mm 6mm;text-align:center;font-family:"Gowun Batang",serif;font-size:14pt;line-height:1.75;color:#222}
+
+.tool{position:fixed;right:16px;bottom:16px;z-index:9;display:flex;gap:8px}
+.tool label,.tool button{font:700 14px "Noto Sans KR",sans-serif;background:var(--orange-d);color:#fff;border:0;border-radius:24px;padding:11px 18px;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.2)}
+.tool input{display:none}
+.note{max-width:210mm;margin:0 auto 18px;font:13px/1.6 "Noto Sans KR",sans-serif;color:#3d4650;text-align:center}
+</style>
+</head>
+<body>
+<p class="note noprint">수업 예시 · <b>산뜻한 사진형(A)</b> — 귤집 이름·연락처·계좌는 가상입니다. 오른쪽 아래 <b>📷 내 사진 넣기</b>로 그림을 내 귤밭 사진으로 바꿔 볼 수 있어요. 인쇄: Ctrl+P → PDF로 저장 · 여백 없음 · 배경 그래픽 켜기</p>
+<div class="page">
+  <div class="hero" id="hero">
+    <svg viewBox="0 0 800 650" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f8fd8"/><stop offset=".55" stop-color="#8cc6ee"/><stop offset="1" stop-color="#d6eefa"/></linearGradient>
+        <radialGradient id="og" cx="36%" cy="30%" r="72%"><stop offset="0" stop-color="#ffcf7a"/><stop offset=".5" stop-color="#f7942a"/><stop offset="1" stop-color="#d9620c"/></radialGradient>
+        <pattern id="pore" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r=".9" fill="#b9520b" opacity=".35"/><circle cx="5.5" cy="5" r=".6" fill="#fff" opacity=".22"/></pattern>
+        <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7fb35a"/><stop offset="1" stop-color="#2d6a2e"/></linearGradient>
+        <filter id="sh"><feDropShadow dx="0" dy="10" stdDeviation="9" flood-color="#2c2a10" flood-opacity=".3"/></filter>
+        <filter id="soft"><feGaussianBlur stdDeviation="1.6"/></filter>
+      </defs>
+      <rect width="800" height="650" fill="url(#sky)"/>
+      <g fill="#fff" opacity=".85"><ellipse cx="640" cy="90" rx="70" ry="18"/><ellipse cx="690" cy="78" rx="46" ry="16"/><ellipse cx="150" cy="260" rx="60" ry="14"/></g>
+      <path d="M-20 0 Q60 40 40 120 Q20 60 -20 80Z" fill="#2f6b2a" opacity=".9"/>
+      <g fill="#3c7d33"><ellipse cx="30" cy="40" rx="70" ry="26" transform="rotate(25 30 40)"/><ellipse cx="90" cy="20" rx="50" ry="16" transform="rotate(-15 90 20)"/></g>
+      <g filter="url(#soft)">
+        <path d="M0 330 Q120 300 260 318 T560 312 T800 322 V380 H0Z" fill="#3f7f3c"/>
+        <rect x="120" y="318" width="70" height="26" fill="#e9eef2"/><rect x="250" y="316" width="90" height="22" fill="#e6ebef"/>
+        <rect x="430" y="300" width="80" height="34" fill="#c9553b"/><rect x="430" y="300" width="80" height="8" fill="#a5432e"/>
+        <rect x="660" y="306" width="70" height="30" fill="#dfe6ec"/>
+      </g>
+      <path d="M0 360 Q200 340 400 360 T800 352 V650 H0Z" fill="#4f9440"/>
+      <g fill="#3b7a31"><ellipse cx="520" cy="420" rx="160" ry="60"/><ellipse cx="720" cy="440" rx="150" ry="70"/><ellipse cx="640" cy="520" rx="200" ry="80"/></g>
+      <g fill="#f7922a"><circle cx="560" cy="410" r="7"/><circle cx="610" cy="430" r="6"/><circle cx="680" cy="420" r="7"/><circle cx="740" cy="450" r="7"/><circle cx="700" cy="480" r="6"/><circle cx="770" cy="500" r="7"/><circle cx="600" cy="470" r="6"/><circle cx="520" cy="450" r="6"/><circle cx="650" cy="500" r="7"/></g>
+      <path d="M0 380 L210 345 L230 650 L0 650Z" fill="#e8eef3" opacity=".9"/>
+      <path d="M0 395 L205 360" stroke="#7aa5c4" stroke-width="5"/><path d="M0 470 L215 430" stroke="#7aa5c4" stroke-width="5"/>
+      <ellipse cx="400" cy="640" rx="330" ry="42" fill="#fff6a8"/>
+      <g filter="url(#sh)">
+        <circle cx="300" cy="535" r="118" fill="url(#og)"/><circle cx="300" cy="535" r="118" fill="url(#pore)"/>
+        <circle cx="455" cy="440" r="108" fill="url(#og)"/><circle cx="455" cy="440" r="108" fill="url(#pore)"/>
+        <circle cx="520" cy="530" r="96" fill="url(#og)"/><circle cx="520" cy="530" r="96" fill="url(#pore)"/>
+        <circle cx="420" cy="585" r="92" fill="url(#og)"/><circle cx="420" cy="585" r="92" fill="url(#pore)"/>
+        <circle cx="630" cy="590" r="80" fill="url(#og)"/><circle cx="630" cy="590" r="80" fill="url(#pore)"/>
+      </g>
+      <circle cx="420" cy="500" r="6" fill="#7a8a3a"/><circle cx="455" cy="336" r="5" fill="#7a8a3a"/>
+      <path d="M455 334 q40 -40 92 -18 q-40 34 -92 18z" fill="url(#leaf)"/>
+      <path d="M560 640 q60 -50 120 -30 q-50 40 -120 30z" fill="url(#leaf)"/>
+    </svg>
+  </div>
+  <div class="top">
+    <div class="brand">정성가득 한라귤집</div>
+    <h1><span class="a">제주도</span><span class="b">노지황금향</span></h1>
+  </div>
+  <div class="seal"><span class="s1">상큼함 100%</span><span class="s2">바로수확</span><span class="s3">신선배송</span></div>
+  <div class="stamp">11월 중순</div>
+
+  <div class="price">
+    <div class="row"><span class="pill">상품</span><span class="kg">5kg</span><span class="dots"></span><span class="won"><em>35,000원</em>(택배포함)</span></div>
+    <div class="row"><span class="pill">상품</span><span class="kg">10kg</span><span class="dots"></span><span class="won"><em>50,000원</em>(택배포함)</span></div>
+    <div class="row"><span class="pill r">중상품</span><span class="kg">10kg</span><span class="dots"></span><span class="won"><em>40,000원</em>(택배포함)</span></div>
+  </div>
+
+  <div class="order">
+    <div class="how">
+      <h3>“문자/카톡 주문 <span>방법</span>”</h3>
+      <p>연락처 : 010-0000-0000 (○○○)</p>
+      <p>계좌 : ○○은행 000-00-000000, ○○○</p>
+    </div>
+    <div class="info">황금향 종류 / 구매 수량<br>보내는 분 : 성명, 연락처, 주소<br>받는 분 : 성명, 연락처, 주소</div>
+  </div>
+</div>
+<div class="tool noprint"><label>📷 내 사진 넣기<input type="file" accept="image/*" id="pick"></label><button type="button" onclick="print()">🖨 인쇄·PDF</button></div>
+<script>
+if(location.search.indexOf('png')>-1){document.body.style.background='none';document.querySelectorAll('.noprint').forEach(function(e){e.style.display='none'});document.querySelector('.page').style.margin='0';document.querySelector('.page').style.boxShadow='none';}
+document.getElementById('pick').addEventListener('change',function(e){
+  var f=e.target.files[0];if(!f)return;var r=new FileReader();
+  r.onload=function(){var h=document.getElementById('hero');h.style.backgroundImage='url('+r.result+')';var s=h.querySelector('svg');if(s)s.style.display='none';};
+  r.readAsDataURL(f);
+});
+</script>
+</body>
+</html>
