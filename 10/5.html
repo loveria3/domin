@@ -85,6 +85,7 @@
   .vs b{display:block;font-size:12px;margin-bottom:4px;white-space:normal}
   .vs .bad b{color:#a33}
   .vs .good b{color:var(--ok)}
+  .vs b.i{display:inline;font-size:inherit;margin:0;color:inherit}
 
   .jump{position:sticky;top:0;z-index:10;display:flex;gap:6px;flex-wrap:wrap;
     padding:10px 0 9px;background:rgba(246,245,241,.96);border-bottom:1px solid var(--line)}
@@ -103,9 +104,20 @@
   .note{font-size:13.5px;color:var(--sub);margin:12px 0 0}
   .warnnote{font-size:13.5px;color:var(--warn);margin:12px 0 0}
   .tip{font-size:14px;background:var(--soft);border-radius:6px;padding:10px 14px;margin:12px 0 0}
-  ul.chk{list-style:none;padding:0;margin:12px 0 0}
+  /* ✅ 다 같이 확인 · ✋ 직접 해 보기 · 💾 저장 — 강사가 지나치지 않게 눈에 띄게 */
+  ul.chk,.check{list-style:none;margin:16px 0 0;padding:36px 16px 12px;position:relative;
+    background:#eefaf2;border:1px solid #bfe3cc;border-left:6px solid var(--ok);border-radius:8px}
+  ul.chk::before,.check::before{content:"✅ 다 같이 확인 — 되는지 보고 넘어가기";position:absolute;left:14px;top:9px;
+    font-size:13.5px;font-weight:800;color:var(--ok);letter-spacing:-.01em}
+  ul.chk.todo{background:#fff7e6;border-color:#f1d9a6;border-left-color:#e09a00}
+  ul.chk.todo::before{content:"✋ 직접 해 보기";color:#9a6400}
   ul.chk li{font-size:15px;padding:3px 0 3px 26px;position:relative}
   ul.chk li::before{content:"☐";position:absolute;left:0;color:var(--navy)}
+  .check h3{margin:0 0 2px;font-size:15px}
+  .check ol.step{margin-top:4px}
+  h3.do{display:inline-block;background:#fff1d6;color:#8a5a00;border-left:6px solid #e09a00;border-radius:4px;padding:5px 12px}
+  h3.do::before{content:"✋ 직접 해 보기 · ";font-weight:800}
+  .note.save{display:inline-block;background:#fff4c2;border:1px solid #f0d873;color:var(--ink);font-weight:700;border-radius:20px;padding:6px 14px}
   ol.step{margin:12px 0 0;padding-left:22px}
   ol.step li{font-size:15px;padding:3px 0}
 
@@ -204,7 +216,7 @@
 <section id="rule" data-n="규칙" class="key">
   <div class="head"><span class="num">!</span><h2>오늘의 규칙 — 한 번에 하나씩</h2><span class="time">읽고 시작</span></div>
   <ol class="step">
-    <li><b>새 대화를 열지 마세요.</b> 오늘은 대화창 하나로 끝까지 갑니다.</li>
+    <li><b>새 대화를 열지 마세요.</b> 오늘은 대화창 하나로 끝까지 갑니다. (예외 하나 — 강사가 <b>"이사 갑니다"</b> 할 때만)</li>
     <li>안 될 때 <b>"다시 만들어줘" 금지</b> → <b>"○○ 부분만 고쳐줘"</b></li>
     <li>단계가 끝날 때마다 아티팩트 오른쪽 위 <b>다운로드</b> — 되돌아갈 자리입니다.</li>
     <li>막히면 위의 <b>완성본 내려받기</b>로 받아서 다음 단계부터 같이 갑니다.</li>
@@ -263,7 +275,7 @@
 <section id="s2" data-n="2" class="key">
   <div class="head"><span class="num">2</span><h2>화면부터 그려 보기 — 종이 한 장</h2><span class="badge hot">새로 추가</span><span class="time">15분</span></div>
   <p class="one">집을 지을 때 설계도부터 그리듯, 앱도 <b>무엇을 어디에 둘지</b> 먼저 정합니다. 클로드에게 부탁하기 전에 연필로 해 봐요.</p>
-  <h3>① 혼자 해 보기 (3분)</h3>
+  <h3 class="do">① 혼자 해 보기 (3분)</h3>
   <ol class="step">
     <li>A4 종이를 <b>세로로</b> 놓습니다 — 폰 화면이라고 생각하세요.</li>
     <li>네모를 <b>네 개</b> 그립니다. 각 네모에 이름을 붙입니다: <b>제목·요약 / 적기 / 찾기·목록 / 백업</b></li>
@@ -361,7 +373,8 @@
 - 줄마다 지우기 단추. 지우기 전에 정말 지울지 한 번 물어봐줘.
 
 [연습용]
-- 연습 기록 넣기 단추를 누르면 가상의 기록 10개가 들어가게 해줘. 이름은 제주 느낌의 가상 이름으로.
+- 연습 기록 넣기 단추를 누르면 가상의 기록 10개가 들어가게 해줘. 이름은 제주 느낌의 가상 이름으로. 날짜는 올해 것과 작년 것을 섞어서.
+- 맨 아래에 작게 '전부 지우기' 단추. 누르면 정말 다 지울지 한 번 더 물어봐줘.
 
 [저장]
 - 적은 내용은 이 브라우저에 저장해서, 창을 닫았다 열어도 남아 있게 해줘.
@@ -393,17 +406,18 @@
     <li>제목에 <b>내 이름</b>이 떴는지 — 내가 만든 앱입니다!</li>
     <li>화면 순서가 <b>내가 그린 종이</b>와 같은지</li>
     <li>목록에 <b>낸 돈 칸 · 받은 돈 칸</b>이 나뉘어 있고, 맨 아래 합계가 있는지</li>
-    <li><b>연습 기록 넣기</b> → 10줄이 쌓이는지</li>
+    <li><b>연습 기록 넣기</b> → 10줄이 쌓이는지 · <b>올해와 작년 날짜</b>가 섞여 있는지</li>
     <li>한 줄 지우기 → "정말 지울까요?"가 나오는지</li>
+    <li><b>전부 지우기</b>가 맨 아래에 작게 있는지 (눌러 보고 "아니요"로 취소)</li>
   </ul>
-  <p class="note">💾 저장 ① — 잘 되면 아티팩트 오른쪽 위 <b>다운로드</b>.</p>
+  <p class="note save">💾 저장 ① — 잘 되면 아티팩트 오른쪽 위 <b>다운로드</b>.</p>
   <div class="box"><div class="bar"><span>안 될 때만 — 화면이 하얗게 나오면</span></div>
 <div class="txt">화면이 하얗게 나와. 무슨 문제인지 찾아서 고쳐줘. 지금 있는 기능은 그대로 둬.</div></div>
 </section>
 
 <section id="s4" data-n="4">
   <div class="head"><span class="num">4</span><h2>2단계 — 적기 편하게, 손이 덜 가는 화면</h2><span class="badge">새로 추가</span><span class="time">15분</span></div>
-  <h3>① 먼저 직접 적어 보기 (3분)</h3>
+  <h3 class="do">① 먼저 직접 적어 보기 (3분)</h3>
   <p class="one">아래 세 줄을 <b>내 장부에 손으로</b> 적어 보세요. 적으면서 <b>귀찮았던 곳</b>을 기억해 두세요.</p>
   <table class="plain">
     <tr><th>이름</th><th>관계</th><th>행사</th><th>날짜</th><th>금액</th><th>주고받음</th></tr>
@@ -459,7 +473,7 @@
 - 고치는 동안에는 적기 단추가 '고치기 완료'로 바뀌고, 옆에 '취소' 단추도 보이게.
 - 고치기 완료를 누르면 새 줄이 생기지 않고 그 줄만 바뀌게.
 - 취소나 고치기 완료를 누르면 다시 원래 적기 단추로 돌아오게.</div></div>
-  <p class="note">💾 저장 ② — <b>다운로드</b>.</p>
+  <p class="note save">💾 저장 ② — <b>다운로드</b>.</p>
 </section>
 
 <section id="s5" data-n="5">
@@ -478,10 +492,19 @@
     <li>연습 기록의 이름 중 <b>성 한 글자</b>만 쳐 보기 → 걸러지는지</li>
     <li>"낸 돈 ○원 · 받은 돈 ○원"이 나오는지</li>
   </ul>
-  <div class="ex">🔍 "고" 검색 → 고한라 님
+  <div class="ex">예시 — 연습 기록은 사람마다 이름·금액이 다르게 나옵니다
+🔍 "고" 검색 → 고한라 님
 내가 낸 돈 150,000원 · 받은 돈 100,000원
 목록도 고한라 님 줄만 남고, 맨 아래 합계 줄이 그 사람 합계로 바뀝니다.</div>
-  <p class="note">💾 저장 ③ — 다시 <b>다운로드</b>.</p>
+  <p class="note save">💾 저장 ③ — 다시 <b>다운로드</b>. 이 파일이 쉬는 시간 뒤 <b>이삿짐</b>입니다.</p>
+  <h3 class="do">쉬는 시간 뒤 — B 계정으로 이사 (강사가 "이사 갑니다" 할 때만)</h3>
+  <ol class="step">
+    <li>💾 저장 ③ 파일이 <b>다운로드 폴더</b>에 있는지 확인</li>
+    <li>시크릿 창(B 계정) → <b>새 대화</b> → ＋로 그 파일 올리기 → 아래 문장 붙여넣기</li>
+    <li>장부가 열리면 <b>연습 기록 넣기</b> 다시 누르기 — B에서는 <b>빈 장부가 정상</b>입니다 (7번 백업 이야기에서 이유가 나와요)</li>
+  </ol>
+  <div class="box"><div class="bar"><span>이사할 때 — B 계정 새 대화에 보내기</span></div>
+<div class="txt">올린 html 파일은 내가 만든 경조사비 장부야. 이 파일을 그대로 아티팩트로 열어줘. 지금 있는 기능과 제목은 하나도 빼지 말고 그대로 둬. html 파일 하나인 것도 그대로 둬.</div></div>
 </section>
 
 <section id="s6" data-n="6">
@@ -500,40 +523,18 @@
 <div class="txt">합계를 보는 기능을 더해줘. 앞에서 만든 것은 그대로 두고 이것만 더해줘.
 - 연도를 고르면 그 해에 낸 돈 합계와 받은 돈 합계를 크게 보여줘.
 - 그 아래에 행사별(결혼, 장례, 돌잔치…) 합계를 표로 보여줘.
-- 맨 위에는 '올해 낸 돈 ○○원'과 '올해 받은 돈 ○○원'을 나란히 두 칸으로 크게. 낸 돈은 파랑, 받은 돈은 초록.</div></div>
+- 맨 위에는 '올해 낸 돈 ○○원'과 '올해 받은 돈 ○○원'을 나란히 두 칸으로 크게. 낸 돈은 파랑, 받은 돈은 초록.
+- 그 두 칸 바로 아래에 '다른 해 합계 보기' 바로가기. 누르면 연도 고르는 곳으로 내려가게.</div></div>
   <ul class="chk">
-    <li>연도를 바꿔 보면 숫자가 바뀌는지</li>
+    <li><b>다른 해 합계 보기</b>를 눌러 내려간 뒤, 연도를 바꿔 보면 숫자가 바뀌는지</li>
     <li>행사별 합계를 더하면 전체 합계와 같은지 — <b>손으로 한 번 검산</b></li>
   </ul>
   <p class="tip">💡 여기 합계는 <b>앱이 계산기처럼</b> 계산하므로 정확합니다. 반대로 채팅창에서 클로드에게 "더해줘" 하면 가끔 틀립니다 — 계산은 앱에 맡기세요.</p>
-  <p class="note">💾 저장 ④ — <b>다운로드</b>.</p>
+  <p class="note save">💾 저장 ④ — <b>다운로드</b>.</p>
 </section>
 
-<section id="s7" data-n="7">
-  <div class="head"><span class="num">7</span><h2>5단계 — 큰 글씨 · 큰 단추로 다듬기</h2><span class="time">13분</span></div>
-  <div class="talk">
-    <p class="tq">이 장부, 누가 · 어디서 · 어떻게 쓸까요?</p>
-    <p class="hint">장례식장 앞에서 폰으로? 돋보기 없이? 한 손엔 봉투를 들고?</p>
-    <details><summary></summary><p>그렇다면 <b>글씨는 크게</b>, 단추는 <b>엄지손가락만 하게</b>, 단추 사이는 <b>넉넉히</b> — 옆 단추를 잘못 누르지 않게요. 그리고 색을 바꿔도 <b>낸 돈·받은 돈 두 칸과 파랑·초록의 '뜻'은 그대로</b> 지킵니다. 폰에서도 두 칸이 나란히 있어야 한눈에 비교돼요.</p></details>
-  </div>
-  <div class="box type"><div class="bar"><span>프롬프트 5 — 보기 좋게</span></div>
-<div class="txt">기능은 그대로 두고 보기만 바꿔줘.
-- 글씨를 지금보다 크게, 단추도 크고 둥글게. 단추 사이도 넉넉하게.
-- 폰에서 열어도 한 손으로 쓰기 좋게.
-- 색은 <span class="ph">[따뜻한 베이지 바탕에 진한 초록 단추]</span> 로. 낸 돈·받은 돈 칸 나눔과 파랑·초록은 그대로.
-- 폰처럼 좁은 화면에서도 낸 돈·받은 돈 두 칸이 나란히 보이게.</div></div>
-  <p class="note">색은 말로 편하게 — "바탕을 연한 하늘색으로" · "좀 더 차분하게". 사람마다 다르게 나오는 게 정상입니다.</p>
-  <h3>폰 화면으로 확인하기</h3>
-  <ol class="step">
-    <li>아티팩트 창의 폭을 <b>좁게</b> 끌어 줄여 보기 — 폰 화면처럼 보입니다.</li>
-    <li>약속 세 가지 점검: <b>자주 쓰는 것 위에 · 위험한 것 아래에 · 단추에 글</b></li>
-    <li>옆 사람에게 내 화면을 보여 주고 <b>"뭐부터 누르고 싶어요?"</b> 물어보기</li>
-  </ol>
-  <p class="note">💾 저장 ⑤ — <b>다운로드</b>. 이 파일이 오늘의 완성본입니다.</p>
-</section>
-
-<section id="s8" data-n="8" class="key">
-  <div class="head"><span class="num">8</span><h2>백업 받기 · 불러오기 — 꼭 해야 하는 이유</h2><span class="badge hot">중요</span><span class="time">11분</span></div>
+<section id="s7" data-n="7" class="key">
+  <div class="head"><span class="num">7</span><h2>백업 받기 · 불러오기 — 꼭 해야 하는 이유</h2><span class="badge hot">중요</span><span class="time">11분</span></div>
   <div class="vs">
     <div class="bad"><b>⚠ 알아 둘 것</b>장부 내용은 <b>이 컴퓨터의 이 크롬</b>에만 저장됩니다. 폰에서 열면 빈 장부입니다.</div>
     <div class="good"><b>😊 좋은 점</b>내 경조사 기록이 <b>남의 서버에 올라가지 않습니다</b>. 나만 봅니다.</div>
@@ -543,23 +544,68 @@
     <p class="tq">불러올 때 "바꿀까요, 합칠까요?"를 왜 물어야 할까요?</p>
     <details><summary></summary><p>폰에 이미 적어 둔 기록이 있는데 그냥 '바꾸기'를 하면 <b>폰 기록이 사라집니다.</b> 약속 ② — 위험한 것은 한 번 더 묻기, 여기서도 똑같습니다.</p></details>
   </div>
-  <div class="box"><div class="bar"><span>프롬프트 6 — 백업</span></div>
+  <div class="box type"><div class="bar"><span>프롬프트 5 — 백업</span></div>
 <div class="txt">백업 기능을 더해줘. 앞에서 만든 것은 그대로 두고 이것만 더해줘.
-- '백업 받기' 단추: 장부 내용 전체를 파일 하나로 내려받게. 파일 이름에 오늘 날짜를 넣어줘.
-- '백업 불러오기' 단추: 받아 둔 파일을 고르면 장부에 다시 들어오게.
-- 불러올 때 지금 목록을 바꿀지, 합칠지 물어봐줘.</div></div>
-  <h3>확인은 내 컴퓨터에서</h3>
+- '백업 받기' 단추: 장부 내용 전체를 엑셀 파일(.xlsx) 하나로 내려받게. 파일 이름에 오늘 날짜를 넣어줘.
+- '백업 불러오기' 단추: 받아 둔 엑셀 파일을 고르면 장부에 다시 들어오게. 엑셀에서 고쳐 저장한 파일도 읽히게.
+- 불러올 때 지금 목록을 바꿀지, 합칠지 물어봐줘.
+- 엑셀 파일을 만드는 도구는 인터넷에서 불러와도 돼.</div></div>
+  <div class="check"><h3>확인은 내 컴퓨터에서</h3>
   <ol class="step">
     <li>아티팩트 <b>다운로드</b> → 받은 파일 더블클릭 → 크롬에서 열기</li>
-    <li><b>연습 기록 넣기</b> → <b>백업 받기</b> → 다운로드 폴더에 파일이 생기는지</li>
+    <li><b>연습 기록 넣기</b> → <b>백업 받기</b> → 다운로드 폴더에 파일이 생기는지 → 더블클릭해서 <b>엑셀로 열어 보기</b></li>
     <li>기록을 몇 줄 지운 뒤 <b>백업 불러오기</b> → 되살아나면 성공 🎉</li>
-  </ol>
-  <p class="note">아티팩트 미리보기 안에서는 저장·내려받기가 막힐 수 있습니다. <b>내려받은 파일로</b> 확인하세요.</p>
+  </ol></div>
+  <p class="note">아티팩트 미리보기 안에서는 저장·내려받기가 막힐 수 있습니다. <b>내려받은 파일로</b> 확인하세요. 백업 단추는 <b>인터넷이 연결된 상태</b>에서 눌러야 엑셀 파일이 만들어집니다.</p>
+  <h3>백업, 이렇게 쓰세요</h3>
+  <div class="vs">
+    <div class="good"><b>✔ 평소에는 그냥 쓰기</b>적는 순간 <b class="i">자동 저장</b>됩니다. 매번 불러올 필요 없어요.
+백업 받기는 <b class="i">보험</b>입니다 — 많이 적은 날, 한 달에 한 번.</div>
+    <div class="good"><b>📂 불러오기는 이럴 때만</b>① 폰·다른 컴퓨터에서 이어 쓸 때
+② 장부가 비어 버렸을 때
+③ 엑셀에서 고친 뒤 → '바꾸기'</div>
+  </div>
+  <div class="vs" style="grid-template-columns:1fr">
+    <div class="bad"><b>⚠ 이럴 때 장부가 비어 보여요</b><b class="i">진짜 사라짐</b> — 백업이 없으면 되살릴 수 없어요
+① 크롬 '인터넷 사용 기록 삭제'에서 <b class="i">쿠키 및 사이트 데이터</b>까지 지웠을 때
+② <b class="i">시크릿 창</b>으로 열었다가 창을 닫았을 때
+③ 컴퓨터 정리 프로그램 · 컴퓨터 초기화 · 크롬 다시 설치
+
+<b class="i">자리만 다름</b> — 원래 컴퓨터·크롬에는 그대로 있어요
+④ 엣지 같은 <b class="i">다른 브라우저</b>, 다른 컴퓨터, 폰에서 열었을 때
+⑤ 장부를 <b class="i">다른 주소</b>로 열었을 때 — 다음 시간 인터넷에 올린 장부도 처음엔 비어 있어요</div>
+  </div>
+  <p class="tip">💡 받은 백업 파일은 다운로드 폴더에만 두지 말고 <b>내 메일로 보내 두거나 구글 드라이브</b>에 올려 두세요. 컴퓨터가 고장 나도 남습니다.</p>
+  <p class="note save">💾 저장 ⑤ — <b>다운로드</b>. 여기까지가 오늘의 <b>필수</b>입니다. 꼭 받아 두세요!</p>
+</section>
+
+<section id="s8" data-n="8">
+  <div class="head"><span class="num">8</span><h2>마지막 단계 — 큰 글씨 · 큰 단추로 다듬기</h2><span class="time">13분</span></div>
+  <p class="only">※ <b>저장 ⑤를 받은 뒤</b>, 대화가 아직 이어지면 하세요. 사용량이 끝났다면 다음에 해도 괜찮습니다 — 기능은 이미 다 있어요.</p>
+  <div class="talk">
+    <p class="tq">이 장부, 누가 · 어디서 · 어떻게 쓸까요?</p>
+    <p class="hint">장례식장 앞에서 폰으로? 돋보기 없이? 한 손엔 봉투를 들고?</p>
+    <details><summary></summary><p>그렇다면 <b>글씨는 크게</b>, 단추는 <b>엄지손가락만 하게</b>, 단추 사이는 <b>넉넉히</b> — 옆 단추를 잘못 누르지 않게요. 그리고 색을 바꿔도 <b>낸 돈·받은 돈 두 칸과 파랑·초록의 '뜻'은 그대로</b> 지킵니다. 폰에서도 두 칸이 나란히 있어야 한눈에 비교돼요.</p></details>
+  </div>
+  <div class="box"><div class="bar"><span>프롬프트 6 — 보기 좋게</span></div>
+<div class="txt">기능은 그대로 두고 보기만 바꿔줘.
+- 글씨를 지금보다 크게, 단추도 크고 둥글게. 단추 사이도 넉넉하게.
+- 폰에서 열어도 한 손으로 쓰기 좋게.
+- 색은 <span class="ph">[따뜻한 베이지 바탕에 진한 갈색 단추]</span> 로. 낸 돈·받은 돈 칸 나눔과 파랑·초록은 그대로.
+- 폰처럼 좁은 화면에서도 낸 돈·받은 돈 두 칸이 나란히 보이게.</div></div>
+  <p class="note">색은 말로 편하게 — "바탕을 연한 하늘색으로" · "좀 더 차분하게". 사람마다 다르게 나오는 게 정상입니다.</p>
+  <div class="check"><h3>폰 화면으로 확인하기</h3>
+  <ol class="step">
+    <li>아티팩트 창의 폭을 <b>좁게</b> 끌어 줄여 보기 — 폰 화면처럼 보입니다.</li>
+    <li>약속 세 가지 점검: <b>자주 쓰는 것 위에 · 위험한 것 아래에 · 단추에 글</b></li>
+    <li>옆 사람에게 내 화면을 보여 주고 <b>"뭐부터 누르고 싶어요?"</b> 물어보기</li>
+  </ol></div>
+  <p class="note save">💾 저장 ⑥ — <b>다운로드</b>. 이 파일이 오늘의 완성본입니다.</p>
 </section>
 
 <section id="s9" data-n="9">
   <div class="head"><span class="num">9</span><h2>패들렛에 내 장부 자랑하기</h2><span class="time">6분</span></div>
-  <ul class="chk">
+  <ul class="chk todo">
     <li>내 장부 화면을 <b>윈도우 + Shift + S</b> 로 찍기</li>
     <li>우리 반 패들렛 → "5차시 — <span class="ph">[내 이름]</span>의 장부" + 사진 붙여넣기 (종이 그림 사진도 함께!)</li>
     <li>한 줄 소감: <b>"내 장부에서 제일 잘 만든 단추는 ○○, 왜냐하면…"</b></li>
@@ -575,8 +621,6 @@
 <div class="txt">사람마다 받은 돈과 낸 돈을 비교해서, 받은 돈이 더 많은 사람만 모아 보는 단추를 더해줘. 앞에서 만든 것은 그대로 둬.</div></div>
   <div class="box"><div class="bar"><span>도전 ② 메모 칸</span></div>
 <div class="txt">줄마다 짧은 메모를 적을 수 있게 해줘. 예: 화환도 보냄, 직접 못 감. 앞에서 만든 것은 그대로 둬.</div></div>
-  <div class="box"><div class="bar"><span>도전 ③ 엑셀로 보기</span></div>
-<div class="txt">장부 전체를 엑셀에서 열 수 있는 파일(CSV)로 내려받는 단추를 더해줘. 한글이 깨지지 않게. 앞에서 만든 것은 그대로 둬.</div></div>
 </section>
 
 <section id="s11" data-n="퀴즈">
