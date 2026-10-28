@@ -188,6 +188,35 @@
   .next{font-size:14px;color:var(--sub);margin:14px 0 0}
   footer{margin-top:26px;font-size:12px;color:var(--sub);text-align:center}
 
+  /* 이론 — 바이브 코딩 (남원중 33~34차시 이론에서 가져와 어른 수업에 맞게 고침) */
+  .th-loop{display:flex;align-items:stretch;gap:8px;margin:14px 0 0;flex-wrap:wrap}
+  .th-loop .st{flex:1;min-width:120px;background:#fff;border:2px solid #d9e2f1;border-radius:10px;padding:12px 10px;text-align:center}
+  .th-loop .ic{font-size:28px}
+  .th-loop .h{font-weight:800;color:var(--navy);font-size:15.5px;margin:2px 0}
+  .th-loop .st p{margin:0;font-size:13.5px;color:var(--sub);line-height:1.5}
+  .th-loop .ar{align-self:center;color:#e07a1f;font-size:22px;font-weight:800}
+  .th-cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0 0}
+  .th-cols>div{border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-size:14.5px;background:#fff}
+  .th-cols>div b.t{display:block;color:var(--navy);margin-bottom:4px}
+  .th-cols>div.tip{background:var(--cream);border-color:#efd98a}
+  .th-pin{display:flex;gap:10px;align-items:flex-start;margin:10px 0 0}
+  .th-pin .n{flex:0 0 28px;height:28px;border-radius:50%;color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px}
+  .th-pin .h{font-weight:800;color:var(--navy);font-size:15.5px}
+  .th-pin p{margin:2px 0 0;font-size:14px;color:var(--sub);line-height:1.5}
+  .th-demo{border:2px solid #d9e2f1;border-radius:12px;padding:14px;background:#fff}
+  .lk-tabs{display:flex;gap:6px;flex-wrap:wrap}
+  .lk-tabs button{font-family:inherit;font-size:14px;font-weight:700;border:1.5px solid #d9e2f1;background:#fff;color:#334155;border-radius:20px;padding:6px 12px;cursor:pointer}
+  .lk-tabs button.on{background:var(--navy);border-color:var(--navy);color:#fff}
+  .lk-view{height:100px;display:flex;align-items:center;justify-content:center;background:#f8fafc;border:1px dashed #cbd5e1;border-radius:10px;margin:10px 0}
+  .lk-view button{font-family:serif;font-size:15px}
+  #lk.c .lk-view button,#lk.j .lk-view button{font-family:inherit;font-size:20px;font-weight:800;color:#fff;background:var(--ok);
+    border:0;border-radius:30px;padding:12px 26px;box-shadow:0 6px 16px rgba(47,107,79,.3);cursor:pointer;transition:transform .12s}
+  #lk.j .lk-view button:active{transform:scale(.92)}
+  .lk-code{background:#0f172a;color:#e2e8f0;border-radius:10px;padding:10px 12px;font-size:13px;line-height:1.55;margin:0;white-space:pre-wrap;font-family:Consolas,monospace;min-height:96px}
+  .lk-code .h{color:#c4b5fd}.lk-code .c{color:#93c5fd}.lk-code .j{color:#fde68a}
+  #lkm{font-size:13.5px;color:var(--sub);margin:6px 0 0}
+
+  @media(max-width:600px){.th-cols{grid-template-columns:1fr}.th-loop .ar{display:none}.th-loop .st{min-width:40%}}
   @media(max-width:600px){h1{font-size:22px}h2{font-size:18px}.txt{font-size:14px}
     .time{margin-left:0}.vs{grid-template-columns:1fr}section{padding:16px 15px}
     .talks,.wireset{grid-template-columns:1fr}.phone{max-width:300px}}
@@ -227,6 +256,7 @@
 <nav class="jump">
   <a href="#rule">규칙</a>
   <a href="#s0">0</a>
+  <a href="#th">이론</a>
   <a href="#s1">1</a>
   <a href="#s2">2</a>
   <a href="#s3">3</a>
@@ -248,6 +278,40 @@
 관계는 가족 · 친척 · 친구 · 직장 동료 · 이웃, 행사는 결혼 · 장례 · 돌잔치.
 지역마다 사람마다 다르다는 것도 한 줄 덧붙여줘.</div></div>
   <p class="note">정답이 있는 질문이 아닙니다. 옆 사람과 "우리 동네는 이 정도야" 이야기 나눠 보세요 😄</p>
+</section>
+
+<section id="th" data-n="이론" class="key">
+  <div class="head"><span class="num">i</span><h2>바이브 코딩이란? — 말로 만드는 앱</h2><span class="badge">이론</span><span class="time">6분</span></div>
+  <p class="one">코드를 한 줄씩 쓰는 대신, <b>만들고 싶은 것을 말로 설명</b>하면 AI가 코드를 짜 줍니다. 이렇게 앱을 만드는 방법을 <b>바이브 코딩</b>이라고 합니다. 오늘 장부도 이렇게 만듭니다.</p>
+  <div class="th-loop">
+    <div class="st"><div class="ic">💬</div><div class="h">① 부탁하기</div><p>프롬프트를<br>보냅니다</p></div><div class="ar">→</div>
+    <div class="st"><div class="ic">👀</div><div class="h">② 결과 보기</div><p>오른쪽에 장부 화면이<br>나왔는지 봅니다</p></div><div class="ar">→</div>
+    <div class="st"><div class="ic">👆</div><div class="h">③ 눌러 보기</div><p>단추를 직접 눌러<br>제대로 되는지 확인</p></div><div class="ar">→</div>
+    <div class="st"><div class="ic">✏</div><div class="h">④ 고쳐 달라기</div><p>"○○ 부분만<br>고쳐줘"</p></div>
+  </div>
+  <div class="th-cols">
+    <div><b class="t">🤖 오늘 쓰는 AI — 클로드의 아티팩트</b>채팅 옆에 <b>미리보기 창</b>이 붙어 있어서, 클로드가 만든 장부를 바로 눌러 볼 수 있습니다. 대화로 계속 고쳐 나가는 작업 공간입니다.</div>
+    <div class="tip"><b class="t">💡 비결은 ④ → ① 되풀이</b>한 번에 완벽한 앱은 없습니다. <b>몇 번 고쳐 나가느냐</b>가 완성도를 정합니다. 오늘은 프롬프트 1~6, 여섯 번 돌립니다. 전문 개발자도 이렇게 일합니다.</div>
+  </div>
+  <p class="note">교안의 <b>✅ 다 같이 확인</b> 상자가 ③ 눌러 보기, <b>💾 저장</b>이 한 바퀴를 마친 자리입니다.</p>
+
+  <h3>앱 파일 속 3형제 — HTML · CSS · JavaScript</h3>
+  <p class="one">오늘 받는 장부 파일(.html) 하나 안에 이 셋이 함께 들어 있습니다. 오른쪽 단추를 차례로 눌러 보세요.</p>
+  <div class="th-cols">
+    <div style="border:0;padding:0;background:none">
+      <div class="th-pin"><div class="n" style="background:#8b5cf6">H</div><div><div class="h">HTML = 집의 뼈대 🦴</div><p>기둥과 벽처럼 제목·입력 칸·단추가 <b>어디에 있는지</b> 정합니다.</p></div></div>
+      <div class="th-pin"><div class="n" style="background:var(--blue)">C</div><div><div class="h">CSS = 인테리어 🎨</div><p>벽지와 커튼처럼 색·글씨 크기·배치를 <b>보기 좋게</b> 꾸밉니다.</p></div></div>
+      <div class="th-pin"><div class="n" style="background:#d4a017">J</div><div><div class="h">JavaScript = 전기 스위치 ⚡</div><p>누르면 기록이 쌓이고 합계가 바뀌게 — <b>움직이게</b> 만듭니다.</p></div></div>
+      <p class="note">오늘 프롬프트 6 <b>"보기만 바꿔줘"</b>는 주로 CSS가, 프롬프트 2~5 <b>"기능을 더해줘"</b>는 주로 JavaScript가 바뀝니다.</p>
+    </div>
+    <div class="th-demo" id="lk">
+      <div class="lk-tabs"><button type="button" data-s="h" class="on">① HTML만</button><button type="button" data-s="c">② + CSS</button><button type="button" data-s="j">③ + JavaScript</button></div>
+      <div class="lk-view"><button type="button" id="lkb">✍ 장부에 적기 <span id="lkn">0</span>건</button></div>
+      <pre class="lk-code" id="lkc"></pre>
+      <p id="lkm"></p>
+    </div>
+  </div>
+  <div class="tip">📦 <b>오늘 장부에는 하나가 더 있습니다 — 브라우저 저장 공간.</b> 창을 닫았다 열어도 기록이 남는 이유입니다. 대신 <b>이 컴퓨터의 이 크롬 안에만</b> 있어서, 뒤에서 7번 <b>백업</b>을 배웁니다.</div>
 </section>
 
 <section id="s1" data-n="1">
@@ -657,6 +721,22 @@
   function mark(){var i=0;for(var k=0;k<secs.length;k++){if(secs[k]&&secs[k].getBoundingClientRect().top<=90)i=k;}
     links.forEach(function(a,k){a.classList.toggle('on',k===i);});}
   window.addEventListener('scroll',mark,{passive:true});mark();
+})();
+// 이론: HTML · CSS · JS 직접 눌러 보기
+(function(){
+  var root=document.getElementById('lk');if(!root)return;
+  var code=document.getElementById('lkc'),msg=document.getElementById('lkm'),btn=document.getElementById('lkb'),num=document.getElementById('lkn'),n=0;
+  var C={
+    h:['<span class="h">&lt;button&gt;장부에 적기&lt;/button&gt;</span>','뼈대만 있습니다. 단추는 있지만 밋밋하고, 눌러도 아무 일이 없습니다.'],
+    c:['<span class="h">&lt;button&gt;장부에 적기&lt;/button&gt;</span>\n<span class="c">button { background: green; color: white;\n         border-radius: 30px; }</span>','인테리어를 입혔습니다. 보기 좋아졌지만… 눌러 보세요. 아직 숫자가 안 올라갑니다!'],
+    j:['<span class="h">&lt;button&gt;장부에 적기&lt;/button&gt;</span>\n<span class="c">button { background: green; … }</span>\n<span class="j">button.addEventListener("click", () =&gt; {\n  count = count + 1;   // 누를 때마다 1건씩\n});</span>','스위치를 달았습니다. 눌러 보세요 — 누를 때마다 숫자가 올라갑니다.']
+  };
+  function set(k){root.className='th-demo '+k;code.innerHTML=C[k][0];msg.textContent=C[k][1];
+    [].forEach.call(root.querySelectorAll('.lk-tabs button'),function(b){b.classList.toggle('on',b.getAttribute('data-s')===k);});
+    if(k!=='j'){n=0;num.textContent=0;}}
+  root.querySelector('.lk-tabs').onclick=function(e){var b=e.target.closest('button');if(b)set(b.getAttribute('data-s'));};
+  btn.onclick=function(){if(root.classList.contains('j')){n++;num.textContent=n;}};
+  set('h');
 })();
 // 강사 모드: live.js와 같은 열쇠(?t=비밀번호) — 강사 화면은 프롬프트 2~5도 복사 가능
 var TCOPY=false;
