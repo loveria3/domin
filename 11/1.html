@@ -6,6 +6,14 @@
 <title>1차시 — 내 컴퓨터에 비서 들이기</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="stylesheet" href="lesson.css?v=1109">
+<style>
+.tg{margin:12px 0 0}
+.tg>summary{cursor:pointer;list-style:none;font-weight:700;color:var(--navy);padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:#f7f9fc}
+.tg>summary::-webkit-details-marker{display:none}
+.tg>summary::after{content:"  ▾";font-weight:400;color:var(--sub)}
+.tg[open]>summary::after{content:"  ▴"}
+.tg[open]>summary{margin-bottom:12px}
+</style>
 </head>
 <body class="type-only">
 <div class="wrap">
@@ -49,7 +57,7 @@
   <div class="head"><span class="num y">0</span><h2>같은 부탁, 두 곳에서 해 보면</h2><span class="time">3분</span></div>
   <p class="one">같은 부탁을 <b>웹 채팅</b>과 <b>코워크</b>에 한 번씩 해 봅니다.</p>
   <div class="box"><div class="bar"><span>시연 프롬프트</span></div>
-<div class="txt">이 폴더에 있는 서류들을 읽고, 앞으로 내야 할 돈을 표로 정리해서 파일로 저장해줘.</div></div>
+<div class="txt">이 폴더의 서류를 읽고, 앞으로 낼 돈을 표로 정리해 파일로 저장해줘.</div></div>
   <div class="vs">
     <div class="bad"><b>웹 채팅 (claude.ai)</b>파일을 <b>하나씩 첨부</b>하고, 결과는 <b>내려받아야</b> 합니다.</div>
     <div class="good"><b>코워크 (클로드 데스크톱)</b>폴더를 한 번 맡기면 <b>직접 열고</b>, 결과를 <b>내 폴더에 저장</b>합니다.</div>
@@ -174,9 +182,9 @@
     <li>코워크에서 <b>폴더 고르기 → 문서 → 내작업실</b></li>
   </ol>
   <div class="box"><div class="bar"><span>프롬프트 1 — 무엇이 들었나 보기</span></div>
-<div class="txt">이 폴더에 있는 파일을 하나씩 열어 보고, 무슨 서류인지 표로 정리해줘.
-칸은 [지금 파일 이름 / 무슨 서류 / 날짜 / 금액] 으로.
-흐린 글자나 없는 날짜·금액은 추측하지 말고 확인 필요로 써.
+<div class="txt">이 폴더의 파일을 하나씩 열어 무슨 서류인지 표로 정리해줘.
+칸: 지금 파일 이름 / 무슨 서류 / 날짜 / 금액
+흐리거나 없는 날짜·금액은 추측하지 말고 확인 필요로 써.
 아직 아무것도 바꾸지 마.</div></div>
   <div class="ex">| 지금 파일 이름 | 무슨 서류 | 날짜 | 금액 |
 | 스캔_20261003_001.pdf | 아파트 관리비 고지서 | 2026-11-25 납부 | 142,000원 |
@@ -200,13 +208,13 @@
   · <b>덮어쓰지 말고</b> — 두 번 해도 처음 백업이 지워지지 않게<br>
   · <b>개수를 알려줘</b> — 내작업실 파일은 <b>11개</b>(메모.txt 포함). 숫자로 빠진 게 없는지 확인</div>
   <div class="box"><div class="bar"><span>프롬프트 2 — ① 백업부터</span></div>
-<div class="txt">실습 서류 파일을 _원본백업 폴더에 복사해줘.
-같은 이름이 있으면 덮어쓰지 말고, 복사한 개수를 알려줘.</div></div>
+<div class="txt">실습 서류를 _원본백업 폴더에 복사해줘.
+같은 이름은 덮어쓰지 말고, 복사한 개수를 알려줘.</div></div>
   <div class="box"><div class="bar"><span>프롬프트 3-1 — ② 바뀔 이름 표로 보기</span></div>
-<div class="txt">파일 이름을 날짜_종류_내용 모양으로 바꾸려고 해.
+<div class="txt">파일 이름을 날짜_종류_내용으로 바꾸려고 해.
 예) 2026-11-25_고지서_관리비10월.pdf
-종류는 <span class="ph">[고지서, 영수증, 계약서, 안내문, 보험, 기타]</span> 중 하나로.
-날짜가 불분명하면 확인 필요로.
+종류는 <span class="ph">[고지서, 영수증, 계약서, 안내문, 보험, 기타]</span> 중 하나.
+날짜가 불분명하면 확인 필요.
 원래 이름 → 바뀔 이름 표만 보여줘. 아직 바꾸지 마.</div></div>
   <div class="ex">| 원래 이름 | 바뀔 이름 |
 | 스캔_20261003_001.pdf | 2026-11-25_고지서_관리비10월.pdf |
@@ -214,12 +222,12 @@
 | 문서1.txt | 2025-11-20_기타_세탁기보증서.txt |</div>
   <p class="one">→ 틀린 곳이 있으면 <span class="say">○○는 영수증으로 해줘</span> 로 먼저 고치기</p>
   <div class="box"><div class="bar"><span>프롬프트 3-2 — ③ 이름 바꾸기</span></div>
-<div class="txt">좋아, 표대로 이름을 바꿔줘.
+<div class="txt">좋아, 표대로 바꿔줘.
 _원본백업은 건드리지 말고, 같은 이름이 생기면 물어봐.
 바꾼 내용은 변경기록.txt로 남겨줘.</div></div>
   <div class="box"><div class="bar"><span>프롬프트 3-3 — ④ 종류별로 나누기</span></div>
-<div class="txt">이제 종류별로 폴더를 만들어서 옮겨줘.
-파일은 지우지 말고, 폴더별 개수를 알려줘.</div></div>
+<div class="txt">종류별로 폴더를 만들어 옮겨줘.
+지우지 말고, 폴더별 개수를 알려줘.</div></div>
   <ul class="chk">
     <li>승인 창은 읽어 보고 <b>허용</b></li>
     <li>탐색기로 <b>내작업실을 직접 열어</b> 확인</li>
@@ -285,10 +293,10 @@ _원본백업은 건드리지 말고, 같은 이름이 생기면 물어봐.
 
   <div class="box"><div class="bar"><span>프롬프트 4 — 사진 ① 종류부터 보기</span></div>
 <div class="txt">여행사진 폴더의 사진을 한 장씩 보고 표로 정리해줘.
-칸은 [파일 이름 / 찍은 날짜 / 종류 / 사람 수 / 한 줄 설명] 으로.
-종류는 독사진(1명) / 단체사진(2명 이상) / 음식 / 풍경 중 하나로.
-찍은 날짜는 사진 정보(EXIF)에서 읽고, 없으면 확인 필요로 써.
-아직 아무것도 옮기거나 바꾸지 마.</div></div>
+칸: 파일 이름 / 찍은 날짜 / 종류 / 사람 수 / 한 줄 설명
+종류는 독사진(1명) / 단체사진(2명 이상) / 음식 / 풍경 중 하나.
+찍은 날짜는 사진 정보(EXIF)에서 읽고, 없으면 확인 필요.
+아직 옮기거나 바꾸지 마.</div></div>
   <div class="ex">| 파일 이름 | 찍은 날짜 | 종류 | 사람 수 | 한 줄 설명 |
 | …623.jpg | 2025-02-07 15:31 | 독사진 | 1 | 길에서 부채를 든 아이 |
 | …623_04.jpg | 2025-02-07 16:56 | 단체사진 | 7 | 폭포 정원 앞 단체 사진 |
@@ -296,8 +304,8 @@ _원본백업은 건드리지 말고, 같은 이름이 생기면 물어봐.
 
   <div class="box"><div class="bar"><span>프롬프트 5 — 사진 ② 헷갈리는 사진 바로잡기 (한 줄 보태기)</span></div>
 <div class="txt">뒤에 지나가는 사람만 찍힌 사진은 풍경으로 해줘.
-꽃은 음식이 아니야. 음식 사진이 없으면 없다고 말해줘. 억지로 채우지 마.
-날짜가 확인 필요인 사진은 따로 알려줘. 나머지 칸은 그대로 둬.</div></div>
+꽃은 음식이 아니야. 음식 사진이 없으면 없다고만 말해줘.
+날짜가 확인 필요인 사진은 따로 알려줘. 나머지는 그대로 둬.</div></div>
   <div class="ex">음식 사진은 0장이에요.
 …623_06은 뒤에 지나가는 사람만 있어 풍경으로 바꿨어요.
 날짜를 알 수 없는 사진: …623_16, …623_17</div>
@@ -305,8 +313,8 @@ _원본백업은 건드리지 말고, 같은 이름이 생기면 물어봐.
 
   <div class="box"><div class="bar"><span>프롬프트 6 — 사진 ③ 흐린 사진 골라내기</span></div>
 <div class="txt">흔들리거나 초점이 나간 사진을 찾아줘.
-눈으로만 보지 말고 사진마다 선명도를 숫자로도 재서 표에 상태 칸으로 붙여줘. (잘 나옴 / 흐림)
-같은 장면을 연달아 찍은 사진이 있으면 더 잘 나온 쪽을 알려줘.</div></div>
+눈으로 보고 선명도를 숫자로도 재서, 표에 상태 칸(잘 나옴 / 흐림)으로 붙여줘.
+같은 장면을 연달아 찍은 사진은 더 잘 나온 쪽을 알려줘.</div></div>
   <div class="ex">| 파일 | 상태 | 선명도 | 같은 장면의 잘 나온 사진 |
 | …623_19.jpg | 흐림 (흔들림) | 474 | …623_09.jpg (6179) |
 | …623_20.jpg | 흐림 (흔들림) | 375 | …623_13.jpg (5357) |
@@ -315,17 +323,16 @@ _원본백업은 건드리지 말고, 같은 이름이 생기면 물어봐.
 
   <p class="one">→ 옮기기 전에는 서류 때처럼 <b>백업부터</b></p>
   <div class="box"><div class="bar"><span>프롬프트 7-1 — 사진 ④ 백업</span></div>
-<div class="txt">원본 사진을 _원본백업 폴더에 복사해줘.</div></div>
+<div class="txt">원본 사진을 _원본백업 폴더에 복사해줘. 같은 이름은 덮어쓰지 마.</div></div>
   <div class="box"><div class="bar"><span>프롬프트 7-2 — 사진 ⑤ 폴더로 나누기</span></div>
 <div class="txt">표대로 잘 나온 사진은 독사진, 단체사진, 음식사진, 풍경사진 폴더로,
-흐린 사진은 흐린사진 폴더로 옮겨줘. 지우지는 마.
-사진이 없는 폴더는 만들지 마.
+흐린 사진은 흐린사진 폴더로 옮겨줘.
+지우지 말고, 사진 없는 폴더는 만들지 마.
 옮기기 전에 어느 폴더로 갈지 표로 먼저 보여줘.</div></div>
   <p class="one">📱 카톡으로 받은 사진은 이름이 <b>KakaoTalk_받은날짜_숫자</b>라 무슨 사진인지 알 수 없어요. <b>폴더 이름처럼</b> 바꿔 둡니다.</p>
   <div class="box"><div class="bar"><span>프롬프트 7-3 — 사진 ⑥ 새 이름 미리 보기</span></div>
 <div class="txt">옮긴 사진의 이름을 <span class="ph">[가족여행]</span>_찍은연월_종류_번호.jpg로 바꾸려고 해.
-찍은연월은 사진 정보의 날짜로 2502처럼 네 자리로.
-종류는 들어 있는 폴더 이름 그대로, 번호는 찍은 순서대로 01부터.
+찍은연월은 사진 정보의 날짜로 2502처럼 네 자리, 종류는 들어 있는 폴더 이름 그대로, 번호는 찍은 순서대로 01부터.
 날짜가 없는 사진은 같은 여행이니 2502로 해줘.
 아직 바꾸지 말고 지금 이름 → 새 이름 표로 먼저 보여줘.</div></div>
   <div class="ex">KakaoTalk_…623.jpg → 가족여행_2502_독사진_01.jpg
@@ -334,7 +341,7 @@ KakaoTalk_…623_06.jpg → 가족여행_2502_풍경사진_01.jpg
 KakaoTalk_…623_19.jpg → 가족여행_2502_흐린사진_01.jpg
 … 모두 21장</div>
   <div class="box"><div class="bar"><span>프롬프트 7-4 — 사진 ⑦ 이름 바꾸고 기록</span></div>
-<div class="txt">표대로 이름을 바꿔줘. 같은 이름이 생기면 번호를 하나 올려.
+<div class="txt">표대로 바꿔줘. 같은 이름이 생기면 번호를 하나 올려줘.
 바꾼 내용은 사진정리_기록.txt로 남겨줘.</div></div>
   <div class="ex">여행사진/
  ├ 독사진 5장 — 가족여행_2502_독사진_01 ~ 05
@@ -366,10 +373,10 @@ KakaoTalk_…623_19.jpg → 가족여행_2502_흐린사진_01.jpg
     <li>아래 부탁으로 오늘 잘 된 프롬프트 저장</li>
   </ol>
   <div class="box"><div class="bar"><span>프롬프트 8-1 — 네 칸으로 다듬기</span></div>
-<div class="txt">오늘 이 대화에서 결과가 좋았던 내 부탁 하나를 골라서
+<div class="txt">오늘 대화에서 결과가 좋았던 내 부탁 하나를
 [역할] [할 일] [조건] [결과 모양] 네 칸으로 다듬어 보여줘.</div></div>
   <div class="box"><div class="bar"><span>프롬프트 8-2 — TXT로 저장</span></div>
-<div class="txt">좋아, 프롬프트 폴더의 다른 TXT와 같은 모양으로 분류_제목.txt로 저장해줘.
+<div class="txt">좋아, 프롬프트 폴더의 다른 TXT와 같은 모양으로 분류_제목.txt에 저장해줘.
 메모에 언제 쓰는지와 준비 조건(폴더 연결 등)을 적고, 개인정보는 ○○로 바꿔줘.</div></div>
   <div class="ex">서류_서류 이름 정리.txt 를 저장했어요.
 [역할] 꼼꼼한 사무 보조
@@ -391,18 +398,18 @@ KakaoTalk_…623_19.jpg → 가족여행_2502_흐린사진_01.jpg
 <section id="s8" data-n="도전" class="challenge" data-t="낼 돈 · 할 일 뽑기">
   <div class="head"><span class="num ch">+</span><h2>서류에서 앞으로 낼 돈 · 할 일 뽑기</h2><span class="badge">도전</span><span class="time">자유</span></div>
   <p class="only">먼저 끝낸 분만.</p>
+  <details class="tg">
+  <summary>도전 프롬프트 3개 펼치기</summary>
   <div class="box"><div class="bar"><span>도전 1-1 — 낼 돈 표로 보기</span></div>
-<div class="txt">정리한 서류에서 낼 돈을 표로 보여줘.
-칸은 [파일 이름 / 기한 / 항목 / 금액 / 상태 / 근거].
-상태는 납부 대상 / 납부 완료 / 확인 필요.
-납부 증빙이 없으면 완료가 아니라 확인 필요로. _원본백업은 빼고.</div></div>
+<div class="txt">정리한 서류에서 낼 돈을 표로 보여줘. _원본백업은 빼고.
+칸: 파일 이름 / 기한 / 항목 / 금액 / 상태 / 근거
+상태: 납부 대상 / 납부 완료 / 확인 필요 (납부 증빙이 없으면 완료가 아니라 확인 필요)</div></div>
   <div class="box"><div class="bar"><span>도전 1-2 — 합계 내고 엑셀로</span></div>
-<div class="txt">납부 대상과 확인 필요 금액을 따로 합계 내고,
-낼돈_정리.xlsx로 저장해줘.</div></div>
+<div class="txt">납부 대상과 확인 필요 금액을 따로 합계 내서 낼돈_정리.xlsx로 저장해줘.</div></div>
   <div class="box"><div class="bar"><span>도전 2 — 메모를 할 일 목록으로</span></div>
-<div class="txt">메모.txt에 적힌 할 일을, 정리한 서류와 연결해서 체크리스트로 만들어줘.
-예) 관리비 내기 옆에 금액과 기한을 붙여줘.
-할일_체크리스트.txt로 저장해.</div></div>
+<div class="txt">메모.txt의 할 일을 정리한 서류와 연결해 할일_체크리스트.txt로 만들어줘.
+예) 관리비 내기 옆에 금액과 기한.</div></div>
+  </details>
 </section>
 
 <section id="s9" data-n="퀴즈" data-t="OX 퀴즈">
