@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>3차시 — QR로 여는 웹페이지 만들기</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<link rel="stylesheet" href="lesson.css">
+<link rel="stylesheet" href="lesson.css?v=1106">
 </head>
-<body>
+<body class="type-only">
 <div class="wrap">
 <a class="home" href="index.html">← 자료실 처음으로</a>
 <header>
   <p class="kicker">3차시 · 2026. 11. 21.(토) 10:00~12:00</p>
   <h1>찍으면 열리는 <em>QR 안내 페이지</em> 만들기</h1>
-  <p class="sub">종이 홍보물은 자리가 좁습니다. 자세한 안내는 <b>웹페이지</b>에 담고, 홍보물에는 <b>QR 하나</b>만 넣습니다.</p>
+  <p class="sub">자세한 안내는 <b>웹페이지</b>에, 홍보물에는 <b>QR 하나</b>만.</p>
   <div class="toprow">
     <a class="btn y" href="files/olle-qr-example.pdf" target="_blank" rel="noopener">완성 예시 먼저 보기 ↗</a>
     <a class="btn line" href="files/olle-practice.pptx" download>실습용 홍보물(pptx) ↓</a>
@@ -21,191 +21,170 @@
 </header>
 
 <div class="hook">
-  <p class="q">홍보물 한 장에 코스·준비물·주의사항·문의처까지 다 넣으려다 글씨가 깨알만 해진 적 있나요?</p>
-  <p>오늘은 클로드가 <b>홍보물 파일을 직접 읽고</b> → 자세한 <b>안내 웹페이지</b>를 만들고 → 그 주소의 <b>QR을 홍보물에 넣어</b> 새 파일로 저장합니다. 내용이 바뀌어도 <b>QR은 그대로</b> 씁니다.</p>
+  <p class="q">홍보물 한 장에 다 넣으려다 글씨가 깨알만 해진 적 있나요?</p>
+  <p>클로드가 <b>홍보물을 읽고</b> → <b>안내 웹페이지</b>를 만들고 → <b>QR을 홍보물에 넣어</b> 저장합니다. 내용이 바뀌어도 <b>QR은 그대로</b>.</p>
   <div class="take"><span>오늘 가져갈 것</span><span>🌐 안내 웹페이지 주소</span><span>🔳 QR 들어간 홍보물</span><span>🔁 고쳐 다시 올리는 법</span></div>
 </div>
 
-<div class="tip"><b>오늘의 완료 기준</b> — 원본 사실을 대조하고, QR로 연결한 페이지를 같은 주소에서 갱신할 수 있다.<br><b>120분 운영</b> — 활동 90분 + 휴식 10분 + 완료 확인·퀴즈 10분 + 개별 점검 10분. 선택 도전·참고 읽기는 필수 시간에 포함하지 않습니다.</div>
+<div class="pro"><span class="badge pro">데스크톱 · 유료</span> <b>오늘의 기능 — 컴퓨터 사용(베타).</b> 클로드가 내 화면에서 크롬을 직접 열어, 만든 페이지를 눈으로 확인합니다. (2+번)</div>
 <nav class="jump">
-  <a href="#s0">0</a><a href="#s1">1</a><a href="#s2">2</a><a href="#s3">3</a><a href="#s4">4</a>
+  <a href="#s0">0</a><a href="#s1">1</a><a href="#s2">2</a><a href="#s2-2">2+</a><a href="#s3">3</a><a href="#s4">4</a>
   <a href="#s5">5</a><a href="#s6">6</a><a href="#s7">도전</a><a href="#s8">퀴즈</a>
 </nav>
 
-<section id="s0" data-n="0">
+<section id="s0" data-n="0" data-t="보관함에서 꺼내 쓰기">
   <div class="head"><span class="num y">0</span><h2>보관함에서 꺼내 쓰기 — 오늘의 첫 부탁</h2><span class="time">3분</span></div>
-  <p class="one">프롬프트 폴더의 「글쓰기_모임 안내문.txt」로 시작합니다. 오늘 만들 <b>안내 페이지</b>와 같은 내용을 <b>카톡용 글</b>로 먼저 받아 봐요.</p>
+  <p class="one">「글쓰기_모임 안내문.txt」로 오늘 행사를 <b>카톡용 글</b>로 먼저 받아 봐요.</p>
   <div class="box"><div class="bar"><span>글쓰기_모임 안내문</span></div>
 <div class="txt">너는 동네 모임 총무야.
 우리 모임 안내문을 써 줘. 모임 <span class="ph">[한라마을 돌담 올레 함께 걷기]</span>, 날짜 <span class="ph">[12월 12일 토요일 오전 9시]</span>, 장소 <span class="ph">[마을회관 앞]</span>, 준비물 <span class="ph">[운동화, 물, 바람막이]</span>.
 카톡으로 보내기 좋게 짧게, 날짜와 장소는 맨 위에, 이모티콘 2개 이하.</div></div>
 </section>
 
-<section id="s1" data-n="1">
+<section id="s1" data-n="1" data-t="홍보물 준비">
   <div class="head"><span class="num">1</span><h2>준비 — 홍보물을 작업실에 넣기</h2><span class="time">7분</span></div>
   <ol class="step">
-    <li>위의 <b>실습용 홍보물(pptx)</b> 내려받기</li>
-    <li><b>내작업실</b> 안에 <b>홍보물</b> 폴더를 만들고 그 안에 넣기</li>
-    <li>코워크에서 폴더가 <b>내작업실</b>로 연결되어 있는지 확인</li>
+    <li><b>실습용 홍보물(pptx)</b> 내려받기</li>
+    <li><b>내작업실</b> 안에 <b>홍보물</b> 폴더를 만들고 넣기</li>
+    <li>코워크 폴더가 <b>내작업실</b>인지 확인</li>
   </ol>
-  <p class="note">가상 예시 「한라마을 돌담 올레」 홍보물입니다. 내 모임·가게 홍보물이 있다면 그걸 써도 됩니다 (개인정보는 빼고).</p>
 </section>
 
-<section id="s2" data-n="2" class="key">
+<section id="s2" data-n="2" class="key" data-t="안내 웹페이지 만들기">
   <div class="head"><span class="num">2</span><h2>홍보물을 읽혀서 안내 웹페이지 만들기</h2><span class="badge hot">핵심</span><span class="time">25분</span></div>
-  <p class="one">10월에는 결과물을 만들고 게시했습니다. 오늘은 <b>원본 → 안내 페이지 → QR 홍보물</b>을 연결하고, <b>같은 주소에서 내용을 갱신</b>하는 것이 목표입니다.</p>
-  <div class="box"><div class="bar"><span>프롬프트 1 — 안내 웹페이지 (통째로 복사)</span></div>
-<div class="txt">너는 마을 행사 안내 페이지를 잘 만드는 웹 디자이너야.
-'홍보물' 폴더의 pptx 파일을 열어 내용을 읽고, 이 홍보물의 QR로 연결될 '세부 안내' 웹페이지를 만들어줘.
-
-[내용]
-- 맨 위: 행사 이름, 한 줄 소개, 다음 행사 날짜
-- 걷는 순서: 지점마다 거리와 한 줄 설명을 카드로
-- 준비물, 걷기 약속, 비 오는 날 안내, 문의
-- 홍보물에 없는 것: <span class="ph">[12월 제주 나들이의 일반적인 옷차림 팁, 처음 오는 분께 한마디]</span>
-
-[모양]
-- 휴대폰으로 QR을 찍어 보는 사람을 위해 큰 글씨, 세로 한 줄
-- 분위기는 <span class="ph">[돌담의 검정과 귤빛 주황]</span>
-
-[꼭 지킬 것]
-- '올레안내' 폴더를 만들고 그 안에 index.html 하나로 저장
-- 먼저 원본의 사실 / 확인 필요 / 일반적인 제안으로 나눠 보여주고 내 확인 후 제작
-- 원본에 없는 날짜·전화번호·거리·코스·회비·우천 운영은 지어내지 말고 확인 필요로 표시
-- 일반적인 옷차림 팁은 행사 당일의 날씨 예보처럼 쓰지 말 것
-- 실습 페이지에는 가상 행사·수업용 예시임을 표시하고 실제 신청을 받지 말 것</div></div>
-  <div class="ex">예시 — 실제 내용은 원본에서 확인합니다.
-원본의 사실: 행사명·명시된 날짜·장소·코스
+  <p class="one"><b>읽기 → 만들기 → 다듬기</b>, 세 번에 나눠 부탁합니다.</p>
+  <div class="box"><div class="bar"><span>프롬프트 1-1 — 홍보물 읽기</span></div>
+<div class="txt">홍보물 폴더의 pptx를 열어 읽고,
+원본의 사실 / 확인 필요 / 일반적인 제안으로 나눠 보여줘.
+원본에 없는 날짜·전화번호·거리·회비는 지어내지 말고 확인 필요로. 아직 만들지 마.</div></div>
+  <div class="ex">원본의 사실: 행사명·명시된 날짜·장소·코스
 확인 필요: 원본에 없는 거리·문의처·우천 운영
-일반적인 제안: 겹쳐 입을 옷과 바람막이 준비
-사용자가 확인하면 '올레안내/index.html'로 저장합니다.</div>
+일반적인 제안: 겹쳐 입을 옷과 바람막이 준비</div>
+  <div class="box"><div class="bar"><span>프롬프트 1-2 — 안내 페이지 만들기</span></div>
+<div class="txt">이 내용으로 QR을 찍으면 열릴 세부 안내 웹페이지를 만들어줘.
+맨 위에 행사 이름·날짜, 그 아래 걷는 순서 카드, 준비물·문의.
+휴대폰용으로 큰 글씨, 세로 한 줄.
+올레안내 폴더에 index.html로 저장하고, 수업용 예시라고 표시해줘.</div></div>
+  <div class="box"><div class="bar"><span>프롬프트 1-3 — 분위기 입히기</span></div>
+<div class="txt">색은 <span class="ph">[돌담의 검정과 귤빛 주황]</span>으로 바꾸고,
+맨 아래에 <span class="ph">[처음 오는 분께 한마디]</span>를 넣어줘. 나머지는 그대로 둬.</div></div>
   <ul class="chk">
-    <li>내작업실 → 올레안내 → <b>index.html</b> 더블클릭해서 크롬에서 열기</li>
-    <li>크롬에서 <b>F12 → 휴대폰 모양 아이콘</b>을 누르면 폰 화면으로 볼 수 있어요 (선택)</li>
-    <li>고칠 곳은 1차시 공식대로 — <b>"[어디]를 [어떻게]. 나머지는 그대로"</b></li>
+    <li>원본과 날짜·장소·거리·회비가 같은지</li>
+    <li>확인 필요를 <b>지어낸 값으로 채우지 않았는지</b></li>
+    <li>고칠 곳은 <span class="say">[어디]를 [어떻게] 바꿔줘. 나머지는 그대로 둬.</span></li>
   </ul>
   <div class="biz">
     <p class="bt">회사에선 이렇게 — QR 안내 페이지 <span class="badge biz">업무 활용</span></p>
-    <ul>
-      <li><b>행사·교육 안내</b> — 포스터엔 QR만, 시간표·오시는 길·주차는 페이지에</li>
-      <li><b>제품 설명서</b> — 상자에 QR, 사용법·영상·AS 안내는 페이지에</li>
-      <li><b>매장 메뉴 · 채용 공고 · 명함</b> — 바뀌는 내용은 페이지에서만 고치기</li>
-    </ul>
-    <p>회사에서는 <b>Canva 커넥터</b>로 홍보물 디자인을 불러와 고치거나, <b>Google Drive 커넥터</b>로 공유 폴더의 원본 파일을 바로 읽어 같은 작업을 합니다.</p>
+    <p>행사 포스터 · 제품 상자 · 매장 메뉴에는 <b>QR만</b>, 바뀌는 내용은 <b>페이지에서만</b> 고칩니다.</p>
   </div>
-<ul class="chk"><li>원본과 웹페이지의 날짜·장소·거리·회비를 대조하기</li><li>확인 필요를 임의의 값으로 채우지 않았는지 확인하기</li><li>실제 안내에 쓰기 전에는 운영자에게 확인하고 수업용 표기를 바꾸기</li></ul>
 </section>
 
-<section id="s3" data-n="3">
+<section id="s2-2" data-n="2+" data-t="클로드가 직접 열어 보기">
+  <div class="head"><span class="num">2+</span><h2>클로드가 직접 열어 보기 — 컴퓨터 사용</h2><span class="badge pro">데스크톱 · 유료</span><span class="time">5분</span></div>
+  <p class="one">지금까지는 내가 파일을 열어 확인했습니다. 이번엔 클로드가 <b>내 화면에서 크롬을 열고</b> 직접 봅니다. <b>강사 시연</b> 후 원하는 분만 따라 하세요.</p>
+  <ol class="step">
+    <li><b>설정 → 기능(Capabilities)</b> → <b>컴퓨터 사용(Enable computer use)</b> 켜기</li>
+    <li>아래 부탁 → 클로드가 <b>크롬을 써도 되는지</b> 물으면 <b>허용</b></li>
+  </ol>
+  <div class="box"><div class="bar"><span>프롬프트 1+ — 페이지 직접 확인</span></div>
+<div class="txt">크롬으로 내작업실/올레안내/index.html을 열어서 화면을 직접 봐줘.
+휴대폰으로 볼 때 글씨가 작거나 잘리는 곳, 원본 홍보물과 다른 곳을 알려줘.
+파일은 고치지 말고, 크롬 말고 다른 프로그램은 열지 마.</div></div>
+  <p class="warnnote">⚠ 클로드가 내 화면을 봅니다. <b>은행·메신저 창은 닫고</b> 하세요. 베타라 느리거나 한 번 더 시켜야 할 수 있어요.</p>
+</section>
+
+<section id="s3" data-n="3" data-t="버셀에 올리기">
   <div class="head"><span class="num">3</span><h2>인터넷에 올리기 — 버셀(Vercel)</h2><span class="time">10분</span></div>
-  <p class="one">무료 사이트 <b>버셀</b>에 <b>올레안내 폴더째</b> 끌어다 놓으면 내 주소가 생깁니다. 처음 한 번만 <b>구글 계정으로 가입</b>합니다(10월 수업에서 가입한 분은 로그인).</p>
+  <p class="one"><b>올레안내 폴더째</b> 끌어다 놓으면 내 주소가 생깁니다.</p>
   <table>
-    <tr><th>가입 (처음만)</th><td><b>vercel.com/drop</b> → <b>Sign Up</b> → <b>Continue with Google</b> → 요금제는 아래쪽 <b>personal projects (Hobby)</b> → 팀 이름은 <b>영어로</b></td></tr>
+    <tr><th>가입 (처음만)</th><td><b>vercel.com/drop</b> → <b>Sign Up</b> → <b>Continue with Google</b> → <b>Hobby</b> → 팀 이름은 <b>영어로</b></td></tr>
     <tr><th>올리기</th><td><b>vercel.com/drop</b> → <b>올레안내 폴더 통째로</b> 끌어다 놓기</td></tr>
-    <tr><th>이름 = 주소</th><td><b>Project Name</b>에 영어 소문자와 - 로 이름 쓰기 → 예) <b>halla-olle-1121</b> → <b>Deploy</b></td></tr>
-    <tr><th>내 주소 확인</th><td><b>Continue to Project</b> → <b>Domains</b> 아래 <b>○○○.vercel.app</b>이 내 주소. 휴대폰으로 열어 보기</td></tr>
+    <tr><th>이름 = 주소</th><td><b>Project Name</b> 예) <b>halla-olle-1121</b> → <b>Deploy</b></td></tr>
+    <tr><th>내 주소</th><td><b>Continue to Project</b> → <b>Domains</b> 아래 <b>○○○.vercel.app</b></td></tr>
   </table>
   <a class="btn line" href="vercel-help.html" target="_blank" rel="noopener">🎬 버셀 화면으로 따라 하기 ↗</a>
-  <a class="btn line" href="github-help.html" target="_blank" rel="noopener">🐙 깃허브로 올리기 — 화면으로 따라 하기 ↗</a>
-  <p class="warnnote">⚠ 이미 누가 쓰는 이름이면 주소 뒤에 다른 단어가 붙습니다(예: halla-olle-1121-abc). <b>Domains에 보이는 그대로</b>가 내 주소이고, 4번 QR에도 그 주소를 씁니다. 위쪽의 긴 Deployment 주소는 쓰지 마세요.</p>
-  <p class="warnnote">⚠ 올린 페이지는 <b>주소를 아는 누구나</b> 볼 수 있습니다. 개인 전화번호·집 주소는 넣지 마세요.</p>
-  <div class="biz">
-    <p class="bt">깃허브(GitHub Pages)로 올려야 할 때 <span class="badge biz">대안</span></p>
-    <p>회사·기관에서 버셀을 막았거나 깃허브 계정을 이미 쓰는 분은 <b>GitHub Pages</b>로 올려도 됩니다. 이 교안도 깃허브로 올린 것입니다. 가입부터 주소 받기까지 <a href="github-help.html" target="_blank" rel="noopener"><b>깃허브 화면으로 따라 하기 ↗</b></a></p>
-    <ol class="step">
-      <li><b>github.com</b> 가입·로그인 → 오른쪽 위 <b>＋ → New repository</b> → 이름 예) <b>halla-olle</b> → <b>Public</b> → <b>Create repository</b></li>
-      <li><b>uploading an existing file</b> 누르기 → 올레안내 폴더를 열고 <b>안의 파일</b>(index.html 등)만 끌어다 놓기 → <b>Commit changes</b> (폴더째 놓으면 주소 끝에 /올레안내/가 붙어요)</li>
-      <li><b>Settings → Pages</b> → Branch를 <b>main</b> / <b>(root)</b>로 고르고 <b>Save</b> → 1~2분 뒤 위쪽에 주소가 나와요</li>
-      <li>내 주소: <b>내아이디.github.io/halla-olle</b> — 4번 QR에 이 주소를 씁니다</li>
-    </ol>
-    <p>고칠 때는 같은 저장소에 <b>Add file → Upload files</b>로 고친 index.html을 다시 올리면 <b>주소 그대로</b> 바뀝니다(반영까지 1~2분). 무료 저장소는 Public이라 <b>누구나 파일을 볼 수 있으니</b> 개인정보는 넣지 않습니다.</p>
-  </div>
+  <a class="btn line" href="github-help.html" target="_blank" rel="noopener">🐙 깃허브로 올리기 ↗</a>
+  <p class="warnnote">⚠ <b>Domains에 보이는 주소</b>를 씁니다. 올린 페이지는 누구나 볼 수 있으니 <b>개인 전화번호·주소는 넣지 마세요.</b></p>
 </section>
 
-<div class="rest">☕ 쉬는 시간 10분 — 잠시 쉬었다가 함께 이어갑니다</div>
+<div class="rest">☕ 쉬는 시간 10분</div>
 
-<section id="s4" data-n="4" class="key">
+<section id="s4" data-n="4" class="key" data-t="QR 넣은 홍보물">
   <div class="head"><span class="num">4</span><h2>QR 코드를 홍보물에 넣기</h2><span class="badge hot">핵심</span><span class="time">20분</span></div>
-  <p class="one">QR 만들기부터 홍보물에 붙이기까지 <b>클로드가 파일로</b> 해 줍니다. 원본은 그대로 두고 <b>새 파일</b>로 저장합니다.</p>
-  <div class="box"><div class="bar"><span>프롬프트 2 — QR 넣은 홍보물</span></div>
-<div class="txt">내 안내 페이지 주소는 <span class="ph">[https://halla-olle-1121.vercel.app]</span> 이야.
-1. 이 주소로 가는 QR 코드 그림을 만들어서 '홍보물' 폴더에 'QR_세부안내.png'로 저장해줘.
-2. 홍보물 pptx의 'QR 넣을 자리' 상자를 지우고 그 자리에 QR 그림을 넣어줘. 아래에 '찍으면 자세한 안내' 한 줄도.
-3. 원본은 그대로 두고 '홍보물_QR.pptx'로 저장하고, 인쇄용 PDF도 같이 만들어줘.</div></div>
-  <div class="ex">세 가지를 저장했어요.
-✔ 홍보물/QR_세부안내.png — https://halla-olle-1121.vercel.app 로 연결
-✔ 홍보물/홍보물_QR.pptx — 1쪽 오른쪽 아래 'QR 넣을 자리'에 QR + "찍으면 자세한 안내"
-✔ 홍보물/홍보물_QR.pdf — 인쇄용
-원본 올레길_팜플렛_실습용.pptx는 그대로 두었어요.</div>
+  <p class="one">원본은 그대로 두고 <b>새 파일</b>로 저장합니다.</p>
+  <div class="box"><div class="bar"><span>프롬프트 2-1 — QR 그림 만들기</span></div>
+<div class="txt"><span class="ph">[https://halla-olle-1121.vercel.app]</span> 로 가는 QR 코드를 만들어서
+홍보물 폴더에 QR_세부안내.png로 저장해줘.</div></div>
+  <p class="one">→ 화면의 QR을 <b>내 휴대폰으로 찍어</b> 내 페이지가 열리는지 먼저 확인</p>
+  <div class="box"><div class="bar"><span>프롬프트 2-2 — 홍보물에 넣기</span></div>
+<div class="txt">홍보물 pptx의 QR 넣을 자리에 이 QR을 넣고, 그 아래에 찍으면 자세한 안내라고 한 줄 써줘.
+원본은 그대로 두고 홍보물_QR.pptx로 저장해줘.</div></div>
+  <div class="box"><div class="bar"><span>프롬프트 2-3 — 인쇄용 PDF</span></div>
+<div class="txt">홍보물_QR.pptx를 인쇄용 PDF로도 저장해줘.</div></div>
+  <div class="ex">✔ 홍보물/QR_세부안내.png
+✔ 홍보물/홍보물_QR.pptx
+✔ 홍보물/홍보물_QR.pdf</div>
   <ul class="chk">
-    <li><b>홍보물_QR.pdf</b>를 열어 QR이 제자리에 들어갔는지</li>
-    <li>화면의 QR을 <b>내 휴대폰 카메라로 찍어서</b> 내 페이지가 열리는지</li>
+    <li>PDF에서 QR이 제자리에 들어갔는지</li>
+    <li><b>내 휴대폰 카메라로 찍어서</b> 내 페이지가 열리는지</li>
   </ul>
-  <div class="tip">🛟 QR이 안 만들어지면 — 크롬에서 내 주소를 열고 <b>주소창 오른쪽 공유 아이콘 → QR 코드 만들기 → 다운로드</b>. 받은 그림을 홍보물 폴더에 넣고 "<b>이 그림을 QR 자리에 넣어줘</b>"라고 하면 됩니다.</div>
-<p class="note">PDF 변환이 막히면 QR이 들어간 PPTX와 QR 그림을 먼저 저장하세요. PPTX를 열 수 있는 분은 프로그램의 PDF 내보내기를 사용합니다. 강사 예시는 모양 확인용이며 <b>자기 페이지 주소의 QR인지</b>는 반드시 따로 확인합니다.</p>
+  <div class="tip">🛟 QR이 안 만들어지면 — 크롬 주소창 <b>공유 → QR 코드 만들기 → 다운로드</b> 후 <span class="say">이 그림을 QR 자리에 넣어줘</span></div>
 </section>
 
-<section id="s5" data-n="5">
-  <div class="head"><span class="num">5</span><h2>내용 고쳐 다시 올리기 — 주소와 QR은 그대로</h2><span class="time">20분</span></div>
-  <p class="one">행사 날짜가 바뀌었어요! <b>페이지만 고쳐서</b> 같은 자리에 다시 올리면 QR 주소는 유지됩니다. 단, 인쇄물에도 예전 시각이 적혀 있다면 그 문구는 별도로 수정·안내해야 합니다.</p>
+<section id="s5" data-n="5" data-t="고쳐 다시 올리기">
+  <div class="head"><span class="num">5</span><h2>내용 고쳐 다시 올리기 — 주소와 QR은 그대로</h2><span class="time">15분</span></div>
+  <p class="one">행사 날짜가 바뀌었어요! <b>페이지만 고쳐</b> 같은 자리에 올리면 QR은 그대로 씁니다.</p>
   <div class="box"><div class="bar"><span>프롬프트 3 — 페이지 고치기</span></div>
 <div class="txt">올레안내/index.html 에서 다음 행사 날짜를 <span class="ph">[12월 12일 토요일 오전 10시]</span>로 바꾸고,
-맨 위에 '📢 12월은 한 시간 늦게 출발합니다' 알림 띠를 넣어줘. 나머지는 그대로 둬.</div></div>
-  <div class="ex">고쳤어요. 바뀐 곳은 두 군데예요.
-- 맨 위 알림 띠: 📢 12월은 한 시간 늦게 출발합니다
-- 다음 함께 걷기: 12월 12일(토) 오전 10시 · 마을회관 앞
-나머지 내용은 그대로 두었어요.</div>
+맨 위에 알림 띠를 넣어줘. 문구는 📢 12월은 한 시간 늦게 출발합니다. 나머지는 그대로 둬.</div></div>
   <ol class="step">
-    <li><b>vercel.com</b>에 로그인 → 내 프로젝트(<b>halla-olle-1121</b>) 화면 열기</li>
-    <li>그 화면 <b>아무 데나</b> 고친 <b>올레안내 폴더</b>를 다시 끌어다 놓기 → 올리기가 끝날 때까지 기다리기 (깃허브로 올린 분은 같은 저장소에 <b>Upload files</b>)</li>
-    <li>휴대폰으로 <b>아까 그 QR</b>을 다시 찍기 → 바뀐 내용이 보이면 성공 🎉</li>
+    <li><b>vercel.com</b> 로그인 → 내 프로젝트(<b>halla-olle-1121</b>) 화면</li>
+    <li>그 화면에 고친 <b>올레안내 폴더</b>를 다시 끌어다 놓기 (깃허브는 같은 저장소에 <b>Upload files</b>)</li>
+    <li>휴대폰으로 <b>아까 그 QR</b>을 찍어 바뀐 내용 확인 🎉</li>
   </ol>
-  <p class="warnnote">⚠ <b>vercel.com/drop</b>에 다시 올리면 <b>새 프로젝트·새 주소</b>가 생겨 QR이 안 맞습니다. 꼭 <b>내 프로젝트 화면</b>에 올리세요.</p>
-  <p class="note">휴대폰에서 바뀐 내용이 안 보이면 <b>새로고침</b>하거나 1~2분 뒤 다시 열어 보세요. 버셀 무료(Hobby) 요금제는 개인 용도입니다.</p>
-<ul class="chk"><li>주소가 바뀌지 않았는지 확인하고 휴대폰에서 새로고침하기</li><li>기존 QR로 새 시각이 보이는지 확인하기</li><li>웹페이지와 홍보물의 인쇄 문구가 서로 모순되지 않는지 확인하기</li></ul>
+  <p class="warnnote">⚠ <b>vercel.com/drop</b>에 다시 올리면 <b>새 주소</b>가 생겨 QR이 안 맞습니다.</p>
 </section>
 
-<section id="s6" data-n="6">
+<section id="s6" data-n="6" data-t="프롬프트 모으기">
   <div class="head"><span class="num">6</span><h2>오늘 프롬프트 모으기</h2><span class="time">5분</span></div>
   <div class="box"><div class="bar"><span>프롬프트 4 — 프롬프트 생성기 스킬로 저장</span></div>
 <div class="txt">오늘 프롬프트 저장해줘. 안내 웹페이지 만든 것과 QR 넣은 것, 두 개를 다른 행사에도 쓸 수 있게 다듬어서.</div></div>
-  <p class="note">프롬프트 폴더에 TXT가 몇 개 모였는지 세어 보세요. 다음 시간에 이걸로 보관함을 만듭니다.</p>
 </section>
 
-<section id="s7" data-n="도전" class="challenge">
+<section id="s7" data-n="도전" class="challenge" data-t="내 행사로 바꿔 만들기">
   <div class="head"><span class="num ch">+</span><h2>내 행사로 바꿔 만들기</h2><span class="badge">도전</span><span class="time">자유</span></div>
-  <p class="only">※ 먼저 끝낸 분만.</p>
-  <div class="box"><div class="bar"><span>도전 프롬프트</span></div>
-<div class="txt">방금 만든 안내 페이지와 홍보물을 틀로 삼아서, <span class="ph">[우리 동호회 12월 송년회]</span> 안내 페이지와 A4 홍보물을 새로 만들어줘.
-내용: <span class="ph">[날짜, 장소, 회비, 준비물]</span>
-'송년회안내' 폴더에 index.html과 홍보물.pdf로 저장해줘.</div></div>
+  <p class="only">먼저 끝낸 분만.</p>
+  <div class="box"><div class="bar"><span>도전 1 — 안내 페이지</span></div>
+<div class="txt">방금 만든 안내 페이지를 틀로 삼아 <span class="ph">[우리 동호회 12월 송년회]</span> 안내 페이지를 만들어줘.
+내용: <span class="ph">[날짜, 장소, 회비, 준비물]</span>. 송년회안내 폴더에 index.html로.</div></div>
+  <div class="box"><div class="bar"><span>도전 2 — A4 홍보물</span></div>
+<div class="txt">같은 내용으로 A4 홍보물도 만들어서 송년회안내/홍보물.pdf로 저장해줘.</div></div>
 </section>
 
-<section id="s8" data-n="퀴즈">
+<section id="s8" data-n="퀴즈" data-t="OX 퀴즈">
   <div class="head"><span class="num y">?</span><h2>오늘의 OX 퀴즈</h2><span class="time">10분</span></div>
   <div class="quiz">
-    <details><summary>페이지 내용을 고쳐 같은 프로젝트에 다시 올리면, 예전에 인쇄한 QR로도 바뀐 내용이 보인다.</summary>
-      <p><span class="o">O</span> — QR은 <b>주소</b>를 담고 있어서, 주소가 같으면 계속 쓸 수 있습니다.</p></details>
+    <details><summary>페이지를 고쳐 같은 프로젝트에 다시 올리면, 예전에 인쇄한 QR로도 바뀐 내용이 보인다.</summary>
+      <p><span class="o">O</span> — QR은 <b>주소</b>를 담고 있습니다.</p></details>
     <details><summary>고친 페이지는 vercel.com/drop 에 다시 올리면 된다.</summary>
-      <p><span class="x">X</span> — 새 주소가 생깁니다. 로그인해서 <b>내 프로젝트 화면</b>에 끌어다 놓아야 합니다.</p></details>
-    <details><summary>코워크는 pptx 홍보물을 직접 열어 읽고, 고쳐서 새 파일로 저장할 수 있다.</summary>
-      <p><span class="o">O</span> — 기본 제공 파워포인트 스킬 덕분입니다.</p></details>
+      <p><span class="x">X</span> — 새 주소가 생깁니다. <b>내 프로젝트 화면</b>에 올립니다.</p></details>
+    <details><summary>컴퓨터 사용을 켜면 클로드가 내 화면을 보므로 민감한 창은 닫고 한다.</summary>
+      <p><span class="o">O</span> — 앱마다 허락을 묻지만, 화면에 보이는 것은 클로드도 봅니다.</p></details>
   </div>
-  <p class="note">공유: 강사가 안내한 우리 반 패들렛 주소를 사용하세요. 주소 안내 전에는 결과를 내 폴더에 저장합니다.</p>
 </section>
 
-<div class="rest">개별 점검 10분 — 막힌 단계 보완 · 결과 저장 · 다음 시간 준비. 먼저 끝낸 분은 선택 도전을 합니다.</div>
+<div class="rest">개별 점검 10분</div>
 <div class="end">
   <h2>오늘 기억할 것 세 줄</h2>
   <p><b>1.</b> 홍보물엔 <b>QR 하나</b>, 자세한 안내는 <b>웹페이지</b>에</p>
-  <p><b>2.</b> 코워크는 <b>파일을 읽고 → 만들고 → 새 파일로 저장</b>까지 한 번에</p>
-  <p><b>3.</b> 고칠 땐 <b>같은 프로젝트(버셀) · 같은 저장소(깃허브)</b>에 다시 올리면 주소도 QR도 그대로</p>
-  <p class="next">📣 다음 시간(11.28, 마지막) — 지금까지 모은 프롬프트로 <b>휴대폰에서 꺼내 쓰는 프롬프트 보관함</b>을 만듭니다. 프롬프트 폴더를 꼭 챙겨 오세요.</p>
+  <p><b>2.</b> 코워크는 <b>파일을 읽고 → 만들고 → 저장</b>, 컴퓨터 사용으로 <b>직접 열어 확인</b>까지</p>
+  <p><b>3.</b> 고칠 땐 <b>같은 프로젝트 · 같은 저장소</b>에 — 주소도 QR도 그대로</p>
+  <p class="next">📣 다음 시간(11.28, 마지막) — 모은 프롬프트로 <b>휴대폰 프롬프트 보관함</b>을 만듭니다.</p>
 </div>
 
-<footer>클로드가 내 컴퓨터로 들어옵니다 — 서류 정리부터 나만의 프롬프트 보관함까지 · 3차시 &nbsp;|&nbsp; 제주도민대학 · 강사 강지애</footer>
+<footer>클로드가 내 컴퓨터로 들어옵니다 · 3차시 &nbsp;|&nbsp; 제주도민대학 · 강사 강지애</footer>
 </div>
-<script src="lesson.js"></script>
+<script src="lesson.js?v=1106"></script>
 <script src="live.js"></script>
 </body>
 </html>

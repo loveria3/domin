@@ -5,76 +5,173 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>1차시 — 내 컴퓨터에 비서 들이기</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<link rel="stylesheet" href="lesson.css">
+<link rel="stylesheet" href="lesson.css?v=1106">
 </head>
-<body>
+<body class="type-only">
 <div class="wrap">
 <a class="home" href="index.html">← 자료실 처음으로</a>
 <header>
   <p class="kicker">1차시 · 2026. 11. 7.(토) 10:00~12:00</p>
   <h1>내 컴퓨터에 <em>비서</em> 들이기</h1>
-  <p class="sub">파란 대괄호 <span class="ph">[이렇게]</span> 표시된 곳만 내 상황으로 바꾸세요. 보라색 <span class="badge pro">유료</span> 표시는 유료 계정이라서 되는 기능입니다.</p>
+  <p class="sub">파란 <span class="ph">[이렇게]</span> 표시만 내 상황으로 바꾸세요.</p>
   <div class="toprow">
     <a class="btn y" href="files/practice-docs.zip" download>실습 서류 묶음 내려받기 ↓</a>
+    <a class="btn y" href="files/travel-photos.zip" download>여행 사진 22장 내려받기 ↓</a>
     <a class="btn line" href="files/prompts.zip" download>추천 프롬프트 13개 ↓</a>
   </div>
 </header>
 
 <div class="hook">
   <p class="q">다운로드 폴더에 <b>「스캔_001」「새 문서 (2)」「최종_진짜최종」</b> 같은 파일이 쌓여 있지 않나요?</p>
-  <p>지금까지는 클로드에게 <b>물어보고 답을 복사</b>했습니다. 오늘부터는 클로드가 <b>내 폴더 안으로 들어와서</b> 파일을 직접 열어 보고, 이름을 바꾸고, 정리해 둡니다.</p>
-  <div class="take"><span>오늘 가져갈 것</span><span>🗂 깔끔하게 정리된 서류 폴더</span><span>📄 앞으로 낼 돈 한 장</span><span>💾 첫 프롬프트 TXT</span></div>
+  <p>오늘부터는 클로드가 <b>내 폴더 안으로 들어와서</b> 파일을 직접 열고, 이름을 바꾸고, 정리합니다.</p>
+  <div class="take"><span>오늘 가져갈 것</span><span>🗂 정리된 서류 폴더</span><span>📷 나눠 담은 여행 사진</span><span>💾 첫 프롬프트 TXT</span></div>
 </div>
 
-<div class="tip"><b>오늘의 완료 기준</b> — 원본을 보존해 분류하고, 서류 2건을 대조한 뒤 백업 사본을 복구할 수 있다.<br><b>120분 운영</b> — 활동 90분 + 휴식 10분 + 완료 확인·퀴즈 10분 + 개별 점검 10분. 선택 도전·참고 읽기는 필수 시간에 포함하지 않습니다.</div>
 <nav class="jump">
-  <a href="#s0">0</a><a href="#s1">1</a><a href="#s2">2</a><a href="#s3">3</a><a href="#s4">4</a>
+  <a href="#today">오늘</a><a href="#s0">0</a><a href="#s1">1</a><a href="#s1-2">1+</a><a href="#s2">2</a><a href="#s3">3</a><a href="#s4">4</a>
   <a href="#s5">5</a><a href="#s6">6</a><a href="#s7">7</a><a href="#s8">도전</a><a href="#s9">퀴즈</a>
 </nav>
 
-<section id="s0" data-n="0">
-  <div class="head"><span class="num y">0</span><h2>같은 부탁, 두 곳에서 해 보면</h2><span class="time">5분</span></div>
-  <p class="one">똑같은 부탁을 <b>웹 채팅</b>과 <b>코워크</b>에 한 번씩 해 봅니다. 오늘 비교할 것은 <b>자료를 건네고 결과 파일을 관리하는 방식</b>입니다.</p>
+<section id="today" data-n="오늘" class="today" data-t="오늘 배울 기능">
+  <div class="head"><span class="num y">★</span><h2>오늘 배울 기능 한눈에</h2><span class="time">2분</span></div>
+  <div class="today-grid">
+    <a class="tcard pro" href="#s2"><span class="ti">🖥</span><b>코워크 화면 익히기</b><span>입력창 · 폴더 · 승인 방식</span><em>데스크톱 · 유료</em></a>
+    <a class="tcard pro" href="#s3"><span class="ti">📁</span><b>내 폴더 맡기기</b><span>클로드가 내 파일을 직접 열어요</span><em>데스크톱 · 유료</em></a>
+    <a class="tcard" href="#s4"><span class="ti">💾</span><b>백업 먼저</b><span>원본을 지켜 두고 시작</span></a>
+    <a class="tcard" href="#s4"><span class="ti">🗂</span><b>서류 이름 · 분류</b><span>날짜_종류_내용으로 정리</span></a>
+    <a class="tcard" href="#s5"><span class="ti">📷</span><b>여행 사진 나누기</b><span>풍경 · 독사진 · 단체 · 흐린 사진</span></a>
+    <a class="tcard" href="#s6"><span class="ti">📝</span><b>프롬프트 모으기</b><span>잘 된 부탁을 TXT로</span></a>
+  </div>
+  <p class="one">오늘의 순서 — <b>한 번에 하나씩 부탁하고, 결과를 보고, 한 줄씩 보탭니다.</b></p>
+</section>
+
+<section id="s0" data-n="0" data-t="같은 부탁 두 곳에서">
+  <div class="head"><span class="num y">0</span><h2>같은 부탁, 두 곳에서 해 보면</h2><span class="time">3분</span></div>
+  <p class="one">같은 부탁을 <b>웹 채팅</b>과 <b>코워크</b>에 한 번씩 해 봅니다.</p>
   <div class="box"><div class="bar"><span>시연 프롬프트</span></div>
 <div class="txt">이 폴더에 있는 서류들을 읽고, 앞으로 내야 할 돈을 표로 정리해서 파일로 저장해줘.</div></div>
   <div class="vs">
-    <div class="bad"><b>웹 채팅 (claude.ai)</b>파일을 첨부해 분석하고 <b>내려받을 결과 파일</b>도 만들 수 있습니다. 오늘은 자료를 첨부하는 방식으로 비교합니다.</div>
-    <div class="good"><b>코워크 (클로드 데스크톱)</b>폴더를 한 번 맡기면 클로드가 <b>파일을 직접 열고</b>, 결과를 <b>내 폴더에 파일로</b> 남겨 둡니다.</div>
+    <div class="bad"><b>웹 채팅 (claude.ai)</b>파일을 <b>하나씩 첨부</b>하고, 결과는 <b>내려받아야</b> 합니다.</div>
+    <div class="good"><b>코워크 (클로드 데스크톱)</b>폴더를 한 번 맡기면 <b>직접 열고</b>, 결과를 <b>내 폴더에 저장</b>합니다.</div>
   </div>
 </section>
 
-<section id="s1" data-n="1">
-  <div class="head"><span class="num">1</span><h2>준비 점검 — 설치 · 로그인 · 유료 확인</h2><span class="time">10분</span></div>
-  <p class="one">세 가지가 다 ✔ 되어야 오늘 실습을 할 수 있습니다. 안 되는 분은 손을 들어 주세요. (수업 전에 <a href="ready.html">수업 전 준비 안내</a>를 보고 오신 분은 확인만 하면 됩니다)</p>
+<section id="s1" data-n="1" data-t="준비 점검">
+  <div class="head"><span class="num">1</span><h2>준비 점검 — 설치 · 로그인 · 유료 확인</h2><span class="time">5분</span></div>
+  <p class="one">세 가지가 다 ✔ 되어야 합니다. 안 되면 손을 들어 주세요.</p>
   <ul class="chk">
-    <li><b>클로드 데스크톱</b> 설치 — <b>claude.ai/download</b> 에서 Windows(또는 Mac)용 받기 → 설치</li>
-    <li>로그인 — 웹에서 쓰던 <b>같은 계정</b>으로 (구글 계정으로 가입했다면 'Google로 계속하기')</li>
-    <li>왼쪽 아래 내 이름 옆에 <b>Pro</b>(또는 Max)가 보이는지, 연습 폴더를 연결해 <b>TXT 파일 하나를 저장할 수 있는지</b></li>
+    <li><b>클로드 데스크톱</b> 설치 — <b>claude.com/download</b></li>
+    <li>웹에서 쓰던 <b>같은 계정</b>으로 로그인</li>
+    <li>내 이름 옆에 <b>Pro</b>(또는 Max), 연습 폴더에 <b>TXT 파일 하나 저장</b>되는지</li>
   </ul>
-  <div class="pro"><span class="badge pro">유료</span> <b>코워크(Cowork)</b>는 유료 계정에서 쓰는 기능입니다. 화면 통합이 순차 적용되어 Chat/Cowork 탭이 없는 계정도 있습니다. 탭 유무 대신 <b>연결한 연습 폴더에 파일이 생기는지</b> 확인하세요. 안 되면 계정·앱 업데이트·폴더 권한을 강사와 확인합니다.</div>
-  <p class="warnnote">⚠ 계정을 두 개 만들지 않도록 조심! 결제한 계정과 로그인한 계정이 같은지 확인하세요.</p>
+  <p class="warnnote">⚠ 결제한 계정과 로그인한 계정이 같은지 확인하세요.</p>
 </section>
 
-<section id="s2" data-n="2">
-  <div class="head"><span class="num">2</span><h2>화면 지도 — 어디서 무엇을 하나</h2><span class="time">5분</span></div>
-  <p class="one">외우지 않아도 됩니다. 강사가 번호를 부르면 <b>직접 눌러 보세요.</b></p>
-  <div class="map">
-    <div><b><span class="n">1</span>Chat / Cowork / Code</b>계정에 따라 통합 입력창일 수 있습니다. 오늘은 <b>폴더를 연결한 파일 작업</b>을 합니다.</div>
-    <div><b><span class="n">2</span>폴더 고르기</b>입력창 근처의 폴더 칸. 클로드에게 <b>"이 폴더에서 일해"</b>라고 맡기는 곳</div>
-    <div><b><span class="n">3</span>＋ 버튼</b>파일 첨부 · <b>스킬</b> · <b>커넥터</b> (2차시에 씁니다)</div>
-    <div><b><span class="n">4</span>모델 고르기</b>Opus · Sonnet · Haiku — 오늘은 기본값 그대로</div>
-    <div><b><span class="n">5</span>왼쪽 사이드바</b>새 작업 · 지난 작업 · <b>예약된 작업</b>(2차시) · 사용자 지정</div>
-    <div><b><span class="n">6</span>승인 창</b>권한을 확인하는 창. 표시 방식은 설정에 따라 다르므로 <b>변경 목록도 직접 확인</b>합니다.</div>
+<section id="s1-2" data-n="1+" data-t="설치 전 기본 사양 확인">
+  <div class="head"><span class="num">1+</span><h2>설치 전 기본 사양 — 내 컴퓨터에서 코워크가 되나</h2><span class="badge pro">유료</span><span class="time">5분</span></div>
+  <table>
+    <tr><th>운영체제</th><td><b>Windows 10 이상</b> 또는 <b>macOS 13 이상</b></td></tr>
+    <tr><th>계정</th><td>코워크는 <b>유료 계정</b>(Pro·Max)에서만</td></tr>
+    <tr><th>인터넷 · 앱</th><td>작업 중엔 <b>인터넷 연결</b>, 내 폴더를 쓰려면 <b>데스크톱 앱 켜 두기</b></td></tr>
+    <tr><th>권장 사양</th><td>메모리 <b>8GB 이상</b>, 빈 공간 <b>20GB</b> 정도</td></tr>
+  </table>
+  <div class="tip"><b>🪟 Windows에서 코워크가 안 보이면</b>
+    <ul class="chk">
+      <li><b>관리자 권한</b>으로 설치했는지 (회사 노트북은 전산 담당자에게 확인)</li>
+      <li>'Windows 기능 켜기/끄기'에서 <b>가상 머신 플랫폼</b>이 켜져 있는지</li>
+      <li><b>S 모드</b>·<b>가상 PC</b>에서는 안 될 수 있음</li>
+      <li>바꾼 뒤에는 <b>'다시 시작'</b></li>
+    </ul>
   </div>
-  <div class="tip">💡 화면이 교안과 조금 다르면 — 버전마다 메뉴 이름이 바뀝니다. 이름보다 <b>"어디서 무슨 일을 하는지"</b>로 기억하세요. 그래도 모르겠으면 클로드에게 <b>"코워크에서 폴더 고르는 버튼이 어디 있어?"</b>라고 물어보면 됩니다.</div>
+  <p class="warnnote">⚠ 코워크 작업은 클로드 서버에서 처리됩니다. <b>주민번호·통장 사본</b> 같은 서류는 연결한 폴더에 넣지 마세요.</p>
 </section>
 
-<section id="s3" data-n="3">
-  <div class="head"><span class="num">3</span><h2>내 작업실 폴더 맡기고 읽혀 보기</h2><span class="time">15분</span></div>
+<section id="s2" data-n="2" data-t="화면 지도 · 폴더 연결">
+  <div class="head"><span class="num">2</span><h2>화면 지도 · 폴더 연결 — 어디를 누르나</h2><span class="badge pro">데스크톱 · 유료</span><span class="time">10분</span></div>
+  <p class="one">① 번호를 눌러 화면을 익히고, ② <b>폴더 연결</b>을 따라 본 뒤 내 화면에서 똑같이 해 봅니다.</p>
+  <div class="tour" id="tour">
+    <div class="tour-tabs"><button type="button" data-m="map">① 번호 눌러 보기</button><button type="button" data-m="play">② 폴더 연결 따라 보기 ▶</button></div>
+    <div class="tour-fit"><div class="stage">
+      <div class="app">
+        <aside class="sb">
+          <div class="tb"><span class="tb-i">☰</span><span class="tb-i">▭</span><span class="tb-i">‹</span><span class="tb-i">›</span><span class="tb-modes"><i class="on">💬</i><i>&lt;/&gt;</i></span></div>
+          <div class="sb-i sb-new">＋ 새로 만들기</div>
+          <div class="sb-i">🔍 검색</div>
+          <div class="sb-i">🗂 프로젝트</div>
+          <div class="sb-i">❐ 아티팩트</div>
+          <div class="sb-i sb-sched">🕘 예약됨</div>
+          <div class="sb-i">📋 Dispatch <span class="bt">베타</span></div>
+          <div class="sb-i">🎨 Design</div>
+          <div class="sb-i sb-cust">🧰 사용자 지정</div>
+          <div class="sb-h">채팅 및 작업 ▾</div>
+          <div class="sb-i sb-list">∘ 서류 정리</div>
+          <div class="sb-i">∘ 여행 사진 나누기</div>
+          <div class="sb-g"></div>
+          <div class="sb-me"><span class="av"></span>강지애 · <b>Pro</b> ⌄</div>
+        </aside>
+        <div class="mn">
+          <div class="mn-c">
+            <p class="hi"><span class="star">✳</span> 강지애님, 좋은 아침이에요</p>
+            <div class="ib">
+              <div class="ib-t"><span class="ph-t">오늘 어떤 도움을 드릴까요?</span><span class="typed"></span></div>
+              <div class="ib-r">
+                <span class="plus">＋</span>
+                <span class="mode"><i data-v="chat" class="on">채팅</i><i data-v="cowork">Cowork</i></span>
+                <span class="sp"></span>
+                <span class="model">Sonnet 5.5 <s>중간</s></span>
+                <span class="mic">🎙 ⌄</span>
+              </div>
+            </div>
+            <div class="ib-u"><span class="chip fold">📁 <em>폴더</em></span><span class="chip perm"><em>자동</em></span></div>
+            <div class="prog"><div class="pg-h">진행 중</div><div class="pg-i reply"><b>서류 정리</b><span>파일 11개를 하나씩 열어 보고 있어요…</span></div><div class="pg-i"><b>클로드와의 첫 인사</b><span>3일 전</span></div></div>
+          </div>
+          <div class="fmenu"><div class="fm-s">폴더 검색...</div><div>폴더 없음</div><div class="fm-h">최근</div><div>연습</div><div class="fm-l" data-r="other">폴더 열기...</div></div>
+          <div class="pmenu"><div>자동 승인 (Auto)</div><div data-r="manual">직접 승인 (Manual)</div></div>
+        </div>
+      </div>
+      <div class="dlg pick">
+        <div class="dlg-h">폴더 선택</div>
+        <div class="dlg-b"><div class="row">📁 다운로드</div><div class="row" data-r="docs">📁 문서</div><div class="row sub" data-r="work">📁 내작업실</div><div class="row">📁 사진</div></div>
+        <div class="dlg-f"><span class="bx">취소</span><span class="bp" data-r="ok">폴더 선택</span></div>
+      </div>
+      <div class="dlg ask">
+        <div class="dlg-h">클로드가 허락을 구합니다</div>
+        <div class="dlg-b"><p>내작업실 폴더의 파일을 읽어도 될까요?</p></div>
+        <div class="dlg-f"><span class="bx">거부</span><span class="bp" data-r="allow">허용</span></div>
+      </div>
+      <div class="hs-wrap"></div>
+      <div class="ring"></div><div class="cur"></div>
+    </div></div>
+    <div class="tour-cap"><b class="cap-n"></b><span class="cap-t"></span></div>
+    <div class="tour-ctl"><button type="button" class="pv">◀ 이전</button><button type="button" class="pp">▶ 재생</button><button type="button" class="nx">다음 ▶</button><span class="dots"></span></div>
+  </div>
+  <h3>데스크톱의 세 화면 — 채팅 · Cowork · 코드</h3>
+  <p class="one">왼쪽 위 두 단추로 화면을 바꿉니다. <b>💬</b>는 채팅·Cowork, <b>&lt;/&gt;</b>는 코드 화면입니다.</p>
+  <table class="plain">
+    <tr><th></th><th>채팅</th><th>Cowork ★오늘</th><th>코드</th></tr>
+    <tr><td><b>들어가기</b></td><td>💬 → 입력창 <b>채팅</b></td><td>💬 → 입력창 <b>Cowork</b></td><td>왼쪽 위 <b>&lt;/&gt;</b></td></tr>
+    <tr><td><b>하는 일</b></td><td>묻고 답하기, 파일을 붙여 분석</td><td><b>내 폴더</b>를 맡겨 파일을 열고 · 바꾸고 · 저장, 예약 작업</td><td>프로그램 · 웹앱 <b>코드</b>를 만드는 개발용</td></tr>
+    <tr><td><b>이 과정</b></td><td>0번 비교 때</td><td><b>1~4차시 대부분</b></td><td>오늘은 쓰지 않음</td></tr>
+  </table>
+  <div class="tip"><b>코드 화면 가운데 상자는 무엇인가요?</b>
+    <div class="ccard"><div>🖥 domin</div><div>🖥 score</div><div class="cc-e">환경 선택 ⌄</div></div>
+    · <b>domin · score</b> — 온라인에서 만든 게 아니라, <b>이 컴퓨터에서 최근 자주 쓴 폴더</b>입니다. 앱이 자동으로 보여 주고(최대 8개), 누르면 그 폴더에서 바로 시작해요.<br>
+    · <b>환경 선택</b> — 클로드가 <b>어디서 일할지</b> 고르는 곳입니다.
+    <ul class="env">
+      <li><b>로컬(이 컴퓨터)</b> — 내 컴퓨터의 폴더에서 일함</li>
+      <li><b>클라우드</b> — 앤트로픽 서버에서 일함. 온라인 <b>claude.ai/code</b>와 같은 기능이고, <b>컴퓨터를 꺼도 계속</b>돼요. 깃허브 저장소를 연결해 씁니다</li>
+      <li><b>SSH · WSL</b> — 다른 컴퓨터나 윈도우 안의 리눅스에서 일함 (개발자용)</li>
+    </ul>
+  </div>
+  <p class="note">실제 첫 화면을 본떠 그린 그림입니다. 버전에 따라 단추 이름·위치가 조금 다를 수 있어요. 이름보다 <b>어디서 무슨 일을 하는지</b>로 기억하세요.</p>
+</section>
+
+<section id="s3" data-n="3" data-t="작업실 폴더 맡기기">
+  <div class="head"><span class="num">3</span><h2>내 작업실 폴더 맡기고 읽혀 보기</h2><span class="time">12분</span></div>
   <ol class="step">
-    <li>위의 <b>실습 서류 묶음 내려받기</b> → 다운로드 폴더에서 <b>오른쪽 단추 → 압축 풀기(모두 추출)</b></li>
-    <li>나온 <b>내작업실</b> 폴더를 <b>문서</b> 폴더로 옮기기 — 글자 파일(TXT)·<b>스캔 PDF</b>·<b>휴대폰 사진(JPG)</b>이 섞여 있어요</li>
-    <li>코워크 화면에서 <b>폴더 고르기 → 문서 → 내작업실</b> 선택</li>
+    <li><b>실습 서류 묶음</b> 내려받기 → <b>압축 풀기</b></li>
+    <li>나온 <b>내작업실</b> 폴더를 <b>문서</b> 폴더로 옮기기</li>
+    <li>코워크에서 <b>폴더 고르기 → 문서 → 내작업실</b></li>
   </ol>
   <div class="box"><div class="bar"><span>프롬프트 1 — 무엇이 들었나 보기</span></div>
 <div class="txt">이 폴더에 있는 파일을 하나씩 열어 보고, 무슨 서류인지 표로 정리해줘.
@@ -84,160 +181,196 @@
   <div class="ex">| 지금 파일 이름 | 무슨 서류 | 날짜 | 금액 |
 | 스캔_20261003_001.pdf | 아파트 관리비 고지서 | 2026-11-25 납부 | 142,000원 |
 | IMG_4821.jpg | 피아노학원 교육비 영수증 (사진) | 2026-10-02 | 150,000원 |
-| 새 문서 (2).txt | 건강검진 안내 | 2026-12-31까지 | - |
 | 최종_진짜최종.pdf | 임대차 계약서 | 2027-02-28 만료 | 월 400,000원 |
 … (모두 11개)</div>
-  <p class="note">"아직 아무것도 바꾸지 마" — 처음엔 <b>보기만</b> 시키는 것이 안전한 습관입니다.<br>📷 사진·스캔 PDF도 읽을 수 있지만 흐린 글자는 틀릴 수 있습니다. <b>원본과 대조</b>하고, 읽기 실패는 확인 필요로 남깁니다.</p>
-
+  <div class="tip">💡 처음엔 <span class="say">아직 바꾸지 마</span> — 보기만 시키는 것이 안전한 습관입니다.</div>
   <div class="biz">
     <p class="bt">회사에선 이렇게 <span class="badge biz">업무 활용</span></p>
-    <p>같은 방법으로 <b>회사 공유 폴더·다운로드 폴더</b>를 맡기면 "이 폴더에 무엇이 있는지 목록표 만들어줘" 한마디로 <b>자료 현황표</b>가 나옵니다. 인수인계, 감사 준비, 연말 서류 정리 때 많이 씁니다.</p>
-    <p>⚠ 회사 파일은 <b>회사 보안 규칙</b>을 먼저 확인하세요. 개인정보·기밀 문서는 맡기기 전에 담당자와 상의합니다.</p>
+    <p>공유 폴더를 맡기고 <span class="say">목록표 만들어줘</span> 한마디면 <b>자료 현황표</b>가 나옵니다. 회사 파일은 <b>보안 규칙</b>부터 확인하세요.</p>
   </div>
 </section>
 
-<div class="rest">☕ 쉬는 시간 10분 — 잠시 쉬었다가 함께 이어갑니다</div>
+<div class="rest">☕ 쉬는 시간 10분</div>
 
-<section id="s4" data-n="4" class="key">
-  <div class="head"><span class="num">4</span><h2>서류 이름 바꾸고 분류하기</h2><span class="badge hot">오늘의 핵심</span><span class="time">25분</span></div>
-  <p class="one">첫 번째 수칙 — <b>원본은 백업해 두고 시작한다.</b> 그다음 이름을 바꾸고 종류별 폴더로 나눕니다.</p>
-  <div class="box"><div class="bar"><span>프롬프트 2 — 백업부터 (통째로 복사)</span></div>
-<div class="txt">작업하기 전에 현재 폴더 바로 아래의 실습 서류 파일만 '_원본백업' 폴더로 복사해줘.
-기존 백업·하위 폴더는 복사 대상에서 제외하고, 같은 이름이 있으면 덮어쓰지 말고 알려줘.
-복사한 파일 수와 목록을 알려줘. 이후 정리 작업에서는 '_원본백업'을 제외해줘.</div></div>
-  <div class="box"><div class="bar"><span>프롬프트 3 — 이름 바꾸고 나누기</span></div>
-<div class="txt">이제 파일 이름을 '날짜_종류_내용' 모양으로 바꿔줘.
-예) 2026-11-25_고지서_관리비10월.txt
-- 날짜는 서류 안에 적힌 날짜(납부 기한이 있으면 그 날짜)로
-- 종류는 <span class="ph">[고지서, 영수증, 계약서, 안내문, 보험, 기타]</span> 중 하나로
-그다음 종류별로 폴더를 만들어서 옮겨줘.
-바꾸기 전에 '원래 이름 → 바뀔 이름' 표를 먼저 보여주고 내 허락을 받아.
-파일은 절대 지우지 마.
-_원본백업·프롬프트·결과 폴더는 정리 대상에서 제외해. 확장자는 그대로 유지해.
-날짜가 없거나 불분명하면 확인 필요로 남기고, 같은 이름이 생기면 덮어쓰지 말고 물어봐.
-변경 전후 이름과 위치를 변경기록.txt로 남겨줘.</div></div>
-  <div class="ex">바꾸기 전에 목록을 확인해 주세요.
-| 원래 이름 | 바뀔 이름 | 옮길 폴더 |
-| 스캔_20261003_001.pdf | 2026-11-25_고지서_관리비10월.pdf | 고지서 |
-| scan0003.pdf | 2026-12-31_고지서_자동차세2기.pdf | 고지서 |
-| IMG_4821.jpg | 2026-10-02_영수증_피아노학원10월.jpg | 영수증 |
-| 문서1.txt | 2025-11-20_기타_세탁기보증서.txt | 기타 |
-… (메모.txt는 서류가 아니라서 그대로 둘게요)
-이대로 바꿀까요?</div>
+<section id="s4" data-n="4" class="key" data-t="서류 이름 바꾸고 분류">
+  <div class="head"><span class="num">4</span><h2>서류 이름 바꾸고 분류하기</h2><span class="badge hot">오늘의 핵심</span><span class="time">20분</span></div>
+  <p class="one"><b>백업 → 표로 보기 → 바꾸기 → 나누기</b>. 한 번에 하나씩, 결과를 보고 다음 부탁을 합니다.</p>
+  <div class="tip">💾 <b>왜 백업부터?</b> — 클로드가 이름을 잘못 바꾸거나 엉뚱한 폴더로 옮겨도, 백업해 둔 원본에서 다시 꺼낼 수 있습니다.<br>
+  · <b>옮기기가 아니라 복사</b> — 원본은 그대로 남아요<br>
+  · <b>덮어쓰지 말고</b> — 두 번 해도 처음 백업이 지워지지 않게<br>
+  · <b>개수를 알려줘</b> — 내작업실 파일은 <b>11개</b>(메모.txt 포함). 숫자로 빠진 게 없는지 확인</div>
+  <div class="box"><div class="bar"><span>프롬프트 2 — ① 백업부터</span></div>
+<div class="txt">실습 서류 파일을 _원본백업 폴더에 복사해줘.
+같은 이름이 있으면 덮어쓰지 말고, 복사한 개수를 알려줘.</div></div>
+  <div class="box"><div class="bar"><span>프롬프트 3-1 — ② 바뀔 이름 표로 보기</span></div>
+<div class="txt">파일 이름을 날짜_종류_내용 모양으로 바꾸려고 해.
+예) 2026-11-25_고지서_관리비10월.pdf
+종류는 <span class="ph">[고지서, 영수증, 계약서, 안내문, 보험, 기타]</span> 중 하나로.
+날짜가 불분명하면 확인 필요로.
+원래 이름 → 바뀔 이름 표만 보여줘. 아직 바꾸지 마.</div></div>
+  <div class="ex">| 원래 이름 | 바뀔 이름 |
+| 스캔_20261003_001.pdf | 2026-11-25_고지서_관리비10월.pdf |
+| IMG_4821.jpg | 2026-10-02_영수증_피아노학원10월.jpg |
+| 문서1.txt | 2025-11-20_기타_세탁기보증서.txt |</div>
+  <p class="one">→ 틀린 곳이 있으면 <span class="say">○○는 영수증으로 해줘</span> 로 먼저 고치기</p>
+  <div class="box"><div class="bar"><span>프롬프트 3-2 — ③ 이름 바꾸기</span></div>
+<div class="txt">좋아, 표대로 이름을 바꿔줘.
+_원본백업은 건드리지 말고, 같은 이름이 생기면 물어봐.
+바꾼 내용은 변경기록.txt로 남겨줘.</div></div>
+  <div class="box"><div class="bar"><span>프롬프트 3-3 — ④ 종류별로 나누기</span></div>
+<div class="txt">이제 종류별로 폴더를 만들어서 옮겨줘.
+파일은 지우지 말고, 폴더별 개수를 알려줘.</div></div>
   <ul class="chk">
-    <li>바꿀 목록 표가 먼저 나왔는지 → 이상한 곳이 있으면 "<b>○○는 영수증으로 해줘</b>"라고 고치기</li>
-    <li>승인 창이 뜨면 내용을 읽고 <b>허용</b></li>
-    <li>윈도우 탐색기(파인더)로 <b>내작업실 폴더를 직접 열어</b> 진짜 바뀌었는지 눈으로 확인</li>
+    <li>승인 창은 읽어 보고 <b>허용</b></li>
+    <li>탐색기로 <b>내작업실을 직접 열어</b> 확인</li>
   </ul>
-  <div class="tip">🔒 승인 창은 귀찮은 게 아니라 <b>안전장치</b>입니다. 승인 창이 항상 뜬다고 가정하지 마세요. 설정에 따라 다릅니다. 프롬프트로 <b>목록을 먼저 보여주고 기다리라</b>고 요청하고, 실제 변경도 확인합니다.</div>
-
   <div class="biz">
     <p class="bt">회사에선 이렇게 — 파일 이름 규칙 <span class="badge biz">업무 활용</span></p>
-    <p>회사마다 <b>「20261107_총무팀_회의록_v01」</b> 같은 이름 규칙이 있습니다. 이 규칙을 매번 길게 쓰는 대신 <b>스킬</b>로 저장해 두면 "폴더 정리해줘" 한마디로 끝납니다. → 2차시에는 회의록 스킬의 규칙을 고쳐 봅니다. <b>파일 이름 정리 스킬</b>은 추가 연습으로 받을 수 있습니다.</p>
-    <a class="more" href="skills.html#rec">추천 스킬 미리 보기 →</a>
+    <p>회사 이름 규칙(예: <b>20261107_총무팀_회의록_v01</b>)을 <b>스킬</b>로 저장하면 <span class="say">폴더 정리해줘</span> 한마디로 끝납니다. → 2차시</p>
   </div>
-<h3>되돌리기 연습 — 마지막 5분</h3><p>변경기록에서 가상 서류 1개를 고르고 원래 이름·위치를 확인하세요. 삭제 없이 원본 사본을 복구연습 폴더로 꺼내 열어 봅니다.</p><div class="box"><div class="bar"><span>복구 프롬프트</span></div><div class="txt">'_원본백업'의 [복구할 파일 이름]을 새 '복구연습' 폴더에 복사해줘. 백업과 정리된 파일은 그대로 두고, 같은 이름이 있으면 덮어쓰지 마.</div></div>
+  <h3>되돌리기 연습 — 마지막 5분</h3>
+  <div class="box"><div class="bar"><span>복구 프롬프트</span></div><div class="txt">_원본백업의 [복구할 파일 이름]을 새 복구연습 폴더에 복사해줘. 백업과 정리된 파일은 그대로 두고, 같은 이름이 있으면 덮어쓰지 마.</div></div>
 </section>
 
-<section id="s5" data-n="5">
-  <div class="head"><span class="num">5</span><h2>프롬프트를 고쳐서 결과 바꾸기</h2><span class="time">20분</span></div>
-  <p class="one">한 번에 완벽할 필요는 없습니다. 결과를 보고 <b>한 줄씩 고치는 것</b>이 실력입니다.</p>
-  <div class="box"><div class="bar"><span>프롬프트 4 — 앞으로 낼 돈 한 장</span></div>
-<div class="txt">정리한 서류에서 납부 대상과 납부 상태를 표로 정리해줘.
-원본 파일 이름 / 기한 / 항목 / 금액 / 상태 / 판단 근거를 적어줘.
-상태는 '납부 대상', '납부 완료', '확인 필요'로 나눠줘.
-납부 완료 문구나 출금 증빙이 있는 항목만 완료로 분류해.
-자동이체 예정일이 지났다는 이유만으로 완료 처리하지 마. 납부 증빙이 없으면 확인 필요로 남겨.
-납부 대상과 확인 필요 금액은 따로 합계 내고, '_원본백업'과 복구 사본은 중복 집계하지 마.
-'낼돈_정리.xlsx'로 저장해줘.</div></div>
-  <div class="ex">예시 — 실제 상태·금액은 원본과 대조합니다.
-| 항목 | 상태 | 근거 |
-| 관리비 | 확인 필요 | 고지서는 있지만 납부 증빙 미확인 |
-| 재산세 | 납부 완료 | 원본의 납부 완료 표기 확인 |
-| 전기요금 | 확인 필요 | 자동이체 예정일만으로 출금 여부 확정 불가 |
-※ 확인 필요 금액을 납부 완료로 제외하지 않습니다.</div>
+<section id="s5" data-n="5" class="key" data-t="여행 사진 나누기">
+  <div class="head"><span class="num">5</span><h2>여행 사진 나누기 — 프롬프트를 고쳐 가며</h2><span class="badge hot">핵심</span><span class="time">25분</span></div>
+  <p class="one">한 번에 다 시키지 않고 <b>보기 → 나 찾기 → 흐린 사진 → 나누기</b> 순서로 <b>한 줄씩 보태 갑니다.</b></p>
+  <ol class="step">
+    <li><b>여행 사진 22장</b> 내려받기 → 압축 풀기 → <b>여행사진</b> 폴더를 <b>내작업실</b> 안에</li>
+    <li>오늘의 <b>'나'</b> = 귤색 모자 + 하늘색 점퍼 (그림으로 만든 가상 사진)</li>
+  </ol>
+
+  <div class="box"><div class="bar"><span>프롬프트 4 — 사진 ① 종류부터 보기</span></div>
+<div class="txt">여행사진 폴더의 사진을 한 장씩 보고 표로 정리해줘.
+칸은 [파일 이름 / 찍은 날짜 / 종류 / 사람 수 / 한 줄 설명] 으로.
+종류는 풍경(사람 없음) / 독사진(1명) / 단체사진(2명 이상) 중 하나로.
+찍은 날짜는 사진 정보(EXIF)에서 읽고, 없으면 확인 필요로 써.
+아직 아무것도 옮기거나 바꾸지 마.</div></div>
+  <div class="ex">| 파일 이름 | 찍은 날짜 | 종류 | 사람 수 | 한 줄 설명 |
+| IMG_5101.jpg | 2026-10-03 06:42 | 풍경 | 0 | 성산일출봉 해돋이 |
+| IMG_5104.jpg | 2026-10-03 09:16 | 독사진 | 1 | 성산 앞에서 손 흔드는 사람 |
+… 모두 22장 — 풍경 8 · 독사진 8 · 단체사진 6</div>
+
+  <div class="box"><div class="bar"><span>프롬프트 5 — 사진 ② 내가 나온 사진 찾기 (한 줄 보태기)</span></div>
+<div class="txt">_나_기준사진.jpg 속 사람이 나야.
+얼굴이 아니라 옷차림 <span class="ph">[귤색 모자, 하늘색 점퍼]</span>로 찾아줘.
+위 표에 내가 나왔는지 표시하는 칸을 하나 더 넣어줘. 애매하면 확인 필요로. 나머지 칸은 그대로 둬.</div></div>
+  <div class="ex">내가 나온 사진은 8장이에요. 독사진 4 · 단체사진 4
+IMG_5170 · IMG_5244 단체사진에는 귤색 모자가 없어요 — 내가 찍어 준 사진 같아요.</div>
+  <div class="tip">🙋 클로드는 <b>얼굴로 누구인지 알아보지 않습니다.</b> 모자·옷 색 같은 특징을 알려 주세요.</div>
+
+  <div class="box"><div class="bar"><span>프롬프트 6 — 사진 ③ 잘못 나온 사진 골라내기</span></div>
+<div class="txt">흔들리거나 초점이 나간 사진, 너무 어두운 사진을 찾아줘.
+눈으로만 보지 말고 사진마다 선명도와 밝기를 숫자로도 재서 표에 상태 칸으로 붙여줘. (잘 나옴 / 흐림 / 어두움)
+같은 장면을 연달아 찍은 사진이 있으면 더 잘 나온 쪽을 알려줘.</div></div>
+  <div class="ex">| 파일 | 상태 | 선명도 | 같은 장면의 잘 나온 사진 |
+| IMG_5105.jpg | 흐림 (흔들림) | 18 | IMG_5104.jpg (선명도 412) |
+| IMG_5199.jpg | 어두움 | — | 없음 |
+… 모두 4장</div>
+
+  <p class="one">→ 옮기기 전에는 서류 때처럼 <b>백업부터</b></p>
+  <div class="box"><div class="bar"><span>프롬프트 7-1 — 사진 ④ 백업</span></div>
+<div class="txt">원본 사진을 _원본백업 폴더에 복사해줘.</div></div>
+  <div class="box"><div class="bar"><span>프롬프트 7-2 — 사진 ⑤ 폴더로 나누기</span></div>
+<div class="txt">표대로 잘 나온 사진은 풍경, 독사진, 단체사진 폴더로,
+흐리거나 어두운 사진은 다시보기 폴더로 옮겨줘. 지우지는 마.
+내가 있는 사진은 내사진 폴더에 한 번 더 복사해.
+옮기기 전에 어느 폴더로 갈지 표로 먼저 보여줘.</div></div>
+  <div class="box"><div class="bar"><span>프롬프트 7-3 — 사진 ⑥ 이름 바꾸고 기록</span></div>
+<div class="txt">옮긴 사진 이름을 날짜_종류_장소.jpg로 바꿔줘.
+예) 2026-10-03_독사진_성산일출봉.jpg
+바꾼 내용은 사진정리_기록.txt로 남겨줘.</div></div>
+  <div class="ex">여행사진/
+ ├ 풍경 7 · 독사진 6 · 단체사진 5
+ ├ 내사진 6 (복사본)
+ ├ 다시보기 4
+ └ _원본백업 22</div>
   <h3>마음에 안 들면 이렇게 고쳐요</h3>
   <div class="vs">
     <div class="bad"><b>막연하게</b>다시 해줘. 이상해.</div>
-    <div class="good"><b>콕 집어서</b>글씨를 크게 하고, '누구 이름으로 내는지' 칸을 하나 더 넣어줘. 나머지는 그대로 둬.</div>
+    <div class="good"><b>콕 집어서</b>IMG_5244는 풍경으로 해줘. 나머지는 그대로 둬.</div>
   </div>
-  <div class="box"><div class="bar"><span>고치기 예시</span></div>
-<div class="txt">표 맨 오른쪽에 '<span class="ph">[자동이체 여부]</span>' 칸을 추가해줘. 모르면 '확인 필요'라고 써.
-원래 파일은 그대로 두고 '낼돈_정리_v2.xlsx'로 새로 저장해줘.</div></div>
-  <div class="tip">🔑 주문 공식 — <b>"[어디]를 [어떻게] 바꿔줘. 나머지는 그대로 둬. 새 파일로 저장해."</b></div>
-<ul class="chk"><li>원본 2건을 직접 열어 날짜·금액·납부 상태를 대조하기</li><li>자동이체 예정일만 지난 항목이 확인 필요로 남았는지 확인하기</li><li>금액 합계를 계산기로 검산하고, 불명확한 항목은 그대로 표시하기</li></ul>
+  <div class="tip">🔑 주문 공식 — <span class="say">[어디]를 [어떻게] 바꿔줘. 나머지는 그대로 둬.</span></div>
+  <div class="biz">
+    <p class="bt">회사에선 이렇게 — 행사 · 현장 사진 정리 <span class="badge biz">업무 활용</span></p>
+    <p>행사 사진 200장에서 흐린 것 빼기, 현장 사진을 날짜·장소별로 나누기 — 같은 순서입니다. 사람이 나온 사진은 <b>개인정보</b>입니다.</p>
+  </div>
 </section>
 
-<section id="s6" data-n="6">
-  <div class="head"><span class="num">6</span><h2>프롬프트 폴더 만들고 첫 TXT 저장</h2><span class="time">10분</span></div>
-  <p class="one">잘 된 부탁은 <b>버리지 말고 모읍니다.</b> 4차시에 이걸로 휴대폰에서 꺼내 쓰는 <b>프롬프트 보관함</b>을 만듭니다.</p>
+<section id="s6" data-n="6" data-t="첫 프롬프트 TXT 저장">
+  <div class="head"><span class="num">6</span><h2>프롬프트 폴더 만들고 첫 TXT 저장</h2><span class="time">8분</span></div>
+  <p class="one">잘 된 부탁은 <b>모아 둡니다.</b> 4차시에 휴대폰 <b>프롬프트 보관함</b>이 됩니다.</p>
   <ol class="step">
-    <li>위의 <b>추천 프롬프트 13개</b>를 내려받아 압축을 풀고, 안의 <b>추천프롬프트</b> 폴더 이름을 <b>프롬프트</b>로 바꿔 <b>내작업실</b> 안에 넣기</li>
-    <li>아래 프롬프트로 오늘 잘 된 부탁을 같은 모양의 TXT로 저장하기</li>
+    <li><b>추천 프롬프트 13개</b> 내려받기 → 압축 풀기 → 폴더 이름을 <b>프롬프트</b>로 바꿔 <b>내작업실</b> 안에</li>
+    <li>아래 부탁으로 오늘 잘 된 프롬프트 저장</li>
   </ol>
-  <div class="box"><div class="bar"><span>프롬프트 5 — 오늘 프롬프트 저장</span></div>
-<div class="txt">오늘 이 대화에서 결과가 좋았던 내 부탁 하나를 골라서, '프롬프트' 폴더에 TXT로 저장해줘.
-폴더 안의 다른 TXT와 똑같은 모양(제목 / 분류 / 만든 날 / --- / [역할] [할 일] [조건] [결과 모양] / --- / 메모)으로.
-파일 이름은 '분류_제목.txt'.
-메모에 언제 쓰는지와 준비 조건(파일 첨부 / 폴더 연결 / 캘린더 연결 등)을 적어줘. 개인정보는 ○○로 바꿔줘.</div></div>
+  <div class="box"><div class="bar"><span>프롬프트 8-1 — 네 칸으로 다듬기</span></div>
+<div class="txt">오늘 이 대화에서 결과가 좋았던 내 부탁 하나를 골라서
+[역할] [할 일] [조건] [결과 모양] 네 칸으로 다듬어 보여줘.</div></div>
+  <div class="box"><div class="bar"><span>프롬프트 8-2 — TXT로 저장</span></div>
+<div class="txt">좋아, 프롬프트 폴더의 다른 TXT와 같은 모양으로 분류_제목.txt로 저장해줘.
+메모에 언제 쓰는지와 준비 조건(폴더 연결 등)을 적고, 개인정보는 ○○로 바꿔줘.</div></div>
   <div class="ex">서류_서류 이름 정리.txt 를 저장했어요.
-제목: 서류 이름 정리
-분류: 서류
-만든 날: 2026-11-07
----
 [역할] 꼼꼼한 사무 보조
-[할 일] 폴더의 서류를 열어 보고 '날짜_종류_내용'으로 이름을 바꾸고 종류별 폴더로 나눠 줘.
+[할 일] 폴더의 서류를 '날짜_종류_내용'으로 이름 바꾸고 종류별로 나눠 줘.
 [조건] 먼저 원본 백업 / 바꾸기 전 목록 보여 주기 / 지우지 않기
-[결과 모양] 원래 이름 → 바뀐 이름 표
----
-메모: 서류 폴더가 지저분할 때 / 준비: 내 컴퓨터 폴더 연결 필요</div>
-  <div class="tip">📌 좋은 프롬프트의 네 칸 — <b>역할 · 할 일 · 조건 · 결과 모양</b>. 2차시에는 이 네 칸을 <b>자동으로 채워 주는 스킬</b>을 가져와 씁니다.</div>
+[결과 모양] 원래 이름 → 바뀐 이름 표</div>
+  <div class="tip">📌 좋은 프롬프트의 네 칸 — <b>역할 · 할 일 · 조건 · 결과 모양</b></div>
 </section>
 
-<section id="s7" data-n="7">
+<section id="s7" data-n="7" data-t="유료 계정 제대로 쓰기">
   <div class="head"><span class="num">7</span><h2>유료 계정 제대로 쓰기</h2><span class="badge pro">유료</span><span class="time">참고 · 집에서</span></div>
-  <p class="one">돈을 내고 쓰는 만큼 <b>아껴 쓰는 법</b>도 알아 둡니다. 이 과정의 폴더 작업·예약 실습은 유료 계정 기준입니다. <b>스킬과 Google Workspace 커넥터는 무료 계정에도 제공</b>되며, 사용 한도·제공 화면은 계정에 따라 다릅니다.</p>
   <table>
-    <tr><th>모델 고르기</th><td><b>Opus</b> — 어렵고 긴 일 / <b>Sonnet</b> — 대부분의 일 / <b>Haiku</b> — 짧고 빠른 일</td></tr>
-    <tr><th>사용량</th><td>유료도 <b>몇 시간 단위 한도</b>가 있습니다. 설정 → <b>사용량</b>에서 남은 양을 볼 수 있어요</td></tr>
+    <tr><th>모델 고르기</th><td><b>Opus</b> 어렵고 긴 일 · <b>Sonnet</b> 대부분 · <b>Haiku</b> 짧고 빠른 일</td></tr>
+    <tr><th>사용량</th><td>유료도 한도가 있습니다. 설정 → <b>사용량</b>에서 확인</td></tr>
+    <tr><th>아끼는 법</th><td>주제가 바뀌면 <b>새 작업</b> · 큰 파일은 <b>필요한 부분만</b></td></tr>
   </table>
-  <div class="tip">💡 아껴 쓰는 세 가지 — ① 주제가 바뀌면 <b>새 작업</b>으로 ② 간단한 일은 <b>가벼운 모델</b>로 ③ 큰 파일은 <b>필요한 부분만</b> 읽으라고 말하기</div>
 </section>
 
-<section id="s8" data-n="도전" class="challenge">
-  <div class="head"><span class="num ch">+</span><h2>메모를 할 일 목록으로</h2><span class="badge">도전</span><span class="time">5분</span></div>
-  <p class="only">※ 먼저 끝낸 분만 — 안 해도 다음 시간에 지장 없습니다.</p>
-  <div class="box"><div class="bar"><span>도전 프롬프트</span></div>
-<div class="txt">'메모.txt'에 적힌 할 일을, 정리한 서류와 연결해서 체크리스트로 만들어줘.
-예) '관리비 내기' 옆에 금액과 기한을 붙여줘.
-'할일_체크리스트.txt'로 저장해.</div></div>
+<section id="s8" data-n="도전" class="challenge" data-t="낼 돈 · 할 일 뽑기">
+  <div class="head"><span class="num ch">+</span><h2>서류에서 앞으로 낼 돈 · 할 일 뽑기</h2><span class="badge">도전</span><span class="time">자유</span></div>
+  <p class="only">먼저 끝낸 분만.</p>
+  <div class="box"><div class="bar"><span>도전 1-1 — 낼 돈 표로 보기</span></div>
+<div class="txt">정리한 서류에서 낼 돈을 표로 보여줘.
+칸은 [파일 이름 / 기한 / 항목 / 금액 / 상태 / 근거].
+상태는 납부 대상 / 납부 완료 / 확인 필요.
+납부 증빙이 없으면 완료가 아니라 확인 필요로. _원본백업은 빼고.</div></div>
+  <div class="box"><div class="bar"><span>도전 1-2 — 합계 내고 엑셀로</span></div>
+<div class="txt">납부 대상과 확인 필요 금액을 따로 합계 내고,
+낼돈_정리.xlsx로 저장해줘.</div></div>
+  <div class="box"><div class="bar"><span>도전 2 — 메모를 할 일 목록으로</span></div>
+<div class="txt">메모.txt에 적힌 할 일을, 정리한 서류와 연결해서 체크리스트로 만들어줘.
+예) 관리비 내기 옆에 금액과 기한을 붙여줘.
+할일_체크리스트.txt로 저장해.</div></div>
 </section>
 
-<section id="s9" data-n="퀴즈">
+<section id="s9" data-n="퀴즈" data-t="OX 퀴즈">
   <div class="head"><span class="num y">?</span><h2>오늘의 OX 퀴즈</h2><span class="time">10분</span></div>
   <div class="quiz">
-    <details><summary>수업에서는 실습용 폴더만 연결하고 다른 앱·자료의 권한도 확인한다.</summary>
-      <p><span class="o">O</span> — 연결한 폴더 외에도 커넥터 등으로 접근 권한을 줄 수 있습니다. 오늘은 실습 자료만 맡깁니다.</p></details>
+    <details><summary>코워크에서 내 컴퓨터 폴더를 맡기는 기능은 유료 계정 + 데스크톱 앱에서 된다.</summary>
+      <p><span class="o">O</span> — 웹 채팅은 파일을 첨부해야 하고, 내 폴더를 직접 여는 건 데스크톱 코워크입니다.</p></details>
     <details><summary>파일 정리를 시킬 때는 "백업부터"를 먼저 말하는 게 좋다.</summary>
-      <p><span class="o">O</span> — 원본을 복사해 두면 잘못돼도 되돌릴 수 있습니다.</p></details>
+      <p><span class="o">O</span> — 원본을 복사해 두면 되돌릴 수 있습니다.</p></details>
+    <details><summary>기준 사진을 주면 클로드가 얼굴만 보고 같은 사람을 찾아 준다.</summary>
+      <p><span class="x">X</span> — <b>옷차림·모자 같은 특징</b>을 말해 주면 찾아 줍니다.</p></details>
     <details><summary>결과가 마음에 안 들면 "다시 해줘"라고만 하는 게 가장 빠르다.</summary>
-      <p><span class="x">X</span> — "[어디]를 [어떻게]"로 콕 집어 말해야 원하는 대로 바뀝니다.</p></details>
+      <p><span class="x">X</span> — "[어디]를 [어떻게]"로 콕 집어 말합니다.</p></details>
   </div>
-  <p class="note">공유: 강사가 안내한 우리 반 패들렛 주소를 사용하세요. 주소 안내 전에는 결과를 내 폴더에 저장합니다.</p>
 </section>
 
-<div class="rest">개별 점검 10분 — 막힌 단계 보완 · 결과 저장 · 다음 시간 준비. 먼저 끝낸 분은 선택 도전을 합니다.</div>
+<div class="rest">개별 점검 10분</div>
 <div class="end">
   <h2>오늘 기억할 것 세 줄</h2>
-  <p><b>1.</b> 코워크는 <b>폴더를 맡기면</b> 클로드가 파일을 직접 열고 결과를 <b>파일로 남긴다</b></p>
+  <p><b>1.</b> 코워크는 <b>폴더를 맡기면</b> 파일을 직접 열고 결과를 <b>파일로 남긴다</b></p>
   <p><b>2.</b> 파일을 바꾸기 전에는 <b>백업 → 목록 확인 → 승인</b></p>
-  <p><b>3.</b> 잘 된 부탁은 <b>프롬프트 폴더에 TXT로</b> 모은다</p>
-  <p class="next">📣 다음 시간(11.14) — <b>구글 캘린더</b>를 연결해 일정을 등록하고, 회사에서 많이 쓰는 <b>스킬</b>을 내려받아 저장해 봅니다. <b>구글 계정 비밀번호</b>를 꼭 기억해 오세요.</p>
+  <p><b>3.</b> 프롬프트는 <b>한 줄씩 보태고</b>, 잘 된 부탁은 <b>TXT로</b> 모은다</p>
+  <p class="next">📣 다음 시간(11.14) — <b>구글 캘린더</b> 연결, 도민회사 <b>주간보고 자동화</b>. <b>구글 계정 비밀번호</b>를 꼭 기억해 오세요.</p>
 </div>
 
-<footer>클로드가 내 컴퓨터로 들어옵니다 — 서류 정리부터 나만의 프롬프트 보관함까지 · 1차시 &nbsp;|&nbsp; 제주도민대학 · 강사 강지애</footer>
+<footer>클로드가 내 컴퓨터로 들어옵니다 · 1차시 &nbsp;|&nbsp; 제주도민대학 · 강사 강지애</footer>
 </div>
-<script src="lesson.js"></script>
+<script src="lesson.js?v=1106"></script>
+<script src="desktop-tour.js?v=1106"></script>
 <script src="live.js"></script>
 </body>
 </html>
