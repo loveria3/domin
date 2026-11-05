@@ -297,3 +297,27 @@ footer{margin-top:28px;font-size:12.5px;color:var(--sub);text-align:center}
   .take span::before{content:none!important}
 }
 @media print{body{background:#fff}button,.jump,.dl,.btn,.home{display:none!important}section{page-break-inside:avoid}}
+
+/* 1차시 5번 — 여행사진 폴더 미리보기 */
+.phbox{margin:14px 0 0;border:1px solid var(--line);border-radius:12px;background:var(--card);overflow:hidden}
+.ph-top{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:10px 14px;background:var(--soft);border-bottom:1px solid var(--line);font-size:14.5px}
+.ph-cnt{color:var(--sub);font-size:13.5px}
+.ph-chips{display:flex;flex-wrap:wrap;gap:6px;padding:12px 14px 0}
+.ph-chips button{font:inherit;font-size:14px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 12px;cursor:pointer;color:var(--ink)}
+.ph-chips button.on{background:var(--navy);border-color:var(--navy);color:#fff;font-weight:700}
+.ph-say{margin:6px 14px 0;font-size:13.5px;color:var(--sub)}
+.ph-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px;padding:12px 14px 14px}
+.ph-i{margin:0;transition:opacity .25s,transform .25s}
+.ph-i img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;border:2px solid transparent}
+.ph-i figcaption{margin-top:3px;font-size:12px;line-height:1.35;word-break:break-all}
+.ph-i figcaption b{display:block;font-weight:600;color:var(--ink)}
+.ph-i figcaption i{display:none;font-style:normal;color:var(--sub)}
+.ph-i.ref img{border-color:#f0a040}
+.phbox.filt .ph-i{opacity:.22}
+.phbox.filt .ph-i.hit{opacity:1;transform:translateY(-2px)}
+.phbox.filt .ph-i.hit img{border-color:var(--blue)}
+.phbox.filt .ph-i figcaption i,.ph-i.ref figcaption i{display:block}
+.ph-feat{margin:12px 0 0;padding:12px 16px 12px 34px;background:var(--soft);border-radius:10px;font-size:15px;color:#3e444d}
+.ph-feat li{padding:3px 0;word-break:keep-all}
+.ph-feat b{color:var(--ink);margin-right:4px}
+@media (max-width:560px){.ph-grid{grid-template-columns:repeat(3,1fr);gap:7px}.ph-i figcaption{font-size:11px}}

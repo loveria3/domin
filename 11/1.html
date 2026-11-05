@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>1차시 — 내 컴퓨터에 비서 들이기</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<link rel="stylesheet" href="lesson.css?v=1106">
+<link rel="stylesheet" href="lesson.css?v=1107">
 </head>
 <body class="type-only">
 <div class="wrap">
@@ -228,8 +228,6 @@ _원본백업은 건드리지 말고, 같은 이름이 생기면 물어봐.
     <p class="bt">회사에선 이렇게 — 파일 이름 규칙 <span class="badge biz">업무 활용</span></p>
     <p>회사 이름 규칙(예: <b>20261107_총무팀_회의록_v01</b>)을 <b>스킬</b>로 저장하면 <span class="say">폴더 정리해줘</span> 한마디로 끝납니다. → 2차시</p>
   </div>
-  <h3>되돌리기 연습 — 마지막 5분</h3>
-  <div class="box"><div class="bar"><span>복구 프롬프트</span></div><div class="txt">_원본백업의 [복구할 파일 이름]을 새 복구연습 폴더에 복사해줘. 백업과 정리된 파일은 그대로 두고, 같은 이름이 있으면 덮어쓰지 마.</div></div>
 </section>
 
 <section id="s5" data-n="5" class="key" data-t="여행 사진 나누기">
@@ -239,6 +237,54 @@ _원본백업은 건드리지 말고, 같은 이름이 생기면 물어봐.
     <li><b>여행 사진 22장</b> 내려받기 → 압축 풀기 → <b>여행사진</b> 폴더를 <b>내작업실</b> 안에</li>
     <li>오늘의 <b>'나'</b> = 귤색 모자 + 하늘색 점퍼 (그림으로 만든 가상 사진)</li>
   </ol>
+
+  <div id="phbox" class="phbox">
+    <div class="ph-top"><span>📁 내작업실 › <b>여행사진</b></span><span class="ph-cnt">사진 22장 + 기준 사진 1장</span></div>
+    <div class="ph-chips">
+      <button type="button" data-f="all" class="on">전체</button>
+      <button type="button" data-f="ref">🧢 나(기준)</button>
+      <button type="button" data-f="land">풍경 8</button>
+      <button type="button" data-f="solo">독사진 8</button>
+      <button type="button" data-f="group">단체사진 6</button>
+      <button type="button" data-f="me">내가 나온 사진 8</button>
+      <button type="button" data-f="bad">흐림 · 어두움 4</button>
+      <button type="button" data-f="trap">⚠ 헷갈리는 사진</button>
+    </div>
+    <p class="ph-say">단추를 누르면 그 특징의 사진만 또렷하게 보입니다.</p>
+    <div class="ph-grid">
+    <figure class="ph-i ref" data-c="ref"><img src="img/travel/me-ref.jpg" alt="기준 사진: 귤색 모자, 하늘색 점퍼" loading="lazy"><figcaption><b>_나_기준사진.jpg</b><i>기준 · 나</i></figcaption></figure>
+    <figure class="ph-i" data-c="land"><img src="img/travel/IMG_5101.jpg" alt="풍경: 성산 해돋이" loading="lazy"><figcaption><b>IMG_5101.jpg</b><i>풍경 · 성산 해돋이</i></figcaption></figure>
+    <figure class="ph-i" data-c="land"><img src="img/travel/IMG_5103.jpg" alt="풍경: 성산일출봉" loading="lazy"><figcaption><b>IMG_5103.jpg</b><i>풍경 · 성산일출봉</i></figcaption></figure>
+    <figure class="ph-i" data-c="solo me"><img src="img/travel/IMG_5104.jpg" alt="독사진: 나 · 성산" loading="lazy"><figcaption><b>IMG_5104.jpg</b><i>독사진 · 나 · 성산</i></figcaption></figure>
+    <figure class="ph-i" data-c="solo me bad"><img src="img/travel/IMG_5105.jpg" alt="독사진: 나 · 흔들림" loading="lazy"><figcaption><b>IMG_5105.jpg</b><i>독사진 · 나 · 흔들림</i></figcaption></figure>
+    <figure class="ph-i" data-c="group me"><img src="img/travel/IMG_5120.jpg" alt="단체사진: 3명 · 성산" loading="lazy"><figcaption><b>IMG_5120.jpg</b><i>단체사진 · 3명 · 성산</i></figcaption></figure>
+    <figure class="ph-i" data-c="group me bad"><img src="img/travel/IMG_5121.jpg" alt="단체사진: 3명 · 흐림" loading="lazy"><figcaption><b>IMG_5121.jpg</b><i>단체사진 · 3명 · 흐림</i></figcaption></figure>
+    <figure class="ph-i" data-c="land"><img src="img/travel/IMG_5130.jpg" alt="풍경: 등대 해변" loading="lazy"><figcaption><b>IMG_5130.jpg</b><i>풍경 · 등대 해변</i></figcaption></figure>
+    <figure class="ph-i" data-c="solo"><img src="img/travel/IMG_5131.jpg" alt="독사진: 분홍 옷 친구" loading="lazy"><figcaption><b>IMG_5131.jpg</b><i>독사진 · 분홍 옷 친구</i></figcaption></figure>
+    <figure class="ph-i" data-c="solo me"><img src="img/travel/IMG_5161.jpg" alt="독사진: 나 · 유채꽃" loading="lazy"><figcaption><b>IMG_5161.jpg</b><i>독사진 · 나 · 유채꽃</i></figcaption></figure>
+    <figure class="ph-i" data-c="solo"><img src="img/travel/IMG_5162.jpg" alt="독사진: 초록 옷 친구" loading="lazy"><figcaption><b>IMG_5162.jpg</b><i>독사진 · 초록 옷 친구</i></figcaption></figure>
+    <figure class="ph-i" data-c="group trap"><img src="img/travel/IMG_5170.jpg" alt="단체사진: 3명 · 나 없음" loading="lazy"><figcaption><b>IMG_5170.jpg</b><i>단체사진 · 3명 · 나 없음</i></figcaption></figure>
+    <figure class="ph-i" data-c="land"><img src="img/travel/IMG_5188.jpg" alt="풍경: 한라산 돌담" loading="lazy"><figcaption><b>IMG_5188.jpg</b><i>풍경 · 한라산 돌담</i></figcaption></figure>
+    <figure class="ph-i" data-c="land bad"><img src="img/travel/IMG_5189.jpg" alt="풍경: 한라산 · 흐림" loading="lazy"><figcaption><b>IMG_5189.jpg</b><i>풍경 · 한라산 · 흐림</i></figcaption></figure>
+    <figure class="ph-i" data-c="solo bad"><img src="img/travel/IMG_5199.jpg" alt="독사진: 너무 어두움" loading="lazy"><figcaption><b>IMG_5199.jpg</b><i>독사진 · 너무 어두움</i></figcaption></figure>
+    <figure class="ph-i" data-c="solo"><img src="img/travel/IMG_5215.jpg" alt="독사진: 귤밭 친구" loading="lazy"><figcaption><b>IMG_5215.jpg</b><i>독사진 · 귤밭 친구</i></figcaption></figure>
+    <figure class="ph-i" data-c="group me"><img src="img/travel/IMG_5230.jpg" alt="단체사진: 5명 · 귤밭" loading="lazy"><figcaption><b>IMG_5230.jpg</b><i>단체사진 · 5명 · 귤밭</i></figcaption></figure>
+    <figure class="ph-i" data-c="land"><img src="img/travel/IMG_5240.jpg" alt="풍경: 오름" loading="lazy"><figcaption><b>IMG_5240.jpg</b><i>풍경 · 오름</i></figcaption></figure>
+    <figure class="ph-i" data-c="land"><img src="img/travel/IMG_5241.jpg" alt="풍경: 돌하르방" loading="lazy"><figcaption><b>IMG_5241.jpg</b><i>풍경 · 돌하르방</i></figcaption></figure>
+    <figure class="ph-i" data-c="group trap"><img src="img/travel/IMG_5244.jpg" alt="단체사진: 3명 · 나 없음" loading="lazy"><figcaption><b>IMG_5244.jpg</b><i>단체사진 · 3명 · 나 없음</i></figcaption></figure>
+    <figure class="ph-i" data-c="group me"><img src="img/travel/KakaoTalk_20261004_183010.jpg" alt="단체사진: 4명 · 한라산" loading="lazy"><figcaption><b>KakaoTalk_20261004_183010.jpg</b><i>단체사진 · 4명 · 한라산</i></figcaption></figure>
+    <figure class="ph-i" data-c="land"><img src="img/travel/KakaoTalk_20261005_102233.jpg" alt="풍경: 귤밭" loading="lazy"><figcaption><b>KakaoTalk_20261005_102233.jpg</b><i>풍경 · 귤밭</i></figcaption></figure>
+    <figure class="ph-i" data-c="solo me"><img src="img/travel/KakaoTalk_20261005_150912.jpg" alt="독사진: 나 · 오름" loading="lazy"><figcaption><b>KakaoTalk_20261005_150912.jpg</b><i>독사진 · 나 · 오름</i></figcaption></figure>
+    </div>
+  </div>
+  <ul class="ph-feat">
+    <li><b>🧢 나</b> 귤색 모자 + 하늘색 점퍼. 얼굴이 아니라 <b>옷차림</b>으로 찾아요.</li>
+    <li><b>풍경 · 독사진 · 단체사진</b> 사진 속 사람 수로 나눠요 (0명 · 1명 · 2명 이상).</li>
+    <li><b>흐림</b> 흔들려 번진 사진. 바로 앞의 <b>같은 장면</b> 사진(5104→5105, 5120→5121, 5188→5189)이 더 잘 나왔어요.</li>
+    <li><b>어두움</b> IMG_5199 — 밤처럼 깜깜해요.</li>
+    <li><b>⚠ 헷갈리는 사진</b> 5170 · 5244는 단체사진인데 <b>귤색 모자가 없어요</b> — 내가 찍어 준 사진이에요.</li>
+    <li><b>KakaoTalk_…</b> 카톡으로 받은 사진. 이름이 달라도 같은 여행 사진이에요.</li>
+  </ul>
 
   <div class="box"><div class="bar"><span>프롬프트 4 — 사진 ① 종류부터 보기</span></div>
 <div class="txt">여행사진 폴더의 사진을 한 장씩 보고 표로 정리해줘.
@@ -369,8 +415,13 @@ IMG_5170 · IMG_5244 단체사진에는 귤색 모자가 없어요 — 내가 �
 
 <footer>클로드가 내 컴퓨터로 들어옵니다 · 1차시 &nbsp;|&nbsp; 제주도민대학 · 강사 강지애</footer>
 </div>
-<script src="lesson.js?v=1106"></script>
-<script src="desktop-tour.js?v=1106"></script>
+<script src="lesson.js?v=1107"></script>
+<script>(function(){var b=document.getElementById('phbox');if(!b)return;
+[].forEach.call(b.querySelectorAll('.ph-chips button'),function(c){c.onclick=function(){var f=c.getAttribute('data-f');
+[].forEach.call(b.querySelectorAll('.ph-chips button'),function(x){x.classList.toggle('on',x===c);});
+b.classList.toggle('filt',f!=='all');
+[].forEach.call(b.querySelectorAll('.ph-i'),function(p){p.classList.toggle('hit',f!=='all'&&(' '+p.getAttribute('data-c')+' ').indexOf(' '+f+' ')>-1);});};});})();</script>
+<script src="desktop-tour.js?v=1107"></script>
 <script src="live.js"></script>
 </body>
 </html>
