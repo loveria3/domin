@@ -121,7 +121,9 @@
 
   @media(max-width:600px){h1{font-size:22px}h2{font-size:18px}.txt{font-size:14px}
     .time{margin-left:0}.vs{grid-template-columns:1fr}section{padding:16px 15px}}
-  @media print{body{background:#fff}button,.jump,.dl,.btn,.home{display:none!important}section{page-break-inside:avoid}}
+  .pdfdl{float:right;font-size:13px;font-weight:700;text-decoration:none;color:#fff;background:var(--navy);border-radius:20px;padding:5px 14px;margin:-2px 0 8px 10px}
+  .pdfdl:hover{background:#16294a}
+  @media print{body{background:#fff}button,.jump,.dl,.btn,.home,.pdfdl{display:none!important}section{page-break-inside:avoid}}
   /* 1안·2안 바꾸기 */
   .plan{display:flex;gap:8px;margin:14px 0 0}
   .plan a{flex:1;text-align:center;text-decoration:none;border:2px solid var(--navy);border-radius:10px;padding:10px 8px;color:var(--navy);font-weight:700;font-size:15px;background:#fff}
@@ -138,6 +140,7 @@
 </head>
 <body>
 <div class="wrap">
+<a class="pdfdl" href="files/lesson4-gyul.pdf" download="4차시_2안_감귤_교안.pdf">📄 교안 PDF 받기</a>
 <a class="home" href="index.html">← 자료실 처음으로</a>
 <header>
   <p class="kicker">4차시 · 2026. 10. 23.(금) 18:00~20:00 · 2안</p>

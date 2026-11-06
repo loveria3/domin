@@ -59,7 +59,7 @@
     'body.lv-teacher .lv-u{cursor:pointer}',
     'body.lv-teacher .lv-u:hover{outline:2px dashed #f2a3a5;outline-offset:3px}',
     '@media(max-width:600px){#lv-top .t{font-size:13px}#lv-top button{padding:6px 4px;font-size:13px}#lv-go{right:12px;bottom:14px;padding:10px 16px;font-size:14px}}',
-    '@media print{#lv-top,#lv-go,#lv-tc,#lv-toc{display:none!important}body{padding-top:0}}'
+    '@media print{#lv-top,#lv-go,#lv-tc,#lv-toc{display:none!important}body{padding-top:0}.lv-u.lv-now{box-shadow:none!important;background:none!important}.lv-u.lv-now::before{display:none!important}}'
   ].join('\n');
   document.head.appendChild(css);
 

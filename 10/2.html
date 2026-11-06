@@ -121,12 +121,15 @@
 
   @media(max-width:600px){h1{font-size:22px}h2{font-size:18px}.txt{font-size:14px}
     .time{margin-left:0}.vs{grid-template-columns:1fr}section{padding:16px 15px}}
-  @media print{body{background:#fff}button,.jump,.dl,.btn,.home{display:none!important}section{page-break-inside:avoid}}
+  .pdfdl{float:right;font-size:13px;font-weight:700;text-decoration:none;color:#fff;background:var(--navy);border-radius:20px;padding:5px 14px;margin:-2px 0 8px 10px}
+  .pdfdl:hover{background:#16294a}
+  @media print{body{background:#fff}button,.jump,.dl,.btn,.home,.pdfdl{display:none!important}section{page-break-inside:avoid}}
   .helplink{display:inline-block;margin-left:6px;font-weight:700;color:var(--navy);white-space:nowrap}
 </style>
 </head>
 <body>
 <div class="wrap">
+<a class="pdfdl" href="files/lesson2.pdf" download="2차시_교안.pdf">📄 교안 PDF 받기</a>
 <a class="home" href="index.html">← 자료실 처음으로</a>
 <header>
   <p class="kicker">2차시 · 2026. 10. 14.(수) 18:00~20:00</p>
