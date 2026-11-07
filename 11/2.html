@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>2차시 — 일정 비서와 주간보고 자동화</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<link rel="stylesheet" href="lesson.css?v=1110">
+<link rel="stylesheet" href="lesson.css?v=1114">
 </head>
 <body class="type-only">
 <div class="wrap">
@@ -17,34 +17,33 @@
   <div class="toprow">
     <a class="btn y" href="files/domin-company.zip" download>도민회사 업무자료 ↓</a>
     <a class="btn y" href="skills/domin-weekly-report.zip" download>주간보고 스킬 ↓</a>
-    <a class="btn line" href="files/domin-week3.zip" download>3주차 자료 ↓</a>
-    <a class="btn line" href="skills/prompt-maker.zip" download>프롬프트 생성기 스킬 ↓</a>
     <a class="btn line" href="skills.html" target="_blank" rel="noopener">스킬 · 커넥터 안내서 ↗</a>
   </div>
 </header>
 
-<div class="hook">
-  <p class="q">단톡방 공지에 날짜가 세 개. 달력에 옮겨 적다가 하나쯤 빠뜨린 적 있지요?</p>
-  <p>오늘은 공지를 붙여 넣으면 <b>구글 캘린더에 직접 등록</b>하고, 금요일 <b>주간보고</b>를 회사 양식대로 <b>시키지 않아도</b> 써 두게 만듭니다.</p>
-  <div class="take"><span>오늘 가져갈 것</span><span>📅 캘린더 일정 3개</span><span>📊 도민회사 주간보고(워드)</span><span>⏰ 매주 금요일 자동 보고</span></div>
-</div>
-
-<div class="pro"><span class="badge pro">데스크톱 · 유료</span> <b>오늘의 기능 — 예약 작업이 내 폴더를 읽는다.</b> 정해진 시간에 클로드가 내 컴퓨터 폴더 자료로 보고서를 써 둡니다. (7번)</div>
-<nav class="jump">
-  <a href="#s-set">설정</a><a href="#s0">0</a><a href="#s1">1</a><a href="#s2">2</a><a href="#s3">3</a><a href="#s4">4</a>
-  <a href="#s5">5</a><a href="#s6">6</a><a href="#s7">7</a><a href="#s8">8</a><a href="#s9">도전</a><a href="#s10">퀴즈</a>
-</nav>
-
 <section id="s-set" data-n="설정" data-t="설정 한 바퀴">
-  <div class="head"><span class="num y">⚙</span><h2>수업 전 설정 한 바퀴 — 메뉴마다 무엇이 있나</h2><span class="time">7분</span></div>
-  <p class="one">왼쪽 아래 <b>내 이름 → 설정</b>. 메뉴가 많지만 <b>오늘 만질 곳은 ⭐ 4군데</b>뿐입니다.</p>
+  <div class="head"><span class="num y">⚙</span><h2>수업 전 설정 한 바퀴</h2><span class="time">5분</span></div>
+  <p class="one">왼쪽 아래 <b>내 이름 → 설정</b>. 오늘 확인할 곳은 <b>4군데</b>뿐입니다.</p>
   <ul class="chk">
-    <li>⭐ <b>기능 → 클라우드에서 코드 실행</b> 켜짐 — 꺼져 있으면 <b>스킬이 안 돌아요</b> (5번)</li>
-    <li>⭐ <b>사용자 지정 → 커넥터</b> — 구글 캘린더를 여기서 잇습니다 (2번)</li>
-    <li>⭐ <b>사용자 지정 → Skills</b> — 주간보고 스킬을 여기에 올립니다 (5번)</li>
-    <li>⭐ <b>이 컴퓨터 → 시스템 → 컴퓨터 절전 모드 방지</b> 켜짐 — 금요일 4시에 컴퓨터가 잠들면 예약 작업이 못 돌아요 (7번)</li>
+    <li>① <b>기능 → 클라우드에서 코드 실행</b> 켜짐 — 꺼져 있으면 <b>스킬이 안 돌아요</b> (5번)</li>
+    <li>② <b>사용자 지정 → 커넥터</b> — 구글 캘린더를 여기서 잇습니다 (2번)</li>
+    <li>③ <b>사용자 지정 → Skills</b> — 주간보고 스킬을 여기에 올립니다 (5번)</li>
+    <li>④ <b>이 컴퓨터 → 시스템 → 컴퓨터 절전 모드 방지</b> 켜짐 — 금요일 4시에 컴퓨터가 잠들면 예약 작업이 못 돌아요 (7번)</li>
   </ul>
 
+  <div class="shots">
+    <figure class="mark"><div class="pic"><img src="img/settings-features.png" alt="설정 - 기능 화면" loading="lazy">
+      <span class="mk" style="left:1.5%;top:38.2%;width:16.6%;height:4.2%"><i>1</i></span>
+      <span class="mk" style="left:22.1%;top:90%;width:75.5%;height:7.8%"><i>1</i></span></div>
+      <figcaption><b>① 기능</b> → 아래로 내려 <b>클라우드에서 코드 실행</b> 스위치가 파랗게 켜져 있는지</figcaption></figure>
+    <figure class="mark"><div class="pic"><img src="img/settings-system.png" alt="설정 - 시스템 화면" loading="lazy">
+      <span class="mk" style="left:1.6%;top:75.1%;width:16.5%;height:4.1%"><i>3</i></span>
+      <span class="mk" style="left:1.6%;top:79.4%;width:16.5%;height:4.1%"><i>2</i></span>
+      <span class="mk" style="left:1.6%;top:56.3%;width:16.5%;height:4.2%"><i>4</i></span>
+      <span class="mk" style="left:21.7%;top:52.6%;width:76.4%;height:9.3%"><i>4</i></span></div>
+      <figcaption><b>②③ Skills · 커넥터</b>는 왼쪽 아래 '사용자 지정'에 · <b>④ 시스템 → 컴퓨터 절전 모드 방지</b> 켜짐</figcaption></figure>
+  </div>
+  <details class="more"><summary>설정 메뉴 전체 설명 펼치기</summary>
   <h3>환경설정 — 내 계정에 붙는 설정 (어느 컴퓨터에서나 같음)</h3>
   <table>
     <tr><th>일반</th><td>내 이름(클로드가 부를 이름), 화면 밝기·글자 등 기본 모양</td></tr>
@@ -66,6 +65,9 @@
     <tr><th>확장 프로그램</th><td>데스크톱 앱에 더한 추가 도구 목록</td></tr>
     <tr><th>개발자</th><td>개발자용 고급 설정 — 만지지 않습니다</td></tr>
   </table>
+  <figure class="mark" style="margin-top:12px"><div class="pic"><img src="img/settings-computer.png" alt="설정 - 시스템 화면 아래쪽 컴퓨터 사용" loading="lazy">
+    <span class="mk" style="left:22.2%;top:63.6%;width:75.2%;height:8.4%"></span></div>
+    <figcaption>시스템 화면을 내리면 나오는 <b>컴퓨터 사용(베타)</b> — 3차시에 켭니다</figcaption></figure>
 
   <h3>사용자 지정 — 클로드에게 능력 보태기</h3>
   <table>
@@ -78,8 +80,23 @@
   <table>
     <tr><th>API 키</th><td>프로그램을 직접 만드는 개발자용 (따로 결제) — 우리는 안 씁니다</td></tr>
   </table>
+  </details>
   <p class="warnnote">⚠ 모르는 스위치는 끄지도 켜지도 말고 그대로 두세요. 화면은 앱 버전마다 조금씩 다를 수 있어요.</p>
 </section>
+
+<div class="hook">
+  <p class="q">단톡방 공지에 날짜가 세 개. 달력에 옮겨 적다가 하나쯤 빠뜨린 적 있지요?</p>
+  <p>오늘은 공지를 붙여 넣으면 <b>구글 캘린더에 직접 등록</b>하고, 금요일 <b>주간보고</b>를 회사 양식대로 <b>시키지 않아도</b> 써 두게 만듭니다.</p>
+  <div class="take"><span>오늘 가져갈 것</span><span>📅 캘린더 일정 3개</span><span>📊 도민회사 주간보고(워드)</span><span>⏰ 매주 금요일 자동 보고</span></div>
+</div>
+
+<div class="pro"><span class="badge pro">데스크톱 · 유료</span> <b>오늘의 기능 — 예약 작업이 내 폴더를 읽는다.</b> 정해진 시간에 클로드가 내 컴퓨터 폴더 자료로 보고서를 써 둡니다. (7번)</div>
+<div class="tip">🧭 <b>보는 법</b> — 번호 단계는 모두 함께 합니다. 점선 상자 <b>⚡ 이미 쓰는 분</b>은 클로드를 회사에서 쓰고 계신 분이 <b>기다리는 동안 해 보는 한 걸음 더</b>입니다.</div>
+<nav class="jump">
+  <a href="#s-set">설정</a><a href="#s0">0</a><a href="#s1">1</a><a href="#s2">2</a><a href="#s3">3</a><a href="#s4">4</a>
+  <a href="#s5">5</a><a href="#s6">6</a><a href="#s7">7</a><a href="#s8">8</a><a href="#s9">도전</a><a href="#s10">퀴즈</a>
+</nav>
+
 
 <section id="s0" data-n="0" data-t="보관함에서 꺼내 쓰기">
   <div class="head"><span class="num y">0</span><h2>보관함에서 꺼내 쓰기 — 오늘의 첫 부탁</h2><span class="time">3분</span></div>
@@ -103,6 +120,9 @@
     <p><b>Gmail</b> 답장 필요한 메일 추리기 · <b>Drive</b> 작년 계획서 찾아 비교 · <b>Slack·Notion</b> 회의 결정 요약</p>
     <a class="more" href="skills.html#mcp">회사용 커넥터 전체 표 보기 →</a>
   </div>
+  <div class="adv"><p class="at">회사 시스템과 잇기</p>
+    <p>회사 프로그램이 MCP 서버를 제공하면 <b>사용자 지정 → 커넥터 → 사용자 정의 커넥터</b>에 주소를 넣어 연결합니다. 권한·보안은 <b>IT 담당자와 먼저</b>.</p>
+  </div>
 </section>
 
 <section id="s2" data-n="2" data-t="구글 캘린더 연결">
@@ -119,7 +139,7 @@
 </section>
 
 <section id="s3" data-n="3" class="key" data-t="메모에서 일정 등록">
-  <div class="head"><span class="num">3</span><h2>모임 메모에서 일정 뽑아 등록하기</h2><span class="badge hot">핵심</span><span class="time">12분</span></div>
+  <div class="head"><span class="num">3</span><h2>모임 메모에서 일정 뽑아 등록하기</h2><span class="badge hot">핵심</span><span class="time">10분</span></div>
   <p class="one">클로드가 날짜를 찾아 <b>먼저 보여 주고</b>, 내가 확인한 뒤에 등록합니다.</p>
   <div class="box"><div class="bar"><span>프롬프트 1-1 — 일정만 뽑아 표로</span></div>
 <div class="txt">아래 공지에서 날짜가 있는 일정만 뽑아서 표로 보여줘.
@@ -143,6 +163,12 @@
   <ul class="chk">
     <li>휴대폰 구글 캘린더에서 보이는지</li>
   </ul>
+  <div class="adv"><p class="at">커넥터 두 개 같이 쓰기</p>
+    <p>지메일 커넥터도 연결했다면, 메일 속 약속과 캘린더를 맞춰 봅니다.</p>
+    <div class="box"><div class="bar"><span>⚡ 메일 × 캘린더</span></div>
+<div class="txt">지메일에서 최근 2주 동안 받은 메일 중 날짜·시간이 적힌 회의 요청이나 약속을 찾아
+내 구글 캘린더와 겹치거나 빠진 것만 표로 보여줘. 등록은 하지 마.</div></div>
+  </div>
 </section>
 
 <div class="rest">☕ 쉬는 시간 10분</div>
@@ -209,6 +235,18 @@
     <p class="bt">우리 회사 규칙으로 바꾸려면 <span class="badge biz">업무 활용</span></p>
     <p>회사 <b>규칙 문서 + 양식</b>을 주고 <span class="say">이 규칙대로 주간보고 스킬을 만들어 업로드용 zip으로 저장해줘</span> 팀 전체가 같은 양식으로 맞춰집니다.</p>
   </div>
+  <div class="biz">
+    <p class="bt">엑셀 여러 개를 맞춰 보는 일이라면 <span class="badge biz">업무 활용</span></p>
+    <p>단가표 · 출고내역 · <b>세금계산서 발행목록</b>을 서로 대조해 단가 · 수량 · 세액 · 사업자번호 · 중복 · 누락을 검사하고, <b>확정 단가표</b>까지 새 엑셀로. 원본은 그대로.</p>
+    <a class="more" href="excel-check.html" target="_blank" rel="noopener">엑셀 대조 · 검증 따라 하기 (연습 자료 + 스킬) →</a>
+  </div>
+  <div class="adv"><p class="at">스킬에 계산 코드 넣기</p>
+    <p>스킬 폴더에는 SKILL.md 말고도 <b>스크립트 · 양식 · 참고 파일</b>을 함께 넣을 수 있어요. 숫자 계산을 코드로 고정하면 매번 같은 답이 나옵니다.</p>
+    <div class="box"><div class="bar"><span>⚡ 검산 스크립트가 든 스킬</span></div>
+<div class="txt">domin-weekly-report 스킬에, 실적 엑셀에서 주간 매출·달성률·전주 대비를 계산하는 파이썬 스크립트를 함께 넣어줘.
+보고서를 쓰기 전에 항상 그 스크립트로 숫자를 다시 계산하고, 결과가 다르면 멈추고 알려 주게.
+원본은 두고 my-weekly-report-check라는 새 스킬 zip으로 저장해줘.</div></div>
+  </div>
 </section>
 
 <section id="s6" data-n="6" data-t="스킬에 규칙 보태기">
@@ -227,6 +265,12 @@ zip 안 폴더 이름은 스킬 이름과 같게, 설명은 150자 이내로.</d
     <li>새 작업에서 프롬프트 2-1 → 2-2를 스킬 이름만 <b>my-weekly-report</b>로 바꿔 다시</li>
   </ol>
   <div class="ex">이번 주 한 줄 요약: 기획전 오픈으로 매출 +10.0%, 농협 단가 회신 11/19까지</div>
+  <div class="adv"><p class="at">스킬이 제때 불리는지 시험</p>
+    <p>클로드는 스킬의 <b>설명(description)</b>만 보고 꺼낼지 정합니다. 설명이 애매하면 엉뚱할 때 불리거나 안 불려요.</p>
+    <div class="box"><div class="bar"><span>⚡ 설명 점검</span></div>
+<div class="txt">my-weekly-report 스킬이 불려야 하는 부탁 3개와 불리면 안 되는 부탁 3개를 만들어,
+지금 설명으로 잘 구분되는지 따져 보고 더 나은 설명(200자 이내)을 제안해줘.</div></div>
+  </div>
 </section>
 
 <section id="s7" data-n="7" class="key" data-t="금요일 주간보고 예약">
@@ -251,11 +295,19 @@ zip 안 폴더 이름은 스킬 이름과 같게, 설명은 150자 이내로.</d
     <p class="bt">회사에선 이렇게 — 예약 작업 아이디어 <span class="badge biz">업무 활용</span></p>
     <p>매일 9시 <b>답할 메일 목록</b> · 매주 금요일 <b>주간보고 초안</b> · 매월 1일 <b>실적 요약</b></p>
   </div>
+  <div class="adv"><p class="at">자동으로 돌 때를 대비한 규칙</p>
+    <p>사람이 안 보는 사이에 도는 작업은 <b>자료가 없거나 이상할 때</b> 어떻게 할지 정해 둬야 합니다.</p>
+    <div class="box"><div class="bar"><span>⚡ 예외 규칙 보태기</span></div>
+<div class="txt">이 예약 작업에 규칙을 보태줘.
+그 주 업무일지가 3개보다 적거나 실적 엑셀에 그 주 매출이 없으면 보고서를 쓰지 말고 '자료 부족 — 확인 필요' 메모만 남기기.
+매출이 지난주보다 20% 넘게 오르거나 내리면 결과 화면 맨 위에 경고로 표시하기.</div></div>
+  </div>
 </section>
 
 <section id="s8" data-n="8" data-t="프롬프트 생성기">
   <div class="head"><span class="num">8</span><h2>프롬프트 생성기 써 보기</h2><span class="time">8분</span></div>
   <p class="one">대충 말해도 <b>네 칸</b>을 채운 프롬프트로 바꿔 <b>프롬프트 폴더에 저장</b>합니다. 먼저 <b>prompt-maker.zip</b>을 ②와 같은 순서로 올리세요.</p>
+  <a class="btn line" href="skills/prompt-maker.zip" download>프롬프트 생성기 스킬 ↓</a>
   <div class="box"><div class="bar"><span>프롬프트 5 — 써 보기</span></div>
 <div class="txt">프롬프트 만들어줘. <span class="ph">[다음 주에 거래처에 견적서 늦어진다고 사과하는 메일]</span></div></div>
   <div class="ex">[역할] 정중한 영업 담당자
@@ -264,6 +316,11 @@ zip 안 폴더 이름은 스킬 이름과 같게, 설명은 150자 이내로.</d
 [결과 모양] 제목과 본문이 있는 메일 1통</div>
   <div class="box"><div class="bar"><span>프롬프트 6 — 오늘 프롬프트 모으기</span></div>
 <div class="txt">오늘 프롬프트 저장해줘. 일정 등록한 것과 주간보고 예약 작업 만든 것, 두 개를 다른 모임·회사에도 쓸 수 있게 다듬어서.</div></div>
+  <div class="adv"><p class="at">팀에 퍼뜨리기</p>
+    <div class="box"><div class="bar"><span>⚡ 팀 배포 안내문</span></div>
+<div class="txt">오늘 만든 my-weekly-report 스킬을 팀원에게 나눠 주려고 해.
+설치 순서, 시험 프롬프트 2개, 자주 막히는 곳을 담은 한 장짜리 안내문을 워드로 만들어줘.</div></div>
+  </div>
 </section>
 
 <section id="s9" data-n="도전" class="challenge" data-t="도전 과제">
@@ -280,10 +337,13 @@ zip 안 폴더 이름은 스킬 이름과 같게, 설명은 150자 이내로.</d
 차주 계획 칸에 다음 주 일정을 보태줘. 캘린더에만 있는 일은 (캘린더) 표시. 캘린더는 읽기만 해.</div></div>
   <h3>도전 3 — 다음 주 자료가 쌓이면?</h3>
   <ol class="step">
-    <li><b>3주차 자료</b> 압축 풀기 → 내작업실 <b>도민회사</b> 폴더에 합치기 (같은 이름은 <b>바꾸기</b>)</li>
+    <li><a href="files/domin-week3.zip" download><b>3주차 자료 ↓</b></a> 압축 풀기 → 내작업실 <b>도민회사</b> 폴더에 합치기 (같은 이름은 <b>바꾸기</b>)</li>
     <li>예약된 작업에서 <b>지금 실행</b> → <b>11/16~11/20</b> 보고서가 생기는지</li>
     <li>리뷰 이벤트가 이번엔 <b>[완료]</b>로 바뀌었는지</li>
+    <li>매출 <b>11,870,000원</b> · 달성률 <b>95.0%</b> · 전주 대비 <b>−0.5%</b> · 광고 클릭 1,912 / 전환 42 / 400,000원</li>
   </ol>
+  <h3>도전 4 — 엑셀 세 개 대조해서 틀린 곳 6군데 찾기</h3>
+  <p class="one">세금계산서 · 단가 업무를 하는 분께 추천. <a href="excel-check.html" target="_blank" rel="noopener"><b>엑셀 대조 · 검증 페이지 ↗</b></a></p>
 </section>
 
 <section id="s10" data-n="퀴즈" data-t="OX 퀴즈">
@@ -311,7 +371,7 @@ zip 안 폴더 이름은 스킬 이름과 같게, 설명은 150자 이내로.</d
 
 <footer>클로드가 내 컴퓨터로 들어옵니다 · 2차시 &nbsp;|&nbsp; 제주도민대학 · 강사 강지애</footer>
 </div>
-<script src="lesson.js?v=1110"></script>
+<script src="lesson.js?v=1114"></script>
 <script src="live.js"></script>
 </body>
 </html>

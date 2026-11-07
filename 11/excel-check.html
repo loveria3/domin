@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>엑셀 대조 검증</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="lesson.css?v=1114">
+</head>
+<body class="type-only">
+<div class="wrap">
+<a class="home" href="2.html#s5">← 2차시로 돌아가기</a>
+<header>
+  <p class="kicker">참고 자료 · 2차시 스킬 응용 · 회사 업무</p>
+  <h1>엑셀 여러 개를 <em>대조 · 검증</em>하기</h1>
+  <p class="sub">단가표 · 출고내역 · 세금계산서 발행목록을 서로 맞춰 보고, 틀린 곳과 확정 단가를 새 엑셀로 받습니다.</p>
+  <div class="toprow">
+    <a class="btn y" href="files/tax-invoice-practice.zip" download>연습 자료 (가상 거래 엑셀 3개) ↓</a>
+    <a class="btn y" href="skills/excel-crosscheck.zip" download>엑셀 대조 스킬 ↓</a>
+  </div>
+</header>
+
+<div class="hook">
+  <p class="q">발행한 세금계산서 중에 지난달 단가로 나간 건이 있는지, 매달 눈으로 한 줄씩 맞춰 보고 계신가요?</p>
+  <p>클로드는 여러 엑셀을 <b>동시에 열어 줄마다 잇고</b>, 단가 · 수량 · 세액 · 사업자번호 · 중복 · 누락을 검사합니다. <b>원본은 그대로</b>, 결과는 근거 수식이 든 <b>새 엑셀</b>로.</p>
+  <div class="take"><span>이 페이지에서</span><span>🧰 쓸 수 있는 기능</span><span>🧾 연습: 틀린 곳 6군데</span><span>💼 업무 활용 6가지</span></div>
+</div>
+
+<nav class="jump">
+  <a href="#s1">기능</a><a href="#s2">연습</a><a href="#s3">활용</a><a href="#s4">주의</a>
+</nav>
+
+<section id="s1" data-n="1" data-t="쓸 수 있는 기능">
+  <div class="head"><span class="num">1</span><h2>엑셀 검증에 쓰는 기능</h2><span class="time">3분</span></div>
+  <table>
+    <tr><th>기본 엑셀 기능</th><td>설정 → 기능 → <b>클라우드에서 코드 실행</b>을 켜면 들어 있는 공식 엑셀(xlsx) 스킬. 수식 · 서식을 지키며 엑셀을 만들고 고치고, 수식 오류(#REF!, #DIV/0! 등)가 없는지 <b>다시 계산해서 확인</b>합니다.</td></tr>
+    <tr><th>⭐ 엑셀 대조 스킬</th><td>강사가 만든 <b>excel-crosscheck</b>. 여러 파일을 잇는 순서, 검사 항목 8가지, 결과 시트 4개(요약 · 불일치 · 확정단가 · 추가발행목록)가 정해져 있어 <b>매달 같은 방식</b>으로 검사합니다.</td></tr>
+    <tr><th>폴더 맡기기 (1차시)</th><td>코워크에 업무 폴더를 맡기면 파일을 하나씩 올리지 않아도 됩니다.</td></tr>
+    <tr><th>예약 작업 (2차시)</th><td>매달 정해진 날에 검사를 저절로 돌려 결과 엑셀을 폴더에 둡니다.</td></tr>
+  </table>
+  <div class="tip">🧾 세금계산서 <b>발행 자체</b>는 홈택스나 회사 프로그램에서 사람이 합니다. 클로드는 <b>발행 전 점검</b>과 <b>발행할 목록 준비</b>를 맡습니다.</div>
+</section>
+
+<section id="s2" data-n="2" class="key" data-t="연습 틀린 곳 찾기">
+  <div class="head"><span class="num">2</span><h2>연습 — 11월 발행목록에서 틀린 곳 찾기</h2><span class="badge hot">따라 하기</span><span class="time">15분</span></div>
+  <p class="one">(주)도민회사가 감귤 상품을 거래처 4곳에 팔았습니다. <b>출고내역이 기준</b>, 발행목록에 틀린 곳이 숨어 있어요. (모두 가상의 회사 · 번호)</p>
+  <ol class="step">
+    <li><b>연습 자료</b> 압축 풀기 → <b>11월_거래자료</b> 폴더를 <b>내작업실</b> 안에</li>
+    <li><b>엑셀 대조 스킬</b>은 zip 그대로 → <b>사용자 지정 → Skills → ＋ → 스킬 업로드</b></li>
+  </ol>
+  <div class="box"><div class="bar"><span>프롬프트 1 — 무엇과 무엇을 잇나 먼저</span></div>
+<div class="txt">excel-crosscheck 스킬로 11월_거래자료 폴더를 검증하려고 해.
+어떤 파일이 기준이고 어떤 파일을 검사하는지, 서로 잇는 열이 무엇인지만 표로 보여줘. 아직 검사하지 마.</div></div>
+  <div class="ex">기준: 출고내역_11월.xlsx (출고번호) · 단가표.xlsx (거래처+품목+적용기간)
+검사: 세금계산서_발행목록_11월.xlsx — 출고번호로 잇기</div>
+  <div class="box"><div class="bar"><span>프롬프트 2 — 검사하고 결과 엑셀로</span></div>
+<div class="txt">좋아, 검사해줘. 원본은 고치지 말고 검증결과_202611.xlsx로 저장해줘.
+화면에는 문제 건수와 금액 차이가 큰 것 3개만.</div></div>
+  <div class="box"><div class="bar"><span>프롬프트 3 — 단가 확정 · 추가 발행 준비</span></div>
+<div class="txt">확정단가 시트에서 11월에 바뀐 단가를 알려주고,
+빠진 발행 건은 추가발행목록 시트에 홈택스에 옮겨 적기 좋게 정리해줘.</div></div>
+  <ul class="chk">
+    <li>검증결과 엑셀의 <b>불일치</b> 시트에서 셀을 눌러 <b>수식</b>이 보이는지</li>
+    <li>원본 3개 파일은 <b>수정한 날짜</b>가 그대로인지</li>
+  </ul>
+  <details class="ans"><summary>정답 보기 — 틀린 곳 6군데</summary>
+    <table>
+      <tr><th>단가</th><td>S1112 한라마트 감귤 11/18 — 11/16부터 <b>22,000원</b>인데 21,000원 (공급가액 30,000원 적음)</td></tr>
+      <tr><th>수량</th><td>S1105 한라마트 한라봉 — 출고 <b>10</b>상자인데 12상자로 발행</td></tr>
+      <tr><th>세액</th><td>S1107 제주푸드 감귤즙 — 412,500원의 10%는 <b>41,250원</b>인데 41,000원</td></tr>
+      <tr><th>사업자번호</th><td>S1113 서귀포하나로마트 — 616-82-0731<b>7</b> (검증번호 안 맞음, 맞는 번호 …07314)</td></tr>
+      <tr><th>중복</th><td>S1109 서귀포하나로마트 — 같은 출고로 <b>두 번</b> 발행 (T-2611-009 · 010)</td></tr>
+      <tr><th>누락</th><td>S1116 서귀포하나로마트 감귤 24상자 11/24 — <b>발행 안 됨</b></td></tr>
+    </table>
+  </details>
+</section>
+
+<section id="s3" data-n="3" data-t="업무 활용 6가지">
+  <div class="head"><span class="num">3</span><h2>회사에선 이렇게 — 업무 활용 6가지</h2><span class="time">5분</span></div>
+  <div class="dlgrid">
+    <div class="dlc"><span class="k">발행 전</span><h4>🧾 월말 발행 전 점검</h4><p>출고 · 납품내역과 발행 예정 목록을 맞춰 <b>누락 · 중복 · 단가</b>를 미리 거릅니다. 수정발행할 일이 줄어요.</p></div>
+    <div class="dlc"><span class="k">단가 확정</span><h4>📌 이번 달 확정 단가표</h4><p>계약서 · 단가 변경 메일을 근거로 <b>거래처 × 품목 × 기간</b>별 단가표를 만들고, 바뀐 단가에 표시.</p></div>
+    <div class="dlc"><span class="k">발행 후</span><h4>🔁 홈택스 내역과 내 장부 대조</h4><p>홈택스에서 내려받은 발행 · 수취 목록 엑셀과 회사 장부를 승인번호 · 금액으로 맞춰 차이만 뽑습니다.</p></div>
+    <div class="dlc"><span class="k">수금</span><h4>💰 입금 내역 맞추기</h4><p>통장 입금 엑셀과 발행 목록을 거래처 · 금액으로 이어 <b>미수금 · 과입금</b>을 정리합니다.</p></div>
+    <div class="dlc"><span class="k">자동으로</span><h4>⏰ 매달 정해진 날 검사</h4><p>예약 작업으로 매월 말일 오후에 검사를 돌려 결과 엑셀을 폴더에. 월합계 발행은 <b>다음 달 10일까지</b>라 그 전에 확인.</p></div>
+    <div class="dlc"><span class="k">회사 규칙</span><h4>🛠 우리 회사 스킬로 고치기</h4><p>스킬에 우리 회사 열 이름 · 원 단위 처리 · 거래처 예외를 보태 두면 누가 검사해도 같은 결과.</p></div>
+  </div>
+  <div class="box"><div class="bar"><span>우리 회사용으로 바꾸기</span></div>
+<div class="txt">excel-crosscheck 스킬을 우리 회사에 맞게 고쳐줘.
+열 이름은 <span class="ph">[납품번호, 납품일, 업체명]</span>, 세액 원 단위는 <span class="ph">[반올림]</span>,
+<span class="ph">[○○상사는 월합계 발행]</span> 규칙을 보태서 my-crosscheck라는 새 스킬 zip으로 저장해줘.</div></div>
+  <div class="box"><div class="bar"><span>매달 자동 점검 예약</span></div>
+<div class="txt">예약 작업을 만들어줘. 매월 <span class="ph">[말일 오후 3시]</span>(한국 시간)에 내작업실/<span class="ph">[거래자료]</span> 폴더를
+my-crosscheck 스킬로 검사해서 검증결과 엑셀을 같은 폴더에 저장. 원본은 고치지 말고, 메일로 보내지 마.</div></div>
+</section>
+
+<section id="s4" data-n="4" data-t="주의할 점">
+  <div class="head"><span class="num">4</span><h2>주의할 점</h2><span class="time">2분</span></div>
+  <ul class="chk">
+    <li><b>회사 규정 먼저</b> — 거래처 · 금액 자료를 외부 AI에 올려도 되는지 확인. 연습은 가상 자료로</li>
+    <li><b>원본 복사본</b>으로 작업 — 결과는 항상 새 파일</li>
+    <li><b>발행 · 취소 · 수정발행은 사람이</b> — 클로드 결과는 제안</li>
+    <li><b>금액이 큰 차이</b>는 원본 엑셀을 직접 열어 한 번 더</li>
+    <li>세액 원 단위 처리 · 발행 기한 같은 <b>세무 기준은 회사 · 세무 담당자 기준</b>을 따름</li>
+  </ul>
+</section>
+
+<footer>클로드가 내 컴퓨터로 들어옵니다 — 엑셀 대조 · 검증 &nbsp;|&nbsp; 제주도민대학 · 강사 강지애</footer>
+</div>
+<script src="lesson.js?v=1114"></script>
+<script src="live.js"></script>
+</body>
+</html>
