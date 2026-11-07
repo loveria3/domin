@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>2차시 — 일정 비서와 주간보고 자동화</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<link rel="stylesheet" href="lesson.css?v=1109">
+<link rel="stylesheet" href="lesson.css?v=1110">
 </head>
 <body class="type-only">
 <div class="wrap">
@@ -31,9 +31,55 @@
 
 <div class="pro"><span class="badge pro">데스크톱 · 유료</span> <b>오늘의 기능 — 예약 작업이 내 폴더를 읽는다.</b> 정해진 시간에 클로드가 내 컴퓨터 폴더 자료로 보고서를 써 둡니다. (7번)</div>
 <nav class="jump">
-  <a href="#s0">0</a><a href="#s1">1</a><a href="#s2">2</a><a href="#s3">3</a><a href="#s4">4</a>
+  <a href="#s-set">설정</a><a href="#s0">0</a><a href="#s1">1</a><a href="#s2">2</a><a href="#s3">3</a><a href="#s4">4</a>
   <a href="#s5">5</a><a href="#s6">6</a><a href="#s7">7</a><a href="#s8">8</a><a href="#s9">도전</a><a href="#s10">퀴즈</a>
 </nav>
+
+<section id="s-set" data-n="설정" data-t="설정 한 바퀴">
+  <div class="head"><span class="num y">⚙</span><h2>수업 전 설정 한 바퀴 — 메뉴마다 무엇이 있나</h2><span class="time">7분</span></div>
+  <p class="one">왼쪽 아래 <b>내 이름 → 설정</b>. 메뉴가 많지만 <b>오늘 만질 곳은 ⭐ 4군데</b>뿐입니다.</p>
+  <ul class="chk">
+    <li>⭐ <b>기능 → 클라우드에서 코드 실행</b> 켜짐 — 꺼져 있으면 <b>스킬이 안 돌아요</b> (5번)</li>
+    <li>⭐ <b>사용자 지정 → 커넥터</b> — 구글 캘린더를 여기서 잇습니다 (2번)</li>
+    <li>⭐ <b>사용자 지정 → Skills</b> — 주간보고 스킬을 여기에 올립니다 (5번)</li>
+    <li>⭐ <b>이 컴퓨터 → 시스템 → 컴퓨터 절전 모드 방지</b> 켜짐 — 금요일 4시에 컴퓨터가 잠들면 예약 작업이 못 돌아요 (7번)</li>
+  </ul>
+
+  <h3>환경설정 — 내 계정에 붙는 설정 (어느 컴퓨터에서나 같음)</h3>
+  <table>
+    <tr><th>일반</th><td>내 이름(클로드가 부를 이름), 화면 밝기·글자 등 기본 모양</td></tr>
+    <tr><th>계정</th><td>로그인한 이메일, 로그아웃, 계정 삭제</td></tr>
+    <tr><th>개인정보보호</th><td><b>모델 개선</b> 스위치 — 끄면 내 대화를 학습에 안 씀</td></tr>
+    <tr><th>결제</th><td>요금제(Pro·Max), 결제 카드, 구독 해지</td></tr>
+    <tr><th>사용량</th><td>이번 사용 한도가 <b>얼마나 남았는지</b>, 언제 다시 채워지는지</td></tr>
+    <tr><th>⭐ 기능</th><td>클로드가 쓸 수 있는 도구 켜고 끄기 — <b>아티팩트</b>(옆 창 결과물) · <b>채팅 내 시각화</b>(차트·그림) · <b>클라우드에서 코드 실행</b>(파일 만들기·스킬에 필요) · 커넥터 검색</td></tr>
+    <tr><th>메모리</th><td>클로드가 지난 대화에서 기억한 내용 보기·지우기</td></tr>
+    <tr><th>디자인 시스템</th><td>내 색·글꼴 같은 디자인 규칙 모음 (디자인 기능용)</td></tr>
+    <tr><th>회고 · 시간 및 집중</th><td>새로 생긴 메뉴 — 오늘은 건너뜁니다</td></tr>
+    <tr><th>Claude Code · Cowork</th><td>코드 화면과 코워크 화면의 세부 설정 (1차시에 쓴 코워크)</td></tr>
+    <tr><th>Claude in Chrome</th><td>크롬 확장 프로그램으로 클로드가 브라우저를 대신 조작</td></tr>
+  </table>
+
+  <h3>이 컴퓨터 — 지금 이 PC에만 해당</h3>
+  <table>
+    <tr><th>⭐ 시스템</th><td>앱 버전 · <b>시작 시 실행</b> · 빠른 입력 <b>Ctrl+Alt+Space</b> · 음성 입력 <b>Ctrl+D</b> · 시스템 트레이 · <b>컴퓨터 절전 모드 방지</b> · 저장 공간 · 브라우저 사용 · <b>컴퓨터 사용(베타)</b>와 <b>거부된 앱</b> (3차시)</td></tr>
+    <tr><th>확장 프로그램</th><td>데스크톱 앱에 더한 추가 도구 목록</td></tr>
+    <tr><th>개발자</th><td>개발자용 고급 설정 — 만지지 않습니다</td></tr>
+  </table>
+
+  <h3>사용자 지정 — 클로드에게 능력 보태기</h3>
+  <table>
+    <tr><th>⭐ Skills</th><td>업무 매뉴얼(스킬) 올리기·켜고 끄기</td></tr>
+    <tr><th>⭐ 커넥터</th><td>캘린더·지메일·드라이브 등 다른 프로그램과 잇는 출입증</td></tr>
+    <tr><th>플러그인</th><td>스킬·커넥터 등을 한데 묶은 꾸러미</td></tr>
+  </table>
+
+  <h3>플랫폼</h3>
+  <table>
+    <tr><th>API 키</th><td>프로그램을 직접 만드는 개발자용 (따로 결제) — 우리는 안 씁니다</td></tr>
+  </table>
+  <p class="warnnote">⚠ 모르는 스위치는 끄지도 켜지도 말고 그대로 두세요. 화면은 앱 버전마다 조금씩 다를 수 있어요.</p>
+</section>
 
 <section id="s0" data-n="0" data-t="보관함에서 꺼내 쓰기">
   <div class="head"><span class="num y">0</span><h2>보관함에서 꺼내 쓰기 — 오늘의 첫 부탁</h2><span class="time">3분</span></div>
@@ -110,6 +156,7 @@
     <tr><td><b>정하는 것</b></td><td><b>어디에</b> 닿나</td><td><b>어떻게</b> 일하나</td><td><b>언제</b> 일하나</td></tr>
     <tr><td><b>오늘</b></td><td colspan="3">폴더 + <b>회사 양식 스킬</b> + <b>매주 금요일 4시</b> = <b>주간보고가 저절로</b></td></tr>
   </table>
+  <div class="tip">🎨 그림·포스터·카드뉴스를 만들 땐? <a href="image-skills.html" target="_blank" rel="noopener"><b>이미지 추천 스킬 10가지 보기 ↗</b></a></div>
 </section>
 
 <section id="s5" data-n="5" class="key" data-t="도민회사 주간보고 스킬">
@@ -264,7 +311,7 @@ zip 안 폴더 이름은 스킬 이름과 같게, 설명은 150자 이내로.</d
 
 <footer>클로드가 내 컴퓨터로 들어옵니다 · 2차시 &nbsp;|&nbsp; 제주도민대학 · 강사 강지애</footer>
 </div>
-<script src="lesson.js?v=1109"></script>
+<script src="lesson.js?v=1110"></script>
 <script src="live.js"></script>
 </body>
 </html>
