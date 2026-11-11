@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>더치페이 계산기 (아티팩트 예시)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F6F8; --surface:#FFFFFF; --ink:#14232B; --muted:#5B6B73;
+  --accent:#1F6F8B; --accent-ink:#FFFFFF; --line:#D5E0E5; --focus:#E0A100;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1A20; --surface:#17252D; --ink:#E6EEF2; --muted:#9AAEB8;
+    --accent:#6FC1DB; --accent-ink:#0F1A20; --line:#2A3C46; --focus:#F2C14E;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1A20; --surface:#17252D; --ink:#E6EEF2; --muted:#9AAEB8;
+  --accent:#6FC1DB; --accent-ink:#0F1A20; --line:#2A3C46; --focus:#F2C14E;
+  color-scheme:dark;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Noto Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  line-height:1.6}
+main{max-width:30rem;margin:0 auto;padding:2rem 1.25rem 3rem}
+.note{font-size:.9rem;color:var(--muted);border-left:3px solid var(--accent);padding:.1rem 0 .1rem .85rem;margin:0 0 2rem}
+h1{font-size:1.6rem;line-height:1.3;margin:0 0 1.5rem;font-weight:700}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.25rem}
+label{display:block;font-weight:500;margin-bottom:.4rem}
+input[type=number]{width:100%;font:inherit;font-size:1.1rem;padding:.7rem .85rem;border-radius:10px;
+  border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+input:focus-visible,button:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.field{margin-bottom:1.1rem}
+.stepper{display:flex;align-items:center;gap:.75rem}
+.stepper button{width:2.75rem;height:2.75rem;border-radius:50%;border:1px solid var(--line);
+  background:var(--bg);color:var(--ink);font-size:1.3rem;cursor:pointer}
+.stepper button:active{background:var(--accent);color:var(--accent-ink)}
+.stepper output{min-width:3.5rem;text-align:center;font-size:1.2rem;font-weight:700}
+.check{display:flex;gap:.6rem;align-items:center;font-weight:400;margin:0}
+.check input{width:1.15rem;height:1.15rem;accent-color:var(--accent)}
+.result{margin-top:1.25rem;padding:1.25rem;border-radius:14px;background:var(--accent);color:var(--accent-ink)}
+.result small{display:block;opacity:.85}
+.result strong{display:block;font-size:2.2rem;line-height:1.2;font-weight:700}
+.result p{margin:.5rem 0 0;font-size:.9rem;opacity:.9}
+html.embed main{padding:1rem 1rem 1.25rem}
+html.embed .note{margin-bottom:1rem}
+html.embed h1{font-size:1.3rem;margin-bottom:.9rem}
+</style>
+<script>if(/[?&]embed/.test(location.search))document.documentElement.classList.add('embed');</script>
+</head>
+<body>
+<main>
+  <p class="note">지금 보고 있는 이 화면이 아티팩트예요. 대화 안에서 바로 열리는 작은 앱이고, 직접 눌러서 써볼 수 있어요.</p>
+  <h1>더치페이 계산기</h1>
+  <div class="card">
+    <div class="field">
+      <label for="total">총 금액 (원)</label>
+      <input id="total" type="number" inputmode="numeric" min="0" step="100" value="87000">
+    </div>
+    <div class="field">
+      <label id="plabel">인원</label>
+      <div class="stepper" role="group" aria-labelledby="plabel">
+        <button type="button" id="minus" aria-label="인원 줄이기">−</button>
+        <output id="people" aria-live="polite">4명</output>
+        <button type="button" id="plus" aria-label="인원 늘리기">+</button>
+      </div>
+    </div>
+    <label class="check"><input type="checkbox" id="round" checked> 100원 단위로 올림</label>
+  </div>
+  <div class="result" aria-live="polite">
+    <small>한 사람당</small>
+    <strong id="each">0원</strong>
+    <p id="extra"></p>
+  </div>
+</main>
+<script>
+(function(){
+  var total=document.getElementById('total'), people=document.getElementById('people'),
+      round=document.getElementById('round'), each=document.getElementById('each'),
+      extra=document.getElementById('extra'), n=4;
+  var fmt=function(v){return Math.round(v).toLocaleString('ko-KR')+'원';};
+  function update(){
+    var t=Math.max(0,parseFloat(total.value)||0);
+    var per=t/n;
+    if(round.checked) per=Math.ceil(per/100)*100;
+    people.textContent=n+'명';
+    each.textContent=fmt(per);
+    var diff=per*n-t;
+    extra.textContent=diff>0?'올림으로 '+fmt(diff)+' 더 모여요.':'딱 맞게 나눠져요.';
+  }
+  document.getElementById('minus').onclick=function(){if(n>1){n--;update();}};
+  document.getElementById('plus').onclick=function(){if(n<30){n++;update();}};
+  total.addEventListener('input',update);
+  round.addEventListener('change',update);
+  update();
+})();
+</script>
+</body>
+</html>

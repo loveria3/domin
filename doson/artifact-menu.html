@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>아티팩트 화면 둘러보기 — 2차시</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root{--ink:#1f2328;--sub:#5f6873;--line:#e3e6ea;--bg:#f6f5f1;--navy:#1f3864;--soft:#eef1f7;--pin:#e8590c;--yellow:#F2C230;--red:#c0392b}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.6;font-family:"Pretendard","Malgun Gothic","맑은 고딕",-apple-system,sans-serif}
+  .wrap{max-width:1040px;margin:0 auto;padding:28px 16px 70px}
+  .home{font-size:13px;font-weight:700;color:var(--sub);text-decoration:none}
+  header{border-bottom:3px solid var(--navy);padding-bottom:12px;margin:10px 0 16px}
+  .kicker{font-size:13px;font-weight:700;color:var(--navy);margin:0 0 4px}
+  h1{font-size:27px;margin:0;letter-spacing:-.03em}
+  h1 em{font-style:normal;color:var(--pin)}
+  .sub{font-size:15px;color:var(--sub);margin:6px 0 0}
+  section{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin:14px 0}
+  h2{font-size:20px;margin:0 0 4px;letter-spacing:-.02em}
+  .hint{font-size:14px;color:var(--sub);margin:0}
+  .fig{position:relative;margin:12px 0 0;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .fig img{display:block;width:100%;height:auto}
+  .pin{position:absolute;transform:translate(-50%,-50%);width:28px;height:28px;border-radius:50%;
+    background:var(--pin);color:#fff;font-size:14px;font-weight:800;border:2px solid #fff;
+    box-shadow:0 2px 6px rgba(0,0,0,.35);cursor:pointer;display:grid;place-items:center;font-family:inherit;padding:0}
+  .pin.on{background:var(--navy);transform:translate(-50%,-50%) scale(1.25);z-index:3;outline:3px solid var(--yellow)}
+  ol.legend{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px}
+  ol.legend li{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:8px;padding:10px 12px;cursor:pointer}
+  ol.legend li.on{border-color:var(--navy);background:var(--soft)}
+  ol.legend .n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--pin);color:#fff;font-size:13px;font-weight:800;display:grid;place-items:center}
+  ol.legend li.on .n{background:var(--navy)}
+  ol.legend .t{font-size:16px;font-weight:800;display:block}
+  ol.legend .d{font-size:14px;color:var(--sub);display:block}
+  table{width:100%;border-collapse:collapse;margin:10px 0 0;font-size:15.5px}
+  th,td{border:1px solid var(--line);padding:9px 12px;text-align:left}
+  th{background:var(--soft);color:var(--navy);white-space:nowrap;width:150px}
+  tr.dim td,tr.dim th{color:#9aa0a6}
+  tr.del th{color:var(--red)}
+  .tip{font-size:15px;background:#fff8e1;border-radius:8px;padding:12px 16px;margin:12px 0 0}
+  .back{display:inline-block;margin-top:18px;background:var(--navy);color:#fff;text-decoration:none;border-radius:6px;padding:10px 18px;font-weight:700}
+  footer{margin-top:26px;font-size:12px;color:var(--sub);text-align:center}
+  @media(max-width:600px){.pin{width:22px;height:22px;font-size:11px}th{width:auto;white-space:normal}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="home" href="2.html#s1">← 2차시 교안으로 돌아가기</a>
+<header>
+  <p class="kicker">2차시 · 1번 보조 자료</p>
+  <h1>아티팩트 화면 <em>둘러보기</em></h1>
+  <p class="sub">오른쪽에 뜬 아티팩트, 윗줄 단추가 무엇을 하는지 번호로 알아봐요.</p>
+</header>
+
+<section>
+  <h2>번호를 눌러 보세요</h2>
+  <p class="hint">그림의 번호나 아래 설명을 누르면 서로 표시됩니다.</p>
+  <div class="fig" id="fig">
+    <img src="img/artifact-menu.png" alt="클로드 대화 화면 오른쪽에 더치페이 계산기 아티팩트가 열리고, 제목 메뉴가 펼쳐진 모습">
+  </div>
+  <ol class="legend" id="legend"></ol>
+</section>
+
+<section>
+  <h2>④ 제목 ▾ 메뉴 안에는</h2>
+  <table>
+    <tr><th>링크 복사</th><td>다른 사람에게 보낼 <b>주소</b> 복사 — 2차시 5번에서 씁니다</td></tr>
+    <tr><th>내보내기</th><td><b>파일</b>로 내 컴퓨터에 받기 (윗줄 내보내기 단추와 같아요)</td></tr>
+    <tr><th>고정</th><td>왼쪽 '아티팩트' 목록 <b>맨 위</b>에 붙여 두기</td></tr>
+    <tr><th>이름 변경</th><td>제목 바꾸기 — 나중에 찾기 쉽게</td></tr>
+    <tr><th>복제</th><td><b>사본</b> 만들기 — 원본은 두고 따로 고쳐 볼 때</td></tr>
+    <tr><th>새로고침</th><td>화면이 멈추거나 하얗게 나올 때</td></tr>
+    <tr class="dim"><th>아티팩트 설치 · 피드백 보내기</th><td>오늘은 쓰지 않아요</td></tr>
+    <tr class="del"><th>삭제</th><td>빨간 글씨 — <b>되돌릴 수 없어요.</b> 누르지 않기</td></tr>
+  </table>
+  <div class="tip">💡 고치고 싶은 곳은 메뉴가 아니라 <b>대화창에 말로</b> — "글씨만 크게 해줘. 나머지는 그대로."</div>
+</section>
+
+<a class="back" href="2.html#s1">← 교안 1번으로 돌아가기</a>
+<footer>클로드로 만드는 내 일상 · 마음에도순 · 2차시 보조 자료 &nbsp;|&nbsp; 제주도민대학 열린강의실 · 강사 강지애</footer>
+</div>
+<script>
+/* 번호 위치는 그림 크기에 대한 % (가로 1637 × 세로 848 캡처 기준) */
+var P=[
+  {x:21.2,y:26.2,t:'대화 속 카드',d:'누르면 오른쪽에 다시 열려요. 아래 「나만」은 아직 나만 볼 수 있다는 뜻.'},
+  {x:96.5,y:49.5,t:'아티팩트 화면',d:'직접 눌러서 써 보는 곳 — 인원·금액을 바꾸면 바로 계산돼요.'},
+  {x:81.6,y:2.9,t:'제목 ▾',d:'누르면 아래 메뉴가 펼쳐져요.'},
+  {x:64.1,y:23.6,t:'메뉴',d:'링크 복사 · 내보내기 · 이름 변경 · 복제 · 삭제 등 — 아래 표 참고.'},
+  {x:89.9,y:7.3,t:'내보내기',d:'파일로 내 컴퓨터에 받기 — 2차시 5번 ②, 4차시에 씁니다.'},
+  {x:93.9,y:8.6,t:'💬 댓글 ▾',d:'아티팩트에 댓글(메모) 남기기. 옆 ▾ → 「모든 댓글 보기」로 남긴 댓글 모아 보기.'},
+  {x:96.8,y:14.2,t:'⤢ 크게 보기',d:'아티팩트만 화면 가득. 다시 누르면 원래대로.'},
+  {x:98.2,y:8.6,t:'✕ 닫기',d:'오른쪽 화면만 닫혀요. 없어지지 않아요 — ① 카드를 누르면 다시 열림.'},
+  {x:8.6,y:19.9,t:'왼쪽 「아티팩트」',d:'내가 만든 아티팩트를 모아 보는 곳. 지난 수업 것도 여기서 찾기.'}
+];
+(function(){
+  var fig=document.getElementById('fig'),lg=document.getElementById('legend'),pins=[],items=[];
+  P.forEach(function(p,i){
+    var b=document.createElement('button');b.type='button';b.className='pin';b.textContent=i+1;
+    b.style.left=p.x+'%';b.style.top=p.y+'%';b.setAttribute('aria-label',(i+1)+'. '+p.t);
+    b.onclick=function(){sel(i,true);};fig.appendChild(b);pins.push(b);
+    var li=document.createElement('li');
+    li.innerHTML='<span class="n">'+(i+1)+'</span><span><span class="t"></span><span class="d"></span></span>';
+    li.querySelector('.t').textContent=p.t;li.querySelector('.d').textContent=p.d;
+    li.onclick=function(){sel(i,false);};lg.appendChild(li);items.push(li);
+  });
+  function sel(i,fromPin){
+    pins.forEach(function(b,k){b.classList.toggle('on',k===i);});
+    items.forEach(function(li,k){li.classList.toggle('on',k===i);});
+    if(fromPin)items[i].scrollIntoView({block:'nearest',behavior:'smooth'});
+    else fig.scrollIntoView({block:'nearest',behavior:'smooth'});
+  }
+})();
+</script>
+</body>
+</html>

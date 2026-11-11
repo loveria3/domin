@@ -125,3 +125,47 @@ footer{margin-top:26px;font-size:12px;color:var(--sub);text-align:center}
 .jump{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
 .jump::-webkit-scrollbar{display:none}
 .jump a{flex:0 0 auto}
+
+/* 강사 화면 크게 보기 · 수강생 화면 직접 쳐 보기 (type-only 차시, 10월 교안과 같은 방식) */
+button.zm{background:var(--blue);color:#fff;border:0;border-radius:4px;padding:6px 14px;
+  font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap}
+.bar .btns{display:flex;gap:6px}
+body.s-type .box .bar span::after{content:" · 직접 쳐 보세요 ⌨";color:var(--sub);font-weight:600}
+body.s-type .box .txt{-webkit-user-select:none;user-select:none}
+#zoom{position:fixed;inset:0;z-index:999;background:#fff;display:none;flex-direction:column}
+#zoom.on{display:flex}
+#zoom .zbar{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#f0f3f8;border-bottom:1px solid var(--line)}
+#zoom .zbar b{flex:1;min-width:0;font-size:20px;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#zoom .zbar button{background:var(--navy);color:#fff;border:0;border-radius:6px;padding:8px 16px;
+  font-size:18px;font-weight:700;cursor:pointer;font-family:inherit}
+#zoom .zbar button.x{background:#c0392b}
+#zoom .ztxt{flex:1;overflow:auto;padding:28px 40px;font-size:40px;line-height:1.6;
+  white-space:pre-wrap;word-break:keep-all;color:#111}
+#zoom .ztxt .ph{color:var(--blue);font-weight:700}
+
+/* 아티팩트 성공 화면 그림 예시 (1차시 1번 · setup.html) */
+.amock{margin:12px 0 0;border:1px solid #d9dde3;border-radius:10px;overflow:hidden;background:#fff;font-size:13px;position:relative}
+.amock .am-tag{position:absolute;top:6px;right:10px;font-size:11px;color:#8a9099}
+.amock .am-body{display:grid;grid-template-columns:1fr 1fr}
+.amock .am-chat{padding:14px;border-right:1px solid #e3e6ea;background:#fbfbfa;display:flex;flex-direction:column;gap:8px}
+.amock .am-me{align-self:flex-end;background:#eef1f7;border-radius:10px;padding:6px 10px;max-width:90%}
+.amock .am-ai{color:#3e444d}
+.amock .am-chip{display:flex;align-items:center;gap:8px;border:3px solid #e8590c;border-radius:8px;background:#f3f2ee;padding:7px 10px;font-weight:700}
+.amock .am-chip small{display:block;font-weight:400;color:#8a9099;font-size:11px}
+.amock .am-art{display:flex;flex-direction:column}
+.amock .am-head{display:flex;justify-content:space-between;align-items:center;padding:7px 10px;border-bottom:1px solid #e3e6ea;font-weight:700;color:#3e444d}
+.amock .am-head span:last-child{font-weight:400;color:#8a9099}
+.amock .am-card{flex:1;margin:12px;border:3px solid #e8590c;border-radius:10px;background:linear-gradient(135deg,#fff3d6,#ffe0e9);display:grid;place-items:center;text-align:center;padding:18px 8px;min-height:120px}
+.amock .am-card b{font-size:24px;color:#1f3864;display:block}
+.amock .am-card small{color:#5f6873}
+.amock .am-cap{display:flex;gap:6px;flex-wrap:wrap;padding:8px 12px;border-top:1px solid #e3e6ea;background:#fff8e1;font-size:13.5px;font-weight:700;color:#5c4a0a}
+.amock .am-cap .k{background:#e8590c;color:#fff;border-radius:4px;padding:0 6px}
+@media(max-width:600px){.amock .am-body{grid-template-columns:1fr}.amock .am-chat{border-right:0;border-bottom:1px solid #e3e6ea}}
+
+.amock .am-calc{background:#fff;border-color:#e8590c}
+.amock .am-calc b{font-size:28px;color:#fff;background:#1f6f8b;border-radius:8px;padding:4px 14px;margin:6px 0}
+.amock.real{border:0;background:none}
+.amock.real img{display:block;width:100%;border:1px solid #d9dde3;border-radius:10px}
+
+.amock .am-live{flex:1;width:100%;min-height:590px;border:3px solid #e8590c;border-radius:0 0 8px 8px;background:#F2F6F8;display:block}
+@media(max-width:600px){.amock .am-live{min-height:640px}}
