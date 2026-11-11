@@ -130,8 +130,8 @@ footer{margin-top:26px;font-size:12px;color:var(--sub);text-align:center}
 button.zm{background:var(--blue);color:#fff;border:0;border-radius:4px;padding:6px 14px;
   font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap}
 .bar .btns{display:flex;gap:6px}
-body.s-type .box .bar span::after{content:" · 직접 쳐 보세요 ⌨";color:var(--sub);font-weight:600}
-body.s-type .box .txt{-webkit-user-select:none;user-select:none}
+body.s-type .box:not(.cp-ok) .bar span::after{content:" · 직접 쳐 보세요 ⌨";color:var(--sub);font-weight:600}
+body.s-type .box:not(.cp-ok) .txt{-webkit-user-select:none;user-select:none}
 #zoom{position:fixed;inset:0;z-index:999;background:#fff;display:none;flex-direction:column}
 #zoom.on{display:flex}
 #zoom .zbar{display:flex;align-items:center;gap:8px;padding:10px 18px;background:#f0f3f8;border-bottom:1px solid var(--line)}
@@ -169,3 +169,21 @@ body.s-type .box .txt{-webkit-user-select:none;user-select:none}
 
 .amock .am-live{flex:1;width:100%;min-height:590px;border:3px solid #e8590c;border-radius:0 0 8px 8px;background:#F2F6F8;display:block}
 @media(max-width:600px){.amock .am-live{min-height:640px}}
+
+/* 1차시 0번 — 일상 속 AI 예시 카드 */
+.ai-ex{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0 0}
+.ai-ex div{background:var(--soft);border-radius:8px;padding:10px 12px;font-size:14px;color:#3e444d}
+.ai-ex b{display:block;font-size:15.5px;color:var(--navy);margin-bottom:2px}
+.ai-ex .me{background:var(--cream);border:2px solid var(--yellow)}
+@media(max-width:700px){.ai-ex{grid-template-columns:1fr 1fr}}
+
+/* 눌러서 보여 주기 (1차시 0번 AI 뜻) */
+details.reveal{margin:10px 0 0;border:2px dashed var(--navy);border-radius:10px;background:#fff}
+details.reveal summary{cursor:pointer;list-style:none;padding:14px 16px;font-size:18px;font-weight:700;color:var(--navy)}
+details.reveal summary::-webkit-details-marker{display:none}
+details.reveal summary span{font-size:14px;font-weight:600;color:var(--sub);margin-left:6px}
+details.reveal[open]{border-style:solid;background:var(--cream)}
+details.reveal[open] summary span{display:none}
+details.reveal .one{margin:0;padding:0 16px 14px}
+
+body.s-type .box.cp-ok .bar span::after{content:" · 길어서 복사 OK";color:var(--ok);font-weight:600}

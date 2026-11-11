@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>1차시 — 클로드에게 말 걸기</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<link rel="stylesheet" href="lesson.css?v=20261111b">
+<link rel="stylesheet" href="lesson.css?v=20261111e">
 </head>
 <body class="type-only">
 <div class="wrap">
@@ -27,9 +27,24 @@
 </div>
 
 <nav class="jump">
-  <a href="#s1">1</a><a href="#s2">2</a><a href="#s3">3</a><a href="#s4">4</a><a href="#s5">5</a>
+  <a href="#s0">0</a><a href="#s1">1</a><a href="#s2">2</a><a href="#s3">3</a><a href="#s4">4</a><a href="#s5">5</a>
   <a href="#s6">6</a><a href="#s7">7</a><a href="#s8">8</a><a href="#s9">9</a><a href="#s10">도전</a><a href="#s11">퀴즈</a>
 </nav>
+
+<section id="s0" data-n="0">
+  <div class="head"><span class="num y">0</span><h2>AI란? — 1분 이론</h2><span class="time">3분</span></div>
+  <details class="reveal">
+    <summary><b>AI</b>는 무슨 뜻일까요? <span>👆 눌러서 확인</span></summary>
+    <p class="one"><b>AI</b>(Artificial Intelligence) = <b>인공지능</b> — 직역하면 <b>"사람이 만든 지능"</b>.<br>컴퓨터가 사람처럼 <b>배우고 · 이해하고 · 판단하고 · 문제를 푸는</b> 것을 흉내 내도록 만든 기술입니다.</p>
+  </details>
+  <div class="ai-ex">
+    <div><b>🗣 음성 비서</b>말을 알아듣고 대답</div>
+    <div><b>📺 추천</b>유튜브가 좋아할 영상을 골라 줌</div>
+    <div><b>🗺 길찾기 · 자율주행</b>교통을 보고 빠른 길 안내</div>
+    <div class="me"><b>💬 대화형 챗봇</b>물으면 사람처럼 답함 ← <b>오늘 배울 클로드!</b></div>
+  </div>
+  <div class="tip">💡 <b>Artificial</b> = "사람이 만든(인공)". 곧 보게 될 <b>아티팩트(Artifact)</b>도 같은 뿌리로, <b>"만들어 낸 것 = 인공물 · 결과물"</b>이라는 뜻이에요.</div>
+</section>
 
 <section id="s1" data-n="1">
   <div class="head"><span class="num">1</span><h2>가입하고 기본 설정 맞추기</h2><span class="time">15분</span></div>
@@ -49,7 +64,7 @@
 <div class="txt">더치페이 계산기를 아티팩트로 만들어줘.
 총 금액과 인원을 넣으면 한 사람당 얼마인지 크게 보여 주고,
 100원 단위로 올림하는 선택 칸도 넣어줘.</div></div>
-  <p class="one">보내면 이런 화면이 나와요 👇</p>
+  <p class="one">보내면 오른쪽에 <b>아티팩트</b>(클로드가 만들어 낸 결과물)가 나와요 👇</p>
   <div class="amock">
     <span class="am-tag">예시 화면 · 오른쪽은 진짜로 눌러져요</span>
     <div class="am-body">
@@ -90,7 +105,7 @@
     <li>오른쪽 아래 <b>＋</b> 누르기</li>
     <li>제목에 <b>내 이름(별명)</b>, 본문에 아래 자기소개 붙여넣기 → <b>게시</b></li>
   </ol>
-  <div class="box"><div class="bar"><span>프롬프트 3 — 자기소개, 클로드에게 맡기기</span></div>
+  <div class="box cp-ok"><div class="bar"><span>프롬프트 3 — 자기소개, 클로드에게 맡기기</span></div>
 <div class="txt">수업 게시판에 올릴 내 자기소개를 3줄로 써줘. 재밌고 따뜻하게, 이모지는 두 개만.
 - 불러 줬으면 하는 이름: <span class="ph">[도순 귤 언니]</span>
 - 좋아하는 것: <span class="ph">[오름 걷기, 믹스커피]</span>
@@ -127,7 +142,7 @@
 받아서 신어 보니 사이즈가 조금 작아 255mm로 교환하고 싶습니다.
 상품은 착용하지 않았고 포장도 그대로 보관 중입니다.
 교환 절차와 반송 방법을 안내해 주시면 감사하겠습니다.</div>
-  <div class="box"><div class="bar"><span>프롬프트 5 — 귤 주문 안내</span></div>
+  <div class="box cp-ok"><div class="bar"><span>프롬프트 5 — 귤 주문 안내</span></div>
 <div class="txt">너는 친절한 귤 농장 주인이야.
 올해 <span class="ph">[노지 감귤]</span> 주문을 받으려고 해. 가격은 <span class="ph">[5kg 2만 원, 10kg 3만 5천 원]</span>, 택배비 포함.
 지인 단톡방에 올릴 주문 안내 글을 써줘. 주문 방법(이름·주소·수량을 문자로)도 넣고, 이모지는 두 개만.</div></div>
@@ -144,12 +159,13 @@
   <p class="one">게시판 안내문, 약 봉투, 고지서 — <b>사진만 찍어 올리면</b> 클로드가 글자를 읽고 정리해 줍니다. 타이핑할 필요가 없어요.</p>
   <h3>① 마을 안내문 → 내 달력용 메모</h3>
   <img class="shot" src="img/notice-kimjang.jpg" alt="도순마을 김장 나눔 잔치 안내문 사진 (가상)" style="max-width:560px">
-  <a class="dl" href="img/notice-kimjang.jpg" download="김장안내문.jpg">이 사진 내려받기</a>
+  <a class="dl" href="img/notice-kimjang.jpg" download="김장안내문.jpg">📥 이 사진 내려받기 ↓</a>
+  <p class="note">💡 휴대폰이면 위 사진을 <b>손가락으로 길게 눌러</b> → <b>이미지 저장</b></p>
   <ol class="step">
     <li>위 사진 내려받기 (휴대폰이면 게시판을 직접 찍었다고 생각하세요)</li>
     <li>입력창 <b>＋</b> → <b>파일 업로드</b> → 사진 고르기 → 아래 프롬프트 붙여넣기</li>
   </ol>
-  <div class="box"><div class="bar"><span>프롬프트 7 — 안내문 사진 읽기</span></div>
+  <div class="box cp-ok"><div class="bar"><span>프롬프트 7 — 안내문 사진 읽기</span></div>
 <div class="txt">이 사진은 우리 마을 게시판 안내문이야.
 글자를 그대로 옮겨 적고, 그 아래에 날짜·시간·장소·준비물·신청 마감을 표로 정리해줘.
 잘 안 보이는 글자는 추측하지 말고 [안 보임] 이라고 써줘.
@@ -162,8 +178,9 @@
 📢 12/5(토) 아침 9시 마을회관 김장 나눔 잔치! 고무장갑·앞치마 챙기기 🧤</div>
   <h3>② 약 봉투 → 먹는 시간표</h3>
   <img class="shot" src="img/medicine-bag.jpg" alt="약 봉투 사진 (가상)" style="max-width:560px">
-  <a class="dl" href="img/medicine-bag.jpg" download="약봉투.jpg">이 사진 내려받기</a>
-  <div class="box"><div class="bar"><span>프롬프트 8 — 약 봉투 읽기</span></div>
+  <a class="dl" href="img/medicine-bag.jpg" download="약봉투.jpg">📥 이 사진 내려받기 ↓</a>
+  <p class="note">💡 휴대폰이면 위 사진을 <b>손가락으로 길게 눌러</b> → <b>이미지 저장</b></p>
+  <div class="box cp-ok"><div class="bar"><span>프롬프트 8 — 약 봉투 읽기</span></div>
 <div class="txt">이 약 봉투 사진을 읽고, 어르신도 알아보기 쉽게 정리해줘.
 1. 하루 중 언제 먹는지 시간표 (아침·점심·저녁, 식후 30분)
 2. 약마다 무슨 약인지 한 줄
@@ -176,7 +193,8 @@
 불빛 색깔을 보고 무엇이 문제인지 알려줘.
 내가 고칠 수 있는 건지, 통신사에 전화해야 하는 건지도 알려줘.</div></div>
   <img class="shot" src="img/router-leds.jpg" alt="인터넷 공유기와 모뎀 불빛 사진" style="max-width:420px">
-  <a class="dl" href="img/router-leds.jpg" download="router-leds.jpg">이 사진 내려받기</a>
+  <a class="dl" href="img/router-leds.jpg" download="router-leds.jpg">📥 이 사진 내려받기 ↓</a>
+  <p class="note">💡 휴대폰이면 위 사진을 <b>손가락으로 길게 눌러</b> → <b>이미지 저장</b></p>
 </section>
 
 <section id="s7" data-n="7" class="key">
@@ -187,7 +205,7 @@
     <li>아래 프롬프트에서 파란 글씨만 바꿔 보내기</li>
   </ol>
   <img class="shot" src="img/setup-websearch.png" alt="입력창 ＋ 메뉴 맨 아래 웹 검색에 체크 표시가 된 화면" style="max-width:380px">
-  <div class="box"><div class="bar"><span>프롬프트 9 — 생활 정보 찾기</span></div>
+  <div class="box cp-ok"><div class="bar"><span>프롬프트 9 — 생활 정보 찾기</span></div>
 <div class="txt">웹에서 찾아서 알려줘.
 <span class="ph">[올해 겨울 독감 예방접종 무료 대상과 기간]</span> 이 궁금해. 나는 <span class="ph">[서귀포시에 사는 66세]</span> 야.
 - 쉽게 5줄로 정리하고
@@ -202,7 +220,7 @@
     <li><b>날짜</b>가 올해 것인지 — 작년 정보일 때가 많아요</li>
     <li>중요한 일(병원·돈·서류)은 <b>전화로 한 번 더</b></li>
   </ul>
-  <div class="box"><div class="bar"><span>프롬프트 10 — 이번 주말 나들이</span></div>
+  <div class="box cp-ok"><div class="bar"><span>프롬프트 10 — 이번 주말 나들이</span></div>
 <div class="txt">웹에서 찾아서, <span class="ph">[이번 주말]</span> <span class="ph">[서귀포]</span> 에서 <span class="ph">[어르신과 아이]</span> 가 함께 갈 만한 행사나 장소 3곳을 알려줘.
 날짜·장소·요금을 표로, 출처 링크를 꼭 붙여줘.</div></div>
   <p class="warnnote">⚠ 클로드는 그럴듯하게 <b>지어낼 때</b>가 있습니다. 링크가 없거나 링크를 눌러도 그 내용이 없으면 믿지 마세요.</p>
@@ -228,7 +246,7 @@
     <li>입력창 <b>＋</b> 또는 도구 단추에서 <b>Gmail</b>이 켜져 있는지 확인</li>
   </ol>
   <h3>② 요약 받기</h3>
-  <div class="box"><div class="bar"><span>프롬프트 11 — 이번 주 메일 요약</span></div>
+  <div class="box cp-ok"><div class="bar"><span>프롬프트 11 — 이번 주 메일 요약</span></div>
 <div class="txt">내 지메일에서 최근 <span class="ph">[7일]</span> 동안 받은 메일 중 광고·뉴스레터·자동 알림은 빼고,
 사람이 보낸 중요한 메일 5개만 골라 표로 정리해줘.
 칸은 [보낸 사람 / 제목 / 한 줄 요약 / 내가 할 일 / 기한].
@@ -276,7 +294,7 @@
 
 <footer>클로드로 만드는 내 일상 · 마음에도순 · 1차시 &nbsp;|&nbsp; 제주도민대학 열린강의실 · 강사 강지애</footer>
 </div>
-<script src="lesson.js"></script>
+<script src="lesson.js?v=20261111e"></script>
 <script src="live.js"></script>
 
 </body>
