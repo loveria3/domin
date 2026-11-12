@@ -114,7 +114,9 @@ footer{margin-top:26px;font-size:12px;color:var(--sub);text-align:center}
 
 @media(max-width:600px){h1{font-size:22px}h2{font-size:18px}.txt{font-size:14px}
   .time{margin-left:0}.vs{grid-template-columns:1fr}section{padding:16px 15px}}
-@media print{body{background:#fff}button,.jump,.dl,.btn,.home{display:none!important}section{page-break-inside:avoid}}
+@media print{body{background:#fff}button,.jump,.dl,.btn,.home,#zoom,[id^="lv-"]{display:none!important}
+  .box,.ex,table,figure,.amock,.tip,.ai-ex,details{break-inside:avoid}.head{break-after:avoid}
+  section{break-inside:auto}@page{margin:12mm}}
 .helplink{display:inline-block;margin-left:6px;font-weight:700;color:var(--navy);white-space:nowrap}
 
 /* 마음에도순판 추가 — 쉬는 시간 띠 */
@@ -187,3 +189,15 @@ details.reveal[open] summary span{display:none}
 details.reveal .one{margin:0;padding:0 16px 14px}
 
 body.s-type .box.cp-ok .bar span::after{content:" · 길어서 복사 OK";color:var(--ok);font-weight:600}
+
+/* 2차시 — 스킬 vs 커넥터 */
+.skm{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0 0}
+.skm>div{border-radius:10px;padding:14px 16px;font-size:15px;line-height:1.65;word-break:keep-all}
+.skm .sk{background:#f1f8f4;border:2px solid #cfe6d8}
+.skm .mc{background:#eef3fb;border:2px solid #cddbf2}
+.skm .ic{font-size:30px;display:block;line-height:1.2}
+.skm b.t{display:block;font-size:18px;color:var(--navy)}
+.skm em{display:block;font-style:normal;font-weight:800;color:var(--ok);margin:2px 0 6px}
+.skm .mc em{color:var(--blue)}
+.skm small{display:block;margin-top:6px;font-size:13.5px;color:var(--sub)}
+@media(max-width:600px){.skm{grid-template-columns:1fr}}
