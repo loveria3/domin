@@ -201,3 +201,8 @@ body.s-type .box.cp-ok .bar span::after{content:" · 길어서 복사 OK";color:
 .skm .mc em{color:var(--blue)}
 .skm small{display:block;margin-top:6px;font-size:13.5px;color:var(--sub)}
 @media(max-width:600px){.skm{grid-template-columns:1fr}}
+.plg{display:flex;gap:12px;align-items:flex-start;margin:12px 0 0;background:#fff8e1;border:2px solid #efd98a;border-radius:10px;padding:14px 16px;font-size:15px;line-height:1.65;word-break:keep-all}
+.plg .ic{font-size:30px;line-height:1.2;flex:none}
+.plg b.t{display:block;font-size:18px;color:var(--navy)}
+.plg em{display:block;font-style:normal;font-weight:800;color:var(--warn);margin:2px 0 6px}
+.plg small{display:block;margin-top:6px;font-size:13.5px;color:var(--sub)}
