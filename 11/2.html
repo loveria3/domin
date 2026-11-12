@@ -135,7 +135,7 @@
   </ol>
   <div class="box"><div class="bar"><span>연결 확인 프롬프트</span></div>
 <div class="txt">내 구글 캘린더에서 이번 주 일정을 보여줘. 없으면 없다고 말해줘.</div></div>
-  <p class="warnnote">⚠ 회사·학교 계정은 막혀 있을 수 있어요. <b>개인 구글 계정</b>의 <b>수업연습</b> 캘린더를 씁니다.</p>
+  <p class="warnnote">⚠ 회사·학교 계정은 막혀 있을 수 있어요. <b>개인 구글 계정</b>의 <b>기본 캘린더</b>(내 이름으로 된 캘린더)에 저장합니다. 연습 일정은 제목 앞 <b>[실습]</b>으로 구분돼서 수업 뒤에 지우기 쉬워요.</p>
 </section>
 
 <section id="s3" data-n="3" class="key" data-t="메모에서 일정 등록">
@@ -158,7 +158,7 @@
 <div class="txt">회비 마감은 종일, 나머지는 1시간짜리로 해줘.
 장소와 준비물은 일정 설명에 넣어서 표를 다시 보여줘.</div></div>
   <div class="box"><div class="bar"><span>프롬프트 1-3 — 캘린더에 등록</span></div>
-<div class="txt">좋아, 수업연습 캘린더에 등록해줘.
+<div class="txt">좋아, 내 기본 캘린더에 등록해줘.
 제목 앞에 [실습]을 붙이고, 이미 있는 일정이면 중복 등록하지 마. 초대는 하지 마.</div></div>
   <ul class="chk">
     <li>휴대폰 구글 캘린더에서 보이는지</li>
@@ -174,22 +174,36 @@
 <section id="s3k" data-n="3+" data-t="카톡 나와의 채팅방으로 보내기">
   <div class="head"><span class="num">3+</span><h2>카톡 '나와의 채팅방'으로 보내 받기</h2><span class="time">10분</span></div>
   <p class="one">등록한 일정을 클로드가 <b>내 카톡 '나와의 채팅방'</b>으로 보내 줍니다. 폰에서 바로 봅니다.</p>
-  <h3>① 카카오 도구함 만들기 (처음 한 번만)</h3>
+  <h3>처음 연결하기 — 한 번만 하면 됩니다</h3>
+  <ul class="chk">
+    <li>준비: <b>카카오 계정 아이디(이메일·전화번호)와 비밀번호</b>를 알고 있는지</li>
+    <li>준비: 폰 카카오톡 채팅 목록에 <b>나와의 채팅</b>(내 프로필 사진 방)이 있는지 — 없으면 친구 탭 <b>내 프로필 → 나와의 채팅</b></li>
+  </ul>
+  <h3>① 카카오 도구함 만들기</h3>
   <table>
-    <tr><th>PlayMCP</th><td>크롬에서 <b>PlayMCP</b> 검색 → 카카오가 만든 사이트 → <b>카카오 로그인</b></td></tr>
-    <tr><th>담기</th><td>도구 목록에서 <b>'카카오톡 나에게 보내기'</b> → <b>도구함에 담기</b></td></tr>
-    <tr><th>주소 복사</th><td>내 도구함 → <b>도구함 주소(URL) 복사</b></td></tr>
+    <tr><th>PlayMCP</th><td>크롬에서 <b>PlayMCP</b> 검색 → 카카오가 만든 사이트(playmcp.kakao.com) → 오른쪽 위 <b>로그인</b> → <b>카카오 로그인</b></td></tr>
+    <tr><th>담기</th><td>목록이나 검색에서 <b>'카카오톡 나챗방'</b>(만든 곳 Kakao) → <b>도구함에 담기</b></td></tr>
+    <tr><th>주소 복사</th><td>위쪽 <b>도구함</b> → <b>도구함 주소(URL) 복사</b></td></tr>
   </table>
   <h3>② 클로드에 연결하기</h3>
   <table>
     <tr><th>커넥터</th><td><b>사용자 지정 → 커넥터</b> → <b>＋ → 사용자 정의 커넥터 추가</b></td></tr>
     <tr><th>붙여넣기</th><td>이름 <b>카카오톡</b>, 주소 칸에 복사한 도구함 주소 → <b>추가</b></td></tr>
     <tr><th>허용</th><td><b>연결</b> → 카카오 로그인 창 → <b>허용</b></td></tr>
+    <tr><th>켜기</th><td>입력창 <b>＋ → 커넥터</b>에서 <b>카카오톡</b>이 켜져 있는지</td></tr>
   </table>
   <div class="box"><div class="bar"><span>연결 확인 프롬프트</span></div>
 <div class="txt">카카오톡 나와의 채팅방에 "클로드 연결 성공! 🎉" 이라고 보내줘.</div></div>
+  <details class="more"><summary>안 될 때 — 여기부터 보세요</summary>
+    <table>
+      <tr><th>도구함 주소가 안 보여요</th><td>PlayMCP에 <b>로그인</b>했는지 → 도구함에 카카오톡 나챗방이 <b>담겼는지</b></td></tr>
+      <tr><th>추가가 안 눌려요</th><td>주소 앞뒤에 <b>빈칸</b>이 붙었는지, 주소 전체가 복사됐는지</td></tr>
+      <tr><th>클로드가 "보낼 수 없어요"</th><td>입력창 <b>＋ → 커넥터</b>에서 카카오톡 켜기 → <b>새 작업</b>에서 다시</td></tr>
+      <tr><th>카톡이 안 와요</th><td>클로드가 물어본 <b>허용</b>을 눌렀는지, 폰과 같은 <b>카카오 계정</b>으로 로그인했는지</td></tr>
+    </table>
+  </details>
   <div class="box"><div class="bar"><span>프롬프트 1-4 — 등록한 일정 카톡으로</span></div>
-<div class="txt">방금 수업연습 캘린더에 등록한 [실습] 일정을 날짜순으로 한 줄씩 정리해서
+<div class="txt">방금 캘린더에 등록한 [실습] 일정을 날짜순으로 한 줄씩 정리해서
 카카오톡 나와의 채팅방에 보내줘. 보내기 전에 보낼 글을 먼저 보여줘.</div></div>
   <div class="ex">📅 한라 동창회 일정
 12/4(금) 회비 마감 (종일)
@@ -274,7 +288,7 @@
     <p>"맨 위에 이번 주 한 줄 요약을 넣어 주세요." — 매번 프롬프트로 말하지 말고 <b>스킬을 고칩니다.</b></p>
     <div class="box"><div class="bar"><span>⚡ 스킬에 규칙 보태기</span></div>
 <div class="txt">domin-weekly-report 스킬에 규칙을 보태줘: 양식 맨 위 '한 줄 요약' 칸에 30자 이내로, 가장 큰 성과와 가장 급한 이슈 하나씩.
-원본은 두고 my-weekly-report라는 새 스킬 zip으로, scripts 폴더도 그대로 넣어 내작업실에 저장해줘.</div></div>
+원본은 두고 my-weekly-report라는 새 스킬 zip으로, scripts 폴더도 그대로 넣어서 내작업실 안에 '스킬' 폴더를 만들어 그 안에 저장해줘.</div></div>
   </div>
   <div class="biz">
     <p class="bt">우리 회사에 쓰려면 <span class="badge biz">업무 활용</span></p>
@@ -323,7 +337,7 @@
   <div class="box"><div class="bar"><span>프롬프트 4-3 — 스킬로 굳히기</span></div>
 <div class="txt">방금 만든 발표 한 장의 모양을 스킬로 만들어줘. 이름은 my-one-slide.
 어떤 내용을 주든 이 모양으로 한 장짜리 PPTX를 만들게 하고,
-업로드용 zip으로 내작업실에 저장해줘. zip 안 폴더 이름은 스킬 이름과 같게,
+업로드용 zip으로 내작업실 안 '스킬' 폴더에 저장해줘(없으면 만들어서). zip 안 폴더 이름은 스킬 이름과 같게,
 설명은 150자 이내로, 내가 어떤 말을 하면 이 스킬을 쓰는지도 넣어서.</div></div>
   <ol class="step">
     <li>5번 ②와 같은 순서로 <b>zip 그대로</b> 업로드 → <b>켜짐</b> 확인</li>
