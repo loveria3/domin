@@ -58,6 +58,23 @@ h2{margin:0 0 4px;font-size:22px;color:var(--green)}
 .contact b{display:block;font-size:18px;margin-bottom:4px}
 .contact small{color:#cfe0d4;font-size:14px}
 footer{text-align:center;color:var(--sub);font-size:13px;padding:20px 16px 0}
+/* 반응형: 화면 폭 900px 이상이면 걷는 순서는 왼쪽, 준비물·약속·문의는 오른쪽 두 단 */
+@media (min-width:900px){
+  .wrap{max-width:1080px;padding:24px 24px 56px}
+  .hero{padding:230px 44px 70px;min-height:460px;border-radius:24px;background-position:center 45%}
+  .hero h1{font-size:54px}
+  .hero .sub{font-size:20px}
+  .date{max-width:640px;margin:-34px 0 0 32px}
+  .stats{max-width:720px;margin-left:16px}
+  section{padding:26px 16px 6px}
+  #s1{float:left;width:55%}
+  #s2,#s3,#s4{float:right;width:43%;clear:right}
+  footer{clear:both;padding-top:36px}
+  .stops .th{width:78px;height:78px}
+  .stops .c.ph{padding-right:104px}
+  .band img{height:210px}
+  .chips span{font-size:17px}
+}
 </style>
 </head>
 <body>

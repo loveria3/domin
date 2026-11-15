@@ -47,6 +47,14 @@ button.cp.ok{background:var(--ok)}
 .o{color:var(--ok);font-weight:800}.x{color:var(--no);font-weight:800}
 .end{margin-top:26px;padding:14px 16px;background:#fff;border:1px dashed var(--line);border-radius:14px;font-size:16px;color:var(--sub)}
 footer{margin-top:18px;font-size:14px;color:var(--sub);text-align:center}
+/* 반응형: 화면 폭 900px 이상이면 ① 카드 세 장과 ③ 상자 세 개를 나란히 */
+@media (min-width:900px){
+  .wrap{max-width:1040px}
+  #s1,#s3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:stretch}
+  #s1>:not(.card),#s3>:not(.box){grid-column:1/-1}
+  #s1 .card,#s3 .box{margin:0}
+  #s1 .head,#s3 .head{margin-bottom:0}
+}
 </style>
 </head>
 <body>
