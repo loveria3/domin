@@ -5,18 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>한라마을 돌담 올레 — 함께 걷기 안내</title>
 <meta name="description" content="한라마을 돌담 올레 함께 걷기 행사의 걷는 순서, 준비물, 모이는 곳 안내 (수업용 예시)">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
 :root{--ink:#222;--sub:#6b7280;--stone:#2b2b2b;--stone2:#3d3d3d;--green:#1f3a2b;--leaf:#e4f0e7;--cream:#fbf7ef;--card:#fff;--line:#e6e1d8;--orange:#f28c28;--orange2:#d9731b;--peach:#fde7d2}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--cream);color:var(--ink);font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-size:18px;line-height:1.6;-webkit-text-size-adjust:100%}
 .wrap{max-width:540px;margin:0 auto;padding:0 0 48px}
-.hero{position:relative;background:var(--stone);color:#fff;padding:26px 20px 0;overflow:hidden}
+.hero{position:relative;color:#fff;padding:150px 20px 48px;min-height:330px;background:linear-gradient(to top,rgba(16,36,24,.92) 0%,rgba(16,36,24,.55) 42%,rgba(16,36,24,.04) 72%),var(--stone) url(img/hero.jpg) center 40%/cover no-repeat}
 .hero .kicker{display:inline-block;background:var(--orange);color:#fff;font-size:13px;font-weight:700;padding:3px 10px;border-radius:999px;margin:0 0 10px}
-.hero h1{margin:0;font-size:36px;line-height:1.2;letter-spacing:-.5px}
+.hero h1{margin:0;font-size:36px;line-height:1.2;letter-spacing:-.5px;text-shadow:0 1px 3px rgba(0,0,0,.45)}
 .hero h1 em{font-style:normal;color:#ffb469}
-.hero .sub{margin:8px 0 0;color:#e9e2d6;font-size:16px}
-.hero svg{display:block;width:100%;height:auto;margin-top:8px}
+.hero .sub{margin:8px 0 0;color:#f1ebe0;font-size:16px;text-shadow:0 1px 2px rgba(0,0,0,.45)}
+.band{margin:16px 0 0;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
+.band img{display:block;width:100%;height:150px;object-fit:cover}
+.band figcaption{padding:8px 14px;font-size:13px;color:var(--sub)}
 .date{margin:-26px 16px 0;position:relative;z-index:2;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;box-shadow:0 6px 18px rgba(0,0,0,.06)}
 .date .big{font-size:22px;font-weight:800;color:var(--green);margin:0}
 .date .big small{display:block;font-size:14px;color:var(--sub);font-weight:600;margin-top:2px}
@@ -38,7 +41,9 @@ h2{margin:0 0 4px;font-size:22px;color:var(--green)}
 .stops li{position:relative;display:flex;gap:14px;align-items:flex-start;margin:0 0 12px}
 .stops .n{flex:0 0 40px;height:40px;border-radius:50%;background:var(--orange);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:17px;border:3px solid var(--cream);z-index:1}
 .stops li.ends .n{background:var(--green)}
-.stops .c{flex:1;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 14px}
+.stops .c{flex:1;position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 14px}
+.stops .c.ph{padding-right:84px}
+.stops .th{position:absolute;right:10px;top:50%;transform:translateY(-50%);width:60px;height:60px;border-radius:12px;object-fit:cover}
 .stops .c b{font-size:17px}
 .stops .km{display:inline-block;margin-left:6px;background:var(--peach);color:var(--orange2);font-size:12px;font-weight:700;border-radius:999px;padding:1px 8px;vertical-align:middle}
 .stops .c p{margin:2px 0 0;color:var(--sub);font-size:15px}
@@ -61,18 +66,6 @@ footer{text-align:center;color:var(--sub);font-size:13px;padding:20px 16px 0}
   <span class="kicker">우리동네 올레길 · 함께 걷기</span>
   <h1>한라마을 <em>돌담 올레</em></h1>
   <p class="sub">돌담 따라, 귤밭 따라 — 우리 동네 한 바퀴</p>
-  <svg viewBox="0 0 540 200" aria-hidden="true">
-    <circle cx="420" cy="62" r="40" fill="#f28c28"/>
-    <path d="M0 200 L80 128 L140 150 L220 92 L300 142 L370 96 L460 150 L540 118 L540 200 Z" fill="#35684b"/>
-    <path d="M120 200 L210 150 L280 170 L350 138 L430 176 L540 150 L540 200 Z" fill="#274c38"/>
-    <g fill="#4a4a4a">
-      <rect x="0" y="156" width="46" height="16" rx="7"/><rect x="52" y="156" width="54" height="16" rx="7" fill="#3b3b3b"/><rect x="112" y="156" width="44" height="16" rx="7"/><rect x="162" y="156" width="58" height="16" rx="7" fill="#2f2f2f"/><rect x="226" y="156" width="48" height="16" rx="7"/><rect x="280" y="156" width="56" height="16" rx="7" fill="#3b3b3b"/><rect x="342" y="156" width="46" height="16" rx="7"/><rect x="394" y="156" width="58" height="16" rx="7" fill="#2f2f2f"/><rect x="458" y="156" width="48" height="16" rx="7"/><rect x="512" y="156" width="40" height="16" rx="7" fill="#3b3b3b"/>
-      <rect x="-20" y="176" width="46" height="16" rx="7" fill="#3b3b3b"/><rect x="32" y="176" width="56" height="16" rx="7"/><rect x="94" y="176" width="44" height="16" rx="7" fill="#2f2f2f"/><rect x="144" y="176" width="58" height="16" rx="7"/><rect x="208" y="176" width="46" height="16" rx="7" fill="#3b3b3b"/><rect x="260" y="176" width="56" height="16" rx="7"/><rect x="322" y="176" width="46" height="16" rx="7" fill="#2f2f2f"/><rect x="374" y="176" width="58" height="16" rx="7"/><rect x="438" y="176" width="48" height="16" rx="7" fill="#3b3b3b"/><rect x="492" y="176" width="60" height="16" rx="7"/>
-      <rect x="0" y="196" width="540" height="8" fill="#2f2f2f"/>
-    </g>
-    <g><circle cx="300" cy="150" r="7" fill="#f28c28"/><rect x="301" y="139" width="9" height="4" rx="2" fill="#2e5e43" transform="rotate(-30 301 139)"/></g>
-    <g><circle cx="470" cy="150" r="7" fill="#f28c28"/><rect x="471" y="139" width="9" height="4" rx="2" fill="#2e5e43" transform="rotate(-30 471 139)"/></g>
-  </svg>
 </header>
 
 <div class="date">
@@ -92,13 +85,14 @@ footer{text-align:center;color:var(--sub);font-size:13px;padding:20px 16px 0}
   <h2>걷는 순서</h2>
   <p class="lead">마을회관에서 출발해 한 바퀴 돌아 다시 마을회관으로</p>
   <ol class="stops">
-    <li class="ends"><span class="n">1</span><div class="c"><b>마을회관</b><span class="km">출발</span><p>출발 도장 찍고 물 챙기기</p></div></li>
-    <li><span class="n">2</span><div class="c"><b>팽나무 쉼터</b><span class="km">0.8km</span><p>오래된 팽나무 그늘에서 첫 쉼</p></div></li>
-    <li><span class="n">3</span><div class="c"><b>돌담 골목</b><span class="km">1.9km</span><p>구불구불 검은 돌담, 사진 찍기 좋은 곳</p></div></li>
-    <li><span class="n">4</span><div class="c"><b>감귤밭 전망대</b><span class="km">3.2km</span><p>11월엔 노랗게 익은 귤밭이 한눈에</p></div></li>
-    <li><span class="n">5</span><div class="c"><b>용천수 빨래터</b><span class="km">4.3km</span><p>옛날 마을 사람들이 빨래하던 샘물</p></div></li>
-    <li class="ends"><span class="n">6</span><div class="c"><b>마을회관</b><span class="km">도착</span><p>도착 도장 받고 따뜻한 차 한 잔</p></div></li>
+    <li class="ends"><span class="n">1</span><div class="c ph"><img class="th" src="img/stop1.jpg" alt="돌담과 귤나무가 있는 마을회관"><b>마을회관</b><span class="km">출발</span><p>출발 도장 찍고 물 챙기기</p></div></li>
+    <li><span class="n">2</span><div class="c ph"><img class="th" src="img/stop2.jpg" alt="팽나무 그늘 아래 평상과 벤치"><b>팽나무 쉼터</b><span class="km">0.8km</span><p>오래된 팽나무 그늘에서 첫 쉼</p></div></li>
+    <li><span class="n">3</span><div class="c ph"><img class="th" src="img/stop3.jpg" alt="검은 현무암 돌담"><b>돌담 골목</b><span class="km">1.9km</span><p>구불구불 검은 돌담, 사진 찍기 좋은 곳</p></div></li>
+    <li><span class="n">4</span><div class="c ph"><img class="th" src="img/stop4.jpg" alt="귤밭 너머로 보이는 바다"><b>감귤밭 전망대</b><span class="km">3.2km</span><p>11월엔 노랗게 익은 귤밭이 한눈에</p></div></li>
+    <li><span class="n">5</span><div class="c ph"><img class="th" src="img/stop5.jpg" alt="현무암 바닷가"><b>용천수 빨래터</b><span class="km">4.3km</span><p>옛날 마을 사람들이 빨래하던 샘물</p></div></li>
+    <li class="ends"><span class="n">6</span><div class="c ph"><img class="th" src="img/stop1.jpg" alt="돌담과 귤나무가 있는 마을회관"><b>마을회관</b><span class="km">도착</span><p>도착 도장 받고 따뜻한 차 한 잔</p></div></li>
   </ol>
+  <figure class="band"><img src="img/band.jpg" alt="유채꽃 핀 돌담길과 한라산"><figcaption>봄엔 유채꽃, 11월엔 귤 — 계절마다 달라지는 돌담길 풍경</figcaption></figure>
 </section>
 
 <section id="s2">
