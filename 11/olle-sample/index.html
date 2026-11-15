@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>한라마을 돌담 올레 — 함께 걷기 안내</title>
+<meta name="description" content="한라마을 돌담 올레 함께 걷기 행사의 걷는 순서, 준비물, 모이는 곳 안내 (수업용 예시)">
+<style>
+:root{--ink:#222;--sub:#6b7280;--stone:#2b2b2b;--stone2:#3d3d3d;--green:#1f3a2b;--leaf:#e4f0e7;--cream:#fbf7ef;--card:#fff;--line:#e6e1d8;--orange:#f28c28;--orange2:#d9731b;--peach:#fde7d2}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-size:18px;line-height:1.6;-webkit-text-size-adjust:100%}
+.wrap{max-width:540px;margin:0 auto;padding:0 0 48px}
+.hero{position:relative;background:var(--stone);color:#fff;padding:26px 20px 0;overflow:hidden}
+.hero .kicker{display:inline-block;background:var(--orange);color:#fff;font-size:13px;font-weight:700;padding:3px 10px;border-radius:999px;margin:0 0 10px}
+.hero h1{margin:0;font-size:36px;line-height:1.2;letter-spacing:-.5px}
+.hero h1 em{font-style:normal;color:#ffb469}
+.hero .sub{margin:8px 0 0;color:#e9e2d6;font-size:16px}
+.hero svg{display:block;width:100%;height:auto;margin-top:8px}
+.date{margin:-26px 16px 0;position:relative;z-index:2;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;box-shadow:0 6px 18px rgba(0,0,0,.06)}
+.date .big{font-size:22px;font-weight:800;color:var(--green);margin:0}
+.date .big small{display:block;font-size:14px;color:var(--sub);font-weight:600;margin-top:2px}
+.stats small,.stats b{word-break:keep-all}
+.date .row{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 0;font-size:15px;color:var(--sub)}
+.date .row span{background:var(--leaf);color:var(--green);border-radius:8px;padding:2px 9px;font-weight:600}
+nav.jump{position:sticky;top:0;z-index:5;display:flex;gap:8px;justify-content:center;padding:10px 16px;background:rgba(251,247,239,.96);border-bottom:1px solid var(--line);margin-top:16px}
+nav.jump a{min-height:40px;display:inline-flex;align-items:center;padding:0 14px;border-radius:999px;background:var(--stone);color:#fff;text-decoration:none;font-size:15px;font-weight:700}
+nav.jump a.o{background:var(--orange)}
+section{padding:22px 16px 6px;scroll-margin-top:64px}
+h2{margin:0 0 4px;font-size:22px;color:var(--green)}
+.lead{margin:0 0 12px;color:var(--sub);font-size:15px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 16px}
+.stats div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 8px;text-align:center}
+.stats b{display:block;font-size:22px;color:var(--orange2)}
+.stats small{color:var(--sub);font-size:13px}
+.stops{list-style:none;margin:0;padding:0;position:relative}
+.stops::before{content:"";position:absolute;left:19px;top:22px;bottom:22px;border-left:2px dashed #c9c2b6}
+.stops li{position:relative;display:flex;gap:14px;align-items:flex-start;margin:0 0 12px}
+.stops .n{flex:0 0 40px;height:40px;border-radius:50%;background:var(--orange);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:17px;border:3px solid var(--cream);z-index:1}
+.stops li.ends .n{background:var(--green)}
+.stops .c{flex:1;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 14px}
+.stops .c b{font-size:17px}
+.stops .km{display:inline-block;margin-left:6px;background:var(--peach);color:var(--orange2);font-size:12px;font-weight:700;border-radius:999px;padding:1px 8px;vertical-align:middle}
+.stops .c p{margin:2px 0 0;color:var(--sub);font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0}
+.chips span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:16px}
+.rules{margin:0;padding:0;list-style:none}
+.rules li{background:var(--leaf);border-radius:12px;padding:10px 14px;margin:0 0 8px;font-size:16px;display:flex;gap:10px;align-items:center}
+.rules li::before{content:"✓";flex:0 0 24px;height:24px;border-radius:50%;background:var(--orange);color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.note{background:var(--card);border-left:5px solid var(--orange);border-radius:0 14px 14px 0;padding:14px 16px;font-size:16px;margin:0}
+.note b{color:var(--green)}
+.contact{background:var(--green);color:#fff;border-radius:16px;padding:16px 18px;font-size:16px}
+.contact b{display:block;font-size:18px;margin-bottom:4px}
+.contact small{color:#cfe0d4;font-size:14px}
+footer{text-align:center;color:var(--sub);font-size:13px;padding:20px 16px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+  <span class="kicker">우리동네 올레길 · 함께 걷기</span>
+  <h1>한라마을 <em>돌담 올레</em></h1>
+  <p class="sub">돌담 따라, 귤밭 따라 — 우리 동네 한 바퀴</p>
+  <svg viewBox="0 0 540 200" aria-hidden="true">
+    <circle cx="420" cy="62" r="40" fill="#f28c28"/>
+    <path d="M0 200 L80 128 L140 150 L220 92 L300 142 L370 96 L460 150 L540 118 L540 200 Z" fill="#35684b"/>
+    <path d="M120 200 L210 150 L280 170 L350 138 L430 176 L540 150 L540 200 Z" fill="#274c38"/>
+    <g fill="#4a4a4a">
+      <rect x="0" y="156" width="46" height="16" rx="7"/><rect x="52" y="156" width="54" height="16" rx="7" fill="#3b3b3b"/><rect x="112" y="156" width="44" height="16" rx="7"/><rect x="162" y="156" width="58" height="16" rx="7" fill="#2f2f2f"/><rect x="226" y="156" width="48" height="16" rx="7"/><rect x="280" y="156" width="56" height="16" rx="7" fill="#3b3b3b"/><rect x="342" y="156" width="46" height="16" rx="7"/><rect x="394" y="156" width="58" height="16" rx="7" fill="#2f2f2f"/><rect x="458" y="156" width="48" height="16" rx="7"/><rect x="512" y="156" width="40" height="16" rx="7" fill="#3b3b3b"/>
+      <rect x="-20" y="176" width="46" height="16" rx="7" fill="#3b3b3b"/><rect x="32" y="176" width="56" height="16" rx="7"/><rect x="94" y="176" width="44" height="16" rx="7" fill="#2f2f2f"/><rect x="144" y="176" width="58" height="16" rx="7"/><rect x="208" y="176" width="46" height="16" rx="7" fill="#3b3b3b"/><rect x="260" y="176" width="56" height="16" rx="7"/><rect x="322" y="176" width="46" height="16" rx="7" fill="#2f2f2f"/><rect x="374" y="176" width="58" height="16" rx="7"/><rect x="438" y="176" width="48" height="16" rx="7" fill="#3b3b3b"/><rect x="492" y="176" width="60" height="16" rx="7"/>
+      <rect x="0" y="196" width="540" height="8" fill="#2f2f2f"/>
+    </g>
+    <g><circle cx="300" cy="150" r="7" fill="#f28c28"/><rect x="301" y="139" width="9" height="4" rx="2" fill="#2e5e43" transform="rotate(-30 301 139)"/></g>
+    <g><circle cx="470" cy="150" r="7" fill="#f28c28"/><rect x="471" y="139" width="9" height="4" rx="2" fill="#2e5e43" transform="rotate(-30 471 139)"/></g>
+  </svg>
+</header>
+
+<div class="date">
+  <p class="big">매월 둘째 토요일 오전 9시 <small>다음 걷기 12월 12일(토)</small></p>
+  <div class="row"><span>마을회관 앞 출발</span><span>참가비 없음</span><span>비 오면 다음 주</span></div>
+</div>
+
+<nav class="jump"><a href="#s1">코스</a><a href="#s2">준비물</a><a href="#s3">약속</a><a class="o" href="#s4">문의</a></nav>
+
+<div class="stats" style="margin-top:18px">
+  <div><b>5.2<small style="font-size:13px;color:var(--orange2)"> km</small></b><small>한 바퀴 거리</small></div>
+  <div><b>2<small style="font-size:13px;color:var(--orange2)"> 시간</small></b><small>쉬엄쉬엄 걸어서</small></div>
+  <div><b>쉬움</b><small>오르막이 거의 없어요</small></div>
+</div>
+
+<section id="s1">
+  <h2>걷는 순서</h2>
+  <p class="lead">마을회관에서 출발해 한 바퀴 돌아 다시 마을회관으로</p>
+  <ol class="stops">
+    <li class="ends"><span class="n">1</span><div class="c"><b>마을회관</b><span class="km">출발</span><p>출발 도장 찍고 물 챙기기</p></div></li>
+    <li><span class="n">2</span><div class="c"><b>팽나무 쉼터</b><span class="km">0.8km</span><p>오래된 팽나무 그늘에서 첫 쉼</p></div></li>
+    <li><span class="n">3</span><div class="c"><b>돌담 골목</b><span class="km">1.9km</span><p>구불구불 검은 돌담, 사진 찍기 좋은 곳</p></div></li>
+    <li><span class="n">4</span><div class="c"><b>감귤밭 전망대</b><span class="km">3.2km</span><p>11월엔 노랗게 익은 귤밭이 한눈에</p></div></li>
+    <li><span class="n">5</span><div class="c"><b>용천수 빨래터</b><span class="km">4.3km</span><p>옛날 마을 사람들이 빨래하던 샘물</p></div></li>
+    <li class="ends"><span class="n">6</span><div class="c"><b>마을회관</b><span class="km">도착</span><p>도착 도장 받고 따뜻한 차 한 잔</p></div></li>
+  </ol>
+</section>
+
+<section id="s2">
+  <h2>준비물</h2>
+  <p class="lead">11월 제주 바람은 생각보다 셉니다</p>
+  <div class="chips"><span>👟 편한 운동화</span><span>🧢 모자</span><span>💧 물</span><span>🧥 바람막이</span><span>📱 휴대폰 (이 안내 보기)</span></div>
+</section>
+
+<section id="s3">
+  <h2>걷기 약속</h2>
+  <ul class="rules">
+    <li>귤밭 안에 들어가지 않기</li>
+    <li>돌담 위에 올라가지 않기</li>
+    <li>쓰레기는 되가져가기</li>
+  </ul>
+  <p class="note" style="margin-top:14px"><b>처음 오는 분께 한마디</b><br>빨리 걷는 모임이 아니에요. 사진 찍고, 귤밭 구경하고, 쉼터마다 쉬어 갑니다. 혼자 오셔도 괜찮아요.</p>
+</section>
+
+<section id="s4">
+  <h2>문의</h2>
+  <div class="contact"><b>한라마을 걷기모임</b>연락처는 마을회관에서 안내합니다.<br><small>이런 분께 좋아요 — 가볍게 걷고 싶은 이웃 · 사진 찍기 좋아하는 가족 · 제주 옛 마을 이야기가 궁금한 분</small></div>
+</section>
+
+<footer>※ 제주도민대학 수업용 가상 예시입니다. 실제 장소 · 행사가 아닙니다.</footer>
+</div>
+</body>
+</html>
