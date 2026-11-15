@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>세 AI, 뭐가 다르고 언제 뭘 쓰나 — 가족 20분 교실</title>
+<style>
+:root{--ink:#222;--sub:#5b6470;--line:#e6e1d8;--bg:#fffaf3;--card:#fff;--pt:#f28c28;--pt2:#2b2b2b;--ok:#2e8b57;--no:#d64545}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;font-size:19px;line-height:1.6}
+.wrap{max-width:560px;margin:0 auto;padding:16px 16px 60px}
+header{padding:10px 0 6px}
+.kicker{margin:0;color:var(--sub);font-size:15px}
+h1{margin:4px 0 6px;font-size:28px;line-height:1.3}
+h1 em{color:var(--pt);font-style:normal}
+.sub{margin:0;color:var(--sub);font-size:17px}
+nav.jump{position:sticky;top:0;z-index:20;display:flex;gap:8px;padding:10px 0;margin:10px -16px 6px;background:rgba(255,250,243,.96);border-bottom:1px solid var(--line);justify-content:center}
+nav.jump a{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:44px;padding:0 12px;border-radius:22px;background:var(--pt2);color:#fff;text-decoration:none;font-weight:700;font-size:18px}
+nav.jump a.q{background:var(--pt)}
+section{margin:22px 0;scroll-margin-top:72px}
+.head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--pt2);color:#fff;font-weight:800}
+.num.y{background:var(--pt)}
+h2{margin:0;font-size:22px;flex:1 1 auto}
+.time{font-size:15px;color:var(--sub);border:1px solid var(--line);border-radius:12px;padding:1px 10px;background:#fff}
+.one{margin:8px 0 12px;color:var(--sub);font-size:17px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:10px 0}
+.card h3{margin:0 0 6px;font-size:20px}
+.card h3 small{color:var(--sub);font-weight:500;font-size:15px;margin-left:6px}
+.card p{margin:4px 0;font-size:17px}
+.card b{color:var(--pt2)}
+.chk{color:var(--sub);font-size:15px;background:#fff3e6;border-radius:8px;padding:2px 8px;display:inline-block}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:17px}
+th,td{padding:10px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;overflow-wrap:anywhere}
+th{width:42%;background:#faf6ef;font-weight:700}
+tr:last-child th,tr:last-child td{border-bottom:0}
+.box{background:#fff;border:1px solid var(--line);border-radius:14px;margin:12px 0;overflow:hidden}
+.box .bar{display:flex;justify-content:space-between;align-items:center;background:#faf6ef;padding:8px 12px;font-size:15px;color:var(--sub)}
+.box .txt{padding:12px 14px;white-space:pre-wrap;font-size:18px}
+.box .ph{background:#fff3e6;color:#9a4b00;border-radius:6px;padding:0 4px}
+button.cp{border:0;background:var(--pt2);color:#fff;border-radius:10px;padding:7px 12px;font-size:15px;font-weight:700;cursor:pointer}
+button.cp.ok{background:var(--ok)}
+.quiz details{background:#fff;border:1px solid var(--line);border-radius:12px;margin:10px 0;padding:0}
+.quiz summary{padding:12px 14px;cursor:pointer;font-weight:600;list-style:none}
+.quiz summary::before{content:"OX ";color:var(--pt);font-weight:800}
+.quiz details p{margin:0;padding:0 14px 12px;color:var(--sub)}
+.o{color:var(--ok);font-weight:800}.x{color:var(--no);font-weight:800}
+.end{margin-top:26px;padding:14px 16px;background:#fff;border:1px dashed var(--line);border-radius:14px;font-size:16px;color:var(--sub)}
+footer{margin-top:18px;font-size:14px;color:var(--sub);text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <p class="kicker">수업용 예시 교안 · 클로드가 비교표를 읽고 만든 결과 · 2026년 11월 기준</p>
+  <h1>세 AI, <em>뭐가 다르고</em> 언제 뭘 쓰나</h1>
+  <p class="sub">챗GPT · 제미나이 · 클로드 — 가족에게 가르치는 <b>20분 교실</b></p>
+</header>
+
+<nav class="jump">
+  <a href="#s1">1</a><a href="#s2">2</a><a href="#s3">3</a><a class="q" href="#s4">?</a>
+</nav>
+
+<section id="s1" data-n="1" data-t="뭐가 다른가">
+  <div class="head"><span class="num">1</span><h2>뭐가 다른가</h2><span class="time">5분</span></div>
+  <p class="one">셋 다 <b>무료로 시작</b>할 수 있어요. 만든 회사와 잘하는 것이 다릅니다.</p>
+
+  <div class="card">
+    <h3>챗GPT <small>오픈AI(OpenAI)</small></h3>
+    <p><b>무료</b> — 묻고 답하기, 검색. 그림·음성·심층 조사는 횟수 제한</p>
+    <p><b>유료</b> — Go(가장 싼 유료, 광고가 붙을 수 있음) · Plus(월 20달러) <span class="chk">국내 원화 요금 확인 필요</span></p>
+    <p><b>잘하는 것</b> — 쓰는 사람이 가장 많아 사용법 찾기 쉬움 · 그림 만들기 · 음성 대화</p>
+    <p><b>조심</b> — 무료는 횟수 제한, 최신 사실은 검색을 켜고 확인</p>
+  </div>
+
+  <div class="card">
+    <h3>제미나이 <small>구글(Google)</small></h3>
+    <p><b>무료</b> — 묻고 답하기, 그림 만들기, 심층 조사, 음성 대화, 구글 저장공간 15GB</p>
+    <p><b>유료</b> — Google AI Plus(월 7,500원) · Google AI Pro(월 29,000원 <span class="chk">확인 필요</span>)</p>
+    <p><b>잘하는 것</b> — 지메일·구글 문서·유튜브와 한 식구 · 아주 긴 문서 · 갤럭시 휴대폰에 들어가 있음</p>
+    <p><b>조심</b> — 구글 계정 필요, 영상 만들기는 유료</p>
+  </div>
+
+  <div class="card">
+    <h3>클로드 <small>앤트로픽(Anthropic)</small></h3>
+    <p><b>무료</b> — 묻고 답하기, 검색, 파일 만들기, 기억. 5시간마다 사용량 제한</p>
+    <p><b>유료</b> — Pro(월 20달러, 1년 결제 시 월 17달러) · Max · Ultra <span class="chk">국내 원화 요금 확인 필요</span></p>
+    <p><b>잘하는 것</b> — 긴 글 다듬기 · 내 컴퓨터 폴더 맡기기(코워크) · 회사 규칙을 스킬로 · 예약 작업</p>
+    <p><b>조심</b> — 코워크·예약·컴퓨터 사용은 유료만</p>
+  </div>
+</section>
+
+<section id="s2" data-n="2" data-t="언제 뭘 쓰나">
+  <div class="head"><span class="num">2</span><h2>언제 뭘 쓰나</h2><span class="time">7분</span></div>
+  <p class="one">하나만 고를 필요 없어요. <b>상황에 맞게</b> 바꿔 쓰면 됩니다.</p>
+  <table>
+    <tr><th>카톡 답장 · 편지 · 안내문 다듬기</th><td>셋 다 됨. 꼼꼼히 다듬기는 <b>클로드</b>, 여러 안 빨리 보기는 <b>챗GPT</b></td></tr>
+    <tr><th>요즘 소식 · 가게 영업시간</th><td><b>검색을 켜고</b> 묻기. 구글 검색과 한 식구인 <b>제미나이</b>가 편함</td></tr>
+    <tr><th>사진 보고 설명 · 그림 만들기</th><td>사진 설명은 셋 다. 그림 만들기는 <b>챗GPT · 제미나이</b>(무료는 횟수 제한)</td></tr>
+    <tr><th>긴 서류 · PDF 요약</th><td>셋 다 됨. 아주 긴 문서는 <b>제미나이</b>, 폴더째 맡기기는 <b>클로드</b>(유료)</td></tr>
+    <tr><th>매주 반복되는 일을 저절로</th><td>유료 기능. <b>클로드 Pro</b>(예약 작업·스킬) 또는 <b>챗GPT Plus</b></td></tr>
+  </table>
+</section>
+
+<section id="s3" data-n="3" data-t="직접 해 보기">
+  <div class="head"><span class="num">3</span><h2>직접 해 보기</h2><span class="time">6분</span></div>
+  <p class="one">복사 단추를 누르고, 아무 AI에나 붙여 넣어 보세요. <b>[ ]</b> 안은 내 것으로 바꿔서.</p>
+
+  <div class="box"><div class="bar"><span>해 보기 1 — 안내문</span><button class="cp" type="button">복사</button></div>
+<div class="txt">우리 가족 단체 카톡방에 올릴 안내문을 써 줘.
+모임 <span class="ph">[이번 주 토요일 점심]</span>, 장소 <span class="ph">[큰집]</span>, 준비물 <span class="ph">[반찬 한 가지]</span>.
+짧게, 날짜와 장소는 맨 위에, 이모티콘 2개 이하.</div></div>
+
+  <div class="box"><div class="bar"><span>해 보기 2 — 영수증 사진</span><button class="cp" type="button">복사</button></div>
+<div class="txt">(영수증 사진을 올리고) 이 사진에서 가게 이름, 날짜, 금액을 표로 뽑아줘.
+읽기 어려운 글자는 지어내지 말고 "확인 필요"라고 써줘.</div></div>
+
+  <div class="box"><div class="bar"><span>해 보기 3 — 최신 정보</span><button class="cp" type="button">복사</button></div>
+<div class="txt">검색해서 <span class="ph">[제주시 ○○동]</span> 근처에 이번 주말 문 여는 약국을 알려줘.
+확인한 날짜와 출처를 함께 적고, 모르는 건 모른다고 해줘.</div></div>
+</section>
+
+<section id="s4" data-n="퀴즈" data-t="OX 퀴즈">
+  <div class="head"><span class="num y">?</span><h2>OX 퀴즈</h2><span class="time">2분</span></div>
+  <div class="quiz">
+    <details><summary>세 AI 모두 무료로 시작할 수 있다.</summary>
+      <p><span class="o">O</span> — 셋 다 무료 요금제가 있어요. 돈은 충분히 써 본 뒤에.</p></details>
+    <details><summary>유료를 내면 AI가 틀린 말을 하지 않는다.</summary>
+      <p><span class="x">X</span> — 유료도 지어낸 내용이 섞일 수 있어요. 날짜·금액은 원본으로 확인.</p></details>
+    <details><summary>내 컴퓨터 폴더를 통째로 맡기는 것은 클로드 유료(코워크)에서 된다.</summary>
+      <p><span class="o">O</span> — 코워크는 유료 데스크톱 기능이에요. 챗GPT·제미나이는 파일을 하나씩 올립니다.</p></details>
+  </div>
+</section>
+
+<div class="end">
+  <b>안전 수칙 세 가지</b> — ① 주민번호·계좌·비밀번호는 넣지 않기 ② 날짜·금액·전화번호는 원본으로 확인 ③ 돈 내는 결정은 무료로 충분히 써 본 뒤에
+</div>
+
+<footer>2026년 11월 15일 기준 · 요금과 기능은 바뀝니다. 각 회사 요금 페이지에서 확인하세요 · 수업용 예시</footer>
+</div>
+<script>
+document.querySelectorAll('button.cp').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.closest('.box').querySelector('.txt').innerText;
+    function ok(){b.textContent='복사됨 ✓';b.classList.add('ok');setTimeout(function(){b.textContent='복사';b.classList.remove('ok');},1500);}
+    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(ok,function(){fb(t);ok();});}else{fb(t);ok();}
+  });
+});
+function fb(t){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);}
+</script>
+</body>
+</html>
