@@ -3,113 +3,219 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>느영나영 걷기 동호회 소개</title>
+<title>우리 마을 도순동</title>
 <style>
-  :root{--bg:#f3f7ef;--ink:#1e2a1f;--green:#2f6b3f;--leaf:#8fbf6a;--sun:#f2c230;--sub:#5b6b5c}
+  :root{--paper:#F4F0E6;--ink:#1C2420;--tea:#2F4A3B;--tea2:#6E8676;--gyul:#E2702A;--line:#D9D2C1}
   *{box-sizing:border-box}
   html,body{margin:0;height:100%;overflow:hidden}
-  body{background:var(--bg);color:var(--ink);font-family:"Malgun Gothic","맑은 고딕",-apple-system,"Segoe UI",sans-serif}
+  body{background:var(--paper);color:var(--ink);
+    font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic","맑은 고딕",system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;word-break:keep-all}
   .deck{position:relative;height:100%}
-  .slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;
-    text-align:center;padding:40px 90px;opacity:0;transform:translateX(40px);transition:opacity .45s ease,transform .45s ease;pointer-events:none}
+  .slide{position:absolute;inset:0;display:grid;grid-template-columns:minmax(0,1fr);padding:clamp(28px,6vw,80px) clamp(28px,9vw,140px);
+    opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1);pointer-events:none}
   .slide.on{opacity:1;transform:none;pointer-events:auto}
-  .slide.back{transform:translateX(-40px)}
-  .emoji{font-size:clamp(64px,14vw,120px);line-height:1}
-  h1{font-size:clamp(34px,7vw,64px);margin:18px 0 6px;letter-spacing:-.03em}
-  h2{font-size:clamp(28px,5.5vw,50px);margin:0 0 22px;letter-spacing:-.03em;color:var(--green)}
-  p,li{font-size:clamp(20px,3.6vw,32px);line-height:1.55;margin:6px 0}
-  .sub{color:var(--sub)}
-  ul{list-style:none;padding:0;margin:0}
-  li::before{content:"🌿 "}
-  .tag{display:inline-block;background:var(--sun);border-radius:999px;padding:4px 18px;font-weight:800;font-size:clamp(16px,2.6vw,22px)}
-  .oreum{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:900px}
-  .oreum span{background:#fff;border:2px solid var(--leaf);border-radius:16px;padding:10px 18px;font-size:clamp(18px,3vw,28px);font-weight:700}
-  .quote{background:#fff;border-left:8px solid var(--leaf);border-radius:12px;padding:16px 24px;margin:10px 0;max-width:820px;text-align:left}
-  .nav{position:fixed;top:50%;transform:translateY(-50%);width:64px;height:64px;border-radius:50%;border:0;
-    background:var(--green);color:#fff;font-size:34px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.18);z-index:5}
-  .nav:hover{background:#245632}
-  .nav:disabled{opacity:.25;cursor:default}
-  #prev{left:14px} #next{right:14px}
-  .count{position:fixed;right:20px;bottom:16px;font-size:18px;font-weight:700;color:var(--sub)}
-  .bar{position:fixed;left:0;bottom:0;height:6px;background:var(--leaf);transition:width .4s}
-  @media(max-width:600px){.slide{padding:30px 64px}.nav{width:50px;height:50px;font-size:26px}#prev{left:6px}#next{right:6px}}
+  .in{align-self:center;width:100%;max-width:1100px;margin:0 auto}
+  .eyebrow{font-size:clamp(12px,1.4vw,15px);font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--tea2);margin:0 0 18px}
+  .eyebrow b{color:var(--gyul);font-weight:800;margin-right:10px}
+  h1{font-size:clamp(48px,10vw,128px);line-height:.98;letter-spacing:-.055em;font-weight:800;margin:0}
+  h2{font-size:clamp(34px,6vw,76px);line-height:1.05;letter-spacing:-.045em;font-weight:800;margin:0 0 22px;color:var(--tea)}
+  .lead{font-size:clamp(18px,2.4vw,26px);line-height:1.6;color:#4A544E;margin:0;max-width:30em}
+  .rule{width:64px;height:3px;background:var(--gyul);border:0;margin:26px 0}
+  .dot{color:var(--gyul)}
+  /* 1 표지 */
+  .cover{align-content:center}
+  .cover .in{display:grid;grid-template-columns:1.3fr 1fr;gap:4vw;align-items:center}
+  .cover .meta{display:flex;gap:28px;margin-top:34px;font-size:clamp(13px,1.5vw,16px);color:var(--tea2);font-weight:600;letter-spacing:.04em}
+  .cover svg{width:100%;height:auto;max-height:62vh}
+  /* 2단 */
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:center}
+  .two svg{width:100%;height:auto;max-height:56vh}
+  /* 세 가지 */
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:34px;border-top:1px solid var(--line)}
+  .three div{padding:26px 22px 0 0;border-right:1px solid var(--line);margin-right:22px}
+  .three div:last-child{border:0;margin:0}
+  .three .n{font-size:clamp(34px,5vw,60px);font-weight:800;color:var(--gyul);letter-spacing:-.04em;line-height:1}
+  .three p{font-size:clamp(16px,1.9vw,21px);line-height:1.55;margin:12px 0 0;color:#3C4640}
+  .three b{display:block;font-size:clamp(18px,2.2vw,25px);color:var(--ink);margin-bottom:4px}
+  /* 인용 */
+  .quote .in{max-width:980px}
+  .quote blockquote{margin:0;font-size:clamp(30px,5vw,62px);line-height:1.25;letter-spacing:-.04em;font-weight:700;color:var(--tea)}
+  .quote blockquote::before{content:"“";display:block;font-size:1.6em;line-height:.6;color:var(--gyul);margin-bottom:10px}
+  .quote cite{display:block;margin-top:28px;font-style:normal;font-size:clamp(14px,1.6vw,18px);color:var(--tea2);letter-spacing:.06em}
+  /* 어두운 장 */
+  .dark{background:var(--tea);color:#EDEBE3}
+  .dark h2{color:#fff}.dark .lead{color:#C9D3CB}.dark .eyebrow{color:#9FB3A5}
+  .walk{display:flex;align-items:center;gap:0;margin-top:40px}
+  .walk span{font-size:clamp(14px,1.7vw,19px);font-weight:700;white-space:nowrap}
+  .walk i{flex:1;height:2px;background:repeating-linear-gradient(90deg,#9FB3A5 0 8px,transparent 8px 16px);margin:0 14px;min-width:20px}
+  .walk em{width:14px;height:14px;border-radius:50%;background:var(--gyul);flex:none;margin-right:10px}
+  /* 마무리 */
+  .end .in{text-align:center}
+  .end h1{font-size:clamp(44px,9vw,116px)}
+  .end .lead{margin:22px auto 0}
+  .end .sign{margin-top:40px;font-size:clamp(13px,1.5vw,16px);letter-spacing:.24em;color:var(--tea2);font-weight:700}
+  /* 넘기기 */
+  .nav{position:fixed;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;
+    border:1.5px solid currentColor;background:transparent;color:var(--tea);font-size:22px;cursor:pointer;z-index:5;
+    display:grid;place-items:center;transition:background .2s,color .2s,opacity .2s}
+  .nav:hover{background:var(--tea);color:var(--paper)}
+  .nav:disabled{opacity:0;pointer-events:none}
+  body.isdark .nav{color:#EDEBE3}
+  body.isdark .nav:hover{background:#EDEBE3;color:var(--tea)}
+  #prev{left:clamp(8px,2vw,28px)} #next{right:clamp(8px,2vw,28px)}
+  .count{position:fixed;right:clamp(16px,3vw,40px);bottom:clamp(14px,3vh,30px);font-size:14px;font-weight:700;letter-spacing:.14em;color:var(--tea2);font-variant-numeric:tabular-nums;z-index:5}
+  .count b{color:var(--gyul)}
+  body.isdark .count{color:#9FB3A5}
+  .bar{position:fixed;left:0;bottom:0;height:3px;background:var(--gyul);transition:width .5s ease;z-index:5}
+  @media(max-width:760px){
+    .cover .in,.two{grid-template-columns:1fr;gap:22px}
+    .cover svg,.two svg{max-height:30vh;order:-1}
+    .three{grid-template-columns:1fr;border:0;margin-top:18px}
+    .three div{border:0;border-top:1px solid var(--line);margin:0;padding:14px 0 0}
+    .three .n{font-size:30px}
+    .slide{padding:64px 30px}
+    .nav{width:42px;height:42px;font-size:18px;top:auto;bottom:16px;transform:none}
+    #prev{left:16px}#next{left:66px;right:auto}
+    .walk{flex-direction:column;align-items:flex-start;margin-top:26px}
+    .walk i{flex:none;width:2px;height:22px;margin:6px 0 6px 6px;min-width:0;background:repeating-linear-gradient(180deg,#9FB3A5 0 5px,transparent 5px 10px)}
+    .walk em{display:none}
+  }
 </style>
 </head>
 <body>
 <div class="deck" id="deck">
 
-  <section class="slide on">
-    <div class="emoji">🥾</div>
-    <h1>느영나영 걷기 동호회</h1>
-    <p class="sub">한라산 아래, 토요일 아침을 함께 걷는 사람들</p>
-    <p><span class="tag">새 회원 환영 안내</span></p>
+  <!-- 1 표지 -->
+  <section class="slide cover on">
+    <div class="in">
+      <div>
+        <p class="eyebrow">Seogwipo · Doson-dong</p>
+        <h1>우리 마을<br>도순동<span class="dot">.</span></h1>
+        <hr class="rule">
+        <p class="lead">한라산 아래, 녹차와 귤이 자라는 작은 마을 이야기</p>
+        <div class="meta"><span>명절 가족 발표</span><span>8 Pages</span></div>
+      </div>
+      <svg viewBox="0 0 400 400" aria-hidden="true">
+        <circle cx="200" cy="200" r="170" fill="none" stroke="#D9D2C1" stroke-width="1.5"/>
+        <path d="M30 270 Q120 150 200 190 T370 250" fill="none" stroke="#2F4A3B" stroke-width="2.5"/>
+        <path d="M60 300 Q150 220 230 250 T360 290" fill="none" stroke="#6E8676" stroke-width="1.5"/>
+        <circle cx="270" cy="128" r="46" fill="#E2702A"/>
+        <path d="M270 82 q10 -14 26 -12" fill="none" stroke="#2F4A3B" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </div>
   </section>
 
+  <!-- 2 어디 -->
   <section class="slide">
-    <h2>'느영나영'이 무슨 뜻이냐면요</h2>
-    <p>제주 말로 <b>"너랑 나랑"</b></p>
-    <p class="sub">잘 걷는 사람도, 천천히 걷는 사람도<br>너랑 나랑 같이 갑니다</p>
+    <div class="in two">
+      <div>
+        <p class="eyebrow"><b>01</b>Where</p>
+        <h2>도순동은<br>어디에 있나요?</h2>
+        <p class="lead">제주 서귀포시, 한라산 남쪽 기슭.<br>바다와 산이 모두 가까운 마을이에요.</p>
+      </div>
+      <svg viewBox="0 0 400 300" aria-hidden="true">
+        <ellipse cx="200" cy="160" rx="180" ry="96" fill="none" stroke="#2F4A3B" stroke-width="2"/>
+        <path d="M150 160 L200 92 L250 160" fill="none" stroke="#6E8676" stroke-width="2"/>
+        <circle cx="214" cy="206" r="9" fill="#E2702A"/>
+        <circle cx="214" cy="206" r="22" fill="none" stroke="#E2702A" stroke-width="1.5" opacity=".5"/>
+        <text x="240" y="212" font-size="16" font-weight="700" fill="#1C2420" font-family="inherit">도순동</text>
+        <text x="182" y="84" font-size="13" fill="#6E8676" font-family="inherit">한라산</text>
+      </svg>
+    </div>
   </section>
 
+  <!-- 3 녹차밭 -->
   <section class="slide">
-    <h2>언제 · 어디서</h2>
-    <ul>
-      <li>매주 <b>토요일 아침 8시 30분</b></li>
-      <li>모이는 곳은 단톡방에 전날 공지</li>
-      <li>두 시간 걷고, 함께 아침 먹기</li>
-    </ul>
+    <div class="in two">
+      <svg viewBox="0 0 400 300" aria-hidden="true">
+        <g fill="none" stroke="#2F4A3B" stroke-width="2.2" stroke-linecap="round">
+          <path d="M20 230 Q200 170 380 230"/><path d="M20 196 Q200 136 380 196" opacity=".8"/>
+          <path d="M20 162 Q200 102 380 162" opacity=".6"/><path d="M20 128 Q200 68 380 128" opacity=".4"/>
+        </g>
+        <circle cx="320" cy="62" r="22" fill="#E2702A"/>
+      </svg>
+      <div>
+        <p class="eyebrow"><b>02</b>Green Tea</p>
+        <h2>초록 물결,<br>녹차밭</h2>
+        <p class="lead">줄 맞춰 선 차나무 사이를 걸으면<br>바람에서도 풀 향기가 나요.</p>
+      </div>
+    </div>
   </section>
 
+  <!-- 4 귤밭과 돌담 -->
   <section class="slide">
-    <h2>올해 다녀온 오름 다섯 곳</h2>
-    <div class="oreum"><span>새별오름</span><span>용눈이오름</span><span>따라비오름</span><span>아부오름</span><span>금오름</span></div>
-    <p class="sub" style="margin-top:22px">다음은 어디일까요? 투표로 정합니다 🗳</p>
+    <div class="in">
+      <p class="eyebrow"><b>03</b>Tangerine &amp; Stone</p>
+      <h2>귤밭을 지키는 돌담</h2>
+      <p class="lead">검은 돌담이 바람을 막아 주고, 그 안에서 귤이 익어 갑니다.</p>
+      <div class="three">
+        <div><span class="n">돌</span><p><b>검은 현무암</b>틈이 있어 바람은 지나가고 담은 무너지지 않아요</p></div>
+        <div><span class="n">귤</span><p><b>겨울의 주황빛</b>찬 바람이 불면 마을 전체가 주황색으로 물들어요</p></div>
+        <div><span class="n">손</span><p><b>함께 따는 손</b>수확 철엔 이웃끼리 서로 일손을 보태요</p></div>
+      </div>
+    </div>
   </section>
 
-  <section class="slide">
-    <h2>회원들이 한 말</h2>
-    <div class="quote"><p>"혼자면 안 나갔을 텐데, 토요일이 기다려져요."</p></div>
-    <div class="quote"><p>"걷고 나서 먹는 해장국이 제일 맛있어요!"</p></div>
+  <!-- 5 김장 잔치 (인용) -->
+  <section class="slide quote">
+    <div class="in">
+      <p class="eyebrow"><b>04</b>Village Kimjang</p>
+      <blockquote>김치는 집집마다 담그지만,<br>김장은 마을이 같이 해요.</blockquote>
+      <cite>— 해마다 열리는 도순동 김장 잔치</cite>
+    </div>
   </section>
 
-  <section class="slide">
-    <h2>회비와 준비물</h2>
-    <ul>
-      <li>회비 <b>월 1만 원</b> (아침값 일부)</li>
-      <li>편한 운동화 · 물 한 병 · 모자</li>
-      <li>비 오는 날은 쉬거나 실내 걷기</li>
-    </ul>
+  <!-- 6 산책길 (어두운 장) -->
+  <section class="slide dark">
+    <div class="in">
+      <p class="eyebrow"><b>05</b>My Walk</p>
+      <h2>내가 좋아하는 산책길</h2>
+      <p class="lead">아침마다 걷는 길. 천천히 걸어도 한 시간이면 충분해요.</p>
+      <div class="walk"><em></em><span>집 앞</span><i></i><span>귤밭 돌담길</span><i></i><span>녹차밭</span><i></i><span>마을 회관</span></div>
+    </div>
   </section>
 
+  <!-- 7 한마디 -->
   <section class="slide">
-    <h2>모임 약속 세 가지</h2>
-    <ul>
-      <li>앞사람 추월하지 않기</li>
-      <li>쓰레기는 가져온 대로 가져가기</li>
-      <li>힘들면 언제든 "쉬어 가요!"</li>
-    </ul>
+    <div class="in two">
+      <div>
+        <p class="eyebrow"><b>06</b>Why I Love It</p>
+        <h2>이 마을이<br>좋은 이유</h2>
+      </div>
+      <div>
+        <p class="lead" style="font-size:clamp(20px,2.8vw,32px);color:var(--ink);font-weight:700;line-height:1.5">
+          계절마다 색이 바뀌고,<br>이웃의 이름을 다 알고,<br><span class="dot">언제 와도 반겨 주는 곳.</span></p>
+      </div>
+    </div>
   </section>
 
-  <section class="slide">
-    <div class="emoji">🙌</div>
-    <h1>토요일에 만나요!</h1>
-    <p class="sub">처음 오시는 날, 아침은 모임에서 대접합니다</p>
+  <!-- 8 마무리 -->
+  <section class="slide end">
+    <div class="in">
+      <p class="eyebrow">Thank you</p>
+      <h1>놀러 오세요<span class="dot">.</span></h1>
+      <p class="lead">귤 한 봉지 들고 기다릴게요.</p>
+      <p class="sign">DOSON-DONG · SEOGWIPO · JEJU</p>
+    </div>
   </section>
 
 </div>
-<button class="nav" id="prev" type="button" aria-label="이전 장">‹</button>
-<button class="nav" id="next" type="button" aria-label="다음 장">›</button>
+<button class="nav" id="prev" type="button" aria-label="이전 장">←</button>
+<button class="nav" id="next" type="button" aria-label="다음 장">→</button>
 <div class="count" id="count"></div>
 <div class="bar" id="bar"></div>
 
 <script>
 (function(){
   var slides=[].slice.call(document.querySelectorAll('.slide')), i=0;
+  function pad(n){return (n<10?'0':'')+n;}
   function show(n){
     if(n<0||n>=slides.length)return;
-    slides.forEach(function(s,k){s.classList.toggle('on',k===n);s.classList.toggle('back',k<n);});
+    slides.forEach(function(s,k){s.classList.toggle('on',k===n);});
     i=n;
-    document.getElementById('count').textContent=(i+1)+' / '+slides.length;
+    document.body.classList.toggle('isdark',slides[i].classList.contains('dark'));
+    document.getElementById('count').innerHTML='<b>'+pad(i+1)+'</b> / '+pad(slides.length);
     document.getElementById('bar').style.width=((i+1)/slides.length*100)+'%';
     document.getElementById('prev').disabled=i===0;
     document.getElementById('next').disabled=i===slides.length-1;
@@ -124,7 +230,7 @@
   document.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;},{passive:true});
   document.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;
     if(Math.abs(dx)>50)show(dx<0?i+1:i-1);x0=null;});
-  show(0);
+  show(Math.max(0,(parseInt(location.hash.slice(1),10)||1)-1));
 })();
 </script>
 </body>
