@@ -206,3 +206,23 @@ body.s-type .box.cp-ok .bar span::after{content:" · 길어서 복사 OK";color:
 .plg b.t{display:block;font-size:18px;color:var(--navy)}
 .plg em{display:block;font-style:normal;font-weight:800;color:var(--warn);margin:2px 0 6px}
 .plg small{display:block;margin-top:6px;font-size:13.5px;color:var(--sub)}
+
+/* 2차시 — 웹페이지 속 3형제 (10월 5차시에서 가져옴) */
+.th-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:12px 0 16px}
+.th-pin{display:flex;gap:10px;align-items:flex-start;margin:10px 0 0}
+.th-pin .n{flex:0 0 28px;height:28px;border-radius:50%;color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px}
+.th-pin .h{font-weight:800;color:var(--navy);font-size:15.5px}
+.th-pin p{margin:2px 0 0;font-size:14px;color:var(--sub);line-height:1.5}
+.th-demo{border:2px solid #d9e2f1;border-radius:12px;padding:14px;background:#fff}
+.lk-tabs{display:flex;gap:6px;flex-wrap:wrap}
+.lk-tabs button{font-family:inherit;font-size:14px;font-weight:700;border:1.5px solid #d9e2f1;background:#fff;color:#334155;border-radius:20px;padding:6px 12px;cursor:pointer}
+.lk-tabs button.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.lk-view{height:100px;display:flex;align-items:center;justify-content:center;background:#f8fafc;border:1px dashed #cbd5e1;border-radius:10px;margin:10px 0}
+.lk-view button{font-family:serif;font-size:15px}
+#lk.c .lk-view button,#lk.j .lk-view button{font-family:inherit;font-size:20px;font-weight:800;color:#fff;background:var(--ok);
+  border:0;border-radius:30px;padding:12px 26px;box-shadow:0 6px 16px rgba(47,107,79,.3);cursor:pointer;transition:transform .12s}
+#lk.j .lk-view button:active{transform:scale(.92)}
+.lk-code{background:#0f172a;color:#e2e8f0;border-radius:10px;padding:10px 12px;font-size:13px;line-height:1.55;margin:0;white-space:pre-wrap;font-family:Consolas,monospace;min-height:96px}
+.lk-code .h{color:#c4b5fd}.lk-code .c{color:#93c5fd}.lk-code .j{color:#fde68a}
+.lk-msg{margin:8px 0 0;font-size:14px;color:var(--sub)}
+@media(max-width:600px){.th-cols{grid-template-columns:1fr}}

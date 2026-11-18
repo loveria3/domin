@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>2차시 — 웹 발표자료 만들어 보내기</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<link rel="stylesheet" href="lesson.css?v=20261118a">
+<link rel="stylesheet" href="lesson.css?v=20261118b">
 </head>
 <body class="type-only">
 <div class="wrap">
@@ -97,6 +97,22 @@
 <section id="s3" data-n="3" class="key">
   <div class="head"><span class="num">3</span><h2>웹 발표자료 만들기</h2><span class="badge hot">오늘의 핵심</span><span class="time">25분</span></div>
   <p class="one">파란 글씨만 고쳐서 보내세요. 나머지 조건은 그대로 두세요 — <b>[디자인]</b> 부분이 "오, 세련됐다!"를 만드는 비결이고, <b>[꼭 지킬 것]</b>은 4차시에 인터넷에 올리기 쉽게 해 줍니다.</p>
+  <h3>웹페이지 속 3형제 — HTML · CSS · JavaScript</h3>
+  <p class="one">오늘 만드는 발표자료 파일(.html) 하나 안에 이 셋이 함께 들어 있습니다. 오른쪽 단추를 차례로 눌러 보세요.</p>
+  <div class="th-cols">
+    <div class="th-plain">
+      <div class="th-pin"><div class="n" style="background:#8b5cf6">H</div><div><div class="h">HTML = 집의 뼈대 🦴</div><p>기둥과 벽처럼 제목·글·단추가 <b>어디에 있는지</b> 정합니다.</p></div></div>
+      <div class="th-pin"><div class="n" style="background:var(--blue)">C</div><div><div class="h">CSS = 인테리어 🎨</div><p>벽지와 커튼처럼 색·글씨 크기·배치를 <b>보기 좋게</b> 꾸밉니다.</p></div></div>
+      <div class="th-pin"><div class="n" style="background:#d4a017">J</div><div><div class="h">JavaScript = 전기 스위치 ⚡</div><p>누르면 다음 장으로 넘어가게 — <b>움직이게</b> 만듭니다.</p></div></div>
+      <p class="note">아래 프롬프트의 <b>[디자인]</b>은 주로 CSS가, <b>화살표로 넘기기</b>는 JavaScript가 맡습니다.</p>
+    </div>
+    <div class="th-demo" id="lk">
+      <div class="lk-tabs"><button type="button" data-s="h" class="on">① HTML만</button><button type="button" data-s="c">② + CSS</button><button type="button" data-s="j">③ + JavaScript</button></div>
+      <div class="lk-view"><button type="button" id="lkb">다음 장 → &nbsp;<span id="lkn">1</span> / 8</button></div>
+      <pre class="lk-code" id="lkc"></pre>
+      <p class="lk-msg" id="lkm"></p>
+    </div>
+  </div>
   <div class="box"><div class="bar"><span>프롬프트 3 — 웹 발표자료 (통째로 복사)</span></div>
 <div class="txt">너는 발표자료를 잘 만드는 디자이너야.
 <span class="ph">[우리 마을 도순동 자랑]</span> 발표자료를 웹페이지로 만들어줘.
@@ -252,6 +268,24 @@
 
 <footer>클로드로 만드는 내 일상 · 마음에도순 · 2차시 &nbsp;|&nbsp; 제주도민대학 열린강의실 · 강사 강지애</footer>
 </div>
+<script>
+// HTML · CSS · JS 직접 눌러 보기 (도민대학 10월 5차시 자료를 발표자료용으로)
+(function(){
+  var root=document.getElementById('lk');if(!root)return;
+  var code=document.getElementById('lkc'),msg=document.getElementById('lkm'),btn=document.getElementById('lkb'),num=document.getElementById('lkn'),n=1;
+  var C={
+    h:['<span class="h">&lt;button&gt;다음 장 →&lt;/button&gt;</span>','뼈대만 있습니다. 단추는 있지만 밋밋하고, 눌러도 아무 일이 없습니다.'],
+    c:['<span class="h">&lt;button&gt;다음 장 →&lt;/button&gt;</span>\n<span class="c">button { background: green; color: white;\n         border-radius: 30px; }</span>','인테리어를 입혔습니다. 보기 좋아졌지만… 눌러 보세요. 아직 장이 안 넘어갑니다!'],
+    j:['<span class="h">&lt;button&gt;다음 장 →&lt;/button&gt;</span>\n<span class="c">button { background: green; … }</span>\n<span class="j">button.addEventListener("click", () =&gt; {\n  page = page + 1;   // 누를 때마다 다음 장으로\n});</span>','스위치를 달았습니다. 눌러 보세요 — 누를 때마다 다음 장으로 넘어갑니다.']
+  };
+  function set(k){root.className='th-demo '+k;code.innerHTML=C[k][0];msg.textContent=C[k][1];
+    [].forEach.call(root.querySelectorAll('.lk-tabs button'),function(b){b.classList.toggle('on',b.getAttribute('data-s')===k);});
+    n=1;num.textContent=1;}
+  root.querySelector('.lk-tabs').onclick=function(e){var b=e.target.closest('button');if(b)set(b.getAttribute('data-s'));};
+  btn.onclick=function(){if(root.classList.contains('j')){n=n%8+1;num.textContent=n;}};
+  set('h');
+})();
+</script>
 <script src="lesson.js"></script>
 <script src="live.js"></script>
 </body>
