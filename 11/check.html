@@ -55,7 +55,7 @@
     <li><input type="checkbox"> 코워크가 QR 그림(png)을 직접 만드는지 — 안 되면 크롬 QR 대안으로 진행</li>
     <li><input type="checkbox"> 홍보물 꾸러미(files/olle-kit.zip → 올레홍보물.zip) 압축 풀면 <b>홍보물</b> 폴더에 올레홍보물.pptx · 사진 폴더(7장) · 디자인지침.txt — 2번 프롬프트 1-2로 만든 페이지가 완성 예시(olle-sample)처럼 <b>사진 머리 · 코스 썸네일 6(6은 1과 같은 사진) · 띠 사진 · 색 3가지 · 고정 바로가기</b>로 나오는지, 올레안내/img에 사진 7장이 영문 이름으로 복사되는지</li>
     <li><input type="checkbox"> 4번 <b>한 번 부탁</b>으로 QR png 만들기 + 올레홍보물.pptx의 'QR 넣을 자리'에 넣기 + 홍보물_QR.pptx 저장까지 되는지 (PDF 변환은 도전 2)</li>
-    <li><input type="checkbox"> 버셀: 폴더째 drop → Domains 주소 → 고친 폴더를 <b>내 프로젝트 화면</b>에 다시 끌어다 놓았을 때 같은 주소·같은 QR로 바뀐 내용이 보이는지 (폴더 재업로드는 꼭 미리 시험)</li>
+    <li><input type="checkbox"> 버셀: 폴더째 drop → Domains 주소 → 고친 폴더를 <b>내 프로젝트 화면</b>에 다시 끌어다 놓았을 때 같은 주소·같은 QR로 바뀐 내용이 보이는지 (폴더 재업로드는 꼭 미리 시험) · <b>vercel-help.html#redeploy</b> 그림(로그인·대시보드 카드는 그린 그림)이 실제 화면과 맞는지, 프로젝트 화면에 놓았을 때 Project Name 화면 없이 바로 새 배포가 되는지</li>
     <li><input type="checkbox"> github-help.html 그림 화면이 실제 GitHub 화면과 맞는지(메뉴 이름·위치). 깃허브 대안: 새 저장소 → 파일 업로드 → Settings → Pages(main/root) → 주소 확인 → Upload files로 갱신 시 같은 주소 반영(1~2분)</li>
     <li><input type="checkbox"> 각 수강생 계정의 남은 무료 사용량으로 실습 게시·갱신이 가능한지</li>
     <li><input type="checkbox"> 완성 예시 PDF의 QR은 <b>loveria3.github.io/domin/11/olle-sample/</b>를 가리킴 — olle-sample 폴더가 함께 올라가 있는지, 휴대폰으로 찍어 열리는지</li>
@@ -75,6 +75,20 @@
     <li><input type="checkbox"> 휴대폰에서 복사하기 → 클로드 앱에 붙여 넣기 작동</li>
   </ul>
 <ul class="chk box2"><li><input type="checkbox"> 준비 조건 표시·원본 하위 폴더 제외·새 프롬프트 1개 추가·같은 주소 갱신 확인</li><li><input type="checkbox"> 실제 Claude 실행·계정 인증·예약 실행은 교안 파일 점검과 별도로 강사가 시험</li></ul>
+</section>
+
+<section id="s4b">
+  <div class="head"><span class="num">6</span><h2>6차시 전 — AI교육 소식 검색함</h2></div>
+  <ul class="chk box2">
+    <li><input type="checkbox"> 강사 계정으로 files/keyword-script.txt를 새 시트에 붙여 setup 실행 → 키워드·검색함 탭 생성, 실제 구글 뉴스 기사가 들어오는지 (가짜 환경 시험만 해 둠)</li>
+    <li><input type="checkbox"> 웹 앱 배포(나 · 모든 사용자) → keyword-app.html에 주소 넣고 PIN·지금 검색·보관·버림·키워드 저장·예약 켜기 실제 작동</li>
+    <li><input type="checkbox"> 예약 켜기 → 편집기 ⏰ 트리거에 dailySearch 1개, 다음 날 아침 새 줄 들어왔는지</li>
+    <li><input type="checkbox"> AI교육 기본 키워드 5개로 잡음 비율 보기 → 빼는 말 기본값 조정 (교안 3번 예시와 맞추기)</li>
+    <li><input type="checkbox"> '확인되지 않은 앱' 화면 실제 문구 캡처 → 이론 ② 6번 · 6차시 4번 ④ 표현 맞추기</li>
+    <li><input type="checkbox"> 강사 공용 웹 앱 URL · PIN 준비 → 6차시 4번 🆘 자리표시 [강사 공용 웹 앱 URL] 채우기, 수업 뒤 배포 보관</li>
+    <li><input type="checkbox"> 휴대폰 클로드 앱 + 구글 드라이브 커넥터로 시트 '보관' 줄 요약이 되는지 (안 되면 10번을 CSV 올리기로)</li>
+    <li><input type="checkbox"> 버셀에 올린 주소에서 앱스크립트 호출이 되는지 (파일 더블클릭 때와 같은지)</li>
+  </ul>
 </section>
 
 <section id="s5">

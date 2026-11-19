@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>이론 ② — 왜 앱스크립트일까?</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="lesson.css?v=1119">
+<style>
+.need{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0 0}
+.need div{background:var(--navy-soft);border-radius:12px;padding:14px;font-size:15px}
+.need b{display:block;font-size:16.5px;color:var(--navy);margin:4px 0 2px}
+.need .ic{font-size:26px;line-height:1}
+table.cmp td,table.cmp th{text-align:center;vertical-align:middle}
+table.cmp td:first-child,table.cmp th:first-child{text-align:left}
+table.cmp .o{color:var(--ok);font-weight:800;font-size:18px}
+table.cmp .x{color:#b33;font-weight:800;font-size:18px}
+table.cmp .s{color:var(--warn);font-weight:800;font-size:18px}
+table.cmp small{display:block;font-size:12px;color:var(--sub);font-weight:400;line-height:1.35}
+table.cmp tr.win td{background:#eef6f1}
+.walls{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0 0}
+.walls div{border:1px solid var(--line);border-radius:12px;padding:14px;font-size:14.5px;background:#fff}
+.walls h4{margin:0 0 6px;font-size:15.5px}
+.abil{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:14px 0 0}
+.abil div{background:var(--soft);border-radius:12px;padding:14px;font-size:14.5px}
+.abil b{display:block;font-size:16px;margin-bottom:2px}
+.abil code{font-size:12.5px;background:#fff;border-radius:4px;padding:1px 5px;color:var(--sub)}
+.warnshot{margin:12px 0 0;border:1px solid #d9dde3;border-radius:10px;background:#fff;max-width:420px;padding:16px 18px;font-size:14px}
+.warnshot .wt{font-size:17px;font-weight:700;margin:0 0 6px}
+.warnshot .wl{color:#1a73e8;font-weight:600;margin-top:10px}
+@media(max-width:700px){.need,.walls{grid-template-columns:1fr}.abil{grid-template-columns:1fr}}
+</style>
+</head>
+<body class="type-only">
+<div class="wrap">
+<a class="home" href="index.html">← 자료실 처음으로</a>
+<header>
+  <p class="kicker">6차시 먼저 읽기 · 이론 ② · 약 30분</p>
+  <h1>왜 <em>앱스크립트</em>일까?<br>네 가지 방법을 견줘 보기</h1>
+  <p class="sub">이론 ①의 식당(홀 · 주방 · 창고)으로 이어서 봅니다. 6차시 키워드 검색함에는 <b>무료로 빌리는 작은 주방</b>이 필요해요.</p>
+  <div class="toprow">
+    <a class="btn line" href="theory-web.html">← 이론 ① 웹페이지 · 서버 · 데이터베이스</a>
+  </div>
+</header>
+
+<div class="hook">
+  <p class="q">"클로드 예약 작업도 있는데,<br>왜 굳이 구글 앱스크립트를 배워요?"</p>
+  <p>좋은 질문입니다. 클로드 예약은 이제 <b>PC를 꺼도</b> 돌아갑니다. 그런데도 6차시엔 앱스크립트가 필요한 <b>이유 하나</b>가 있어요. 오늘 그걸 찾아봅니다.</p>
+  <div class="take"><span>오늘 알게 될 것</span><span>🧱 웹페이지만으로 안 되는 이유</span><span>🍳 앱스크립트가 하는 일</span><span>🤝 클로드와 나눠 맡기</span></div>
+</div>
+
+<nav class="jump">
+  <a href="#a1">1</a><a href="#a2">2</a><a href="#a3">3</a><a href="#a4">4</a><a href="#a5">5</a><a href="#a6">6</a><a href="#aq">퀴즈</a>
+</nav>
+
+<!-- 1 -->
+<section id="a1" data-n="1" data-t="만들고 싶은 것의 조건">
+  <div class="head"><span class="num">1</span><h2>만들고 싶은 것 — 조건 세 개</h2><span class="time">2분</span></div>
+  <p class="one">6차시 <b>키워드 검색함</b>이 해야 할 일을 조건으로 적으면 이렇습니다.</p>
+  <div class="need">
+    <div><span class="ic">👆</span><b>① 단추 하나로 바로</b>휴대폰 화면의 [지금 검색]을 누르면 그 자리에서 찾아 줌</div>
+    <div><span class="ic">⏰</span><b>② 아침마다 혼자</b>내가 안 봐도, PC가 꺼져 있어도 매일 7시에 찾아 둠</div>
+    <div><span class="ic">🗄</span><b>③ 어디서나 같은 보관함</b>휴대폰에서 보관한 것이 PC에서도 그대로</div>
+  </div>
+  <div class="tnote"><p>"세 조건을 모두 만족하는 방법을 찾는 게 오늘의 목표"라고 못박고 시작하세요. 2번 비교표에서 하나씩 지워 나가는 재미가 있습니다.</p></div>
+</section>
+
+<!-- 2 -->
+<section id="a2" data-n="2" class="key" data-t="네 가지 방법 견주기">
+  <div class="head"><span class="num">2</span><h2>네 가지 방법 견주기</h2><span class="badge hot">핵심</span><span class="time">8분</span></div>
+  <table class="cmp plain">
+    <tr><th>방법</th><th>① 단추로 바로</th><th>② 아침마다 혼자</th><th>③ 어디서나 같은 보관함</th></tr>
+    <tr><td><b>A. 웹페이지만</b><small>🪟 홀만 (3·4차시)</small></td>
+      <td><span class="x">✕</span><small>남의 사이트 내용을 못 가져옴</small></td>
+      <td><span class="x">✕</span><small>페이지를 열 때만 움직임</small></td>
+      <td><span class="s">△</span><small>그 휴대폰에만</small></td></tr>
+    <tr><td><b>B. 클로드 예약 작업</b><small>🤖 코워크 · 2차시에 써 본 것</small></td>
+      <td><span class="x">✕</span><small>웹페이지 단추로 클로드를 부를 수 없음</small></td>
+      <td><span class="o">○</span><small>클라우드에서 돎 — PC 꺼져도 OK<br>(내 PC 폴더를 쓰는 예약만 PC가 켜져 있어야)</small></td>
+      <td><span class="s">△</span><small>결과가 클로드 대화·드라이브에 —<br>내 웹앱 화면으로 바로 오진 않음</small></td></tr>
+    <tr class="win"><td><b>C. 구글 시트 + 앱스크립트</b><small>🍳 무료로 빌리는 작은 주방</small></td>
+      <td><span class="o">○</span><small>'웹 앱 주소'로 홀이 주방을 부름</small></td>
+      <td><span class="o">○</span><small>트리거(알람 시계) — 구글 컴퓨터가 일함</small></td>
+      <td><span class="o">○</span><small>시트 한 장이 창고</small></td></tr>
+    <tr><td><b>D. 서버 직접 빌리기</b><small>🏭 AWS · 구글 클라우드 등</small></td>
+      <td><span class="o">○</span></td><td><span class="o">○</span></td>
+      <td><span class="o">○</span><small>대신 돈 · 설정 · 관리 — 과정 밖</small></td></tr>
+  </table>
+  <div class="fcwrap">
+    <p class="fct">그래서 무엇을 고를까? — 판단 순서도</p>
+    <svg class="fc" viewBox="110 0 460 420" role="img" aria-label="키워드 검색함에 맞는 방법을 고르는 순서도">
+      <defs><marker id="arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7b8494"/></marker></defs>
+      <g class="nd"><rect x="150" y="8" width="200" height="46" rx="10"/><text x="250" y="31">조건 ①②③ 적어 보기</text></g>
+      <path class="ln" d="M250 54 V84" marker-end="url(#arA)"/>
+      <g class="nd"><polygon points="250,86 360,140 250,194 140,140"/><text x="250" y="131">① 웹페이지 단추로</text><text x="250" y="151">바로 일해야 하나?</text></g>
+      <path class="ln" d="M360 140 H398" marker-end="url(#arA)"/><text class="lb" x="379" y="130">아니오</text>
+      <g class="nd r"><rect x="400" y="110" width="166" height="60" rx="10"/><text x="483" y="130">🤖 B. 클로드 예약</text><text x="483" y="152">으로 충분 (아침 브리핑)</text></g>
+      <path class="ln" d="M250 194 V236" marker-end="url(#arA)"/><text class="lb" x="262" y="215">예</text>
+      <g class="nd"><polygon points="250,238 360,292 250,346 140,292"/><text x="250" y="283">돈·서버 관리를</text><text x="250" y="303">감당할 수 있나?</text></g>
+      <path class="ln" d="M360 292 H398" marker-end="url(#arA)"/><text class="lb" x="379" y="282">예</text>
+      <g class="nd r"><rect x="400" y="266" width="166" height="52" rx="10"/><text x="483" y="292">🏭 D. 서버 빌리기</text></g>
+      <path class="ln" d="M250 346 V362" marker-end="url(#arA)"/><text class="lb" x="270" y="356">아니오</text>
+      <g class="nd r hit"><rect x="140" y="364" width="220" height="50" rx="10"/><text x="250" y="389">🍳 C. 구글 시트 + 앱스크립트 ✔</text></g>
+    </svg>
+  </div>
+  <p class="one">결정적인 차이는 <b>조건 ① 단추로 바로</b>입니다. 홀(웹페이지)이 <b>주소로 부를 수 있는 주방</b>이 필요하고, 그런 주방을 무료로 빌려주는 곳이 구글 앱스크립트예요.</p>
+  <div class="tnote"><p>B를 깎아내리지 마세요. 클로드 예약은 <b>똑똑합니다</b> — 기사를 읽고 요약하고 판단합니다. 다만 웹페이지 단추가 부를 주소가 없을 뿐입니다. 6번에서 "둘을 함께 쓰는 법"으로 다시 살립니다.</p>
+  <p>확인 근거: 2026-10-06부터 Pro·Max·Ultra의 새 코워크 작업·예약은 클라우드에서 실행(내 PC 폴더를 쓰는 작업은 데스크톱이 켜져 있어야). 개강 전에 공식 도움말로 한 번 더 확인하세요.</p></div>
+</section>
+
+<!-- 3 -->
+<section id="a3" data-n="3" data-t="웹페이지만으로 안 되는 이유">
+  <div class="head"><span class="num">3</span><h2>웹페이지만으로는 왜 안 될까? — 세 개의 벽</h2><span class="time">4분</span></div>
+  <div class="walls">
+    <div><h4>🧱 남의 사이트를 마음대로 못 가져온다</h4>브라우저는 보안 규칙 때문에, 내 페이지가 <b>다른 사이트(구글 뉴스)의 내용을 마음대로 가져오는 것</b>을 막습니다. 주방(서버)은 가져올 수 있어요.</div>
+    <div><h4>💡 화면은 열려 있을 때만 움직인다</h4>웹페이지는 <b>누군가 열어 둔 동안에만</b> 움직입니다. 아침 7시에 아무도 안 열면 아무 일도 안 일어나요.</div>
+    <div><h4>📒 휴대폰에 적은 건 그 휴대폰에만</h4>브라우저에 적어 두는 저장은 <b>그 기기 그 브라우저에만</b> 남습니다. PC에서 열면 텅 비어 있어요.</div>
+  </div>
+  <p class="note">셋 다 <b>주방과 창고</b>가 있으면 풀립니다 — 주방은 다른 사이트에서 찾아 오고, 손님이 없어도 일하고, 창고는 어느 기기에서나 같은 내용을 보여 주니까요.</p>
+  <div class="tnote"><p>첫 번째 벽은 개발자들이 'CORS'라고 부르는 규칙입니다. 이름은 몰라도 됩니다. 클로드가 "CORS 때문에 안 됩니다"라고 하면 "화면이 남의 사이트를 직접 가져오려다 막혔구나, 주방을 거쳐야 하는구나"라고 이해하면 충분하다고 말해 주세요.</p></div>
+</section>
+
+<!-- 4 -->
+<section id="a4" data-n="4" data-t="앱스크립트가 하는 일">
+  <div class="head"><span class="num">4</span><h2>앱스크립트는 무엇을 해 줄까?</h2><span class="time">5분</span></div>
+  <p class="one">구글 시트 메뉴의 <b>확장 프로그램 → Apps Script</b>. 구글 계정만 있으면 <b>무료로 빌려 쓰는 작은 주방</b>입니다. 5차시 운동일기에서 이미 한 번 써 봤어요.</p>
+  <div class="abil">
+    <div><b>🗄 창고 정리</b>구글 시트에 줄을 쓰고, 읽고, 고칩니다. <code>보관 · 버림 · 메모</code></div>
+    <div><b>🔎 찾아 오기</b>다른 사이트 내용을 가져옵니다. 오늘은 <code>구글 뉴스 검색 결과</code></div>
+    <div><b>⏰ 알람 시계</b>'트리거'를 걸면 정해진 시간에 혼자 일합니다. <code>매일 오전 7시</code></div>
+    <div><b>📮 부를 주소</b>'웹 앱'으로 배포하면 주소가 생기고, 홀(웹페이지)이 그 주소로 주방을 부릅니다.</div>
+  </div>
+  <table>
+    <tr><th>잘하는 것</th><td>정해진 일을 <b>매일 똑같이</b>, 무료로, 시트와 한 몸으로</td></tr>
+    <tr><th>못 하는 것</th><td>기사를 읽고 <b>쓸모를 판단</b>하기 — 정해 준 규칙(꼭 들어갈 말 · 빼는 말)대로만 거릅니다</td></tr>
+    <tr><th>낯선 것</th><td>처음 한 번 '배포'와 '권한 승인' 화면. 6차시에 그림 안내를 따라 같이 합니다</td></tr>
+    <tr><th>한도</th><td>하루에 쓸 수 있는 양이 정해져 있지만, 하루 한두 번 검색하는 데는 걱정 없습니다</td></tr>
+  </table>
+</section>
+
+<!-- 5 -->
+<section id="a5" data-n="5" class="key" data-t="키워드 검색함 설계도">
+  <div class="head"><span class="num">5</span><h2>6차시 키워드 검색함 설계도</h2><span class="badge hot">핵심</span><span class="time">6분</span></div>
+  <div class="fcwrap">
+    <p class="fct">배치도 — 누가 누구를 부르나</p>
+    <svg class="fc" viewBox="0 0 560 300" role="img" aria-label="키워드 검색함 구조도">
+      <defs><marker id="arB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7b8494"/></marker></defs>
+      <g class="nd"><rect x="215" y="8" width="140" height="50" rx="10"/><text x="285" y="26">⏰ 매일 아침 7시</text><text x="285" y="44" class="lb">트리거 (알람 시계)</text></g>
+      <path class="ln" d="M285 58 V116" marker-end="url(#arB)"/><text class="lb" x="306" y="90">깨우기</text>
+      <g class="nd r"><rect x="8" y="118" width="134" height="64" rx="10"/><text x="75" y="140">📱 내 웹앱</text><text x="75" y="162" class="lb">홀 · 버셀 · 홈 화면</text></g>
+      <g class="nd r hit"><rect x="215" y="118" width="140" height="64" rx="10"/><text x="285" y="140">🍳 앱스크립트</text><text x="285" y="162" class="lb">주방 · 웹 앱 주소</text></g>
+      <path class="ln" d="M142 138 H213" marker-end="url(#arB)"/><text class="lb" x="178" y="128">요청</text>
+      <path class="ln" d="M215 164 H144" marker-end="url(#arB)"/><text class="lb" x="178" y="180">응답</text>
+      <g class="nd"><rect x="420" y="22" width="132" height="56" rx="10"/><text x="486" y="42">🔎 구글 뉴스</text><text x="486" y="62" class="lb">기사를 찾는 곳</text></g>
+      <path class="ln" d="M355 134 L418 66" marker-end="url(#arB)"/><text class="lb" x="368" y="88">찾아 오기</text>
+      <g class="nd"><rect x="420" y="214" width="132" height="74" rx="10"/><text x="486" y="234">🗄 구글 시트</text><text x="486" y="254" class="lb">키워드 · 검토함</text><text x="486" y="272" class="lb">· 보관함</text></g>
+      <path class="ln" d="M355 166 L418 236" marker-end="url(#arB)"/><text class="lb" x="372" y="222">적기·꺼내기</text>
+    </svg>
+  </div>
+  <div class="fcwrap">
+    <p class="fct">일하는 순서 — 한 바퀴 돌고, 잡음이 많으면 거르는 말을 고쳐 다시</p>
+    <svg class="fc" viewBox="120 0 450 512" role="img" aria-label="키워드 검색함 작업 순서도">
+      <defs><marker id="arC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7b8494"/></marker></defs>
+      <g class="nd"><rect x="150" y="8" width="200" height="44" rx="10"/><text x="250" y="30">1 · 키워드 정하기</text></g>
+      <path class="ln" d="M250 52 V82" marker-end="url(#arC)"/>
+      <g class="nd"><rect x="150" y="84" width="200" height="44" rx="10"/><text x="250" y="106">2 · 검색 (지금 / 아침 7시)</text></g>
+      <path class="ln" d="M250 128 V158" marker-end="url(#arC)"/>
+      <g class="nd"><rect x="150" y="160" width="200" height="44" rx="10"/><text x="250" y="182">3 · 거르기 (빼는 말)</text></g>
+      <path class="ln" d="M250 204 V234" marker-end="url(#arC)"/>
+      <g class="nd"><rect x="150" y="236" width="200" height="44" rx="10"/><text x="250" y="258">4 · 검토함에 쌓기</text></g>
+      <path class="ln" d="M250 280 V310" marker-end="url(#arC)"/>
+      <g class="nd"><polygon points="250,312 345,364 250,416 155,364"/><text x="250" y="364">쓸모 있나? (나)</text></g>
+      <path class="ln" d="M345 364 H398" marker-end="url(#arC)"/><text class="lb" x="372" y="354">아니오</text>
+      <g class="nd r"><rect x="400" y="340" width="150" height="48" rx="10"/><text x="475" y="364">🗑 버림</text></g>
+      <path class="ln" d="M475 340 V182 H352" marker-end="url(#arC)"/><text class="lb" x="520" y="250">잡음이</text><text class="lb" x="520" y="268">많으면</text><text class="lb" x="520" y="286">빼는 말 추가</text>
+      <path class="ln" d="M250 416 V454" marker-end="url(#arC)"/><text class="lb" x="262" y="436">예</text>
+      <g class="nd r hit"><rect x="150" y="456" width="200" height="48" rx="10"/><text x="250" y="480">5 · 보관함 (상태 · 메모)</text></g>
+    </svg>
+  </div>
+  <p class="note">강사가 실제로 쓰는 「강사모집·연수 모음함」이 바로 이 구조입니다. AI 교육 · 에듀테크 연수 같은 키워드 12개로 구글 뉴스에서 매일 아침 모아 → 검토함 → 보관. 처음에 거르는 말 없이 돌렸더니 절반이 엉뚱한 기사였고, '빼는 말'을 넣고 나서야 쓸 만해졌어요. 오늘 만들 검색함은 그 구조를 <b>AI교육 소식</b>에 맞게 줄인 것입니다.</p>
+  <div class="tnote"><p>강사의 실제 모음 화면을 직접 띄워 보여 주면 가장 설득력이 있습니다(PIN 입력은 화면 밖에서). 강사 페이지 실측(2026-11-01) — 거르는 말 없이 20건 중 10건이 잡음, 주제어 조건을 더하니 5건 모두 쓸 만한 소식 — 는 '판단은 사람이, 규칙은 시트에'라는 메시지로 마무리하세요.</p></div>
+</section>
+
+<!-- 6 -->
+<section id="a6" data-n="6" data-t="클로드와 앱스크립트 나눠 맡기">
+  <div class="head"><span class="num">6</span><h2>클로드와 앱스크립트, 나눠 맡기</h2><span class="time">4분</span></div>
+  <table class="plain">
+    <tr><th>누가</th><th>맡는 일</th></tr>
+    <tr><td>🤖 클로드</td><td>앱스크립트 코드와 웹페이지를 <b>써 주고 · 고쳐 주고 · 설명</b>해 줌. (도전) 보관함을 읽고 요약하는 예약</td></tr>
+    <tr><td>🍳 앱스크립트</td><td>매일 아침 같은 검색 · 거르기 · 시트에 적기 · 단추 부탁 받기</td></tr>
+    <tr><td>🙋 나</td><td>다섯 질문에 답하기 · 키워드 정하기 · 보관/버림 판단 · 권한 승인 · 무엇을 넣지 않을지</td></tr>
+  </table>
+  <table>
+    <tr><th></th><td><b>클로드 예약</b> vs <b>앱스크립트 트리거</b></td></tr>
+    <tr><th>똑똑함</th><td>읽고 요약·판단함 vs 정해진 규칙대로만</td></tr>
+    <tr><th>비용</th><td>내 클로드 사용량을 씀 vs 무료(구글 한도 안에서)</td></tr>
+    <tr><th>웹페이지 단추</th><td>부를 수 없음 vs 부를 수 있음(웹 앱 주소)</td></tr>
+    <tr><th>PC 꺼져도</th><td>○ (PC 폴더를 안 쓰면) vs ○</td></tr>
+  </table>
+
+  <h3>처음 실행할 때 나오는 경고, 미리 보기</h3>
+  <div class="warnshot">
+    <p class="wt">⚠ Google에서 확인하지 않은 앱</p>
+    <p style="margin:0;color:#555">이 앱은 Google의 확인을 받지 않았습니다…</p>
+    <p class="wl">고급 → (내 프로젝트 이름)(으)로 이동</p>
+  </div>
+  <p class="note">무서운 말 같지만 뜻은 "<b>내가 만든 앱이라 구글이 심사하지 않았다</b>"입니다. 승인하면 <b>그 코드가 내 구글 계정의 시트를 읽고 쓰는 것</b>을 허락하게 돼요. 그래서 규칙 두 가지:</p>
+  <ul class="chk">
+    <li><b>남이 준 코드는 승인 전에 클로드에게 설명부터</b> 받습니다.</li>
+    <li>비밀번호는 코드에 적지 않고 <b>스크립트 속성</b>(주방 금고)에 넣습니다.</li>
+  </ul>
+  <div class="box"><div class="bar"><span>프롬프트 — 승인 전에 코드 설명 받기</span></div>
+<div class="txt">이 앱스크립트 코드가 무엇을 하는지 쉬운 말로 다섯 줄로 설명해줘.
+내 구글 계정에서 무엇을 읽고 쓰는지, 다른 곳으로 보내는 것이 있는지도 알려줘.
+고치지는 마.</div></div>
+  <div class="tnote"><p>경고 화면 문구는 구글이 자주 바꿉니다. 6차시 그림 안내는 수업 직전에 실제 화면으로 캡처해 바꾸는 것을 권합니다.</p></div>
+</section>
+
+<!-- 퀴즈 -->
+<section id="aq" data-n="퀴즈" data-t="OX 퀴즈">
+  <div class="head"><span class="num y">Q</span><h2>OX 퀴즈</h2><span class="time">3분</span></div>
+  <div class="quiz">
+    <details><summary>웹페이지(HTML)만으로 매일 아침 구글 뉴스를 자동 검색해 둘 수 있다.</summary><p><span class="x">X</span> — 웹페이지는 열려 있을 때만 움직이고, 남의 사이트 내용도 마음대로 못 가져옵니다.</p></details>
+    <details><summary>클로드 예약 작업은 PC를 꺼 두어도 돌 수 있다.</summary><p><span class="o">O</span> — 클라우드에서 돕니다. 단, 내 PC 폴더의 파일을 쓰는 예약은 PC와 데스크톱 앱이 켜져 있어야 합니다.</p></details>
+    <details><summary>내 웹페이지의 [지금 검색] 단추로 클로드 예약 작업을 바로 부를 수 있다.</summary><p><span class="x">X</span> — 그래서 웹페이지가 부를 수 있는 주소(앱스크립트 웹 앱 주소)가 필요합니다.</p></details>
+    <details><summary>앱스크립트의 '트리거'는 정해진 시간에 주방을 깨우는 알람 시계다.</summary><p><span class="o">O</span> — 6차시에는 매일 오전 7시에 검색하도록 겁니다.</p></details>
+    <details><summary>앱스크립트는 기사를 읽고 나에게 쓸모 있는지 똑똑하게 판단해 준다.</summary><p><span class="x">X</span> — 정해 준 규칙(꼭 들어갈 말 · 빼는 말)대로만 거릅니다. 판단은 내가, 요약이 필요하면 클로드가 합니다.</p></details>
+  </div>
+</section>
+
+<div class="end">
+  <h2>기억할 네 줄</h2>
+  <p>🧱 웹페이지만으로는 <b>남의 사이트 가져오기 · 혼자 일하기 · 함께 보기</b>가 안 된다.</p>
+  <p>🍳 앱스크립트 = 구글이 빌려주는 <b>무료 작은 주방</b>. 창고(시트) 정리 · 찾아 오기 · ⏰ 알람 · 부를 주소.</p>
+  <p>🤖 클로드 예약은 똑똑하지만, <b>웹페이지 단추로는 못 부른다.</b> 둘은 경쟁이 아니라 짝.</p>
+  <p>🙋 승인 전에 <b>코드 설명부터</b>, 비밀번호는 <b>스크립트 속성</b>에.</p>
+  <p class="next">다음 → 6차시 실습에서 기획 순서도부터 그리고 직접 만듭니다.</p>
+</div>
+<footer>참고: 위니브 『Claude Desktop 에센셜』 0.5 클라우드 작업과 예약 · 7.6 갖춰 둔 도구의 비용, 『바이브 코딩 에센셜 with Claude Desktop』 9.1 백엔드 (<a href="https://weniversity.co.kr/book/" target="_blank" rel="noopener">위니버시티 교재</a>)</footer>
+</div>
+<script src="lesson.js?v=1119"></script>
+</body>
+</html>

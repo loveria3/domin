@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>이론 ① — 웹페이지 · 서버 · 데이터베이스</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="lesson.css?v=1119">
+<style>
+/* ── 식당 그림 ── */
+.shop{margin:16px 0 0;display:grid;grid-template-columns:1fr 1.25fr 1.25fr 1fr;gap:10px;align-items:stretch}
+.zn{position:relative;border:2px solid var(--line);border-radius:14px;padding:14px 12px 12px;background:#fff;text-align:center;transition:all .25s}
+.zn .ic{font-size:30px;line-height:1}
+.zn b{display:block;font-size:16px;margin-top:6px}
+.zn .is{display:block;font-size:13px;color:var(--navy);font-weight:700;margin-top:2px}
+.zn small{display:block;font-size:12.5px;color:var(--sub);margin-top:6px;line-height:1.45}
+.zn.on{border-color:var(--navy);background:var(--navy-soft);transform:translateY(-3px);box-shadow:0 6px 16px rgba(31,56,100,.14)}
+.zn.dim{opacity:.38}
+.zn .tag{position:absolute;top:-10px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:800;padding:1px 8px;border-radius:9px;white-space:nowrap}
+.zn .tag.f{background:#e7f0ff;color:#1f4fa8}
+.zn .tag.b{background:#fdeee3;color:#a5501a}
+.zn.store .tag{background:#eaf5ee;color:#2f6b4f}
+.flowcap{margin:12px 0 0;background:var(--soft);border-radius:10px;padding:12px 16px;min-height:72px;font-size:15.5px}
+.flowcap .sn{display:inline-block;background:#e8590c;color:#fff;font-weight:800;font-size:13px;border-radius:10px;padding:0 8px;margin-right:8px}
+.flowcap em{font-style:normal;display:block;font-size:13.5px;color:var(--sub);margin-top:4px}
+.fctl{display:flex;align-items:center;gap:8px;margin:10px 0 0;flex-wrap:wrap}
+.fctl button{font:inherit;font-size:14.5px;font-weight:700;border:1px solid #c3cbd8;background:#fff;color:var(--navy);border-radius:8px;padding:6px 14px;cursor:pointer}
+.fctl button.go{background:var(--navy);color:#fff;border-color:var(--navy)}
+.fdots{display:flex;gap:5px}
+.fdots i{width:10px;height:10px;border-radius:5px;background:#c9ced6}
+.fdots i.on{background:#e8590c}
+/* ── 세 칸 카드 ── */
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0 0}
+.three div{border-radius:12px;padding:14px;font-size:14.5px;background:var(--soft)}
+.three h4{margin:0 0 6px;font-size:16px}
+.three .f{background:#eef4ff}.three .f h4{color:#1f4fa8}
+.three .b{background:#fff3ea}.three .b h4{color:#a5501a}
+.three .d{background:#eef6f1}.three .d h4{color:#2f6b4f}
+.three ul{margin:0;padding-left:18px}.three li{padding:2px 0}
+/* ── 판정기 ── */
+.judge{margin:14px 0 0;border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:#fff}
+.presets{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.presets button{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:5px 12px;cursor:pointer}
+.presets button.on{background:var(--navy);color:#fff;border-color:var(--navy);font-weight:700}
+.jq{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--line);flex-wrap:wrap}
+.jq span{flex:1;min-width:200px;font-size:15.5px}
+.jq span small{display:block;font-size:13px;color:var(--sub)}
+.yn{display:inline-flex;border:1px solid #c3cbd8;border-radius:8px;overflow:hidden}
+.yn button{font:inherit;font-size:14px;font-weight:700;border:0;background:#fff;color:var(--sub);padding:6px 14px;cursor:pointer}
+.yn button.on{background:var(--navy);color:#fff}
+.jres{margin-top:12px;border-radius:10px;padding:12px 16px;background:var(--navy-soft);font-size:15.5px}
+.jres b.k{display:block;font-size:17px;color:var(--navy)}
+@media(max-width:700px){
+  .shop{grid-template-columns:1fr 1fr}
+  .three{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body class="type-only">
+<div class="wrap">
+<a class="home" href="index.html">← 자료실 처음으로</a>
+<header>
+  <p class="kicker">6차시 먼저 읽기 · 이론 ① · 약 28분</p>
+  <h1>웹페이지 · 서버 · 데이터베이스<br><em>식당 하나로 이해하기</em></h1>
+  <p class="sub">코드는 클로드가 씁니다. 우리는 <b>무엇이 어디에 있는지</b>만 알면 클로드와 말이 통합니다.</p>
+  <div class="toprow">
+    <a class="btn line" href="theory-appsscript.html">이론 ② 왜 앱스크립트일까 →</a>
+  </div>
+</header>
+
+<div class="hook">
+  <p class="q">"강사님 모음 페이지는 왜 제 휴대폰에서 열어도<br>강사님이 어제 보관한 게 보여요?"</p>
+  <p>지금까지 만든 결과물은 <b>파일 안에 적힌 것</b>만 보여 줍니다. 오늘은 그 뒤에 숨은 <b>주방과 창고</b>를 봅니다.</p>
+  <div class="take"><span>오늘 알게 될 것</span><span>🪟 프론트엔드</span><span>🍳 백엔드(서버)</span><span>🗄 데이터베이스</span><span>✅ 웹앱 기획 다섯 질문</span></div>
+</div>
+
+<nav class="jump">
+  <a href="#t1">1</a><a href="#t2">2</a><a href="#t3">3</a><a href="#t4">4</a><a href="#t5">5</a><a href="#t6">6</a><a href="#tq">퀴즈</a>
+</nav>
+
+<!-- 1 -->
+<section id="t1" data-n="1" data-t="오늘의 질문">
+  <div class="head"><span class="num">1</span><h2>오늘의 질문 — 무엇이 다를까?</h2><span class="time">2분</span></div>
+  <div class="vs">
+    <div class="bad"><b>3차시 올레 안내 페이지</b>내용을 바꾸려면
+파일을 고쳐서 다시 올려야 함
+누가 열어도 똑같은 화면</div>
+    <div class="good"><b>강사의 모음 페이지 · 5차시 운동일기</b>화면에서 [저장]을 누르면 바로 남음
+다른 휴대폰에서 열어도 같은 내용
+새 소식이 아침마다 저절로 들어옴</div>
+  </div>
+  <p class="one">오른쪽 페이지에는 왼쪽에 없는 <b>두 가지</b>가 더 붙어 있습니다. 그게 오늘의 주인공 <b>서버</b>와 <b>데이터베이스</b>예요.</p>
+  <div class="tnote"><p>손을 들어 보게 하세요. "5차시 운동일기에서 가족이 쓴 기록이 내 휴대폰에 보였죠? 그건 왜 그럴까요?" 정답을 바로 주지 말고 2번 가게 그림으로 넘어갑니다.</p></div>
+</section>
+
+<!-- 2 -->
+<section id="t2" data-n="2" class="key" data-t="식당 하나로 보는 웹앱">
+  <div class="head"><span class="num">2</span><h2>식당 하나로 보는 웹앱</h2><span class="badge hot">핵심</span><span class="time">7분</span></div>
+  <p class="one">웹앱은 <b>식당</b>과 닮았습니다. 손님이 앉아 보는 <b>홀</b>, 요리하는 <b>주방</b>, 적어 두고 쌓아 두는 <b>창고</b>. 오늘 비유는 이 셋에 <b>알람</b>과 <b>금고</b>만 더한 다섯 개뿐이에요.</p>
+
+  <div class="shop" id="shop">
+    <div class="zn" data-z="guest"><div class="ic">🙋</div><b>손님</b><span class="is">화면을 쓰는 사람</span><small>나 · 가족 — 보고, 누르고, 적음</small></div>
+    <div class="zn" data-z="hall"><span class="tag f">프론트엔드</span><div class="ic">🪟</div><b>홀</b><span class="is">웹페이지</span><small>글씨·사진·단추<br>눈에 보이는 모든 것</small></div>
+    <div class="zn" data-z="kitchen"><span class="tag b">백엔드</span><div class="ic">🍳</div><b>주방</b><span class="is">서버</span><small>부탁을 받아 일하는 곳<br>손님 눈에는 안 보임</small></div>
+    <div class="zn store" data-z="store"><span class="tag">데이터베이스</span><div class="ic">🗄</div><b>창고 · 장부</b><span class="is">DB</span><small>적어 두고 기억하는 곳<br>표(시트) 모양</small></div>
+  </div>
+
+  <div class="flowcap" id="cap"></div>
+  <div class="fctl">
+    <button type="button" id="prev">◀ 이전</button>
+    <button type="button" class="go" id="next">따라가 보기 ▶</button>
+    <div class="fdots" id="dots"></div>
+  </div>
+
+  <table class="plain">
+    <tr><th>식당</th><th>웹앱에서</th><th>6차시 검색함에서</th></tr>
+    <tr><td>🪟 홀</td><td>화면 (웹페이지)</td><td>index.html — 단추 · 목록 · 색</td></tr>
+    <tr><td>🍳 주방</td><td>일하는 프로그램 (서버)</td><td>구글 앱스크립트 — 찾고, 거르고, 적기</td></tr>
+    <tr><td>🗄 창고</td><td>적어 두는 곳 (데이터베이스)</td><td>구글 시트 — 키워드 · 보관한 소식</td></tr>
+    <tr><td>⏰ 알람</td><td>정해진 시간에 저절로 (예약)</td><td>매일 아침 7시에 주방을 깨움</td></tr>
+    <tr><td>🔒 금고</td><td>비밀 값을 두는 곳</td><td>PIN 4자리 — 주방 쪽에만</td></tr>
+  </table>
+  <p class="note">🔍 <b>비유가 실제와 다른 곳</b> — 진짜 식당과 달리, 우리 앱에서는 <b>내가 손님이자 주인</b>입니다. 그래서 창고(구글 시트)를 <b>직접 열어</b> 잘 적혔는지 확인할 수도 있어요.</p>
+  <details class="more"><summary>클로드가 쓰는 어려운 말 사전 (외우지 않아도 됩니다)</summary>
+  <table>
+    <tr><th>프론트엔드</th><td>홀 — 눈에 보이는 화면 쪽</td></tr>
+    <tr><th>백엔드 · 서버</th><td>주방 — 안 보이는 곳에서 일하는 쪽, 24시간 켜진 컴퓨터</td></tr>
+    <tr><th>데이터베이스 (DB)</th><td>창고 — 칸과 줄이 있는 표</td></tr>
+    <tr><th>요청 · 응답</th><td>홀이 주방에 보내는 부탁 · 주방이 돌려주는 결과</td></tr>
+    <tr><th>API · 웹 앱 주소</th><td>홀이 주방을 부르는 주소 (6차시의 API_URL)</td></tr>
+    <tr><th>트리거</th><td>알람 — 정해진 시간에 주방을 깨움</td></tr>
+    <tr><th>배포</th><td>내 폴더에만 있던 것을 인터넷 주소에 올리기</td></tr>
+    <tr><th>정적 / 동적</th><td>홀만 있는 페이지 / 주방이 일해서 답하는 앱</td></tr>
+  </table></details>
+  <div class="tnote"><p>단추를 한 칸씩 눌러 가며 "지금 어느 칸에 불이 들어왔죠?"라고 물어 주세요. 3번(기사 찾아 오기)에서 "주방은 손님이 없어도 일할 수 있다"는 말을 꼭 한 번 해 두면 이론 ②의 '예약'이 쉽게 연결됩니다.</p>
+  <p>비유는 <b>홀 · 주방 · 창고 · 알람 · 금고</b> 다섯 개만 씁니다. 다른 비유(주문서, 창구, 장보기…)를 즉석에서 더하면 외울 거리가 늘어납니다. 어려운 말은 접힌 사전에만 두었어요.</p><p>"클로드가 '백엔드'라고 하면 주방 이야기구나" 정도면 충분합니다.</p></div>
+</section>
+
+<!-- 3 -->
+<section id="t3" data-n="3" data-t="보이는 쪽, 안 보이는 쪽">
+  <div class="head"><span class="num">3</span><h2>보이는 쪽, 안 보이는 쪽</h2><span class="time">4분</span></div>
+  <div class="three">
+    <div class="f"><h4>🪟 프론트엔드</h4><ul>
+      <li><b>어디서 돌아가나</b> — 손님의 브라우저(내 휴대폰)</li>
+      <li><b>만드는 말</b> — HTML · CSS · 자바스크립트</li>
+      <li><b>누가 볼 수 있나</b> — <b>누구나</b> 코드를 열어 볼 수 있음</li>
+    </ul></div>
+    <div class="b"><h4>🍳 백엔드</h4><ul>
+      <li><b>어디서 돌아가나</b> — 24시간 켜진 남의 컴퓨터(서버)</li>
+      <li><b>만드는 말</b> — 앱스크립트, 파이썬 등 (클로드가 고름)</li>
+      <li><b>누가 볼 수 있나</b> — 손님은 못 봄 · 비밀을 둘 수 있음</li>
+    </ul></div>
+    <div class="d"><h4>🗄 데이터베이스</h4><ul>
+      <li><b>어디에 있나</b> — 주방 옆 창고</li>
+      <li><b>모양</b> — 칸과 줄이 있는 표 (오늘은 구글 시트)</li>
+      <li><b>하는 일</b> — 껐다 켜도, 다른 기기에서도 그대로</li>
+    </ul></div>
+  </div>
+  <div class="tip">🔑 <b>꼭 기억할 한 가지</b> — 홀(웹페이지)에 적은 것은 <b>손님 누구나 볼 수 있습니다.</b> 비밀번호 같은 비밀 값은 웹페이지 코드에 넣지 않고 <b>🔒 금고(주방 쪽)</b>에 둡니다. 6차시에서 PIN을 앱스크립트의 '스크립트 속성'에 넣는 이유가 이것입니다.</div>
+  <div class="tnote"><p>시연: 아무 웹페이지에서 마우스 오른쪽 → '페이지 소스 보기'를 열어 "홀은 이렇게 다 보입니다"를 보여 주세요. 반대로 앱스크립트 코드는 주소만으로는 안 보인다는 것을 대비시킵니다.</p></div>
+</section>
+
+<!-- 4 -->
+<section id="t4" data-n="4" class="key" data-t="웹앱 기획 다섯 질문">
+  <div class="head"><span class="num">4</span><h2>웹앱 기획 다섯 질문 — 주방이 필요할까?</h2><span class="badge hot">핵심</span><span class="time">6분</span></div>
+  <p class="one">웹앱을 만들기 전에 <b>이 다섯 가지</b>만 정하면 클로드와 말이 통합니다. 6차시 내내 이 다섯 질문을 따라가요.</p>
+  <table class="plain five">
+    <tr><th>질문</th><th>생각할 것</th><th>정해지는 것</th></tr>
+    <tr><td><b>① 무엇을 보여 줄까?</b></td><td>화면에 나올 글 · 단추 · 목록</td><td>🪟 홀</td></tr>
+    <tr><td><b>② 무엇을 남길까?</b></td><td>다음에 열어도 있어야 하는 것</td><td>🗄 창고가 필요한지</td></tr>
+    <tr><td><b>③ 누가 볼까?</b></td><td>나만 · 가족 · 누구나 / 여러 기기에서?</td><td>🔒 금고(비밀번호) · 함께 쓰는 창고</td></tr>
+    <tr><td><b>④ 저절로 할 일이 있나?</b></td><td>내가 안 볼 때도 정해진 시간에</td><td>🍳 주방 + ⏰ 알람</td></tr>
+    <tr><td><b>⑤ 어디에 올릴까?</b></td><td>주소를 어디서 받을지</td><td>홀은 버셀 · 주방과 창고는 구글</td></tr>
+  </table>
+  <p class="note">그리고 <b>"이번엔 안 할 것"</b> 한 줄 — 회원 가입, 알림 메일 같은 것을 빼면 만들 것도 확인할 것도 줄어듭니다.</p>
+  <p class="one">②③④의 답으로 <b>주방이 필요한지</b>가 정해집니다. 주방은 <b>돌봐야 할 일</b>이 생기니까, 없어도 되면 없는 게 낫습니다. 예를 눌러 보거나 내 아이디어로 답해 보세요.</p>
+  <div class="fcwrap">
+    <p class="fct">판단 순서도 — 위에서부터 차례로 묻습니다</p>
+    <svg class="fc" id="fcJudge" viewBox="120 0 450 592" role="img" aria-label="주방이 필요한지 판단하는 순서도">
+      <defs><marker id="arJ" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7b8494"/></marker></defs>
+      <g class="nd" id="jS"><rect x="150" y="8" width="200" height="46" rx="10"/><text x="250" y="31">만들고 싶은 것 떠올리기</text></g>
+      <path class="ln" d="M250 54 V86" marker-end="url(#arJ)"/>
+      <g class="nd" id="jD1"><polygon points="250,88 355,140 250,192 145,140"/><text x="250" y="131">③ 사람마다 따로</text><text x="250" y="151">로그인해야 하나?</text></g>
+      <path class="ln" d="M355 140 H388" marker-end="url(#arJ)"/><text class="lb" x="371" y="130">예</text>
+      <g class="nd r" id="jR1"><rect x="390" y="114" width="168" height="52" rx="10"/><text x="474" y="132">회원제 서비스</text><text x="474" y="152" class="lb">(이번 과정 밖)</text></g>
+      <path class="ln" d="M250 192 V234" marker-end="url(#arJ)"/><text class="lb" x="270" y="213">아니오</text>
+      <g class="nd" id="jD2"><polygon points="250,236 355,290 250,344 145,290"/><text x="250" y="281">③ 여러 기기·사람? 또는</text><text x="250" y="301">④ 저절로 할 일?</text></g>
+      <path class="ln" d="M355 290 H388" marker-end="url(#arJ)"/><text class="lb" x="371" y="280">예</text>
+      <g class="nd r" id="jR2"><rect x="390" y="264" width="168" height="52" rx="10"/><text x="474" y="282">🍳 작은 주방</text><text x="474" y="302">시트 + 앱스크립트</text></g>
+      <path class="ln" d="M250 344 V386" marker-end="url(#arJ)"/><text class="lb" x="270" y="365">아니오</text>
+      <g class="nd" id="jD3"><polygon points="250,388 355,440 250,492 145,440"/><text x="250" y="431">② 다음에도</text><text x="250" y="451">남아야 하나?</text></g>
+      <path class="ln" d="M355 440 H388" marker-end="url(#arJ)"/><text class="lb" x="371" y="430">예</text>
+      <g class="nd r" id="jR3"><rect x="390" y="414" width="168" height="52" rx="10"/><text x="474" y="432">🪟 홀</text><text x="474" y="452" class="lb">+ 휴대폰에만 저장</text></g>
+      <path class="ln" d="M250 492 V530" marker-end="url(#arJ)"/><text class="lb" x="270" y="511">아니오</text>
+      <g class="nd r" id="jR4"><rect x="160" y="532" width="180" height="52" rx="10"/><text x="250" y="550">🪟 홀만</text><text x="250" y="570" class="lb">(웹페이지 하나)</text></g>
+    </svg>
+  </div>
+  <div class="judge" id="judge">
+    <div class="presets" id="presets">
+      <button type="button" data-a="0000">올레 안내 페이지</button>
+      <button type="button" data-a="1000">나만 쓰는 할 일 메모</button>
+      <button type="button" data-a="1100">가족 운동일기</button>
+      <button type="button" data-a="1101">키워드 검색함</button>
+      <button type="button" data-a="1110">회원제 게시판</button>
+    </div>
+    <div class="jq"><span>② 적은 것이 <b>다음에 열어도 남아</b> 있어야 하나요?<small>예: 방명록, 출석부, 보관함</small></span><div class="yn" data-q="0"><button type="button" data-v="1">예</button><button type="button" data-v="0" class="on">아니오</button></div></div>
+    <div class="jq"><span>③ <b>다른 사람 · 다른 기기</b>에서도 같은 내용을 봐야 하나요?<small>예: 가족이 함께 쓰기, 휴대폰과 PC에서 똑같이</small></span><div class="yn" data-q="1"><button type="button" data-v="1">예</button><button type="button" data-v="0" class="on">아니오</button></div></div>
+    <div class="jq"><span>③ <b>사람마다 따로</b> 로그인해야 하나요? (회원 가입)<small>예: 내 것만 보이기. 관리자인 나만 비밀번호로 들어가면 '아니오'</small></span><div class="yn" data-q="2"><button type="button" data-v="1">예</button><button type="button" data-v="0" class="on">아니오</button></div></div>
+    <div class="jq"><span>④ <b>내가 안 볼 때도</b> 정해진 시간에 저절로 할 일이 있나요?<small>예: 매일 아침 검색, 매주 정리</small></span><div class="yn" data-q="3"><button type="button" data-v="1">예</button><button type="button" data-v="0" class="on">아니오</button></div></div>
+    <div class="jres" id="jres"></div>
+  </div>
+  <div class="box"><div class="bar"><span>프롬프트 — 내 아이디어 판정 받기</span></div>
+<div class="txt">나는 <span class="ph">[만들고 싶은 것]</span>을 만들고 싶어.
+보여 줄 것 · 남길 것 · 누가 볼지 · 저절로 할 일 · 올릴 곳,
+다섯 질문에 내 대신 답해 보고 웹페이지 하나로 충분한지,
+구글 시트와 앱스크립트가 필요한지 쉬운 말로 알려줘. 아직 만들지 마.</div></div>
+  <div class="tnote"><p>다섯 질문은 위니브 『바이브 코딩 에센셜 with Claude Desktop』 9.5절의 판단 질문(저장 · 공유 · 로그인)과 브리프 형식을 우리 과정에 맞게 합친 것입니다. ④ '저절로 할 일'은 6차시를 위해 더했습니다. 6차시 1번에서 같은 표를 검색함으로 채웁니다.</p>
+  <p>③에서 멈칫하는 분이 많습니다. "모두가 로그인해야 하나요, 관리자인 나만 들어가면 되나요?"라고 다시 물어 주세요. 나만 들어가면 되는 경우가 대부분이고, 그러면 회원 기능이 통째로 빠져 훨씬 쉬워집니다.</p></div>
+</section>
+
+<!-- 5 -->
+<section id="t5" data-n="5" data-t="지금까지 만든 것은 어떤 식당">
+  <div class="head"><span class="num">5</span><h2>지금까지 만든 것은 어떤 식당이었을까?</h2><span class="time">3분</span></div>
+  <table class="plain">
+    <tr><th>차시 · 결과물</th><th>모양</th><th>한마디</th></tr>
+    <tr><td>1차시 사진 정리</td><td>— (웹 아님)</td><td>내 컴퓨터 폴더에서 한 일</td></tr>
+    <tr><td>2차시 실적 대시보드</td><td>🪟 홀만</td><td>엑셀 숫자를 화면에 그린 페이지</td></tr>
+    <tr><td>3차시 올레 안내 · AI 교실 교안</td><td>🪟 홀만 + 인터넷 주소</td><td>버셀에 올린 페이지 — 누구나 같은 화면</td></tr>
+    <tr><td>4차시 프롬프트 보관함</td><td>🪟 홀만</td><td>프롬프트가 <b>파일 안에</b> 적혀 있음 → 바꾸려면 다시 올리기</td></tr>
+    <tr><td>5차시 운동일기</td><td>🪟 + 🍳 + 🗄</td><td>구글 시트가 창고, 앱스크립트가 주방</td></tr>
+    <tr><td><b>6차시 키워드 검색함</b></td><td><b>🪟 + 🍳 + 🗄 + ⏰</b></td><td>여기에 <b>알람 시계</b>(매일 아침 자동 검색)까지</td></tr>
+  </table>
+  <p class="note">홀만 있는 페이지가 나쁜 게 아닙니다. 가볍고, 고장 날 곳이 적고, 돌볼 일이 없어요. <b>필요할 때만</b> 주방을 붙입니다.</p>
+</section>
+
+<!-- 6 -->
+<section id="t6" data-n="6" data-t="서버는 어디에 있나">
+  <div class="head"><span class="num">6</span><h2>서버는 어디에 있나 — 자리 빌리기</h2><span class="time">4분</span></div>
+  <p class="one">서버는 특별한 기계가 아니라 <b>24시간 켜져 있으면서 부탁에 답하는 컴퓨터</b>입니다. 집 PC로도 할 수 있지만 끄면 식당도 문을 닫으니, 보통은 <b>남의 컴퓨터를 빌립니다.</b></p>
+  <table class="plain">
+    <tr><th>빌리는 것</th><th>우리 과정에서</th><th>비용</th></tr>
+    <tr><td>🪟 홀 자리 (웹페이지 올리기)</td><td>버셀 · 깃허브 페이지</td><td>무료</td></tr>
+    <tr><td>🍳 작은 주방 + 🗄 창고</td><td>구글 앱스크립트 + 구글 시트</td><td>무료 (구글 계정)</td></tr>
+    <tr><td>회원 · 결제가 있는 서비스</td><td>AWS · 구글 클라우드 등 — 이번 과정 밖</td><td>쓴 만큼 돈</td></tr>
+  </table>
+  <p class="note">🔗 <b>주소</b>: vercel.app · github.io 같은 인터넷 주소를 받는 일을 <b>배포</b>라고 해요. 앞의 https는 안전한 연결(자물쇠)이라는 뜻.</p>
+  <div class="tip">🙋 <b>만드는 건 클로드, 정하고 확인하는 건 나.</b> 다섯 질문에 답하고, 나온 결과가 원하던 것인지 <b>직접 써 보고</b>, 무엇을 넣지 않을지(개인정보 · 비밀번호) 정하는 건 내 몫입니다. 주방이 생기면 <b>돌볼 일</b>도 생겨요 — 엉뚱한 자료가 쌓이지 않는지, 안 쓰는 앱은 정리했는지.</div>
+  <div class="tnote"><p>"서버 = 남의 컴퓨터를 빌려 24시간 켜 두는 것" 한 문장만 남기면 성공입니다. 다음 이론 ②에서 "그럼 왜 하필 구글(앱스크립트)인가?"를 이어서 설명합니다.</p></div>
+</section>
+
+<!-- 퀴즈 -->
+<section id="tq" data-n="퀴즈" data-t="OX 퀴즈">
+  <div class="head"><span class="num y">Q</span><h2>OX 퀴즈</h2><span class="time">3분</span></div>
+  <div class="quiz">
+    <details><summary>웹페이지(홀)의 코드는 손님 누구나 열어 볼 수 있다.</summary><p><span class="o">O</span> — 그래서 비밀번호 같은 비밀 값은 웹페이지가 아니라 주방(서버) 쪽에 둡니다.</p></details>
+    <details><summary>보관한 내용이 다른 휴대폰에서도 보이려면 창고(데이터베이스)가 필요하다.</summary><p><span class="o">O</span> — 내 휴대폰 브라우저에만 적어 두면 다른 기기에서는 보이지 않습니다.</p></details>
+    <details><summary>모든 웹 앱에는 서버가 꼭 있어야 한다.</summary><p><span class="x">X</span> — 남길 것도, 함께 볼 것도, 저절로 할 일도 없다면 홀(웹페이지 하나)로 충분합니다.</p></details>
+    <details><summary>서버는 아주 특별한 장비라서 회사만 가질 수 있다.</summary><p><span class="x">X</span> — 24시간 켜져서 부탁에 답하는 컴퓨터일 뿐입니다. 우리는 구글의 컴퓨터를 무료로 빌려 씁니다.</p></details>
+    <details><summary>관리자인 나만 비밀번호로 들어가면 되는 앱은 회원 로그인 기능이 꼭 필요하다.</summary><p><span class="x">X</span> — 나만 들어가면 된다면 간단한 비밀번호 하나로 충분합니다. 회원 기능을 빼면 만들 것도 확인할 것도 줄어듭니다.</p></details>
+  </div>
+</section>
+
+<div class="end">
+  <h2>기억할 네 줄</h2>
+  <p>🪟 <b>프론트엔드</b> = 홀. 눈에 보이는 웹페이지. 누구나 볼 수 있다.</p>
+  <p>🍳 <b>백엔드(서버)</b> = 주방. 안 보이는 곳에서 일한다. 손님이 없어도 일할 수 있다.</p>
+  <p>🗄 <b>데이터베이스</b> = 창고. 남기고, 함께 보게 한다.</p>
+  <p>✅ 만들기 전에 <b>다섯 질문</b> — 보여 줄 것 · 남길 것 · 누가 볼지 · 저절로 할 일 · 올릴 곳.</p>
+  <p class="next">다음 → <a href="theory-appsscript.html" style="color:#fff"><b>이론 ② 왜 앱스크립트일까?</b></a> 작은 주방을 무료로 빌리는 방법</p>
+</div>
+<footer>참고: 위니브 『바이브 코딩 에센셜 with Claude Desktop』 5.4 배포 기초 지식 · 9.1 백엔드 · 9.5 백엔드가 필요한지 판단하기 (<a href="https://weniversity.co.kr/book/essentials-vibecoding-desktop/" target="_blank" rel="noopener">위니버시티 교재</a>)</footer>
+</div>
+
+<script src="lesson.js?v=1119"></script>
+<script>
+/* [지금 검색] 따라가 보기 */
+(function(){
+  var S=[
+    {on:[],t:'<b>[지금 검색] 한 번이 어디를 거치는지 따라가 보세요.</b><em>예: 6차시 키워드 검색함에서 [지금 검색]을 누르면 무슨 일이 일어날까?</em>',n:''},
+    {on:['guest','hall'],n:'1',t:'손님이 홀에서 <b>[지금 검색]</b>을 누릅니다.<em>홀 = 눈에 보이는 화면</em>'},
+    {on:['hall','kitchen'],n:'2',t:'홀이 주방에 <b>부탁</b>을 보냅니다 — "제주 AI교육 소식 찾아 줘"<em>클로드는 이걸 \'요청\'이라고 불러요</em>'},
+    {on:['kitchen'],n:'3',t:'주방이 <b>구글 뉴스에서 기사를 찾아 오고</b>, 상관없는 것은 거릅니다.<em>주방은 손님이 없을 때도 일할 수 있어요 — 아침 7시 ⏰ 알람에 맞춰서도!</em>'},
+    {on:['kitchen','store'],n:'4',t:'찾은 것을 <b>창고</b>에 적어 둡니다.<em>창고 = 구글 시트의 표 한 장</em>'},
+    {on:['kitchen','hall'],n:'5',t:'찾은 목록을 홀로 내보냅니다.<em>클로드는 이걸 \'응답\'이라고 불러요</em>'},
+    {on:['hall','guest','store'],n:'6',t:'손님 화면에 결과가 보입니다. <b>다른 휴대폰</b>으로 열어도 창고의 같은 장부를 꺼내 보여 줘요.<em>그래서 강사의 모음 페이지는 어느 기기에서 열어도 같은 내용이 보입니다</em>'}
+  ];
+  var i=0,zs=[].slice.call(document.querySelectorAll('#shop .zn')),cap=document.getElementById('cap'),
+      dots=document.getElementById('dots'),nx=document.getElementById('next'),pv=document.getElementById('prev');
+  for(var k=1;k<S.length;k++)dots.appendChild(document.createElement('i'));
+  function draw(){
+    var s=S[i];
+    zs.forEach(function(z){var on=s.on.indexOf(z.dataset.z)>-1;z.classList.toggle('on',on);z.classList.toggle('dim',s.on.length&&!on);});
+    cap.innerHTML=(s.n?'<span class="sn">'+s.n+'</span>':'')+s.t;
+    [].forEach.call(dots.children,function(d,k){d.classList.toggle('on',k===i-1);});
+    nx.textContent=i===0?'따라가 보기 ▶':(i===S.length-1?'처음부터 ↺':'다음 ▶');pv.disabled=i===0;
+  }
+  nx.onclick=function(){i=(i+1)%S.length;draw();};
+  pv.onclick=function(){if(i>0){i--;draw();}};
+  draw();
+})();
+/* 주방이 필요할까? 판정기 */
+(function(){
+  var a=[0,0,0,0],res=document.getElementById('jres'),pre=[].slice.call(document.querySelectorAll('#presets button'));
+  var yns=[].slice.call(document.querySelectorAll('#judge .yn'));
+  function show(){
+    yns.forEach(function(g){var q=+g.dataset.q;[].forEach.call(g.children,function(b){b.classList.toggle('on',+b.dataset.v===a[q]);});});
+    var k,d;
+    if(a[2]){k='회원제 서비스 — 이번 과정 밖';d='사람마다 다른 화면을 보여 줘야 해요. 만들 수는 있지만 보안·개인정보까지 돌봐야 합니다. 먼저 "나만 비밀번호 하나"로 바꿀 수 없는지 생각해 보세요.';}
+    else if(a[1]||a[3]){k='🍳 작은 주방 — 구글 시트 + 앱스크립트';d=(a[3]?'저절로 할 일이 있으니 손님이 없어도 돌아가는 주방과 ⏰ 알람이 필요해요. ':'')+(a[1]?'다른 사람·다른 기기에서도 같은 내용이 보여야 하니 함께 쓰는 창고가 필요해요. ':'')+'→ 5차시 운동일기 · 6차시 키워드 검색함이 이 모양입니다.';}
+    else if(a[0]){k='🪟 홀 + 휴대폰에만 저장';d='내 휴대폰 브라우저에만 적어 두면 충분해요. 단, 다른 기기에서는 안 보이고 브라우저 기록을 지우면 사라집니다.';}
+    else{k='🪟 홀만 — 웹페이지 하나';d='주방도 창고도 필요 없어요. 3차시처럼 만들어 버셀에 올리면 끝. 가장 가볍고 고장 날 곳이 적습니다.';}
+    res.innerHTML='<b class="k">'+k+'</b>'+d;
+    var path=['jS','jD1'];
+    if(a[2])path.push('jR1');else{path.push('jD2');if(a[1]||a[3])path.push('jR2');else{path.push('jD3');path.push(a[0]?'jR3':'jR4');}}
+    [].forEach.call(document.querySelectorAll('#fcJudge .nd'),function(n){n.classList.toggle('hit',path.indexOf(n.id)>-1);n.classList.toggle('dim',path.indexOf(n.id)<0);});
+    var code=a.join('');pre.forEach(function(b){b.classList.toggle('on',b.dataset.a===code);});
+  }
+  yns.forEach(function(g){g.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;a[+g.dataset.q]=+b.dataset.v;show();});});
+  pre.forEach(function(b){b.onclick=function(){a=b.dataset.a.split('').map(Number);show();};});
+  show();
+})();
+</script>
+</body>
+</html>

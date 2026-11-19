@@ -346,3 +346,24 @@ figure.mark figcaption{font-size:14px;color:var(--sub);margin-top:6px;line-heigh
 
 /* 긴 주소가 표를 밀어내지 않게 */
 td{overflow-wrap:anywhere}
+
+/* 강사 메모 — 강사 화면(?t=…)에만 보임 (type-only 페이지) */
+.tnote{display:none}
+body.t-copy .tnote{display:block;margin:14px 0 0;background:#fff8e6;border:1px solid #f0d9a0;border-radius:10px;padding:12px 16px;font-size:14.5px;color:#5a4a1e}
+body.t-copy .tnote::before{content:"🎙 강사 메모";display:block;font-size:12.5px;font-weight:800;color:#9a6b00;margin-bottom:4px}
+body.t-copy .tnote p{margin:4px 0 0}
+
+/* 순서도 (상자 · 화살표 · 마름모 판단) — 이론 페이지 · 6차시 공통 */
+.fcwrap{margin:16px 0 0;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 10px;text-align:center}
+.fcwrap .fct{font-size:13px;font-weight:700;color:var(--sub);margin:0 0 6px}
+.fc{width:100%;max-width:560px;height:auto;font-family:inherit;overflow:visible}
+.fc .nd rect,.fc .nd polygon{fill:#f8f9fb;stroke:#c9d0db;stroke-width:1.4;transition:all .25s}
+.fc .nd.r rect{fill:#fff}
+.fc text{font-size:14px;fill:#2b3240;text-anchor:middle;dominant-baseline:middle}
+.fc .nd.r text{font-weight:700}
+.fc .ln{stroke:#7b8494;stroke-width:1.4;fill:none}
+.fc .lb{font-size:12.5px;fill:#55606f}
+.fc .nd.hit rect,.fc .nd.hit polygon{fill:var(--navy-soft);stroke:var(--navy);stroke-width:2.4}
+.fc .nd.hit text{fill:var(--navy)}
+.fc .nd.dim{opacity:.35}
+.fc .nd text.lb{font-weight:400;font-size:12.5px}

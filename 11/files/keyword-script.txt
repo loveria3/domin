@@ -1,0 +1,297 @@
+// ============================================================
+//  키워드 검색함 — 구글 앱스크립트 (6차시 실습용 틀)
+//  이 글 전체를 Apps Script 편집기에 붙여 넣습니다.
+// ============================================================
+//
+//  [ 처음 한 번만 ]
+//  1. 구글 시트를 새로 만들고 이름을 '키워드 검색함'으로 바꿉니다.
+//  2. 메뉴 확장 프로그램 → Apps Script → 안의 글을 모두 지우고 이 글을 붙여 넣기 → 저장(Ctrl+S)
+//  3. 왼쪽 톱니바퀴(프로젝트 설정) → 맨 아래 '스크립트 속성' → 속성 추가
+//        속성: PIN      값: 내가 정한 숫자 4자리 (예: 2580)
+//  4. 위쪽 함수 고르는 칸에서 setup 을 고르고 ▶ 실행 → 권한 승인
+//        ('확인되지 않은 앱' 화면이 나오면 → 고급 → 프로젝트로 이동 → 허용)
+//     → 시트에 '키워드' · '검색함' 탭이 생기고, 첫 검색까지 한 번 합니다.
+//  5. 오른쪽 위 배포 → 새 배포 → 톱니바퀴에서 '웹 앱'
+//        다음 사용자로 실행: 나      액세스 권한: 모든 사용자
+//     → 배포 → 나온 '웹 앱 URL'(https://script.google.com/macros/s/…/exec)을 복사
+//  6. 그 주소를 웹앱(index.html) 맨 위 API_URL 에 넣습니다.
+//
+//  [ 코드를 고친 뒤에는 ]
+//  배포 → 배포 관리 → 연필(수정) → 버전: 새 버전 → 배포
+//  (그래야 주소는 그대로 두고 새 코드가 적용됩니다)
+//
+//  [ 비밀 값 ]
+//  PIN 은 코드에 적지 않고 '스크립트 속성'(주방 금고)에만 둡니다.
+//  웹앱 코드는 누구나 열어 볼 수 있기 때문입니다.
+// ============================================================
+
+// ── 처음 넣어 둘 값 (setup 때 '키워드' 탭에 들어갑니다. 그 뒤로는 웹앱에서 고칩니다) ──
+var DEFAULT_KEYWORDS = ['제주 AI교육', 'AI 교육 수강생 모집', '생성형 AI 강좌', '디지털배움터 AI', '시니어 AI 교육'];
+var DEFAULT_MUST     = ['교육', '강좌', '강의', '수강', '배움', '교실', '특강', '아카데미', '연수'];   // 이 중 하나는 제목에 있어야 담음
+var DEFAULT_DROP     = ['주가', '증시', '코인', '성료', '수료식', '후기', '마무리', '개최했', '열렸'];    // 하나라도 있으면 버림
+
+// ── 검색 규칙 ──
+var WINDOW_DAYS  = 7;    // 최근 며칠 기사까지 볼지
+var MAX_PER_KW   = 8;    // 키워드 하나당 최대 몇 건
+var MAX_TOTAL    = 40;   // 한 번에 담을 최대 건수
+var KEEP_DAYS    = 21;   // '새로' · '버림' 상태로 며칠 지난 줄은 지움 (보관은 지우지 않음)
+var DEFAULT_HOUR = 7;    // 예약 기본 시각 (오전 7시)
+
+var TAB_WORDS = '키워드';
+var TAB_ITEMS = '검색함';
+var HEAD_ITEMS = ['날짜', '제목', '언론사', '링크', '키워드', '상태', '메모', 'ID'];
+//                  A      B       C        D       E        F       G      H
+var ST_NEW = '새로', ST_KEEP = '보관', ST_DROP = '버림';
+var JOB = 'dailySearch';   // 예약이 부르는 함수 이름
+
+
+// ============================================================
+//  1. 처음 설정 — 편집기에서 한 번 ▶ 실행
+// ============================================================
+function setup() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var w = ss.getSheetByName(TAB_WORDS) || ss.insertSheet(TAB_WORDS);
+  if (w.getLastRow() < 2) {
+    writeWords_({ keywords: DEFAULT_KEYWORDS, must: DEFAULT_MUST, drop: DEFAULT_DROP });
+  }
+  var s = itemsSheet_();
+  var r = runSearch_();
+  Logger.log('준비 끝! 키워드 ' + readWords_().keywords.length + '개, 이번에 새로 담은 기사 ' + r.added + '건');
+  Logger.log('PIN 속성: ' + (PropertiesService.getScriptProperties().getProperty('PIN') ? '있음' : '없음 → 프로젝트 설정에서 꼭 넣으세요'));
+}
+
+// 예약이 매일 부르는 함수
+function dailySearch() {
+  var r = runSearch_();
+  Logger.log('아침 검색: 훑은 기사 ' + r.scanned + '건 / 새로 담음 ' + r.added + '건');
+}
+
+
+// ============================================================
+//  2. 주문 창구 — 웹앱이 보내는 주문을 받습니다
+//     action: list · search · save · drop · words · schedule
+// ============================================================
+function doGet() {
+  return out_({ ok: true, message: '키워드 검색함 창구입니다. 웹앱에서 POST로 주문하세요.' });
+}
+
+function doPost(e) {
+  try {
+    var d = JSON.parse(e.postData.contents || '{}');
+    var pinErr = checkPin_(d.pin);
+    if (pinErr) return out_({ ok: false, error: pinErr, code: 'pin' });
+
+    if (d.action === 'search') runSearch_();
+
+    if (d.action === 'save') {                 // 보관하기 · 메모 고치기
+      var row = findRow_(d.id);
+      if (row < 0) return out_({ ok: false, error: '찾을 수 없는 기사입니다.' });
+      var s = itemsSheet_();
+      s.getRange(row, 6).setValue(ST_KEEP);
+      if (typeof d.memo === 'string') s.getRange(row, 7).setValue(d.memo);
+    }
+
+    if (d.action === 'drop') {                 // 버림 (바로 지우지 않고 표시만 — 다시 담기지 않게)
+      var r2 = findRow_(d.id);
+      if (r2 > 0) itemsSheet_().getRange(r2, 6).setValue(ST_DROP);
+    }
+
+    if (d.action === 'words') writeWords_(d);  // 키워드 · 꼭 들어갈 말 · 빼는 말 고치기
+
+    if (d.action === 'schedule') setSchedule_(!!d.on, Number(d.hour));
+
+    return out_(snapshot_());                  // 무엇을 하든 마지막엔 지금 모습을 돌려줌
+  } catch (err) {
+    return out_({ ok: false, error: String(err) });
+  }
+}
+
+function snapshot_() {
+  var p = PropertiesService.getScriptProperties();
+  return {
+    ok: true,
+    words: readWords_(),
+    items: readItems_().filter(function (x) { return x.status !== ST_DROP; }),
+    lastRun: p.getProperty('LAST_RUN') || '',
+    schedule: getSchedule_()
+  };
+}
+
+
+// ============================================================
+//  3. 검색 — 구글 뉴스에서 장 봐 와서, 거르고, 검색함에 적기
+// ============================================================
+function runSearch_() {
+  var words = readWords_();
+  var sheet = itemsSheet_();
+  var purged = purge_(sheet);
+
+  var seen = {};
+  readItems_().forEach(function (x) { seen[key_(x.title)] = true; });
+
+  // 키워드 전부를 한 번에 받아 옵니다
+  var reqs = words.keywords.map(function (k) {
+    return {
+      url: 'https://news.google.com/rss/search?q=' + encodeURIComponent(k + ' when:' + WINDOW_DAYS + 'd') +
+           '&hl=ko&gl=KR&ceid=KR:ko',
+      muteHttpExceptions: true
+    };
+  });
+  var res = reqs.length ? UrlFetchApp.fetchAll(reqs) : [];
+
+  var rows = [], scanned = 0, today = today_();
+  for (var i = 0; i < res.length && rows.length < MAX_TOTAL; i++) {
+    var list = parseRss_(res[i]), taken = 0;
+    scanned += list.length;
+    for (var j = 0; j < list.length && taken < MAX_PER_KW && rows.length < MAX_TOTAL; j++) {
+      var title = list[j].title.replace(/\s+-\s+[^\-]+$/, '').trim();   // "제목 - 언론사"에서 언론사 떼기
+      if (!title || !pass_(title, words)) continue;
+      var k = key_(title);
+      if (seen[k]) continue;                                            // 같은 기사는 한 번만
+      seen[k] = true;
+      rows.push([today, title, list[j].source, list[j].link, words.keywords[i], ST_NEW, '', newId_()]);
+      taken++;
+    }
+  }
+  if (rows.length) sheet.getRange(sheet.getLastRow() + 1, 1, rows.length, HEAD_ITEMS.length).setValues(rows);
+
+  PropertiesService.getScriptProperties().setProperty('LAST_RUN',
+    Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'yyyy-MM-dd HH:mm'));
+  return { added: rows.length, scanned: scanned, purged: purged };
+}
+
+// 거르기: 빼는 말이 하나라도 있으면 버리고, 꼭 들어갈 말이 있으면 그중 하나는 있어야 통과
+function pass_(title, words) {
+  for (var i = 0; i < words.drop.length; i++) if (title.indexOf(words.drop[i]) >= 0) return false;
+  if (!words.must.length) return true;
+  for (var j = 0; j < words.must.length; j++) if (title.indexOf(words.must[j]) >= 0) return true;
+  return false;
+}
+
+function parseRss_(res) {
+  var list = [];
+  try {
+    if (res.getResponseCode() !== 200) return list;
+    var ch = XmlService.parse(res.getContentText()).getRootElement().getChild('channel');
+    ch.getChildren('item').forEach(function (it) {
+      var src = it.getChild('source');
+      list.push({ title: text_(it, 'title'), link: text_(it, 'link'), source: src ? src.getText().trim() : '' });
+    });
+  } catch (err) { Logger.log('읽기 실패: ' + err); }
+  return list;
+}
+function text_(el, name) { var c = el.getChild(name); return c ? c.getText().trim() : ''; }
+function key_(t) { return String(t || '').toLowerCase().replace(/[^0-9a-z가-힣]/g, '').slice(0, 20); }
+
+
+// ============================================================
+//  4. 예약 (알람 시계) — 웹앱의 [예약 켜기]가 부릅니다
+// ============================================================
+function setSchedule_(on, hour) {
+  ScriptApp.getProjectTriggers().forEach(function (t) {
+    if (t.getHandlerFunction() === JOB) ScriptApp.deleteTrigger(t);
+  });
+  if (!on) { PropertiesService.getScriptProperties().deleteProperty('HOUR'); return; }
+  if (!(hour >= 0 && hour <= 23)) hour = DEFAULT_HOUR;
+  ScriptApp.newTrigger(JOB).timeBased().atHour(hour).everyDays(1).create();
+  PropertiesService.getScriptProperties().setProperty('HOUR', String(hour));
+}
+function getSchedule_() {
+  var on = ScriptApp.getProjectTriggers().some(function (t) { return t.getHandlerFunction() === JOB; });
+  var h = PropertiesService.getScriptProperties().getProperty('HOUR');
+  return { on: on, hour: h ? Number(h) : DEFAULT_HOUR };
+}
+
+
+// ============================================================
+//  5. 창고(시트) 읽고 쓰기
+// ============================================================
+function itemsSheet_() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var s = ss.getSheetByName(TAB_ITEMS);
+  if (!s) {
+    s = ss.insertSheet(TAB_ITEMS);
+    s.getRange(1, 1, 1, HEAD_ITEMS.length).setValues([HEAD_ITEMS]).setFontWeight('bold');
+    s.setFrozenRows(1);
+  }
+  return s;
+}
+
+function readItems_() {
+  var s = itemsSheet_(), n = s.getLastRow() - 1;
+  if (n < 1) return [];
+  return s.getRange(2, 1, n, HEAD_ITEMS.length).getValues().map(function (r) {
+    return { date: fmt_(r[0]), title: String(r[1]), source: String(r[2]), link: String(r[3]),
+             keyword: String(r[4]), status: String(r[5]) || ST_NEW, memo: String(r[6]), id: String(r[7]) };
+  }).reverse();   // 새것이 위로
+}
+
+function findRow_(id) {
+  var s = itemsSheet_(), n = s.getLastRow() - 1;
+  if (n < 1 || !id) return -1;
+  var ids = s.getRange(2, 8, n, 1).getValues();
+  for (var i = 0; i < ids.length; i++) if (String(ids[i][0]) === String(id)) return i + 2;
+  return -1;
+}
+
+// '키워드' 탭: A열 키워드 · B열 꼭 들어갈 말 · C열 빼는 말 (1행은 제목)
+function readWords_() {
+  var s = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(TAB_WORDS);
+  var out = { keywords: [], must: [], drop: [] };
+  if (!s || s.getLastRow() < 2) return out;
+  s.getRange(2, 1, s.getLastRow() - 1, 3).getValues().forEach(function (r) {
+    if (String(r[0]).trim()) out.keywords.push(String(r[0]).trim());
+    if (String(r[1]).trim()) out.must.push(String(r[1]).trim());
+    if (String(r[2]).trim()) out.drop.push(String(r[2]).trim());
+  });
+  return out;
+}
+
+function writeWords_(d) {
+  var clean = function (a) {
+    return (a || []).map(function (x) { return String(x).trim(); }).filter(String).slice(0, 30);
+  };
+  var k = clean(d.keywords).slice(0, 10), m = clean(d.must), x = clean(d.drop);
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var s = ss.getSheetByName(TAB_WORDS) || ss.insertSheet(TAB_WORDS);
+  s.clear();
+  s.getRange(1, 1, 1, 3).setValues([['키워드', '꼭 들어갈 말', '빼는 말']]).setFontWeight('bold');
+  var n = Math.max(k.length, m.length, x.length);
+  var rows = [];
+  for (var i = 0; i < n; i++) rows.push([k[i] || '', m[i] || '', x[i] || '']);
+  if (n) s.getRange(2, 1, n, 3).setValues(rows);
+}
+
+// 오래된 '새로' · '버림' 줄 정리 (아래에서 위로 지워야 줄 번호가 안 밀림)
+function purge_(sheet) {
+  var n = sheet.getLastRow() - 1;
+  if (n < 1) return 0;
+  var vals = sheet.getRange(2, 1, n, 6).getValues();
+  var limit = new Date(); limit.setDate(limit.getDate() - KEEP_DAYS);
+  var cut = 0;
+  for (var i = vals.length - 1; i >= 0; i--) {
+    var st = String(vals[i][5]);
+    var d = new Date(vals[i][0]);
+    if (st !== ST_KEEP && !isNaN(d) && d < limit) { sheet.deleteRow(i + 2); cut++; }
+  }
+  return cut;
+}
+
+
+// ============================================================
+//  6. 도우미
+// ============================================================
+function checkPin_(pin) {
+  var p = PropertiesService.getScriptProperties();
+  var real = p.getProperty('PIN');
+  if (!real) return '스크립트 속성에 PIN이 없습니다. 프로젝트 설정에서 넣어 주세요.';
+  var cache = CacheService.getScriptCache(), fails = Number(cache.get('fails') || 0);
+  if (fails >= 10) return 'PIN을 10번 틀려 10분 동안 잠겼습니다.';
+  if (String(pin) !== String(real)) { cache.put('fails', String(fails + 1), 600); return 'PIN이 맞지 않습니다.'; }
+  cache.remove('fails');
+  return '';
+}
+function today_() { return Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'yyyy-MM-dd'); }
+function fmt_(v) { return v instanceof Date ? Utilities.formatDate(v, Session.getScriptTimeZone(), 'yyyy-MM-dd') : String(v); }
+function newId_() { return Utilities.getUuid().slice(0, 8); }
+function out_(obj) { return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(ContentService.MimeType.JSON); }

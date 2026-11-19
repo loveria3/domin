@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#14532d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="AI교육 소식">
+<title>AI교육 소식 검색함</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<!--
+  ============================================================
+   키워드 검색함 — 웹앱 틀 (6차시 실습)
+  ============================================================
+   이 파일이 '홀'(프론트엔드)입니다. 주방(앱스크립트)과 창고(구글 시트)는 따로 있어요.
+
+   ▶ 내가 채울 곳은 아래 <script> 맨 위 두 줄뿐입니다.
+       API_URL   = 앱스크립트를 '웹 앱'으로 배포하고 받은 주소 (…/exec)
+       APP_TITLE = 화면 맨 위 이름
+
+   ▶ API_URL이 비어 있으면 '체험 모드'로 열립니다. (가짜 기사 · 저장 안 됨)
+   ▶ PIN(비밀번호)은 이 파일에 적지 마세요. 처음 열 때 화면에서 한 번 넣으면
+     이 휴대폰에만 기억됩니다. 진짜 PIN은 앱스크립트 '스크립트 속성'에 있습니다.
+  ============================================================
+-->
+<style>
+:root{
+  --bg:#f4f6f1; --card:#fff; --ink:#1c2420; --sub:#66706a; --line:#e3e8e1;
+  --main:#14532d; --main-soft:#e7f2ea; --accent:#f59e0b; --accent-soft:#fff4dc; --red:#b42318;
+  --radius:16px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Pretendard Variable",Pretendard,"Malgun Gothic",-apple-system,sans-serif;letter-spacing:-.01em}
+button,input,select,textarea{font:inherit}
+.wrap{max-width:680px;margin:0 auto;padding:0 16px 96px}
+
+/* 머리 */
+.top{background:var(--main);color:#fff;padding:22px 16px 18px;border-radius:0 0 24px 24px}
+.top .in{max-width:680px;margin:0 auto}
+.top h1{margin:0;font-size:23px;letter-spacing:-.03em}
+.top p{margin:4px 0 0;font-size:13.5px;opacity:.85}
+.go{margin-top:14px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.btn{border:0;border-radius:12px;padding:11px 16px;font-weight:700;cursor:pointer}
+.btn.main{background:var(--accent);color:#3b2600}
+.btn.line{background:transparent;border:1px solid var(--line);color:var(--ink)}
+.btn.ghost{background:rgba(255,255,255,.14);color:#fff}
+.btn:disabled{opacity:.55;cursor:default}
+.demo{margin:12px 0 0;background:var(--accent-soft);border:1px dashed #e0b25a;color:#6b4a00;border-radius:12px;padding:10px 14px;font-size:14px}
+
+/* 탭 */
+.tabs{position:sticky;top:0;z-index:5;display:flex;gap:6px;padding:12px 0;background:var(--bg)}
+.tabs button{flex:1;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:10px 6px;font-weight:700;color:var(--sub);cursor:pointer}
+.tabs button.on{background:var(--main);border-color:var(--main);color:#fff}
+.tabs b{display:inline-block;min-width:22px;margin-left:4px;padding:0 6px;border-radius:10px;background:rgba(0,0,0,.08);font-size:13px}
+.tabs button.on b{background:rgba(255,255,255,.22)}
+
+/* 카드 */
+.list{display:flex;flex-direction:column;gap:10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px}
+.card a.t{display:block;color:var(--ink);text-decoration:none;font-weight:700;font-size:16.5px;line-height:1.45}
+.card a.t:hover{color:var(--main)}
+.meta{margin-top:6px;font-size:13px;color:var(--sub);display:flex;gap:6px;flex-wrap:wrap}
+.kw{background:var(--main-soft);color:var(--main);border-radius:8px;padding:0 7px;font-weight:600}
+.acts{margin-top:10px;display:flex;gap:8px}
+.acts .keep{background:var(--main);color:#fff}
+.acts .drop{background:#f1f2f0;color:var(--sub)}
+.acts .btn{padding:8px 14px;font-size:14.5px}
+.memo{width:100%;margin-top:10px;border:1px solid var(--line);border-radius:10px;padding:8px 10px;min-height:44px;resize:vertical;background:#fbfcfa}
+.memo-row{display:flex;justify-content:space-between;align-items:center;margin-top:6px;font-size:13px;color:var(--sub)}
+.memo-row .btn{padding:6px 12px;font-size:13.5px}
+.search{width:100%;border:1px solid var(--line);border-radius:12px;padding:11px 14px;margin-bottom:10px;background:var(--card)}
+.empty{text-align:center;color:var(--sub);padding:34px 12px;background:var(--card);border:1px dashed var(--line);border-radius:var(--radius)}
+
+/* 설정 */
+.box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin-bottom:12px}
+.box h3{margin:0 0 4px;font-size:17px}
+.box .hint{margin:0 0 10px;font-size:13.5px;color:var(--sub)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:4px;background:var(--main-soft);color:var(--main);border-radius:999px;padding:5px 6px 5px 12px;font-size:14.5px;font-weight:600}
+.chip.no{background:#fdecea;color:var(--red)}
+.chip button{border:0;background:rgba(0,0,0,.07);color:inherit;width:22px;height:22px;border-radius:11px;cursor:pointer;line-height:1}
+.add{display:flex;gap:6px;margin-top:10px}
+.add input{flex:1;min-width:0;border:1px solid var(--line);border-radius:10px;padding:9px 12px}
+.add .btn{padding:9px 14px}
+.sched{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sw{position:relative;width:52px;height:30px;border-radius:15px;background:#cfd6cf;border:0;cursor:pointer;transition:.2s}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:12px;background:#fff;transition:.2s}
+.sw.on{background:var(--main)}.sw.on::after{left:25px}
+select{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:#fff}
+
+/* PIN · 알림 */
+.gate{max-width:360px;margin:40px auto;text-align:center}
+.gate input{width:100%;text-align:center;font-size:24px;letter-spacing:.4em;border:1px solid var(--line);border-radius:12px;padding:12px;margin:12px 0}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(20px);opacity:0;background:#1c2420;color:#fff;padding:10px 18px;border-radius:12px;font-size:14.5px;transition:.25s;z-index:20;max-width:90%}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:sp .7s linear infinite;vertical-align:-2px;margin-right:6px}
+@keyframes sp{to{transform:rotate(360deg)}}
+[hidden]{display:none!important}
+@media(min-width:900px){ .wrap,.top .in{max-width:760px} }
+</style>
+</head>
+<body>
+<header class="top"><div class="in">
+  <h1 id="title">AI교육 소식 검색함</h1>
+  <p id="last">마지막 검색 —</p>
+  <div class="go">
+    <button class="btn main" id="btnSearch" type="button">🔍 지금 검색</button>
+    <span id="schedTag" style="font-size:13.5px;opacity:.9"></span>
+  </div>
+</div></header>
+
+<div class="wrap">
+  <div class="demo" id="demo" hidden>🧪 <b>체험 모드</b> — 가짜 기사로 움직여 봅니다. 저장되지 않아요. 파일 맨 위 <b>API_URL</b>에 내 앱스크립트 주소를 넣으면 내 구글 시트와 연결됩니다.</div>
+
+  <!-- PIN 넣기 -->
+  <div class="gate" id="gate" hidden>
+    <h2 style="margin:0">🔒 PIN 넣기</h2>
+    <p style="color:var(--sub);margin:6px 0 0;font-size:14.5px">앱스크립트 '스크립트 속성'에 넣은 숫자 4자리</p>
+    <input id="pinIn" type="password" inputmode="numeric" maxlength="8" autocomplete="off">
+    <button class="btn main" id="pinGo" type="button" style="width:100%">들어가기</button>
+  </div>
+
+  <div id="app">
+    <nav class="tabs">
+      <button type="button" data-tab="new" class="on">🆕 새로 <b id="cNew">0</b></button>
+      <button type="button" data-tab="keep">⭐ 보관함 <b id="cKeep">0</b></button>
+      <button type="button" data-tab="set">⚙ 키워드</button>
+    </nav>
+
+    <section id="tab-new"><div class="list" id="listNew"></div></section>
+
+    <section id="tab-keep" hidden>
+      <input class="search" id="q" type="search" placeholder="보관함에서 찾기 (제목 · 메모)">
+      <div class="list" id="listKeep"></div>
+    </section>
+
+    <section id="tab-set" hidden>
+      <div class="box">
+        <h3>🔑 검색할 키워드</h3>
+        <p class="hint">구글 뉴스에서 이 말로 찾습니다. 최대 10개.</p>
+        <div class="chips" id="chKw"></div>
+        <div class="add"><input id="inKw" placeholder="예: 서귀포 AI 강좌"><button class="btn line" type="button" data-add="keywords">추가</button></div>
+      </div>
+      <div class="box">
+        <h3>✅ 꼭 들어갈 말</h3>
+        <p class="hint">제목에 이 중 <b>하나</b>는 있어야 담아요. 비워 두면 거르지 않음.</p>
+        <div class="chips" id="chMust"></div>
+        <div class="add"><input id="inMust" placeholder="예: 강좌"><button class="btn line" type="button" data-add="must">추가</button></div>
+      </div>
+      <div class="box">
+        <h3>🚫 빼는 말</h3>
+        <p class="hint">제목에 하나라도 있으면 버려요. 잡음이 많으면 여기에 더하세요.</p>
+        <div class="chips" id="chDrop"></div>
+        <div class="add"><input id="inDrop" placeholder="예: 주가"><button class="btn line" type="button" data-add="drop">추가</button></div>
+      </div>
+      <button class="btn main" type="button" id="btnWords" style="width:100%;margin-bottom:12px">💾 키워드 저장</button>
+      <div class="box">
+        <h3>⏰ 매일 아침 예약</h3>
+        <p class="hint">켜 두면 휴대폰·PC가 꺼져 있어도 구글이 정해진 시각에 찾아 둡니다.</p>
+        <div class="sched">
+          <button class="sw" id="sw" type="button" aria-label="예약 켜기"></button>
+          <span id="swText">꺼짐</span>
+          <select id="hour"></select>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+// ▼▼▼ 내가 채울 곳 ▼▼▼
+const API_URL   = '';                       // 예: 'https://script.google.com/macros/s/……/exec'
+const APP_TITLE = 'AI교육 소식 검색함';
+// ▲▲▲ 여기까지 ▲▲▲
+
+const DEMO = !API_URL;
+let state = { words:{keywords:[],must:[],drop:[]}, items:[], lastRun:'', schedule:{on:false,hour:7} };
+let draft = null;      // 저장 전 키워드 편집본
+let tab = 'new';
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function store(k, v){ try{ if(v===undefined) return localStorage.getItem(k); if(v===null) localStorage.removeItem(k); else localStorage.setItem(k,v); }catch(e){ return null; } }
+function toast(msg){ const t=$('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(toast.h); toast.h=setTimeout(()=>t.classList.remove('show'),2200); }
+
+/* ── 주방에 주문 넣기 ── */
+async function order(action, extra = {}){
+  if (DEMO) return demoOrder(action, extra);
+  const pin = store('kw_pin');
+  const res = await fetch(API_URL, { method:'POST', body: JSON.stringify({ action, pin, ...extra }) });
+  const data = await res.json();
+  if (!data.ok){
+    if (data.code === 'pin'){ store('kw_pin', null); showGate(data.error); }
+    throw new Error(data.error || '알 수 없는 오류');
+  }
+  return data;
+}
+async function run(action, extra, btn, doneMsg){
+  const old = btn ? btn.innerHTML : '';
+  if (btn){ btn.disabled = true; btn.innerHTML = '<span class="spin"></span>잠시만요'; }
+  try{
+    const before = state.items.filter(x=>x.status==='새로').length;
+    state = await order(action, extra);
+    draft = null; render();
+    if (action==='search'){ const n = state.items.filter(x=>x.status==='새로').length - before; toast(n>0 ? `새 소식 ${n}건을 찾았어요` : '새로 찾은 소식이 없어요'); }
+    else if (doneMsg) toast(doneMsg);
+  }catch(err){ toast('⚠ ' + err.message); }
+  finally{ if (btn){ btn.disabled = false; btn.innerHTML = old; } }
+}
+
+/* ── 그리기 ── */
+function render(){
+  const news = state.items.filter(x => x.status === '새로');
+  const keep = state.items.filter(x => x.status === '보관');
+  $('cNew').textContent = news.length; $('cKeep').textContent = keep.length;
+  $('last').textContent = '마지막 검색 ' + (state.lastRun || '—');
+  $('schedTag').textContent = state.schedule.on ? `⏰ 매일 ${state.schedule.hour}시 자동 검색 중` : '';
+
+  $('listNew').innerHTML = news.length ? news.map(x => `
+    <article class="card">
+      <a class="t" href="${esc(x.link)}" target="_blank" rel="noopener">${esc(x.title)}</a>
+      <div class="meta"><span>${esc(x.source)}</span><span>· ${esc(x.date)}</span><span class="kw">#${esc(x.keyword)}</span></div>
+      <div class="acts"><button class="btn keep" data-keep="${esc(x.id)}" type="button">⭐ 보관</button><button class="btn drop" data-drop="${esc(x.id)}" type="button">버림</button></div>
+    </article>`).join('') : `<div class="empty">새로 찾은 소식이 없어요.<br>위의 <b>🔍 지금 검색</b>을 눌러 보세요.</div>`;
+
+  const q = $('q').value.trim();
+  const shown = keep.filter(x => !q || (x.title + ' ' + x.memo).includes(q));
+  $('listKeep').innerHTML = shown.length ? shown.map(x => `
+    <article class="card">
+      <a class="t" href="${esc(x.link)}" target="_blank" rel="noopener">${esc(x.title)}</a>
+      <div class="meta"><span>${esc(x.source)}</span><span>· ${esc(x.date)}</span><span class="kw">#${esc(x.keyword)}</span></div>
+      <textarea class="memo" data-memo="${esc(x.id)}" placeholder="메모 (예: 12/5까지 신청)">${esc(x.memo)}</textarea>
+      <div class="memo-row"><span></span><button class="btn line" data-savememo="${esc(x.id)}" type="button">메모 저장</button></div>
+    </article>`).join('') : `<div class="empty">${keep.length ? '찾는 말이 들어간 보관 소식이 없어요.' : '아직 보관한 소식이 없어요.<br>🆕 새로 탭에서 ⭐ 보관을 눌러 보세요.'}</div>`;
+
+  const w = draft || state.words;
+  const chips = (arr, key, cls) => arr.map((v,i) => `<span class="chip ${cls}">${esc(v)}<button type="button" data-del="${key}:${i}" aria-label="${esc(v)} 지우기">×</button></span>`).join('') || '<span style="color:var(--sub);font-size:14px">(비어 있음)</span>';
+  $('chKw').innerHTML = chips(w.keywords, 'keywords', '');
+  $('chMust').innerHTML = chips(w.must, 'must', '');
+  $('chDrop').innerHTML = chips(w.drop, 'drop', 'no');
+  $('btnWords').textContent = draft ? '💾 키워드 저장 (바꾼 것 있음)' : '💾 키워드 저장';
+
+  $('sw').classList.toggle('on', state.schedule.on);
+  $('swText').textContent = state.schedule.on ? '켜짐 —' : '꺼짐';
+  $('hour').value = state.schedule.hour;
+}
+
+/* ── 누르기 ── */
+document.querySelector('.tabs').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  tab = b.dataset.tab;
+  document.querySelectorAll('.tabs button').forEach(x => x.classList.toggle('on', x === b));
+  ['new','keep','set'].forEach(t => $('tab-'+t).hidden = t !== tab);
+});
+$('btnSearch').onclick = e => run('search', {}, e.currentTarget);
+$('q').oninput = render;
+document.addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  if (b.dataset.keep) run('save', { id:b.dataset.keep }, b, '⭐ 보관함에 넣었어요');
+  if (b.dataset.drop) run('drop', { id:b.dataset.drop }, b, '버렸어요');
+  if (b.dataset.savememo){ const t = document.querySelector(`[data-memo="${b.dataset.savememo}"]`); run('save', { id:b.dataset.savememo, memo:t.value }, b, '메모를 저장했어요'); }
+  if (b.dataset.del){ const [k,i] = b.dataset.del.split(':'); draft = draft || JSON.parse(JSON.stringify(state.words)); draft[k].splice(+i,1); render(); }
+  if (b.dataset.add){ addWord(b.dataset.add); }
+});
+const inputs = { keywords:'inKw', must:'inMust', drop:'inDrop' };
+function addWord(k){
+  const el = $(inputs[k]), v = el.value.trim(); if (!v) return;
+  draft = draft || JSON.parse(JSON.stringify(state.words));
+  if (k==='keywords' && draft.keywords.length >= 10) return toast('키워드는 10개까지예요');
+  if (!draft[k].includes(v)) draft[k].push(v);
+  el.value = ''; render();
+}
+Object.entries(inputs).forEach(([k,id]) => $(id).addEventListener('keydown', e => { if (e.key==='Enter'){ e.preventDefault(); addWord(k); } }));
+$('btnWords').onclick = e => { if (!draft) return toast('바꾼 것이 없어요'); run('words', draft, e.currentTarget, '키워드를 저장했어요. 다음 검색부터 적용돼요'); };
+for (let h=5; h<=22; h++) $('hour').insertAdjacentHTML('beforeend', `<option value="${h}">${h<12?'오전':'오후'} ${h<=12?h:h-12}시</option>`);
+$('sw').onclick = e => run('schedule', { on:!state.schedule.on, hour:+$('hour').value }, null, state.schedule.on ? '예약을 껐어요' : `매일 ${$('hour').value}시 예약을 켰어요`);
+$('hour').onchange = () => { if (state.schedule.on) run('schedule', { on:true, hour:+$('hour').value }, null, `예약 시각을 ${$('hour').value}시로 바꿨어요`); else state.schedule.hour = +$('hour').value; };
+
+/* ── PIN ── */
+function showGate(msg){ $('gate').hidden = false; $('app').hidden = true; if (msg) toast('⚠ ' + msg); setTimeout(()=>$('pinIn').focus(), 50); }
+$('pinGo').onclick = () => { const v = $('pinIn').value.trim(); if (!v) return; store('kw_pin', v); $('gate').hidden = true; $('app').hidden = false; start(); };
+$('pinIn').addEventListener('keydown', e => { if (e.key==='Enter') $('pinGo').click(); });
+
+/* ── 체험 모드 (API_URL이 비었을 때만) ── */
+const DEMO_POOL = [
+  ['도민 대상 생성형 AI 활용 강좌 수강생 모집','제주 AI교육'],
+  ['시니어를 위한 AI 스마트폰 교실 12월 개강','시니어 AI 교육'],
+  ['디지털배움터, 챗봇 활용 특강 무료 운영','디지털배움터 AI'],
+  ['소상공인 AI 마케팅 강의 참가자 접수','AI 교육 수강생 모집'],
+  ['도서관에서 배우는 생성형 AI 그림 강좌','생성형 AI 강좌'],
+  ['교사 대상 AI 수업 설계 연수 신청 받아','AI 교육 수강생 모집'],
+  ['주민센터 AI 문서작성 교실 수강생 모집','제주 AI교육'],
+  ['청년 AI 아카데미 2기 교육생 선발','생성형 AI 강좌']
+];
+let demoN = 0, demo = null;
+function demoItem(){
+  const [t,k] = DEMO_POOL[demoN++ % DEMO_POOL.length];
+  const d = new Date(Date.now() - (demoN%3)*864e5).toISOString().slice(0,10);
+  return { id:'d'+demoN+Math.random().toString(16).slice(2,6), title:t+' (체험용 예시)', source:'체험용 예시', date:d, keyword:k, status:'새로', memo:'',
+           link:'https://news.google.com/search?q='+encodeURIComponent(k)+'&hl=ko&gl=KR&ceid=KR:ko' };
+}
+function demoOrder(action, x){
+  if (!demo){
+    demo = { words:{ keywords:['제주 AI교육','AI 교육 수강생 모집','생성형 AI 강좌','디지털배움터 AI','시니어 AI 교육'],
+                     must:['교육','강좌','강의','수강','배움','교실','특강','아카데미','연수'], drop:['주가','증시','코인','성료','수료식','후기'] },
+             items:[demoItem(),demoItem(),demoItem(),demoItem()], lastRun:'', schedule:{on:false,hour:7} };
+    demo.items[3].status='보관'; demo.items[3].memo='강사님께 일정 물어보기';
+    demo.lastRun = new Date().toISOString().slice(0,10)+' 07:00';
+  }
+  const f = id => demo.items.find(i => i.id === id);
+  if (action==='search'){ demo.items.unshift(demoItem(), demoItem()); const n=new Date(); demo.lastRun = n.toISOString().slice(0,10)+' '+String(n.getHours()).padStart(2,'0')+':'+String(n.getMinutes()).padStart(2,'0'); }
+  if (action==='save'){ const it=f(x.id); if(it){ it.status='보관'; if(typeof x.memo==='string') it.memo=x.memo; } }
+  if (action==='drop'){ const it=f(x.id); if(it) it.status='버림'; }
+  if (action==='words'){ demo.words = { keywords:x.keywords, must:x.must, drop:x.drop }; }
+  if (action==='schedule'){ demo.schedule = { on:!!x.on, hour:x.hour||7 }; }
+  const copy = JSON.parse(JSON.stringify(demo)); copy.items = copy.items.filter(i => i.status !== '버림');
+  return new Promise(r => setTimeout(() => r({ ok:true, ...copy }), 450));
+}
+
+/* ── 시작 ── */
+function start(){ run('list', {}, null); }
+document.title = APP_TITLE; $('title').textContent = APP_TITLE;
+if (DEMO){ $('demo').hidden = false; start(); }
+else if (!store('kw_pin')) showGate();
+else start();
+</script>
+</body>
+</html>
