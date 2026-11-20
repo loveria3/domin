@@ -7,23 +7,12 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="stylesheet" href="lesson.css?v=1114">
 <style>
-/* 7번 — .md 파일 쉽게 보기 */
-.mdcard{margin:14px 0 0;border:2px solid var(--navy,#1f3864);border-radius:14px;background:#fff;padding:16px 18px}
+/* 7번 — SKILL.md 카드 */
+.mdcard{margin:14px 0 0;border:2px solid var(--navy,#1f3864);border-radius:14px;background:#fff;padding:14px 18px}
 .mdcard .mt{margin:0;font-size:19px;font-weight:800;color:var(--navy,#1f3864)}
 .mdcard .ms{margin:6px 0 0;font-size:16px}
-.mdgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0 0}
-.mdgrid figure{margin:0;border:1px solid #e3e6ea;border-radius:10px;overflow:hidden}
-.mdgrid figcaption{background:#f3f4f6;font-size:14px;font-weight:700;padding:6px 12px;color:#4b5563}
-.mdraw{margin:0;padding:12px 14px;font:15px/1.7 Consolas,"Malgun Gothic",monospace;white-space:pre-wrap;word-break:keep-all;background:#fafafa}
+.mdraw{margin:10px 0 0;padding:10px 14px;border:1px solid #e3e6ea;border-radius:10px;font:15px/1.7 Consolas,"Malgun Gothic",monospace;white-space:pre-wrap;background:#fafafa}
 .mdraw i{font-style:normal;color:#e8590c;font-weight:800}
-.mdview{padding:10px 14px;font-size:15px;line-height:1.6}
-.mdview h4{margin:2px 0 6px;font-size:19px}
-.mdview h5{margin:10px 0 4px;font-size:16px}
-.mdview ul{margin:0;padding-left:20px}
-.mdkeys{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0;padding:0;list-style:none}
-.mdkeys li{background:#fff4e8;border-radius:999px;padding:5px 12px;font-size:14.5px}
-.mdkeys code{font-weight:800;color:#c2410c;background:none}
-@media (max-width:640px){.mdgrid{grid-template-columns:1fr}}
 </style>
 </head>
 <body class="type-only">
@@ -43,22 +32,22 @@
 
 <div class="hook">
   <p class="q">홍보물 한 장에 다 넣으려다 글씨가 깨알만 해진 적 있나요?</p>
-  <p>클로드가 <b>원고 한 장으로 홍보물</b>과 <b>안내 웹페이지</b>를 만들고 → <b>QR을 홍보물에 넣어</b> 저장합니다. 내용이 바뀌어도 <b>QR은 그대로</b>. 마지막엔 같은 방법으로 <b>가족에게 가르칠 웹교안</b>을 만들고, 그 만드는 법을 <b>스킬</b>로 저장합니다.</p>
+  <p><b>원고 한 장</b> → 홍보물 · 안내 웹페이지 → <b>QR</b>. 내용이 바뀌어도 QR은 그대로. 마지막엔 <b>웹교안</b>과 <b>스킬</b>까지.</p>
   <div class="take"><span>오늘 가져갈 것</span><span>📄 A4 홍보물</span><span>🌐 안내 웹페이지 주소</span><span>🔳 QR 들어간 홍보물</span><span>🔁 고쳐 다시 올리는 법</span><span>📘 세 AI 비교 교안</span><span>🧩 웹교안 스킬</span></div>
 </div>
 
 <div class="tip">🧭 1·2차시와 같습니다 — 번호 단계는 함께, 점선 상자 <b>⚡</b>는 기다리는 동안 한 걸음 더.</div>
 <nav class="jump">
   <a href="#s1">1</a><a href="#s2">2</a><a href="#s3">3</a><a href="#s4">4</a>
-  <a href="#s5">5</a><a href="#s6w">6</a><a href="#s6s">7</a><a href="#s6r">8</a><a href="#s6">9</a><a href="#s7">도전</a><a href="#s8">퀴즈</a>
+  <a href="#s5">5</a><a href="#s6w">6</a><a href="#s6s">7</a><a href="#s6r">8</a><a href="#s8">퀴즈</a>
 </nav>
 
 <section id="s1" data-n="1" class="key" data-t="원고로 홍보물 만들기">
   <div class="head"><span class="num">1</span><h2>원고로 A4 홍보물 만들기</h2><span class="badge hot">핵심</span><span class="time">12분</span></div>
-  <p class="one">행사 <b>원고 한 장</b>에서 시작합니다. 오늘은 이 원고가 <b>원본</b> — 홍보물도 웹페이지도 원고에 있는 사실만 씁니다.</p>
+  <p class="one">오늘은 <b>원고.txt가 원본</b>. 홍보물도 웹페이지도 원고에 있는 것만 씁니다.</p>
   <ol class="step">
     <li>위의 <b>홍보물 꾸러미(zip)</b>와 <b>세 AI 비교표(txt)</b> 내려받기</li>
-    <li>zip <b>압축 풀기</b> → 안에 있는 <b>홍보물</b> 폴더(원고.txt · 디자인지침.txt · 사진 7장)를 1·2차시처럼 코워크에 연결한 <b>내작업실</b> 안에</li>
+    <li>압축을 풀어 <b>홍보물</b> 폴더를 <b>내작업실</b> 안에</li>
     <li><b>AI교실</b> 폴더를 만들고 비교표를 <b>AI비교표.txt</b> 이름으로 넣기</li>
   </ol>
   <div class="box"><div class="bar"><span>프롬프트 0 — 원고로 홍보물 만들기</span></div>
@@ -67,34 +56,27 @@
 오른쪽 아래에 점선 네모를 두고 도형 이름과 글자를 'QR 넣을 자리'로.
 2장: 걷는 순서 6곳에 코스 사진을 붙이고, 준비물 · 걷기 약속.
 색은 디자인지침.txt대로, 원고에 없는 내용은 넣지 마. 올레홍보물.pptx로 저장해줘.</div></div>
-  <p class="one">→ 만드는 동안(3~5분) <b>원고.txt</b>와 <b>디자인지침.txt</b>를 열어 훑어보기 — 세련된 결과의 비결은 이 두 파일입니다.</p>
   <ul class="chk">
-    <li>올레홍보물.pptx를 열어 1장 <b>오른쪽 아래 'QR 넣을 자리'</b>가 있는지 — 없으면 <span class="say">1장 오른쪽 아래에 QR 넣을 자리 점선 네모를 넣어줘</span> (4번에서 QR이 여기 들어갑니다)</li>
-    <li>날짜 · 거리 · 참가비가 <b>원고와 같은지</b></li>
+    <li>1장 오른쪽 아래에 <b>QR 넣을 자리</b>가 있는지 — 없으면 <span class="say">QR 넣을 자리 점선 네모를 넣어줘</span></li>
   </ul>
-  <div class="tip">🛟 시간이 모자라거나 잘 안 나오면 — 위의 <b>완성 홍보물(비상용 pptx)</b>을 받아 홍보물 폴더에 넣고 2번으로 넘어가세요. 이름은 그대로 <b>올레홍보물.pptx</b>.</div>
+  <div class="tip">🛟 잘 안 되면 위의 <b>완성 홍보물(비상용)</b>을 홍보물 폴더에 넣고 2번으로.</div>
 </section>
 
 <section id="s2" data-n="2" class="key" data-t="안내 웹페이지 만들기">
   <div class="head"><span class="num">2</span><h2>같은 원고로 안내 웹페이지 만들기</h2><span class="badge hot">핵심</span><span class="time">14분</span></div>
-  <p class="one"><b>만들기 → 확인</b>, 두 번에 나눠 부탁합니다. 세련된 모양은 폴더에 넣어 둔 <b>디자인지침.txt</b>가 맡습니다 — 프롬프트는 짧게.</p>
+  <p class="one">모양은 <b>디자인지침.txt</b>가 맡으니 프롬프트는 짧게.</p>
   <a class="btn line" href="olle-sample/" target="_blank" rel="noopener">🌐 완성 예시 안내 페이지 먼저 보기 ↗</a>
-  <a class="btn line" href="files/design-guide.txt" target="_blank" rel="noopener">🎨 디자인지침.txt 보기 ↗</a>
   <div class="box"><div class="bar"><span>프롬프트 1-1 — 안내 페이지 만들기</span></div>
 <div class="txt">홍보물 폴더의 원고.txt로 QR을 찍으면 열릴 세부 안내 웹페이지를 만들어줘.
 모양은 같은 폴더의 디자인지침.txt를 그대로 따르고, 사진 폴더의 사진들을 지침에 적힌 자리에 넣어줘.
 원고에 없는 전화번호·주차·인원은 지어내지 마. 올레안내 폴더에 index.html로 저장해줘.</div></div>
-  <div class="ex">✔ 올레안내/index.html
-✔ 올레안내/img/ (지침대로 사진 7장을 영문 이름으로 복사해 둔 것)</div>
   <div class="box"><div class="bar"><span>프롬프트 1-2 — 폴더에서 확인</span></div>
 <div class="txt">올레안내/index.html을 다시 읽고 원고.txt와 비교해서,
 다른 곳과 원본에 없는데 들어간 값을 표로 보여줘. 아직 고치지 마.</div></div>
   <ul class="chk">
-    <li>표에 <b>다른 곳</b>이 있으면 → <span class="say">[어디]를 [어떻게] 바꿔줘. 나머지는 그대로 둬.</span></li>
-    <li>확인 필요가 <b>지어낸 값으로 채워져 있으면</b> → <span class="say">확인 필요로 되돌려줘</span></li>
-    <li>index.html <b>더블클릭</b>으로 내 눈으로도 한 번 — 맨 위에 <b>사진이 크게</b>, 색은 <b>귤빛 · 초록 · 크림</b>뿐인지. 아니면 <span class="say">디자인지침.txt대로 다시 맞춰줘</span></li>
+    <li>다른 곳이 있으면 → <span class="say">[어디]를 [어떻게] 바꿔줘. 나머지는 그대로 둬.</span></li>
+    <li>index.html <b>더블클릭</b>으로 내 눈으로도 확인</li>
   </ul>
-  <div class="tip">🎨 내 행사에 쓸 때는 <b>디자인지침.txt의 색과 사진 이름만</b> 바꾸고 같은 프롬프트를 씁니다 (도전 1).</div>
   <div class="biz">
     <p class="bt">회사에선 이렇게 — QR 안내 페이지 <span class="badge biz">업무 활용</span></p>
     <p>행사 포스터 · 제품 상자 · 매장 메뉴에는 <b>QR만</b>, 바뀌는 내용은 <b>페이지에서만</b> 고칩니다.</p>
@@ -119,7 +101,7 @@
 
 <section id="s4" data-n="4" class="key" data-t="QR 넣은 홍보물">
   <div class="head"><span class="num">4</span><h2>QR 코드를 홍보물에 넣기</h2><span class="badge hot">핵심</span><span class="time">10분</span></div>
-  <p class="one">QR 만들기와 홍보물에 넣기, 두 가지 일을 <b>한 번에</b> 부탁합니다. 원본은 그대로 두고 <b>새 파일</b>로.</p>
+  <p class="one">QR 만들기와 넣기를 <b>한 번에</b>. 원본은 그대로, <b>새 파일</b>로.</p>
   <div class="box"><div class="bar"><span>프롬프트 2 — QR 만들어 홍보물에 넣기</span></div>
 <div class="txt"><span class="ph">[https://halla-olle-1121.vercel.app]</span> 로 가는 QR 코드를 만들어 홍보물 폴더에 QR_세부안내.png로 저장하고,
 올레홍보물.pptx의 QR 넣을 자리에 넣어줘. 그 아래에 찍으면 자세한 안내라고 한 줄.
@@ -127,12 +109,11 @@
   <div class="ex">✔ 홍보물/QR_세부안내.png
 ✔ 홍보물/홍보물_QR.pptx</div>
   <ul class="chk">
-    <li>홍보물_QR.pptx에서 QR이 <b>제자리에</b> 들어갔는지 (인쇄용 PDF는 도전에서)</li>
+    <li>홍보물_QR.pptx에 QR이 <b>제자리에</b> 들어갔는지</li>
     <li><b>내 휴대폰 카메라로 찍어서</b> 내 페이지가 열리는지</li>
   </ul>
   <div class="tip">🛟 QR이 안 만들어지면 — 크롬 주소창 <b>공유 → QR 코드 만들기 → 다운로드</b> 후 <span class="say">이 그림을 QR 자리에 넣어줘</span></div>
   <div class="adv"><p class="at">한 사람씩 맞춤으로 여러 장</p>
-    <p>명단 엑셀만 있으면 이름이 들어간 초대장 · 수료증을 한꺼번에 만들 수 있어요.</p>
     <div class="box"><div class="bar"><span>⚡ 명단으로 여러 장 만들기</span></div>
 <div class="txt"><span class="ph">[참석자명단.xlsx]</span>의 사람마다 이름이 들어간 초대장을 한 장씩 PDF로 만들어
 초대장 폴더에 초대장_이름.pdf로 저장해줘. 먼저 3명만 만들어 보여주고 내 확인을 기다려.</div></div>
@@ -151,9 +132,8 @@
     <li>휴대폰으로 <b>아까 그 QR</b>을 찍어 바뀐 내용 확인 🎉</li>
   </ol>
   <a class="btn line" href="vercel-help.html#redeploy" target="_blank" rel="noopener">🔁 같은 프로젝트에 다시 올리는 법 (그림으로 보기) ↗</a>
-  <p class="warnnote">⚠ <b>vercel.com/drop</b>에 다시 올리면 <b>새 주소</b>가 생겨 QR이 안 맞습니다. 다시 올렸는데 <b>Project Name · Deploy</b> 화면이 나오면 누르지 말고 닫기.</p>
+  <p class="warnnote">⚠ <b>vercel.com/drop</b>에 다시 올리면 <b>새 주소</b>가 생겨 QR이 안 맞습니다.</p>
   <div class="adv"><p class="at">무엇이 바뀌었는지 확인</p>
-    <p>올리기 전에 <b>바뀐 곳만</b> 보면 실수로 지운 내용을 잡을 수 있습니다.</p>
     <div class="box"><div class="bar"><span>⚡ 바뀐 곳만 보기</span></div>
 <div class="txt">고치기 전 올레안내/index.html과 지금 파일을 비교해서, 글자가 바뀐 곳만 표로 보여줘.
 바뀌면 안 되는 곳(문의처 · 장소)이 바뀌었으면 맨 위에 경고해줘.</div></div>
@@ -162,14 +142,14 @@
 
 <section id="s6w" data-n="6" data-t="웹교안 만들기 — 세 AI 비교">
   <div class="head"><span class="num">6</span><h2>웹교안 만들기 — 세 AI, 뭐가 다르고 언제 뭘 쓰나</h2><span class="time">18분</span></div>
-  <p class="one">지금 보고 계신 <b>이 수업 화면도 같은 방법</b>으로 만들었습니다. <b>기본</b>을 하나 만들고, 편리한 기능을 <b>두 번에 나눠</b> 붙여 봅니다. 재료는 1번에서 넣은 <b>AI교실/AI비교표.txt</b>.</p>
+  <p class="one"><b>기본</b>을 하나 만들고, 기능을 <b>두 번에 나눠</b> 붙입니다. 이 수업 화면도 같은 방법으로 만들었어요.</p>
   <a class="btn line" href="ai-class-sample.html" target="_blank" rel="noopener">📘 완성 예시 교안 먼저 보기 ↗</a>
   <div class="box"><div class="bar"><span>프롬프트 4-1 — 기본 교안 (7분)</span></div>
 <div class="txt">AI교실/AI비교표.txt를 읽고, 가족에게 20분에 가르칠 웹교안을 만들어줘.
 단계는 세 개: ① 뭐가 다른가 ② 언제 뭘 쓰나 ③ 직접 해 보기.
 큰 글씨, 세로 한 줄. 표에 없는 요금·기능은 지어내지 말고, 표의 '확인 필요'는 그대로 '확인 필요'로.
 AI교실 폴더에 index.html로 저장하고, 맨 아래에 2026년 11월 기준이라고 써줘.</div></div>
-  <p class="one">→ <b>index.html 더블클릭</b>으로 확인. 기능을 붙일 때마다 <b>새로고침(F5)</b>해서 바뀐 곳을 봅니다.</p>
+  <p class="one">→ <b>index.html 더블클릭</b>. 기능을 붙일 때마다 <b>F5</b>(새로고침).</p>
   <div class="box"><div class="bar"><span>기능 ① — 번호·시간 + 번호 단추로 바로 가기 (5분)</span></div>
 <div class="txt">단계마다 머리에 번호와 걸리는 시간을 붙여줘.
 그리고 맨 위에 단계 번호 단추를 한 줄로 놓고, 누르면 그 단계로 바로 가게. 화면을 내려도 위에 붙어 있게. 나머지는 그대로 둬.</div></div>
@@ -177,11 +157,10 @@ AI교실 폴더에 index.html로 저장하고, 맨 아래에 2026년 11월 기�
 <div class="txt">③ 직접 해 보기의 질문 세 개를 각각 상자에 넣고, 상자마다 복사 단추를 붙여줘.
 그리고 맨 아래에 OX 퀴즈 세 개를 넣고, 정답은 눌러야 보이게. 나머지는 그대로 둬.</div></div>
   <ul class="chk">
-    <li>비교표에 없는 요금·기능이 <b>슬쩍 들어가지 않았는지</b> (있으면 <span class="say">표에 없는 건 지워줘</span>)</li>
-    <li>번호 단추를 누르면 <b>그 단계로 바로 가는지</b>, 내려도 위에 붙어 있는지</li>
-    <li>복사 단추로 복사해 클로드에 붙여 넣으면 <b>진짜로 답이 오는지</b></li>
+    <li>비교표에 없는 요금이 들어갔으면 → <span class="say">표에 없는 건 지워줘</span></li>
+    <li>번호 단추 · 복사 단추가 <b>눌러서 되는지</b></li>
   </ul>
-  <div class="tip">💡 기능을 붙이는 부탁은 <b>한 번에 두 개까지 + "나머지는 그대로 둬"</b>. 한꺼번에 다 시키면 어디서 틀어졌는지 모릅니다. 잘 되면 7번에서 <b>스킬</b>로 묶습니다.</div>
+  <div class="tip">💡 부탁 끝엔 늘 <b>"나머지는 그대로 둬"</b>.</div>
   <div class="biz">
     <p class="bt">회사에선 이렇게 — 사내 교육 자료 <span class="badge biz">업무 활용</span></p>
     <p>신입 안내 · 시스템 사용법 · 안전 수칙을 <b>같은 틀</b>로. 내용이 바뀌면 <b>페이지만 고치고</b> 주소·QR은 그대로(5번과 같습니다).</p>
@@ -190,25 +169,14 @@ AI교실 폴더에 index.html로 저장하고, 맨 아래에 2026년 11월 기�
 
 <section id="s6s" data-n="7" data-t="교안 만드는 법을 스킬로">
   <div class="head"><span class="num">7</span><h2>교안 만드는 법을 스킬로 저장 — 다음엔 한 줄로</h2><span class="time">12분</span></div>
-  <p class="one">방금 세 번에 나눠 부탁한 것을 <b>스킬 하나</b>로 묶어 두면, 다음부터는 재료와 주제만 바꿔 <b>한 줄</b>로 같은 모양의 교안이 나옵니다. 올리는 자리는 2차시와 같습니다.</p>
+  <p class="one">방금 만든 방법을 <b>스킬</b>로 묶으면, 다음엔 <b>한 줄</b>로 같은 모양의 교안이 나옵니다.</p>
   <div class="mdcard" id="md">
-    <p class="mt">📄 SKILL.md — 끝이 .md인 파일, 이게 뭐예요?</p>
-    <p class="ms"><b>메모장 글(.txt)에 "여기는 제목, 여기는 목록" 표시를 붙인 글</b>입니다. 사람이 메모장으로 읽어도 되고, 클로드는 이 표시를 보고 <b>무엇이 제목이고 무엇이 규칙인지</b> 바로 압니다. 스킬의 <b>설명서 첫 장</b>이 바로 이 SKILL.md예요.</p>
-    <div class="mdgrid">
-      <figure><figcaption>메모장으로 열면 (실제 글자)</figcaption>
+    <p class="mt">📄 SKILL.md가 뭐예요?</p>
+    <p class="ms">스킬의 <b>설명서</b>입니다. 메모장 글에 <b>#는 제목, -는 목록</b> 표시만 붙인 것. <b>클로드가 써 주니</b> 외울 필요 없어요.</p>
 <pre class="mdraw"><i>#</i> 웹교안 만들기
-
-<i>##</i> 꼭 지킬 것
 <i>-</i> 큰 글씨, 세로 한 줄
 <i>-</i> 단계마다 번호와 시간
-<i>-</i> 맨 아래 OX 퀴즈
-<i>-</i> 재료에 없는 내용은 <i>**</i>지어내지 않기<i>**</i></pre></figure>
-      <figure><figcaption>클로드가 알아듣는 모양</figcaption>
-        <div class="mdview"><h4>웹교안 만들기</h4><h5>꼭 지킬 것</h5>
-          <ul><li>큰 글씨, 세로 한 줄</li><li>단계마다 번호와 시간</li><li>맨 아래 OX 퀴즈</li><li>재료에 없는 내용은 <b>지어내지 않기</b></li></ul></div></figure>
-    </div>
-    <ul class="mdkeys"><li><code>#</code> 큰 제목</li><li><code>##</code> 작은 제목</li><li><code>-</code> 목록 한 줄</li><li><code>**글자**</code> 굵게</li></ul>
-    <p class="ms">✋ 이 표시를 외울 필요는 없어요. <b>클로드가 써 줍니다.</b> 우리는 메모장으로 열어 <b>규칙이 맞게 적혔는지만</b> 읽으면 됩니다. 고치고 싶으면 <span class="say">SKILL.md에 ○○ 규칙을 한 줄 추가해줘</span>.</p>
+<i>-</i> 재료에 없는 내용은 지어내지 않기</pre>
   </div>
   <div class="box"><div class="bar"><span>프롬프트 5 — 스킬로 묶기</span></div>
 <div class="txt">AI교실/index.html을 만든 방법을 스킬로 만들어줘. 이름은 web-lesson.
@@ -222,13 +190,8 @@ SKILL.md에 규칙을 적어줘: 큰 글씨 세로 한 줄, 단계마다 번호�
 <div class="txt">web-lesson 스킬로, AI교실/AI비교표.txt를 재료 삼아 <span class="ph">[직장 동료에게 10분]</span>용 교안을 만들어줘. AI교실/동료용 폴더에 index.html로.</div></div>
   <ul class="chk">
     <li>새 교안에도 <b>번호 단추 · 복사 상자 · 퀴즈</b>가 그대로 붙어 나오는지</li>
-    <li>zip 안 폴더 이름이 <b>web-lesson</b>인지 — 다르면 올라가지 않습니다 (2차시에서 본 규칙)</li>
+    <li>안 올라가면 → <span class="say">zip 안 폴더 이름을 web-lesson으로 다시 묶어줘</span></li>
   </ul>
-  <div class="tip">🧩 스킬은 <b>"이렇게 만들어"를 적어 둔 설명서</b>. 프롬프트 생성기(9번)가 <b>문장</b>을 모은다면, 스킬은 <b>만드는 법</b>을 모읍니다.</div>
-  <div class="biz">
-    <p class="bt">회사에선 이렇게 — 팀 교육 자료의 틀 <span class="badge biz">업무 활용</span></p>
-    <p>틀을 스킬로 두면 <b>누가 만들어도 같은 모양</b>. 6번의 사내 교육 자료를 팀원 모두가 재료만 바꿔 같은 틀로 만듭니다.</p>
-  </div>
   <div class="adv"><p class="at">회사 신입 교육용으로 바꾸기</p>
     <div class="box"><div class="bar"><span>⚡ 같은 틀, 다른 내용</span></div>
 <div class="txt">web-lesson 스킬로 <span class="ph">[우리 팀 신입 첫날 안내]</span> 교안을 만들어줘.
@@ -238,17 +201,14 @@ SKILL.md에 규칙을 적어줘: 큰 글씨 세로 한 줄, 단계마다 번호�
 
 <section id="s6r" data-n="8" data-t="반응형 페이지로">
   <div class="head"><span class="num">8</span><h2>반응형으로 — 휴대폰에선 한 줄, PC에선 두 단</h2><span class="time">4분</span></div>
-  <p class="one">안내 웹페이지는 <b>휴대폰 기준 한 줄</b>입니다. 화면이 넓으면 자리를 다시 짜도록 한 번 더 부탁합니다. 파일은 하나, 모양은 화면 폭 따라 — 이것이 <b>반응형</b>입니다. 웹교안은 아래 점선 ⚡ 상자에서 같은 방법으로.</p>
+  <p class="one"><b>파일은 하나</b>, 화면 폭에 따라 모양이 바뀌는 것이 <b>반응형</b>입니다.</p>
   <div class="box"><div class="bar"><span>프롬프트 7 — 안내 웹페이지 반응형</span></div>
 <div class="txt">올레안내/index.html을 반응형으로 바꿔줘.
 화면 폭이 900px보다 넓으면 걷는 순서는 왼쪽, 준비물·걷기 약속·문의는 오른쪽 두 단으로 놓고, 맨 위 사진과 제목은 더 크게.
 휴대폰 화면 모양은 지금 그대로 둬.</div></div>
   <ul class="chk">
-    <li>index.html <b>더블클릭</b> → 브라우저 창 가장자리를 끌어 <b>좁혔다 넓혔다</b> — 두 단 ↔ 한 줄로 바뀌는지</li>
-    <li>좁혔을 때 <b>휴대폰에서 보던 모양 그대로</b>인지 (글씨가 작아지거나 가로 스크롤이 생기면 <span class="say">휴대폰 모양은 되돌려줘</span>)</li>
-    <li>버셀 <b>내 프로젝트</b>에 다시 올리면 주소·QR은 그대로 (5번과 같습니다)</li>
+    <li>브라우저 창을 <b>좁혔다 넓혔다</b> — 두 단 ↔ 한 줄로 바뀌는지</li>
   </ul>
-  <div class="tip">📐 반응형은 <b>파일을 두 개 만드는 게 아닙니다</b>. 한 파일이 화면 폭(900px)을 기준으로 자리를 바꿉니다. 휴대폰 QR과 PC 게시판 링크를 페이지 하나로.</div>
   <div class="adv"><p class="at">웹교안도 반응형으로 · 스킬에도 넣어 두기</p>
     <div class="box"><div class="bar"><span>⚡ 웹교안 반응형</span></div>
 <div class="txt">AI교실/index.html도 반응형으로 바꿔줘.
@@ -257,35 +217,6 @@ SKILL.md에 규칙을 적어줘: 큰 글씨 세로 한 줄, 단계마다 번호�
     <div class="box"><div class="bar"><span>⚡ 처음부터 반응형으로 나오게</span></div>
 <div class="txt">web-lesson 스킬의 SKILL.md에 규칙 하나 추가해줘: 화면 폭 900px 이상이면 카드와 상자를 나란히 놓는 반응형. 다시 zip으로 묶어줘.</div></div>
   </div>
-</section>
-
-<section id="s6" data-n="9" data-t="프롬프트 모으기">
-  <div class="head"><span class="num">9</span><h2>오늘 프롬프트 모으기</h2><span class="time">3분</span></div>
-  <div class="box"><div class="bar"><span>프롬프트 8 — 프롬프트 생성기 스킬로 저장</span></div>
-<div class="txt">오늘 프롬프트 저장해줘. 원고로 홍보물 · 안내 웹페이지 · QR 넣기 · 웹교안 만들기 · 스킬로 묶기 · 반응형, 여섯 개를 다른 내용에도 쓸 수 있게 다듬어서.</div></div>
-</section>
-
-<section id="s7" data-n="도전" class="challenge" data-t="내 것으로 바꿔 만들기">
-  <div class="head"><span class="num ch">+</span><h2>내 것으로 바꿔 만들기</h2><span class="badge">도전</span><span class="time">자유</span></div>
-  <details class="more"><summary>먼저 끝낸 분만 — 눌러서 펼치기 ▾</summary>
-  <div class="box"><div class="bar"><span>도전 1 — 내 행사 안내 페이지</span></div>
-<div class="txt">디자인지침.txt의 강조색을 <span class="ph">[겨울 남색]</span>으로 바꿔서, <span class="ph">[우리 동호회 12월 송년회]</span> 안내 페이지를 만들어줘.
-내용: <span class="ph">[날짜, 장소, 회비, 준비물]</span>. 송년회안내 폴더에 index.html로.</div></div>
-  <div class="box"><div class="bar"><span>도전 2 — 인쇄용 PDF</span></div>
-<div class="txt">홍보물_QR.pptx를 인쇄용 PDF로도 저장해줘.</div></div>
-  <div class="box"><div class="bar"><span>도전 3 — A4 홍보물</span></div>
-<div class="txt">송년회 내용으로 A4 홍보물도 만들어서 송년회안내/홍보물.pdf로 저장해줘.</div></div>
-  <div class="box"><div class="bar"><span>도전 4 — 교안 올리고 가족에게 보내기</span></div>
-<div class="txt">(AI교실 폴더를 3번처럼 버셀에 올린 뒤)
-교안 주소 <span class="ph">[https://○○○.vercel.app]</span>를 카톡 나와의 채팅으로 보내줘. 한 줄 소개를 붙여서.</div></div>
-  <p class="one">도전 5 — 교안에 기능 더 붙이기. <b>한 줄씩</b>, 끝은 늘 "나머지는 그대로 둬".</p>
-  <div class="box"><div class="bar"><span>도전 5-1 — 가르치는 사람만 보는 메모</span></div>
-<div class="txt">주소 뒤에 ?t=1을 붙여 열면 가르치는 사람만 보는 메모가 단계마다 보이게 해줘. 나머지는 그대로 둬.</div></div>
-  <div class="box"><div class="bar"><span>도전 5-2 — 진도 체크</span></div>
-<div class="txt">단계마다 '했어요' 체크 칸을 넣고, 체크한 건 다시 열어도 남아 있게 해줘. 나머지는 그대로 둬.</div></div>
-  <div class="box"><div class="bar"><span>도전 5-3 — 글자 크게</span></div>
-<div class="txt">맨 위에 글자 크게 단추를 넣어줘. 나머지는 그대로 둬.</div></div>
-  </details>
 </section>
 
 <section id="s8" data-n="퀴즈" data-t="OX 퀴즈">
