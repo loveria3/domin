@@ -6,6 +6,25 @@
 <title>3차시 — QR로 여는 웹페이지 만들기</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="stylesheet" href="lesson.css?v=1114">
+<style>
+/* 7번 — .md 파일 쉽게 보기 */
+.mdcard{margin:14px 0 0;border:2px solid var(--navy,#1f3864);border-radius:14px;background:#fff;padding:16px 18px}
+.mdcard .mt{margin:0;font-size:19px;font-weight:800;color:var(--navy,#1f3864)}
+.mdcard .ms{margin:6px 0 0;font-size:16px}
+.mdgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0 0}
+.mdgrid figure{margin:0;border:1px solid #e3e6ea;border-radius:10px;overflow:hidden}
+.mdgrid figcaption{background:#f3f4f6;font-size:14px;font-weight:700;padding:6px 12px;color:#4b5563}
+.mdraw{margin:0;padding:12px 14px;font:15px/1.7 Consolas,"Malgun Gothic",monospace;white-space:pre-wrap;word-break:keep-all;background:#fafafa}
+.mdraw i{font-style:normal;color:#e8590c;font-weight:800}
+.mdview{padding:10px 14px;font-size:15px;line-height:1.6}
+.mdview h4{margin:2px 0 6px;font-size:19px}
+.mdview h5{margin:10px 0 4px;font-size:16px}
+.mdview ul{margin:0;padding-left:20px}
+.mdkeys{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0;padding:0;list-style:none}
+.mdkeys li{background:#fff4e8;border-radius:999px;padding:5px 12px;font-size:14.5px}
+.mdkeys code{font-weight:800;color:#c2410c;background:none}
+@media (max-width:640px){.mdgrid{grid-template-columns:1fr}}
+</style>
 </head>
 <body class="type-only">
 <div class="wrap">
@@ -172,6 +191,25 @@ AI교실 폴더에 index.html로 저장하고, 맨 아래에 2026년 11월 기�
 <section id="s6s" data-n="7" data-t="교안 만드는 법을 스킬로">
   <div class="head"><span class="num">7</span><h2>교안 만드는 법을 스킬로 저장 — 다음엔 한 줄로</h2><span class="time">12분</span></div>
   <p class="one">방금 세 번에 나눠 부탁한 것을 <b>스킬 하나</b>로 묶어 두면, 다음부터는 재료와 주제만 바꿔 <b>한 줄</b>로 같은 모양의 교안이 나옵니다. 올리는 자리는 2차시와 같습니다.</p>
+  <div class="mdcard" id="md">
+    <p class="mt">📄 SKILL.md — 끝이 .md인 파일, 이게 뭐예요?</p>
+    <p class="ms"><b>메모장 글(.txt)에 "여기는 제목, 여기는 목록" 표시를 붙인 글</b>입니다. 사람이 메모장으로 읽어도 되고, 클로드는 이 표시를 보고 <b>무엇이 제목이고 무엇이 규칙인지</b> 바로 압니다. 스킬의 <b>설명서 첫 장</b>이 바로 이 SKILL.md예요.</p>
+    <div class="mdgrid">
+      <figure><figcaption>메모장으로 열면 (실제 글자)</figcaption>
+<pre class="mdraw"><i>#</i> 웹교안 만들기
+
+<i>##</i> 꼭 지킬 것
+<i>-</i> 큰 글씨, 세로 한 줄
+<i>-</i> 단계마다 번호와 시간
+<i>-</i> 맨 아래 OX 퀴즈
+<i>-</i> 재료에 없는 내용은 <i>**</i>지어내지 않기<i>**</i></pre></figure>
+      <figure><figcaption>클로드가 알아듣는 모양</figcaption>
+        <div class="mdview"><h4>웹교안 만들기</h4><h5>꼭 지킬 것</h5>
+          <ul><li>큰 글씨, 세로 한 줄</li><li>단계마다 번호와 시간</li><li>맨 아래 OX 퀴즈</li><li>재료에 없는 내용은 <b>지어내지 않기</b></li></ul></div></figure>
+    </div>
+    <ul class="mdkeys"><li><code>#</code> 큰 제목</li><li><code>##</code> 작은 제목</li><li><code>-</code> 목록 한 줄</li><li><code>**글자**</code> 굵게</li></ul>
+    <p class="ms">✋ 이 표시를 외울 필요는 없어요. <b>클로드가 써 줍니다.</b> 우리는 메모장으로 열어 <b>규칙이 맞게 적혔는지만</b> 읽으면 됩니다. 고치고 싶으면 <span class="say">SKILL.md에 ○○ 규칙을 한 줄 추가해줘</span>.</p>
+  </div>
   <div class="box"><div class="bar"><span>프롬프트 5 — 스킬로 묶기</span></div>
 <div class="txt">AI교실/index.html을 만든 방법을 스킬로 만들어줘. 이름은 web-lesson.
 SKILL.md에 규칙을 적어줘: 큰 글씨 세로 한 줄, 단계마다 번호와 시간, 맨 위에 붙는 번호 단추, 따라 치는 상자와 복사 단추, 맨 아래 OX 퀴즈, 재료 파일에 없는 내용은 지어내지 않기.
