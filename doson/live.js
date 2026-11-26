@@ -44,6 +44,8 @@
     '#lv-pill.on::before{content:"● ";animation:lvb 1.4s infinite}',
     '@keyframes lvb{50%{opacity:.3}}',
     '#lv-top button{background:none;border:0;font:inherit;font-size:14px;font-weight:700;color:#1f2328;cursor:pointer;padding:6px 8px;white-space:nowrap}',
+    '#lv-pdf{background:#1f3a68;color:#fff;border-radius:6px;font-size:13px;font-weight:700;padding:6px 10px;text-decoration:none;white-space:nowrap}',
+    '#lv-pdf:hover{background:#16294a}',
     '#lv-prog{position:absolute;left:0;bottom:-1px;height:3px;background:var(--lv-red);width:0;transition:width .4s}',
     '#lv-toc{position:fixed;top:calc(var(--lv-bar) + 6px);right:12px;z-index:60;background:#fff;border:1px solid #e3e6ea;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.12);padding:8px;max-height:70vh;overflow:auto;width:min(320px,calc(100vw - 24px));display:none}',
     '#lv-toc.open{display:block}',
@@ -60,7 +62,7 @@
     '#lv-tc button{background:#fff;color:#1f3864;border:0;border-radius:20px;padding:6px 14px;font:inherit;font-weight:800;cursor:pointer}',
     'body.lv-teacher .lv-u{cursor:pointer}',
     'body.lv-teacher .lv-u:hover{outline:2px dashed #f2a3a5;outline-offset:3px}',
-    '@media(max-width:600px){#lv-top .t{font-size:13px}#lv-top button{padding:6px 4px;font-size:13px}#lv-go{right:12px;bottom:14px;padding:10px 16px;font-size:14px}}',
+    '@media(max-width:600px){#lv-pdf{font-size:14px;padding:5px 8px}#lv-pdf span{display:none}#lv-top{gap:4px;padding:0 8px}#lv-top .t{font-size:13px}#lv-top button{padding:6px 4px;font-size:13px}#lv-go{right:12px;bottom:14px;padding:10px 16px;font-size:14px}}',
     '@media print{#lv-top,#lv-go,#lv-tc,#lv-toc{display:none!important}body{padding-top:0}}'
   ].join('\n');
   document.head.appendChild(css);
@@ -73,6 +75,15 @@
     '<button type="button" id="lv-zoom">확대·축소</button><button type="button" id="lv-tocb">목차</button><div id="lv-prog"></div>';
   top.querySelector('.t').textContent = COURSE + (kicker ? ' · ' + kicker.textContent.split('·')[0].trim() : '');
   document.body.prepend(top);
+  // PDF 교안 받기 — 본문의 .pdfdl 단추를 상단 바 오른쪽에도
+  var pdfSrc = document.querySelector('a.pdfdl');
+  if (pdfSrc) {
+    var pdf = document.createElement('a');
+    pdf.id = 'lv-pdf'; pdf.href = pdfSrc.getAttribute('href');
+    if (pdfSrc.hasAttribute('download')) pdf.setAttribute('download', pdfSrc.getAttribute('download'));
+    pdf.innerHTML = '📄<span> PDF 받기</span>'; pdf.title = '교안 PDF로 받기';
+    top.insertBefore(pdf, document.getElementById('lv-prog'));
+  }
 
   // 확대·축소 (100 → 115 → 130 → 90 → 100)
   var zooms = [1, 1.15, 1.3, 0.9], zi = 0;
