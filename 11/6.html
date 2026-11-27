@@ -3,21 +3,57 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>6차시 — 매일 아침 찾아 주는 AI교육 소식 검색함</title>
+<title>6차시 — 매일 아침 찾아 주는 AI교육 소식 검색함 (처음부터 만들기)</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="stylesheet" href="lesson.css?v=1119">
 <style>
-.brief td:first-child{width:30%;font-weight:700;color:var(--navy)}
-.trouble td:first-child{width:38%}
 li,td,.ex{overflow-wrap:anywhere}
-.qtag{font-size:12px;font-weight:700;color:#5b3fb0;background:#f1ecff;border-radius:9px;padding:2px 8px;white-space:nowrap}
+.qtag{font-size:12px;font-weight:700;border-radius:9px;padding:2px 8px;white-space:nowrap}
+.qtag.f{background:#e7f0ff;color:#1f4fa8}
+.qtag.b{background:#fdeee3;color:#a5501a}
+.qtag.d{background:#eaf5ee;color:#2f6b4f}
+.qtag.p{background:#f1ecff;color:#5b3fb0}
 .five td:first-child{white-space:nowrap}
 .five td:last-child{color:var(--navy);font-weight:600}
-.cells{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:14px 0 0}
-.cells div{background:var(--soft);border-radius:12px;padding:12px 8px;text-align:center;font-size:13.5px;line-height:1.45}
-.cells b{display:block;font-size:15.5px;margin:2px 0}
-.cells .ic{font-size:24px;line-height:1}
-@media(max-width:600px){.cells{grid-template-columns:repeat(2,1fr)}.cells div:last-child{grid-column:span 2}}
+.trouble td:first-child{width:38%}
+.toprow .sos{font-size:13px;color:var(--sub);align-self:center;margin-left:4px}
+/* ── 세 칸 카드 ── */
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0 0}
+.three div{border-radius:14px;padding:16px 14px;font-size:15px;background:var(--soft)}
+.three .ic{font-size:34px;line-height:1}
+.three h4{margin:8px 0 2px;font-size:19px}
+.three .is{display:block;font-size:13.5px;font-weight:700;margin-bottom:8px}
+.three p{margin:0}
+.three p+p{margin-top:6px;font-size:14px;color:var(--sub)}
+.three .f{background:#eef4ff}.three .f h4,.three .f .is{color:#1f4fa8}
+.three .b{background:#fff3ea}.three .b h4,.three .b .is{color:#a5501a}
+.three .d{background:#eef6f1}.three .d h4,.three .d .is{color:#2f6b4f}
+/* ── 따라가 보기 ── */
+.shop{margin:16px 0 0;display:grid;grid-template-columns:1fr 1.25fr 1.25fr 1.25fr;gap:10px;align-items:stretch}
+.zn{position:relative;border:2px solid var(--line);border-radius:14px;padding:14px 10px 12px;background:#fff;text-align:center;transition:all .25s}
+.zn .ic{font-size:30px;line-height:1}
+.zn b{display:block;font-size:16px;margin-top:6px}
+.zn small{display:block;font-size:12.5px;color:var(--sub);margin-top:4px;line-height:1.45}
+.zn.on{border-color:var(--navy);background:var(--navy-soft);transform:translateY(-3px);box-shadow:0 6px 16px rgba(31,56,100,.14)}
+.zn.dim{opacity:.38}
+.flowcap{margin:12px 0 0;background:var(--soft);border-radius:10px;padding:12px 16px;min-height:72px;font-size:15.5px}
+.flowcap .sn{display:inline-block;background:#e8590c;color:#fff;font-weight:800;font-size:13px;border-radius:10px;padding:0 8px;margin-right:8px}
+.flowcap em{font-style:normal;display:block;font-size:13.5px;color:var(--sub);margin-top:4px}
+.fctl{display:flex;align-items:center;gap:8px;margin:10px 0 0;flex-wrap:wrap}
+.fctl button{font:inherit;font-size:14.5px;font-weight:700;border:1px solid #c3cbd8;background:#fff;color:var(--navy);border-radius:8px;padding:6px 14px;cursor:pointer}
+.fctl button.go{background:var(--navy);color:#fff;border-color:var(--navy)}
+.fctl button:disabled{opacity:.4;cursor:default}
+.fdots{display:flex;gap:5px}
+.fdots i{width:10px;height:10px;border-radius:5px;background:#c9ced6}
+.fdots i.on{background:#e8590c}
+/* ── 만드는 순서 띠 ── */
+.road{display:flex;gap:6px;margin:14px 0 0;flex-wrap:wrap}
+.road span{flex:1;min-width:110px;background:var(--soft);border-radius:10px;padding:10px 8px;text-align:center;font-size:14px;line-height:1.4}
+.road b{display:block;font-size:15.5px}
+@media(max-width:700px){
+  .three{grid-template-columns:1fr}
+  .shop{grid-template-columns:1fr 1fr}
+}
 </style>
 </head>
 <body class="type-only">
@@ -26,211 +62,265 @@ li,td,.ex{overflow-wrap:anywhere}
 <header>
   <p class="kicker">6차시 · 추가 수업 · 2교시 (50분 + 쉬는 시간 + 50분)</p>
   <h1>매일 아침 찾아 주는<br><em>AI교육 소식 검색함</em></h1>
-  <p class="sub">오늘의 진짜 주제는 <b>"웹앱을 만들 때 무엇을 생각해야 하나"</b>입니다. <b>다섯 질문</b>으로 기획하고, 그 답대로 AI교육 소식 검색함을 만들어 봐요. 키워드를 정해 두면 <b>단추 하나로 바로</b>, <b>아침마다 저절로</b> 찾아 두고, 쓸 만한 것만 <b>보관</b>합니다.</p>
+  <p class="sub">오늘은 받은 틀을 쓰지 않고 <b>처음부터 하나씩</b> 만듭니다. 먼저 <b>웹페이지 · 서버 · 데이터베이스</b>가 무엇인지 알고, 그 순서대로 클로드에게 하나씩 시켜요.</p>
   <div class="toprow">
     <a class="btn y" href="keyword-app.html" target="_blank" rel="noopener">완성 예시 먼저 써 보기 ↗</a>
-    <a class="btn line" href="keyword-app.html" download="index.html">웹앱 틀 ↓</a>
-    <a class="btn line" href="files/keyword-script.txt" download="검색함-코드.txt">앱스크립트 코드 ↓</a>
+    <a class="btn line" href="keyword-app.html" download="index.html">웹페이지 완성본 ↓</a>
+    <a class="btn line" href="files/keyword-script.txt" download="검색함-코드.txt">서버 코드 완성본 ↓</a>
+    <span class="sos">← 막혔을 때만 받으세요</span>
   </div>
 </header>
 
 <div class="hook">
   <p class="q">"AI 교육이 어디서 열리는지<br>매번 검색하기 번거로워요."</p>
-  <p>내가 정한 키워드로 <b>구글이 매일 아침 대신 찾아 두고</b>, 나는 휴대폰에서 <b>보관 / 버림</b>만 누릅니다.</p>
-  <div class="take"><span>오늘 가져갈 것</span><span>✅ 웹앱 기획 다섯 질문</span><span>🔍 내 검색함 주소</span><span>⏰ 매일 아침 예약</span><span>📱 홈 화면 아이콘</span></div>
+  <p>내가 정한 낱말로 <b>구글이 매일 아침 대신 찾아 두고</b>, 나는 휴대폰에서 <b>보관 / 버림</b>만 누릅니다. 그 앱을 오늘 <b>내 손으로</b> 만들어요.</p>
+  <div class="take"><span>오늘 가져갈 것</span><span>🪟🍳🗄 세 칸 이해</span><span>🔍 내가 만든 검색함</span><span>⏰ 매일 아침 예약</span><span>📱 홈 화면 아이콘</span></div>
 </div>
 
-<div class="pro"><span class="badge pro">데스크톱 · 유료</span> <b>오늘의 기능 — 코드는 클로드가, 매일 일은 앱스크립트가.</b> 클로드가 코드를 채워 주고 승인 전에 설명해 주며, 마지막엔 휴대폰 클로드 앱이 보관함을 요약합니다. (3 · 4 · 10번)</div>
-<div class="tip">🧭 <b>보는 법</b> — 단계 제목 옆 보라색 꼬리표(<span class="qtag">② 남길 것</span>)는 <b>다섯 질문 중 무엇을 다루는지</b>입니다. 더 깊이 알고 싶으면 <a href="theory-web.html">이론 ①</a> · <a href="theory-appsscript.html">이론 ②</a>. 점선 상자 <b>⚡ 이미 쓰는 분</b>은 기다리는 동안 해 보는 한 걸음 더.</div>
+<div class="pro"><span class="badge pro">데스크톱 · 코워크</span> <b>오늘의 방법 — 한 번에 다 시키지 않고, 한 칸씩.</b> 웹페이지 → 데이터베이스 → 서버 → 잇기 → 알람 순서로, 칸마다 <b>만들고 → 써 보고 → 다음 칸</b>.</div>
+<div class="tip">🧭 <b>보는 법</b> — 단계 제목 옆 꼬리표는 <b>지금 어느 칸을 만드는지</b>입니다. <span class="qtag f">🪟 웹페이지</span> <span class="qtag d">🗄 데이터베이스</span> <span class="qtag b">🍳 서버</span> · 단계마다 <b>🆘 막히면</b> 줄이 있으니 그대로 따라오면 됩니다.</div>
 <nav class="jump">
   <a href="#s0">0</a><a href="#s1">1</a><a href="#s2">2</a><a href="#s3">3</a><a href="#s4">4</a><a href="#s5">5</a>
-  <a href="#s6">6</a><a href="#s7">7</a><a href="#s8">8</a><a href="#s9">9</a><a href="#s10">10</a><a href="#s13">11</a><a href="#s11">퀴즈</a><a href="#s12">도전</a>
+  <a href="#s6">6</a><a href="#s7">7</a><a href="#s8">8</a><a href="#s9">9</a><a href="#s10">10</a><a href="#s11">11</a><a href="#sq">퀴즈</a><a href="#sc">도전</a>
 </nav>
 
 <!-- ================= 1교시 ================= -->
 
-<section id="s0" data-n="0" data-t="웹앱은 세 칸">
-  <div class="head"><span class="num y">0</span><h2>웹앱은 세 칸 — 식당으로 보기</h2><span class="time">5분</span></div>
-  <p class="one">오늘 쓰는 비유는 <b>다섯 개뿐</b>입니다.</p>
-  <div class="cells">
-    <div><span class="ic">🪟</span><b>홀</b>눈에 보이는 화면<br><small>index.html</small></div>
-    <div><span class="ic">🍳</span><b>주방</b>안 보이는 곳에서 일함<br><small>앱스크립트</small></div>
-    <div><span class="ic">🗄</span><b>창고</b>적어 두는 곳<br><small>구글 시트</small></div>
-    <div><span class="ic">⏰</span><b>알람</b>정해진 시간에 저절로<br><small>예약(트리거)</small></div>
-    <div><span class="ic">🔒</span><b>금고</b>비밀 값 두는 곳<br><small>스크립트 속성의 PIN</small></div>
+<section id="s0" data-n="0" class="key" data-t="웹페이지 · 서버 · 데이터베이스">
+  <div class="head"><span class="num y">0</span><h2>먼저 알기 — 웹페이지 · 서버 · 데이터베이스</h2><span class="badge hot">핵심</span><span class="time">8분</span></div>
+  <p class="one">웹앱은 <b>세 칸</b>으로 되어 있습니다. 식당으로 생각하면 쉬워요.</p>
+  <div class="three">
+    <div class="f"><div class="ic">🪟</div><h4>웹페이지</h4><span class="is">= 식당의 홀</span><p>눈에 보이는 화면.<br>글씨 · 단추 · 목록.</p><p>오늘: <b>index.html</b></p></div>
+    <div class="b"><div class="ic">🍳</div><h4>서버</h4><span class="is">= 식당의 주방</span><p>안 보이는 곳에서 일함.<br>찾고 · 거르고 · 적기.</p><p>오늘: <b>구글 앱스크립트</b></p></div>
+    <div class="d"><div class="ic">🗄</div><h4>데이터베이스</h4><span class="is">= 식당의 창고 · 장부</span><p>적어 두고 기억하는 곳.<br>칸과 줄이 있는 표.</p><p>오늘: <b>구글 시트</b></p></div>
   </div>
-  <p class="note">지금까지(1~4차시) 만든 웹페이지는 대부분 <b>홀만</b> 있었어요. 오늘은 처음으로 <b>주방 · 창고 · 알람 · 금고</b>까지 갖춘 웹앱을 만듭니다. 자세한 설명은 <a href="theory-web.html">이론 ①</a>.</p>
-  <div class="tnote"><p>이론을 앞 시간에 따로 했다면 다섯 칸을 한 번 읽고 넘어갑니다. 안 했다면 이론 ① 2번 '따라가 보기'만 같이 눌러 보세요(3분).</p>
-  <p>수업 내내 이 다섯 비유 밖의 비유는 더하지 않습니다. 주문서 · 창구 같은 말을 즉석에서 만들면 외울 거리만 늘어요.</p></div>
-</section>
 
-<section id="s1" data-n="1" class="key" data-t="웹앱 기획 다섯 질문">
-  <div class="head"><span class="num">1</span><h2>기획부터 — 다섯 질문 · 아직 만들지 마</h2><span class="badge hot">핵심</span><span class="time">10분</span></div>
-  <p class="one">웹앱을 만들기 전에 <b>이 다섯 가지</b>를 정합니다. 오늘 수업 전체가 이 표를 따라갑니다.</p>
-  <table class="plain five">
-    <tr><th>질문</th><th>검색함의 답</th><th>정해지는 것 · 오늘 몇 번</th></tr>
-    <tr><td><b>① 무엇을 보여 줄까?</b></td><td>찾은 소식 목록 · 보관/버림 단추 · 보관함 · 키워드 설정</td><td>🪟 홀 — 2 · 8번</td></tr>
-    <tr><td><b>② 무엇을 남길까?</b></td><td>키워드 · 꼭 들어갈 말 · 빼는 말 / 찾은 기사(제목 · 언론사 · 링크 · 날짜 · 상태 · 메모)</td><td>🗄 창고 — 4번</td></tr>
-    <tr><td><b>③ 누가 볼까?</b></td><td>나(와 가족)만 — 휴대폰과 PC 어디서나. 사람마다 로그인은 필요 없음</td><td>🔒 금고(PIN) — 4 · 9번</td></tr>
-    <tr><td><b>④ 저절로 할 일이 있나?</b></td><td>매일 아침 정해진 키워드로 찾아 두기</td><td>🍳 주방 + ⏰ 알람 — 3 · 4 · 7번</td></tr>
-    <tr><td><b>⑤ 어디에 올릴까?</b></td><td>홀은 버셀, 주방과 창고는 내 구글 계정</td><td>주소 — 5 · 9번</td></tr>
-    <tr><td>이번엔 안 할 것</td><td>알림 메일 · 기사 본문 저장 · 사람마다 계정</td><td>—</td></tr>
-  </table>
-  <p class="note">②③④ 중 하나라도 "예"면 홀만으로는 안 되고 <b>주방과 창고</b>가 필요합니다. (판단 순서도는 <a href="theory-web.html#t4">이론 ① 4번</a>)</p>
-  <h3>오늘 일하는 순서</h3>
-  <div class="fcwrap">
-    <p class="fct">원하는 대로 될 때까지 3 ↔ 4를 돕니다</p>
-    <svg class="fc" viewBox="0 0 560 486" role="img" aria-label="기획부터 올리기까지 작업 순서도">
-      <defs><marker id="arP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7b8494"/></marker></defs>
-      <g class="nd hit"><rect x="230" y="8" width="200" height="44" rx="10"/><text x="330" y="30">1 · 다섯 질문에 답하기</text></g>
-      <path class="ln" d="M330 52 V82" marker-end="url(#arP)"/>
-      <g class="nd"><rect x="230" y="84" width="200" height="44" rx="10"/><text x="330" y="106">2 · 홀 · 주방 · 창고 판정</text></g>
-      <path class="ln" d="M330 128 V158" marker-end="url(#arP)"/>
-      <g class="nd"><rect x="230" y="160" width="200" height="44" rx="10"/><text x="330" y="182">3 · 클로드가 만들고 확인</text></g>
-      <path class="ln" d="M330 204 V234" marker-end="url(#arP)"/>
-      <g class="nd"><rect x="230" y="236" width="200" height="44" rx="10"/><text x="330" y="258">4 · 내가 직접 써 보기</text></g>
-      <path class="ln" d="M330 280 V286" marker-end="url(#arP)"/>
-      <g class="nd"><polygon points="330,288 430,340 330,392 230,340"/><text x="330" y="340">원하는 대로인가?</text></g>
-      <path class="ln" d="M230 340 H192" marker-end="url(#arP)"/><text class="lb" x="212" y="330">아니오</text>
-      <g class="nd r"><rect x="20" y="316" width="170" height="48" rx="10"/><text x="105" y="333">이어서 말하기</text><text x="105" y="351" class="lb">또는 새로 시키기</text></g>
-      <path class="ln" d="M105 316 V182 H228" marker-end="url(#arP)"/>
-      <path class="ln" d="M330 392 V428" marker-end="url(#arP)"/><text class="lb" x="345" y="412">예</text>
-      <g class="nd r"><rect x="230" y="430" width="200" height="48" rx="10"/><text x="330" y="454">5 · 올리고 홈 화면에</text></g>
-    </svg>
+  <h3>[🔍 지금 검색] 한 번 따라가 보기</h3>
+  <div class="shop" id="shop">
+    <div class="zn" data-z="guest"><div class="ic">🙋</div><b>나</b><small>휴대폰으로 보고 누름</small></div>
+    <div class="zn" data-z="hall"><div class="ic">🪟</div><b>웹페이지</b><small>홀 · 화면</small></div>
+    <div class="zn" data-z="kitchen"><div class="ic">🍳</div><b>서버</b><small>주방 · 일하는 곳</small></div>
+    <div class="zn" data-z="store"><div class="ic">🗄</div><b>데이터베이스</b><small>창고 · 표</small></div>
   </div>
-  <div class="box"><div class="bar"><span>프롬프트 1 — 판정만 받기</span></div>
-<div class="txt">AI교육 소식을 매일 아침 찾아 주는 웹앱을 만들려고 해.
-보여 줄 것 · 남길 것 · 누가 볼지 · 저절로 할 일 · 올릴 곳에 대한 내 답은 위 표와 같아.
-홀(화면) · 주방(서버) · 창고(데이터베이스) 중 무엇이 필요한지,
-각각 무엇으로 하면 좋을지 표로 보여줘. 아직 만들지 마.</div></div>
-  <div class="ex">홀 = index.html (버셀) · 주방 = 구글 앱스크립트 (단추 주문 + 매일 7시 트리거) · 창고 = 구글 시트 (키워드 탭 · 검색함 탭)</div>
-  <div class="tnote"><p>다섯 질문은 위니브 『바이브 코딩 에센셜』 9.5절의 판단 질문과 브리프 형식을 합친 것입니다. "② 무엇을 남길지 · ③ 누가 볼지, 이 두 가지는 클로드가 조용히 정하게 두지 않는다"를 강조하세요.</p><p>칠판(화면)에 다섯 질문을 띄워 두고 단계마다 "지금은 몇 번 질문을 하고 있죠?"라고 물으면 수업의 뼈대가 잡힙니다.</p>
-  <p>오늘은 강사가 검증한 틀을 쓰므로 클로드에게 처음부터 만들게 하지 않습니다. 이 프롬프트는 '판정 연습'이고, 집에서 다른 주제로 만들 때 그대로 쓰는 순서라고 안내합니다.</p></div>
-</section>
+  <div class="flowcap" id="cap"></div>
+  <div class="fctl">
+    <button type="button" id="prev">◀ 이전</button>
+    <button type="button" class="go" id="next">따라가 보기 ▶</button>
+    <div class="fdots" id="dots"></div>
+  </div>
 
-<section id="s2" data-n="2" data-t="완성 예시 써 보기">
-  <div class="head"><span class="num">2</span><h2>완성 예시 써 보기</h2><span class="qtag">① 보여 줄 것</span><span class="time">3분</span></div>
-  <ol class="step">
-    <li>위의 <b>완성 예시 먼저 써 보기 ↗</b> — 노란 줄 <b>🧪 체험 모드</b> (가짜 기사, 저장 안 됨)</li>
-    <li><b>🔍 지금 검색</b> → 🆕 새로 탭에서 <b>⭐ 보관</b> 하나, <b>버림</b> 하나</li>
-    <li>⭐ 보관함 탭에서 메모 적기 → ⚙ 키워드 탭에서 빼는 말 하나 더하기</li>
-  </ol>
-  <p class="note">오늘 끝에는 이 화면이 <b>내 시트</b>와 연결되어, 저장한 것이 그대로 남고 아침마다 새 소식이 들어옵니다.</p>
-</section>
-
-<section id="s3" data-n="3" data-t="내 키워드 정하기">
-  <div class="head"><span class="num">3</span><h2>내 키워드 정하기</h2><span class="qtag">④ 저절로 할 일</span><span class="badge pro">코워크</span><span class="time">6분</span></div>
-  <p class="one">코워크 폴더: <b>내작업실/검색함</b>을 만들고, 받은 두 파일(<b>index.html</b> · <b>검색함-코드.txt</b>)을 넣은 뒤 폴더를 연결합니다.</p>
-  <div class="box"><div class="bar"><span>프롬프트 3-1 — 클로드가 먼저 묻게</span></div>
-<div class="txt">매일 아침 AI교육 소식을 찾아 주는 검색함을 만들 거야.
-나에게 질문 세 개를 해서, 구글 뉴스에 넣을 검색 키워드 5개와
-꼭 들어갈 말, 빼는 말을 정해 키워드.txt로 저장해줘.</div></div>
-  <div class="ex">Q1. 어느 지역 교육을 찾으세요? (예: 제주 전체 / 서귀포)
-Q2. 누구를 위한 교육이 궁금하세요? (시니어 · 소상공인 · 교사 …)
-Q3. 빼고 싶은 기사는? (AI 주식 · 대학 입시 …)</div>
-  <div class="box"><div class="bar"><span>프롬프트 3-2 — 코드에 채우기</span></div>
-<div class="txt">검색함-코드.txt 맨 위 DEFAULT_KEYWORDS · DEFAULT_MUST · DEFAULT_DROP을
-키워드.txt 내용으로 바꿔줘. 다른 곳은 고치지 마.</div></div>
-  <div class="adv"><p class="at">규칙 더 보기</p><p>코드의 <b>WINDOW_DAYS</b>(최근 며칠) · <b>MAX_PER_KW</b>(키워드당 몇 건)를 내 쓰임에 맞게 바꿔 달라고 해 보세요. 숫자만 바꾸는 일이라 안전합니다.</p></div>
-</section>
-
-<section id="s4" data-n="4" class="key" data-t="주방 차리기 — 시트와 앱스크립트">
-  <div class="head"><span class="num">4</span><h2>주방 차리기 — 구글 시트 + 앱스크립트</h2><span class="qtag">② 남길 것 · ③ 누가 볼까 · ④</span><span class="badge hot">핵심</span><span class="time">20분</span></div>
-  <p class="one">5차시 운동일기와 같은 순서입니다. <b>한 칸씩 같이</b> 해요.</p>
-  <div class="box"><div class="bar"><span>프롬프트 4 — 붙여 넣기 전에 설명부터</span></div>
-<div class="txt">검색함-코드.txt가 무엇을 하는지 쉬운 말로 다섯 줄로 설명해줘.
-내 구글 계정에서 무엇을 읽고 쓰는지, 다른 곳으로 보내는 것이 있는지도 알려줘.
-고치지는 마.</div></div>
+  <h3>왜 오늘은 세 칸이 다 필요할까?</h3>
+  <div class="vs">
+    <div class="bad"><b>웹페이지만 있으면 (1~4차시)</b>파일에 적힌 것만 보여 줌
+보관해도 다른 휴대폰에선 안 보임
+내가 열어야만 움직임</div>
+    <div class="good"><b>서버 + 데이터베이스가 붙으면 (오늘)</b>보관한 것이 표에 <b>남음</b> → 어느 기기에서나 같음
+내가 자는 동안에도 <b>서버가 아침마다 찾아 둠</b></div>
+  </div>
+  <p class="note">두 가지만 더 알면 됩니다 — <b>⏰ 알람</b>(정해진 시간에 서버를 깨움) · <b>🔒 금고</b>(비밀번호는 서버 쪽에만). 더 깊이: <a href="theory-web.html">이론 ①</a> · <a href="theory-appsscript.html">이론 ②</a></p>
+  <details class="more"><summary>클로드가 쓰는 어려운 말 사전 (외우지 않아도 됩니다)</summary>
   <table>
-    <tr><th>① 시트 만들기</th><td><b>sheets.new</b> → 이름을 <b>키워드 검색함</b>으로</td></tr>
-    <tr><th>② 코드 넣기</th><td>메뉴 <b>확장 프로그램 → Apps Script</b> → 안의 글을 <b>모두 지우고</b> 검색함-코드.txt 내용 붙여 넣기 → <b>저장(Ctrl+S)</b></td></tr>
-    <tr><th>③ PIN 금고</th><td>왼쪽 <b>⚙ 프로젝트 설정</b> → 맨 아래 <b>스크립트 속성 → 속성 추가</b> — 속성 <b>PIN</b>, 값 <b>숫자 4자리</b> → 저장</td></tr>
+    <tr><th>프론트엔드</th><td>🪟 웹페이지 쪽</td></tr>
+    <tr><th>백엔드</th><td>🍳 서버 쪽</td></tr>
+    <tr><th>DB</th><td>🗄 데이터베이스</td></tr>
+    <tr><th>API · 웹 앱 URL</th><td>웹페이지가 서버를 부르는 주소 (오늘의 API_URL)</td></tr>
+    <tr><th>트리거</th><td>⏰ 알람</td></tr>
+    <tr><th>배포</th><td>내 컴퓨터에만 있던 것을 인터넷 주소로 열어 두기</td></tr>
+  </table></details>
+  <div class="tnote"><p>단추를 한 칸씩 눌러 가며 "지금 어느 칸에 불이 들어왔죠?"라고 물어 주세요. 3번(서버가 기사 찾기)에서 "주방은 손님이 없어도 일할 수 있다"를 꼭 말해 두면 9번 알람이 쉽게 이어집니다.</p>
+  <p>오늘 수업 순서가 바로 이 세 칸 순서입니다. "웹페이지 먼저 → 데이터베이스 → 서버 → 둘을 잇기"라고 칠판에 적어 두세요.</p></div>
+</section>
+
+<section id="s1" data-n="1" class="key" data-t="기획 — 설계 메모 만들기">
+  <div class="head"><span class="num">1</span><h2>기획 — 다섯 질문으로 설계 메모 만들기</h2><span class="qtag p">아직 만들지 마</span><span class="badge hot">핵심</span><span class="time">7분</span></div>
+  <p class="one">코워크 폴더 <b>내작업실/검색함</b>을 만들어 연결합니다. 빈 폴더에서 시작해요.</p>
+  <table class="plain five">
+    <tr><th>질문</th><th>검색함의 답</th><th>필요한 칸</th></tr>
+    <tr><td><b>① 무엇을 보여 줄까?</b></td><td>찾은 소식 목록 · 보관/버림 단추 · 보관함 · 키워드</td><td>🪟 웹페이지</td></tr>
+    <tr><td><b>② 무엇을 남길까?</b></td><td>키워드 · 빼는 말 / 기사(제목 · 언론사 · 링크 · 날짜 · 상태 · 메모)</td><td>🗄 데이터베이스</td></tr>
+    <tr><td><b>③ 누가 볼까?</b></td><td>나(와 가족)만 — 비밀번호 4자리</td><td>🔒 금고</td></tr>
+    <tr><td><b>④ 저절로 할 일?</b></td><td>매일 아침 키워드로 찾아 두기</td><td>🍳 서버 + ⏰ 알람</td></tr>
+    <tr><td><b>⑤ 어디에 올릴까?</b></td><td>웹페이지는 버셀, 서버 · 데이터베이스는 내 구글 계정</td><td>주소</td></tr>
+  </table>
+  <div class="box"><div class="bar"><span>프롬프트 1 — 설계 메모</span></div>
+<div class="txt">AI교육 소식을 매일 아침 찾아 주는 웹앱을 만들 거야. 아직 코드는 만들지 마.
+나에게 질문 세 개를 해서 내 키워드를 정한 뒤, 설계.txt를 만들어줘.
+설계.txt에는 이것만 쉬운 말로 적어줘.
+1. 화면: 탭 3개(새로 · 보관함 · 키워드), 맨 위 [지금 검색] 단추
+2. 구글 시트 칸: 날짜 · 제목 · 언론사 · 링크 · 키워드 · 상태(새로/보관/버림) · 메모 · ID
+3. 웹페이지가 서버에 하는 부탁 이름: 목록 · 검색 · 보관 · 버림 · 키워드저장
+4. 서버의 답은 언제나 같은 모양: 성공 여부 · 기사 목록 · 키워드 · 마지막 검색 시각
+5. 내 키워드 5개 · 꼭 들어갈 말 · 빼는 말</div></div>
+  <div class="ex">Q1. 어느 지역 교육을 찾으세요? (제주 전체 / 서귀포)
+Q2. 누구를 위한 교육이 궁금하세요? (시니어 · 소상공인 · 교사 …)
+Q3. 빼고 싶은 기사는? (AI 주식 · 행사 후기 …)
+→ 설계.txt를 만들었어요.</div>
+  <p class="note">💡 <b>설계.txt는 약속 종이</b>입니다. 뒤에서 웹페이지와 서버를 <b>따로</b> 만들어도, 둘 다 이 종이대로 만들게 하면 서로 말이 통해요.</p>
+  <div class="tnote"><p>오늘 가장 중요한 요령이 이것입니다. 한 번에 "검색함 만들어줘"라고 하면 사람마다 전혀 다른 앱이 나오고, 서버와 웹페이지가 서로 안 맞아 막힙니다. 시트 칸 이름 · 부탁 이름을 먼저 종이에 박아 두면 수강생끼리 결과가 비슷해져서 돌봐 주기도 쉽습니다.</p></div>
+</section>
+
+<section id="s2" data-n="2" data-t="완성 예시 구경">
+  <div class="head"><span class="num">2</span><h2>완성 예시 구경 — 오늘 끝의 모습</h2><span class="time">2분</span></div>
+  <ol class="step">
+    <li>위의 <b>완성 예시 먼저 써 보기 ↗</b> (노란 줄 🧪 체험 모드 — 가짜 기사)</li>
+    <li><b>🔍 지금 검색</b> → <b>⭐ 보관</b> 하나 · <b>버림</b> 하나 → ⭐ 보관함 탭 열어 보기</li>
+  </ol>
+  <p class="note">이것과 <b>똑같이</b> 만들 필요는 없어요. 내 클로드가 만든 모양이 조금 달라도 단추가 움직이면 성공입니다.</p>
+</section>
+
+<section id="s3" data-n="3" data-t="웹페이지 먼저 — 가짜 기사로">
+  <div class="head"><span class="num">3</span><h2>웹페이지 먼저 — 가짜 기사로 화면 만들기</h2><span class="qtag f">🪟 웹페이지</span><span class="badge pro">코워크</span><span class="time">10분</span></div>
+  <p class="one">서버는 아직 없으니 <b>가짜 기사</b>로 화면부터 만들어 눌러 봅니다.</p>
+  <div class="box"><div class="bar"><span>프롬프트 3-1 — 화면 만들기</span></div>
+<div class="txt">설계.txt대로 index.html 하나를 만들어줘.
+- 아직 서버가 없으니 가짜 기사 5개로 움직이게
+- 휴대폰에서 보기 좋게, 큰 글씨, 단추 위주
+- 새로 탭 카드에 [⭐ 보관] [버림] 단추, 보관함 탭에는 메모 칸
+- 맨 위에 const API_URL = ''; 한 줄을 비워 둬 (나중에 서버 주소를 넣을 곳)</div></div>
+  <ol class="step">
+    <li>내작업실/검색함/<b>index.html 더블클릭</b></li>
+    <li>⭐ 보관 → 보관함 탭으로 옮겨 가는지 · 버림 → 사라지는지</li>
+  </ol>
+  <div class="box"><div class="bar"><span>프롬프트 3-2 — 마음에 안 들면 이어서 말하기</span></div>
+<div class="txt"><span class="ph">[예: 글씨를 더 크게 / 색을 제주 바다처럼 푸르게 / 단추를 아래로]</span> 바꿔줘.
+API_URL 줄은 그대로 둬.</div></div>
+  <ul class="chk">
+    <li>탭 3개가 눌린다</li>
+    <li>보관 · 버림이 움직인다</li>
+    <li>새로 고침하면 처음으로 돌아간다 — <b>정상!</b> 아직 데이터베이스가 없어서 남지 않아요</li>
+  </ul>
+  <div class="tip">🆘 <b>막히면</b> — 위의 <b>웹페이지 완성본 ↓</b>을 받아 검색함 폴더에 index.html로 넣고 4번으로.</div>
+  <div class="tnote"><p>세 번째 확인이 이 단계의 핵심 깨달음입니다. "새로 고침하면 사라지죠? 남기려면 무엇이 필요할까요?" → "데이터베이스!" 하고 4번으로 넘어갑니다.</p></div>
+</section>
+
+<section id="s4" data-n="4" class="key" data-t="서버 코드 만들기">
+  <div class="head"><span class="num">4</span><h2>서버 코드 만들기 — 찾고, 거르고, 적기</h2><span class="qtag b">🍳 서버</span><span class="badge hot">핵심</span><span class="time">10분</span></div>
+  <p class="one">서버가 할 일은 세 가지뿐입니다. <b>① 구글 뉴스에서 찾기 → ② 빼는 말 거르기 → ③ 시트에 적기.</b> 여기에 웹페이지의 부탁에 답하는 창구를 붙여요.</p>
+  <div class="box"><div class="bar"><span>프롬프트 4-1 — 서버 코드</span></div>
+<div class="txt">설계.txt대로 구글 앱스크립트 코드를 code.gs로 만들어줘.
+- setup: 시트에 '키워드' 탭과 '검색함' 탭을 만들고, 내 키워드를 넣고, 첫 검색 한 번
+- 검색: 키워드마다 구글 뉴스 RSS에서 최근 7일 기사를 찾아
+  빼는 말이 든 제목은 버리고, 이미 있는 링크는 건너뛰고, 검색함 탭에 '새로'로 적기
+  (한 키워드에서 막혀도 멈추지 말고 다음 키워드로)
+- doPost: 웹페이지의 부탁(목록 · 검색 · 보관 · 버림 · 키워드저장)에 JSON으로 답하기
+- 비밀번호는 코드에 쓰지 말고 스크립트 속성 PIN과 맞는지만 확인
+- 매일 아침 알람이 부를 dailySearch 함수
+맨 위에 붙여 넣는 순서를 쉬운 말로 적어줘.</div></div>
+  <div class="box"><div class="bar"><span>프롬프트 4-2 — 붙여 넣기 전에 설명부터</span></div>
+<div class="txt">code.gs가 하는 일을 쉬운 말로 다섯 줄로 설명해줘.
+내 구글 계정에서 무엇을 읽고 쓰는지, 다른 곳으로 보내는 것이 있는지도 알려줘.</div></div>
+  <div class="ex">1. 시트에 '키워드' · '검색함' 탭을 만듭니다.
+2. 키워드마다 구글 뉴스에서 기사 제목 · 링크를 가져옵니다.
+3. 빼는 말이 든 기사와 이미 있는 기사는 건너뜁니다.
+4. 웹페이지가 PIN을 맞게 보내면 목록을 돌려주고, 보관 · 버림을 시트에 적습니다.
+5. 이 시트 말고 다른 파일은 읽지 않고, 다른 곳으로 보내는 것도 없습니다.</div>
+  <div class="tip">🆘 <b>막히면</b> — 위의 <b>서버 코드 완성본 ↓</b>을 받아 5번에서 그 글을 붙여 넣으세요. 맨 위 DEFAULT_KEYWORDS 줄만 내 키워드로 바꾸면 됩니다.</div>
+  <div class="tnote"><p>4-2는 꼭 시키세요. 5번에서 '확인되지 않은 앱' 경고가 나올 때 "무엇을 하는 코드인지 내가 먼저 확인했으니 허용한다"는 근거가 됩니다.</p>
+  <p>클로드가 만든 코드는 수강생마다 조금씩 다릅니다. 설계.txt의 부탁 이름과 시트 칸 이름만 맞으면 괜찮아요.</p>
+  <p>(11/27 시험) 구글 뉴스를 짧은 사이에 여러 번 부르면 '429 너무 많은 요청'으로 막힐 때가 있습니다. '막혀도 다음 키워드로' 한 줄이 없으면 setup이 통째로 멈춰요. 이 줄은 지우지 마세요.</p></div>
+</section>
+
+<section id="s5" data-n="5" class="key" data-t="데이터베이스 차리고 첫 실행">
+  <div class="head"><span class="num">5</span><h2>데이터베이스 차리고 서버 첫 실행</h2><span class="qtag d">🗄 데이터베이스</span><span class="qtag b">🍳 서버</span><span class="badge hot">핵심</span><span class="time">12분</span></div>
+  <p class="one">5차시 운동일기와 같은 순서입니다. <b>한 칸씩 같이</b> 해요.</p>
+  <table>
+    <tr><th>① 시트 만들기 🗄</th><td><b>sheets.new</b> → 이름을 <b>키워드 검색함</b>으로</td></tr>
+    <tr><th>② 코드 넣기 🍳</th><td>메뉴 <b>확장 프로그램 → Apps Script</b> → 안의 글을 <b>모두 지우고</b> code.gs 내용 붙여 넣기 → <b>저장(Ctrl+S)</b></td></tr>
+    <tr><th>③ 금고 🔒</th><td>왼쪽 <b>⚙ 프로젝트 설정</b> → 맨 아래 <b>스크립트 속성 → 속성 추가</b> — 속성 <b>PIN</b>, 값 <b>숫자 4자리</b> → 저장</td></tr>
     <tr><th>④ 첫 실행</th><td>위쪽 함수 칸에서 <b>setup</b> → <b>▶ 실행</b> → <b>권한 검토</b> → 내 계정 → <b>고급 → (프로젝트)로 이동 → 허용</b></td></tr>
-    <tr><th>⑤ 주소 받기</th><td>오른쪽 위 <b>배포 → 새 배포</b> → ⚙ <b>웹 앱</b> · 실행: <b>나</b> · 액세스: <b>모든 사용자</b> → 배포 → <b>웹 앱 URL 복사</b> → 메모장에 붙여 두기</td></tr>
   </table>
   <ul class="chk">
     <li>시트 아래에 <b>키워드</b> · <b>검색함</b> 탭이 생겼다</li>
-    <li>검색함 탭에 기사 줄이 몇 개 들어왔다 (0개여도 괜찮아요 — 5번에서 다시 검색)</li>
-    <li>메모장에 <b>https://script.google.com/macros/s/…/exec</b> 주소가 있다</li>
+    <li>검색함 탭에 기사 줄이 들어왔다 — <b>서버가 찾아서 데이터베이스에 적은 것</b> 🎉</li>
   </ul>
-  <p class="warnnote">⚠ ④에서 '확인되지 않은 앱'이 나오는 건 정상입니다 — 내가 만든 앱이라 구글이 심사하지 않았다는 뜻. 프롬프트 4로 무엇을 하는 코드인지 먼저 확인했으니 허용합니다.</p>
-  <div class="tip">🆘 <b>막혔다면</b> — 강사 공용 주소 <span class="ph">[강사 공용 웹 앱 URL]</span> · PIN <span class="ph">[수업 때 알려 드림]</span>으로 5번부터 먼저 따라오세요. 내 주방은 쉬는 시간이나 집에서 이 표대로 다시 차리면 됩니다.</div>
-  <div class="tnote"><p>가장 많이 막히는 곳: ② 기존 글(function myFunction)을 안 지움 · ③ PIN 속성 이름을 소문자 pin으로 씀 · ④ 다른 함수를 골라 실행 · ⑤ 액세스를 '나만'으로 둠. 돌면서 이 네 가지만 보세요.</p>
-  <p>강사 공용 주소는 수업 전에 강사 계정으로 같은 코드를 배포해 두고, 수업이 끝나면 배포를 보관(중지)하세요. 공용 시트에는 여럿이 보관한 것이 섞인다는 점도 미리 말해 둡니다.</p></div>
-</section>
-
-<section id="s5" data-n="5" data-t="홀에 주소 넣고 열기">
-  <div class="head"><span class="num">5</span><h2>홀에 주소 넣고 열기</h2><span class="qtag">⑤ 어디에 · ③ 금고</span><span class="time">7분</span></div>
-  <div class="box"><div class="bar"><span>프롬프트 5 — 주소 연결</span></div>
-<div class="txt">검색함/index.html 맨 위 API_URL(홀이 주방을 부르는 주소)에 이 주소를 넣어줘.
-<span class="ph">[메모장에 붙여 둔 웹 앱 URL]</span>
-다른 곳은 고치지 마.</div></div>
-  <ol class="step">
-    <li>내작업실/검색함/<b>index.html 더블클릭</b> → 노란 체험 모드 줄이 <b>없어졌으면</b> 주소가 들어간 것</li>
-    <li><b>🔒 PIN</b> 4자리 → 들어가기 → <b>🔍 지금 검색</b></li>
-    <li>구글 시트 <b>검색함</b> 탭을 새로 고침 — 화면과 같은 줄이 보이면 🎉</li>
-  </ol>
+  <p class="warnnote">⚠ '확인되지 않은 앱'은 정상입니다 — 내가 만든 앱이라 구글이 심사하지 않았다는 뜻.</p>
   <table class="trouble">
-    <tr><th>화면에 이렇게 나오면</th><td>이렇게 하세요</td></tr>
-    <tr><td>PIN이 맞지 않습니다</td><td>스크립트 속성의 값과 같은지 (앞뒤 빈칸 없이)</td></tr>
-    <tr><td>스크립트 속성에 PIN이 없습니다</td><td>4번 ③ — 속성 이름은 대문자 <b>PIN</b></td></tr>
-    <tr><td>⚠ Failed to fetch · 아무것도 안 뜸</td><td>4번 ⑤ 액세스가 <b>모든 사용자</b>인지, 주소가 <b>/exec</b>로 끝나는지</td></tr>
-    <tr><td>코드를 고쳤는데 그대로</td><td>배포 → <b>배포 관리 → ✏ → 버전: 새 버전 → 배포</b> (주소는 그대로)</td></tr>
+    <tr><th>이렇게 되면</th><td>이렇게 하세요</td></tr>
+    <tr><td>빨간 글씨 오류가 뜬다</td><td>그 글을 <b>그대로 복사</b>해서 클로드에게 — "이 오류가 났어. code.gs를 고쳐줘" → 고친 코드를 다시 붙여 넣고 저장 → 다시 ▶</td></tr>
+    <tr><td>실행 기록에 '건너뜀 (응답 429)'</td><td>구글 뉴스가 잠깐 쉬어 가라는 뜻이에요. 나머지 키워드는 담겼으니 그대로 두고, 나중에 다시 검색하면 됩니다.</td></tr>
+    <tr><td>탭은 생겼는데 기사가 0개</td><td>괜찮아요. 키워드가 너무 좁을 수 있어요. 시트 <b>키워드</b> 탭에서 넓은 말(예: AI 교육) 하나 더하고 다시 ▶</td></tr>
   </table>
-  <div class="tnote"><p>여기서 이론 ①의 3번을 다시 짚으세요. "index.html에 주소(API_URL)는 보이지만 PIN은 없습니다. 홀 코드는 누구나 열어 볼 수 있으니까요. PIN은 주방 금고(스크립트 속성)에만 있어요."</p></div>
+  <div class="tip">🆘 <b>막히면</b> — 강사 공용 주소 <span class="ph">[강사 공용 웹 앱 URL]</span> · PIN <span class="ph">[수업 때 알려 드림]</span>으로 7번부터 먼저 따라오세요. 내 서버는 쉬는 시간이나 집에서 이 표대로.</div>
+  <div class="tnote"><p>가장 많이 막히는 곳: ② 기존 글(function myFunction)을 안 지움 · ③ 속성 이름을 소문자 pin으로 씀 · ④ setup이 아닌 다른 함수를 실행. 돌면서 이 세 가지만 보세요.</p>
+  <p>오류가 나면 강사가 고치지 말고, 수강생이 오류 글을 클로드에게 보여 주게 하세요. "오류 글을 그대로 보여 주기"가 집에서 혼자 할 때 가장 쓸모 있는 기술입니다.</p></div>
 </section>
 
 <div class="rest">쉬는 시간 10분</div>
 
 <!-- ================= 2교시 ================= -->
 
-<section id="s6" data-n="6" class="key" data-t="써 보기 — 보관하고 거르기">
-  <div class="head"><span class="num">6</span><h2>써 보기 — 보관하고, 잡음 거르기</h2><span class="qtag">만든 뒤 확인</span><span class="badge hot">핵심</span><span class="time">8분</span></div>
-  <p class="one">에러가 없다고 끝이 아닙니다. <b>내가 원하는 대로인지</b> 직접 써 봅니다. (1번 순서도의 4)</p>
-  <ol class="step">
-    <li>🆕 새로 탭에서 쓸 만한 것은 <b>⭐ 보관</b>, 아닌 것은 <b>버림</b></li>
-    <li>버린 기사들에 공통으로 든 말 찾기 → ⚙ 키워드 탭 <b>🚫 빼는 말</b>에 추가 → <b>💾 키워드 저장</b></li>
-    <li>🔍 지금 검색을 다시 → 잡음이 줄었는지 보기</li>
-  </ol>
-  <h3>확인 세 가지</h3>
-  <ul class="chk">
-    <li><b>남는가</b> — 창을 닫았다 다시 열어도 보관함이 그대로</li>
-    <li><b>창고에 들어갔는가</b> — 구글 시트 검색함 탭에서 그 줄의 상태가 <b>보관</b>으로 바뀌었는지 (9번에서 올리면 휴대폰에서도 같은 보관함)</li>
-    <li><b>막히는가</b> — PIN을 일부러 틀리게 넣으면 들어가지 못함</li>
-  </ul>
-  <div class="tnote"><p>세 가지 확인은 위니브 교재가 서버 있는 앱을 만든 뒤 보라고 권하는 항목(저장되는가 · 잘못된 입력 · 남의 것이 보이는가)을 우리 앱에 맞게 바꾼 것입니다.</p>
-  <p>"잡음이 많으면 빼는 말 추가"는 이론 ② 5번 순서도의 되돌아가는 선입니다. 화면을 다시 보여 주세요.</p></div>
-</section>
-
-<section id="s7" data-n="7" data-t="매일 아침 예약 켜기">
-  <div class="head"><span class="num">7</span><h2>매일 아침 예약 켜기</h2><span class="qtag">④ 알람</span><span class="time">5분</span></div>
-  <ol class="step">
-    <li>⚙ 키워드 탭 맨 아래 <b>⏰ 매일 아침 예약</b> — 시각 고르고 스위치 <b>켜기</b></li>
-    <li>맨 위에 <b>⏰ 매일 7시 자동 검색 중</b>이 뜨면 성공</li>
-    <li>(확인) 앱스크립트 편집기 왼쪽 <b>⏰ 트리거</b> 메뉴에 <b>dailySearch</b>가 하나 보임</li>
-  </ol>
+<section id="s6" data-n="6" data-t="서버 문 열기 — 배포">
+  <div class="head"><span class="num">6</span><h2>서버 문 열기 — 주소 받기</h2><span class="qtag b">🍳 서버</span><span class="time">5분</span></div>
+  <p class="one">지금 서버는 편집기 안에서만 돕니다. <b>웹페이지가 부를 수 있게 주소</b>를 받아요.</p>
   <table>
-    <tr><th>2차시 클로드 예약</th><td>똑똑하게 읽고 정리 · 내 폴더를 쓰면 데스크톱이 켜져 있어야</td></tr>
-    <tr><th>오늘 앱스크립트 예약</th><td>정해진 규칙대로 · 무료 · 휴대폰과 PC가 다 꺼져 있어도 구글이 실행</td></tr>
+    <tr><th>① 새 배포</th><td>앱스크립트 오른쪽 위 <b>배포 → 새 배포</b> → ⚙ 에서 <b>웹 앱</b></td></tr>
+    <tr><th>② 설정</th><td>다음 사용자로 실행: <b>나</b> · 액세스 권한: <b>모든 사용자</b> → 배포</td></tr>
+    <tr><th>③ 주소 복사</th><td><b>웹 앱 URL</b> 복사 → 메모장에 붙여 두기 (…<b>/exec</b>로 끝남)</td></tr>
   </table>
-  <p class="note">내일 아침 7시가 지나 홈 화면 아이콘을 열면 새 소식이 와 있습니다.</p>
+  <p class="warnnote">⚠ '모든 사용자'라도 걱정 마세요. <b>PIN을 모르면 목록을 못 꺼내도록</b> 4번에서 만들었습니다.</p>
 </section>
 
-<section id="s8" data-n="8" data-t="내 마음대로 꾸미기">
-  <div class="head"><span class="num">8</span><h2>내 마음대로 꾸미기</h2><span class="qtag">① 보여 줄 것</span><span class="badge pro">코워크</span><span class="time">8분</span></div>
-  <div class="box"><div class="bar"><span>프롬프트 8-1 — 이름과 색</span></div>
-<div class="txt">index.html의 APP_TITLE을 <span class="ph">[내 검색함 이름]</span>으로 바꾸고,
-색은 <span class="ph">[예: 제주 바다처럼 푸른]</span> 느낌으로 바꿔줘.
-API_URL과 기능은 그대로 둬.</div></div>
-  <div class="box"><div class="bar"><span>프롬프트 8-2 — 보관함 보기 좋게</span></div>
-<div class="txt">보관함 탭을 날짜별로 묶어서 보여줘. 오늘 · 이번 주 · 그 전.
-홀(index.html)만 고치고 앱스크립트 코드는 건드리지 마.</div></div>
-  <p class="warnnote">⚠ 8-1 · 8-2는 <b>홀만</b> 고치는 일이라 앱스크립트를 다시 배포할 필요가 없습니다.</p>
-  <div class="adv"><p class="at">주방까지 고치기</p><p>"보관함에 <b>'신청함'</b> 상태를 하나 더 두고 싶어. 앱스크립트 코드와 index.html을 같이 고쳐줘." → 코드를 앱스크립트에 다시 붙여 넣고 <b>배포 관리 → 새 버전</b>. 홀과 주방이 같이 바뀌어야 하는 일이 어떤 것인지 느껴 보세요.</p></div>
+<section id="s7" data-n="7" class="key" data-t="웹페이지와 서버 잇기">
+  <div class="head"><span class="num">7</span><h2>웹페이지와 서버 잇기</h2><span class="qtag f">🪟 웹페이지</span><span class="qtag b">↔ 🍳 서버</span><span class="badge hot">핵심</span><span class="time">10분</span></div>
+  <p class="one">3번에서 만든 화면의 <b>가짜 기사를 빼고</b>, 진짜 서버에 부탁하게 바꿉니다.</p>
+  <div class="box"><div class="bar"><span>프롬프트 7 — 잇기</span></div>
+<div class="txt">index.html의 가짜 기사를 빼고, code.gs 서버에 부탁해서 움직이게 바꿔줘.
+- API_URL = '<span class="ph">[메모장에 붙여 둔 웹 앱 URL]</span>'
+- 처음 열면 PIN 4자리를 묻고, 이 기기에 기억하기
+- 단추를 누르는 동안 '잠시만요' 표시
+- 서버에 보낼 때는 headers 없이 body만 (앱스크립트가 받을 수 있게)
+code.gs의 부탁 이름과 index.html이 서로 맞는지도 확인해줘.</div></div>
+  <ol class="step">
+    <li><b>index.html 더블클릭</b> → PIN 4자리 → 들어가기</li>
+    <li>5번에서 시트에 들어온 기사가 화면에 보이면 🎉 <b>세 칸이 이어졌어요!</b></li>
+    <li><b>🔍 지금 검색</b> → 시트 <b>검색함</b> 탭을 새로 고침해서 같은 줄이 보이는지</li>
+  </ol>
+  <table class="trouble">
+    <tr><th>화면에 이렇게 나오면</th><td>이렇게 하세요</td></tr>
+    <tr><td>PIN이 맞지 않습니다</td><td>스크립트 속성 값과 같은지 (앞뒤 빈칸 없이)</td></tr>
+    <tr><td>⚠ Failed to fetch · 아무것도 안 뜸</td><td>6번 ② 액세스가 <b>모든 사용자</b>인지, 주소가 <b>/exec</b>로 끝나는지</td></tr>
+    <tr><td>서버 코드를 고쳤는데 그대로</td><td>배포 → <b>배포 관리 → ✏ → 버전: 새 버전 → 배포</b> (주소는 그대로)</td></tr>
+    <tr><td>그 밖의 이상한 글</td><td>화면에서 <b>F12 → Console</b>의 빨간 글을 복사해 클로드에게 그대로 보여 주기</td></tr>
+  </table>
+  <div class="tnote"><p>"headers 없이" 한 줄은 앱스크립트의 성질 때문에 넣었습니다(미리 묻는 요청을 받지 못함). 이 줄이 없으면 Failed to fetch가 자주 납니다. 설명은 "앱스크립트가 받을 수 있는 모양으로 보내라는 뜻" 정도면 충분해요.</p>
+  <p>index.html에 주소(API_URL)는 보이지만 PIN은 없다는 점을 짚으세요. 웹페이지 코드는 누구나 열어 볼 수 있으니 비밀번호는 서버 금고에만 둡니다.</p></div>
 </section>
 
-<section id="s9" data-n="9" data-t="올리고 홈 화면에">
-  <div class="head"><span class="num">9</span><h2>인터넷에 올리고 휴대폰 홈 화면에</h2><span class="qtag">⑤ 어디에 · ③ 누가</span><span class="time">10분</span></div>
+<section id="s8" data-n="8" data-t="써 보기 — 확인 세 가지">
+  <div class="head"><span class="num">8</span><h2>써 보기 — 확인 세 가지</h2><span class="qtag p">만든 뒤 확인</span><span class="time">7분</span></div>
+  <p class="one">오류가 없다고 끝이 아닙니다. <b>내가 원하는 대로인지</b> 직접 써 봅니다.</p>
+  <ol class="step">
+    <li>쓸 만한 것은 <b>⭐ 보관</b>, 아닌 것은 <b>버림</b></li>
+    <li>버린 기사에 공통으로 든 말 → <b>키워드 탭</b>의 빼는 말에 추가 → 저장 → 다시 검색</li>
+  </ol>
+  <ul class="chk">
+    <li><b>남는가</b> — 창을 닫았다 다시 열어도 보관함이 그대로 (3번과 달라졌죠?)</li>
+    <li><b>표에 적혔는가</b> — 시트 검색함 탭에서 그 줄 상태가 <b>보관</b></li>
+    <li><b>막히는가</b> — PIN을 일부러 틀리게 넣으면 못 들어감</li>
+  </ul>
+  <div class="box"><div class="bar"><span>프롬프트 8 — 원하는 대로가 아니면</span></div>
+<div class="txt"><span class="ph">[예: 보관함에서 메모를 저장해도 사라져 / 버림을 누르면 시트에 안 바뀌어]</span>
+고쳐줘. index.html과 code.gs 중 어디를 고쳐야 하는지 먼저 알려줘.</div></div>
+  <p class="note">💡 <b>code.gs를 고쳤다면</b> 앱스크립트에 다시 붙여 넣고 <b>배포 관리 → 새 버전</b>. <b>index.html만</b> 고쳤다면 그냥 새로 고침.</p>
+</section>
+
+<section id="s9" data-n="9" data-t="알람 — 매일 아침 예약">
+  <div class="head"><span class="num">9</span><h2>알람 — 매일 아침 저절로 찾기</h2><span class="qtag b">⏰ 알람</span><span class="time">5분</span></div>
+  <p class="one">코드는 필요 없어요. 앱스크립트 화면에서 <b>알람을 직접</b> 맞춥니다.</p>
+  <table>
+    <tr><th>① 메뉴</th><td>앱스크립트 편집기 왼쪽 <b>⏰ 트리거</b> → 오른쪽 아래 <b>+ 트리거 추가</b></td></tr>
+    <tr><th>② 고르기</th><td>실행할 함수: <b>dailySearch</b> · 이벤트 소스: <b>시간 기반</b> · 유형: <b>일 단위 타이머</b> · 시간: <b>오전 7시~8시</b></td></tr>
+    <tr><th>③ 저장</th><td>저장 → (권한을 또 물으면 허용)</td></tr>
+  </table>
+  <table>
+    <tr><th>2차시 클로드 예약</th><td>똑똑하게 읽고 정리 · 내 폴더를 쓰면 PC가 켜져 있어야</td></tr>
+    <tr><th>오늘 앱스크립트 알람</th><td>정해진 규칙대로 · 무료 · <b>휴대폰과 PC가 다 꺼져 있어도</b> 구글이 실행</td></tr>
+  </table>
+  <div class="adv"><p class="at">웹페이지에 스위치 달기</p><p>"키워드 탭에 '매일 아침 예약' 켜기/끄기 스위치와 시각 고르기를 넣어줘. code.gs와 index.html을 같이 고쳐줘." → 완성 예시처럼 휴대폰에서 알람을 켜고 끌 수 있어요.</p></div>
+</section>
+
+<section id="s10" data-n="10" data-t="올리고 홈 화면에">
+  <div class="head"><span class="num">10</span><h2>인터넷에 올리고 휴대폰 홈 화면에</h2><span class="qtag f">🪟 웹페이지</span><span class="time">8분</span></div>
   <table>
     <tr><th>올리기</th><td><b>vercel.com/drop</b> → <b>검색함 폴더</b> 통째로 (깃허브는 <a href="github-help.html" target="_blank" rel="noopener">따라 하기 ↗</a>)</td></tr>
     <tr><th>이름 = 주소</th><td>예) <b>jiae-ai-news</b> → <b>Deploy</b> → <b>Domains</b>의 주소</td></tr>
@@ -238,68 +328,84 @@ API_URL과 기능은 그대로 둬.</div></div>
     <tr><th>아이폰</th><td>사파리 → <b>공유(□↑) → 홈 화면에 추가</b></td></tr>
     <tr><th>휴대폰에서 처음</th><td>PIN 한 번 → 그 휴대폰이 기억</td></tr>
   </table>
-  <p class="warnnote">⚠ 주소는 누구나 열 수 있지만, <b>PIN이 없으면 목록이 안 보입니다.</b> PIN은 가족에게만.</p>
-  <p class="note">고칠 땐 vercel.com → 내 프로젝트에 폴더를 <b>다시 끌어다 놓기</b> — 주소 · 홈 화면 아이콘 그대로.</p>
+  <p class="note">올리는 건 <b>웹페이지(홀)뿐</b>입니다. 서버와 데이터베이스는 이미 구글에 있어요. 그래서 PC에서 보관한 것이 휴대폰에도 그대로 보입니다.</p>
+  <p class="warnnote">⚠ 설계.txt · code.gs는 올리지 않아도 됩니다. 폴더에서 빼고 올리면 더 깔끔해요.</p>
 </section>
 
-<section id="s10" data-n="10" data-t="휴대폰 클로드와 짝 짓기">
-  <div class="head"><span class="num">10</span><h2>휴대폰 클로드와 짝 짓기</h2><span class="qtag">④ 더 하기</span><span class="badge pro">유료</span><span class="time">7분</span></div>
-  <p class="one">앱스크립트는 <b>모으고</b>, 클로드는 <b>읽고 정리</b>합니다. 휴대폰 클로드 앱에서 보관함을 요약해 봐요.</p>
-  <div class="box"><div class="bar"><span>프롬프트 10 — 휴대폰 클로드 앱에서</span></div>
-<div class="txt">구글 드라이브의 '키워드 검색함' 시트에서 검색함 탭의 상태가 '보관'인 줄을 읽고,
-이번 주 AI교육 소식을 세 줄로 요약해줘. 신청 마감이 보이면 따로 표시해줘.</div></div>
-  <p class="note">입력창 <b>＋ → 커넥터</b>에서 <b>구글 드라이브</b>가 켜져 있어야 합니다. 시트를 못 찾으면 시트 주소를 붙여 넣으세요.</p>
-  <div class="adv"><p class="at">매주 월요일 아침 브리핑</p><p>같은 부탁을 "매주 월요일 오전 8시"로 <b>예약</b>해 보세요. 이 예약은 내 PC 폴더를 쓰지 않으니 클라우드에서 돌아 <b>PC가 꺼져 있어도</b> 실행됩니다. 결과는 사이드바 <b>예약됨</b>에서.</p></div>
-  <div class="tnote"><p>드라이브 커넥터로 구글 시트를 읽는 동작은 계정 · 화면에 따라 다를 수 있습니다. 수업 전에 강사 계정으로 한 번 해 보고, 안 되면 시트를 '파일 → 다운로드 → CSV'로 받아 올리는 방법으로 바꾸세요.</p></div>
-</section>
-
-<section id="s13" data-n="11" data-t="만든 뒤에 돌볼 것">
-  <div class="head"><span class="num">11</span><h2>만든 뒤에 돌볼 것</h2><span class="qtag">운영</span><span class="time">3분</span></div>
-  <p class="one">홀만 있는 페이지는 올리면 끝이지만, <b>주방과 창고가 생기면 돌볼 일</b>이 생깁니다.</p>
+<section id="s11" data-n="11" data-t="만든 뒤에 돌볼 것">
+  <div class="head"><span class="num">11</span><h2>만든 뒤에 돌볼 것</h2><span class="qtag p">운영</span><span class="time">3분</span></div>
+  <p class="one">웹페이지만 있으면 올리면 끝이지만, <b>서버와 데이터베이스가 생기면 돌볼 일</b>이 생깁니다.</p>
   <table>
-    <tr><th>잡음이 늘면</th><td>⚙ 키워드 탭의 <b>빼는 말</b>을 가끔 손보기</td></tr>
-    <tr><th>PIN을 바꾸려면</th><td>앱스크립트 <b>스크립트 속성</b>의 값만 바꾸기 — 휴대폰에서는 새 PIN을 한 번 넣기</td></tr>
-    <tr><th>이상하면</th><td>앱스크립트 편집기 왼쪽 <b>실행 기록</b>에서 빨간 줄 확인 → 그 글을 클로드에게 그대로 보여 주기</td></tr>
-    <tr><th>안 쓰게 되면</th><td>⏰ 예약 끄기 → 배포 관리에서 <b>보관</b>(주소 멈춤) — 시트는 그대로 남음</td></tr>
-    <tr><th>넣지 않을 것</th><td>주민번호 · 계좌 · 회사 비밀 자료 — 창고는 내 구글 계정이지만 홀 주소는 누구나 열 수 있어요</td></tr>
+    <tr><th>잡음이 늘면</th><td>키워드 탭의 <b>빼는 말</b>을 가끔 손보기</td></tr>
+    <tr><th>PIN을 바꾸려면</th><td>앱스크립트 <b>스크립트 속성</b> 값만 바꾸기 — 휴대폰에서 새 PIN 한 번</td></tr>
+    <tr><th>이상하면</th><td>앱스크립트 왼쪽 <b>실행 기록</b>의 빨간 줄 → 클로드에게 그대로 보여 주기</td></tr>
+    <tr><th>안 쓰게 되면</th><td>⏰ 트리거 지우기 → 배포 관리에서 <b>보관</b>(주소 멈춤) — 시트는 그대로</td></tr>
+    <tr><th>넣지 않을 것</th><td>주민번호 · 계좌 · 회사 비밀 — 웹페이지 주소는 누구나 열 수 있어요</td></tr>
   </table>
 </section>
 
-<section id="s11" data-n="퀴즈" data-t="OX 퀴즈">
+<section id="sq" data-n="퀴즈" data-t="OX 퀴즈">
   <div class="head"><span class="num y">?</span><h2>OX 퀴즈</h2><span class="time">5분</span></div>
   <div class="quiz">
-    <details><summary>PIN은 index.html 맨 위에 API_URL과 함께 적어 둔다.</summary><p><span class="x">X</span> — 홀 코드는 누구나 열어 봅니다. PIN은 앱스크립트 <b>스크립트 속성</b>(주방 금고)에만.</p></details>
-    <details><summary>색이나 글씨만 바꿨다면 앱스크립트를 다시 배포하지 않아도 된다.</summary><p><span class="o">O</span> — 홀만 바뀐 일입니다. 버셀에 폴더만 다시 올리면 돼요.</p></details>
-    <details><summary>앱스크립트 코드를 고쳤다면 '새 배포'를 눌러 새 주소를 받아야 한다.</summary><p><span class="x">X</span> — <b>배포 관리 → 새 버전</b>으로 하면 주소는 그대로, 코드만 바뀝니다.</p></details>
-    <details><summary>예약을 켜 두면 휴대폰과 PC가 모두 꺼져 있어도 아침 검색이 된다.</summary><p><span class="o">O</span> — 구글의 컴퓨터가 시간에 맞춰 일합니다.</p></details>
-    <details><summary>잡음 기사가 많으면 키워드를 더 늘리는 것이 가장 좋다.</summary><p><span class="x">X</span> — 먼저 <b>빼는 말</b>을 더하세요. 키워드를 늘리면 잡음도 같이 늘어납니다.</p></details>
+    <details><summary>보관한 것이 다른 휴대폰에서도 보이는 건 데이터베이스(구글 시트) 덕분이다.</summary><p><span class="o">O</span> — 웹페이지만 있을 땐(3번) 새로 고침하면 사라졌죠.</p></details>
+    <details><summary>PIN은 index.html 맨 위에 API_URL과 함께 적어 둔다.</summary><p><span class="x">X</span> — 웹페이지 코드는 누구나 열어 봅니다. PIN은 서버 금고(스크립트 속성)에만.</p></details>
+    <details><summary>웹페이지와 서버를 따로 만들 땐 설계.txt 같은 약속 종이가 있으면 좋다.</summary><p><span class="o">O</span> — 부탁 이름 · 시트 칸 이름이 같아야 서로 말이 통합니다.</p></details>
+    <details><summary>서버 코드(code.gs)를 고쳤다면 '새 배포'로 새 주소를 받아야 한다.</summary><p><span class="x">X</span> — <b>배포 관리 → 새 버전</b>이면 주소는 그대로, 코드만 바뀝니다.</p></details>
+    <details><summary>알람(트리거)을 맞춰 두면 휴대폰과 PC가 꺼져 있어도 아침 검색이 된다.</summary><p><span class="o">O</span> — 구글의 컴퓨터(서버)가 시간에 맞춰 일합니다.</p></details>
   </div>
 </section>
 
 <div class="rest">개별 점검 4분</div>
 
-<section id="s12" data-n="도전" class="challenge" data-t="먼저 끝낸 분 — 선택 도전">
+<section id="sc" data-n="도전" class="challenge" data-t="먼저 끝낸 분 — 선택 도전">
   <div class="head"><span class="num ch">★</span><h2>먼저 끝낸 분 — 선택 도전</h2><span class="time">자유</span></div>
   <table>
-    <tr><th>다른 주제로</th><td>키워드만 바꾸면 새 검색함 — <b>경로당 · 복지관 행사</b>, <b>소상공인 지원사업</b>, <b>청약 공고</b>, <b>우리 동네 축제</b></td></tr>
-    <tr><th>집에서 처음부터</th><td>1번 <b>다섯 질문</b> 표를 새 주제로 채우고 → 프롬프트 1로 판정 → "오늘 검색함처럼 만들어줘"</td></tr>
-    <tr><th>가족과 같이</th><td>PIN을 가족에게만 알려 주고 같은 검색함을 함께 보관하기</td></tr>
+    <tr><th>보관함 꾸미기</th><td>"보관함을 날짜별로 묶어 줘. 오늘 · 이번 주 · 그 전. index.html만 고쳐줘."</td></tr>
+    <tr><th>상태 하나 더</th><td>"보관함에 '신청함' 상태를 더하고 싶어. code.gs와 index.html을 같이 고쳐줘." → 새 버전 배포</td></tr>
+    <tr><th>휴대폰 클로드로 요약</th><td>클로드 앱(＋ → 커넥터 → 구글 드라이브 켜기)에서 "키워드 검색함 시트에서 상태가 '보관'인 줄을 읽고 이번 주 소식을 세 줄로 요약해줘."</td></tr>
+    <tr><th>다른 주제로</th><td>설계.txt의 키워드만 바꾸면 새 검색함 — <b>복지관 행사</b>, <b>소상공인 지원사업</b>, <b>우리 동네 축제</b></td></tr>
   </table>
 </section>
 
 <div class="end">
-  <h2>오늘 기억할 다섯 질문</h2>
-  <p><b>①</b> 무엇을 <b>보여 줄까</b> → 🪟 홀</p>
-  <p><b>②</b> 무엇을 <b>남길까</b> → 🗄 창고</p>
-  <p><b>③</b> <b>누가</b> 볼까 → 🔒 금고(PIN)는 주방 쪽에만</p>
-  <p><b>④</b> <b>저절로</b> 할 일이 있나 → 🍳 주방 + ⏰ 알람</p>
-  <p><b>⑤</b> <b>어디에</b> 올릴까 → 홀은 버셀, 주방 · 창고는 구글</p>
-  <p class="next">만든 뒤엔 <b>직접 써 보고</b>, 주방이 있으면 <b>돌보기</b>. 📚 더 깊이: <a href="theory-web.html" style="color:#fff">이론 ①</a> · <a href="theory-appsscript.html" style="color:#fff">이론 ②</a></p>
+  <h2>오늘 기억할 네 줄</h2>
+  <p>🪟 <b>웹페이지</b> = 보이는 화면. 누구나 열어 볼 수 있다.</p>
+  <p>🍳 <b>서버</b> = 안 보이는 곳에서 일한다. 내가 자는 동안에도 (⏰ 알람).</p>
+  <p>🗄 <b>데이터베이스</b> = 적어 두는 표. 그래서 어느 기기에서나 같다.</p>
+  <p>✅ 만드는 순서 — <b>설계 메모 → 웹페이지 → 데이터베이스 · 서버 → 잇기</b>, 칸마다 써 보고 다음 칸.</p>
+  <p class="next">📚 더 깊이: <a href="theory-web.html" style="color:#fff">이론 ①</a> · <a href="theory-appsscript.html" style="color:#fff">이론 ②</a></p>
 </div>
 
 <footer>클로드가 내 컴퓨터로 들어옵니다 · 6차시(추가) &nbsp;|&nbsp; 제주도민대학 · 강사 강지애</footer>
 </div>
 <script src="lesson.js?v=1119"></script>
 <script src="live.js"></script>
+<script>
+/* [지금 검색] 따라가 보기 */
+(function(){
+  var S=[
+    {on:[],n:'',t:'<b>[🔍 지금 검색]을 한 번 누르면 어디를 거칠까요?</b><em>▶ 단추를 눌러 한 칸씩 따라가 보세요</em>'},
+    {on:['guest','hall'],n:'1',t:'내가 <b>웹페이지</b>에서 [지금 검색]을 누릅니다.<em>웹페이지 = 눈에 보이는 화면</em>'},
+    {on:['hall','kitchen'],n:'2',t:'웹페이지가 <b>서버</b>에 부탁을 보냅니다 — "AI교육 소식 찾아 줘"'},
+    {on:['kitchen'],n:'3',t:'서버가 <b>구글 뉴스에서 기사를 찾고</b>, 상관없는 것은 거릅니다.<em>서버는 내가 없을 때도 일할 수 있어요 — 아침 7시 ⏰ 알람에 맞춰서도!</em>'},
+    {on:['kitchen','store'],n:'4',t:'찾은 것을 <b>데이터베이스</b>(구글 시트 표)에 적어 둡니다.'},
+    {on:['kitchen','hall'],n:'5',t:'서버가 목록을 웹페이지로 돌려보냅니다.'},
+    {on:['hall','guest','store'],n:'6',t:'내 화면에 결과가 보입니다. <b>다른 휴대폰</b>으로 열어도 같은 표를 꺼내 보여 줘요.'}
+  ];
+  var i=0,zs=[].slice.call(document.querySelectorAll('#shop .zn')),cap=document.getElementById('cap'),
+      dots=document.getElementById('dots'),nx=document.getElementById('next'),pv=document.getElementById('prev');
+  for(var k=1;k<S.length;k++)dots.appendChild(document.createElement('i'));
+  function draw(){
+    var s=S[i];
+    zs.forEach(function(z){var on=s.on.indexOf(z.dataset.z)>-1;z.classList.toggle('on',on);z.classList.toggle('dim',s.on.length&&!on);});
+    cap.innerHTML=(s.n?'<span class="sn">'+s.n+'</span>':'')+s.t;
+    [].forEach.call(dots.children,function(d,k){d.classList.toggle('on',k===i-1);});
+    nx.textContent=i===0?'따라가 보기 ▶':(i===S.length-1?'처음부터 ↺':'다음 ▶');pv.disabled=i===0;
+  }
+  nx.onclick=function(){i=(i+1)%S.length;draw();};
+  pv.onclick=function(){if(i>0){i--;draw();}};
+  draw();
+})();
+</script>
 </body>
 </html>
